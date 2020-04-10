@@ -12,12 +12,14 @@ namespace VulkanGen
         public List<PlatformDefinition> Platforms = new List<PlatformDefinition>();
         public List<TagDefinition> Tags = new List<TagDefinition>();
         public List<ConstantDefinition> Consntants = new List<ConstantDefinition>();
+        public List<TypedefDefinition> TypeDefs = new List<TypedefDefinition>();
         public List<EnumDefinition> Enums = new List<EnumDefinition>();
         public List<StructureDefinition> Structs = new List<StructureDefinition>();
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
         public List<FeatureDefinition> Versions = new List<FeatureDefinition>();
+        public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
 
         public static VulkanSpecification FromFile(string xmlFile)
         {
@@ -47,10 +49,6 @@ namespace VulkanGen
                 spec.Consntants.Add(ConstantDefinition.FromXML(c));
             }
 
-            // TypeDef
-
-            // bitmaskTypes
-
             // Enums
             var enums = registry.Elements("enums").Where(e => e.Attribute("type")?.Value == "enum" || e.Attribute("type")?.Value == "bitmask");
             foreach (var e in enums)
@@ -73,6 +71,13 @@ namespace VulkanGen
                 spec.Unions.Add(StructureDefinition.FromXML(u));
             }
 
+            // TypeDef
+            var typeDefs = types.Elements("type").Where(t => t.Value.Contains("typedef") &&  t.Attribute("category")?.Value == "bitmask");
+            foreach (var type in typeDefs)
+            {
+                spec.TypeDefs.Add(TypedefDefinition.FromXML(type));
+            }
+
             // Handles
             var handles = types.Elements("type").Where(h => h.Attribute("category")?.Value == "handle");
             foreach (var h in handles)
@@ -80,13 +85,21 @@ namespace VulkanGen
                 spec.Handles.Add(HandleDefinition.FromXML(h));
             }
 
-            // BaseTypes
-
             // Commands
             var commands = registry.Element("commands").Elements("command");
             foreach (var command in commands)
             {
                 spec.Commands.Add(CommandDefinition.FromXML(command));
+            }
+
+            // Features
+
+
+            // Extensions
+            var extensions = registry.Element("extensions").Elements("extension");
+            foreach (var extension in extensions)
+            {
+                spec.Extensions.Add(ExtensionDefinition.FromXML(extension));
             }
 
             return spec;
