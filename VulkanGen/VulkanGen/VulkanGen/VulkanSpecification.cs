@@ -13,6 +13,9 @@ namespace VulkanGen
         public List<TagDefinition> Tags = new List<TagDefinition>();
         public List<ConstantDefinition> Consntants = new List<ConstantDefinition>();
         public List<EnumDefinition> Enums = new List<EnumDefinition>();
+        public List<StructureDefinition> Structs = new List<StructureDefinition>();
+        public List<StructureDefinition> Unions = new List<StructureDefinition>();
+        public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
         public List<FeatureDefinition> Versions = new List<FeatureDefinition>();
 
@@ -56,10 +59,26 @@ namespace VulkanGen
             }
 
             // Structs
+            var types = registry.Elements("types");
+            var structs = types.Elements("type").Where(s => s.Attribute("category")?.Value == "struct");
+            foreach (var s in structs)
+            {
+                spec.Structs.Add(StructureDefinition.FromXML(s));
+            }
 
             // Unions
+            var unions = types.Elements("type").Where(u => u.Attribute("category")?.Value == "union");
+            foreach (var u in unions)
+            {
+                spec.Unions.Add(StructureDefinition.FromXML(u));
+            }
 
             // Handles
+            var handles = types.Elements("type").Where(h => h.Attribute("category")?.Value == "handle");
+            foreach (var h in handles)
+            {
+                spec.Handles.Add(HandleDefinition.FromXML(h));
+            }
 
             // BaseTypes
 
