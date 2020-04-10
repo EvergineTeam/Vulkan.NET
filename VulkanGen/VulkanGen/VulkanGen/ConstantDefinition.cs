@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace VulkanGen
 {
     public enum ConstantType
     {
+        None,
         UInt32,
         UInt64,
         Float32,
@@ -17,10 +19,11 @@ namespace VulkanGen
     {
         public string Name;
         public string Value;
+        public string Alias;
         public ConstantType type;
         public string Comment;
 
-        private ConstantType ParseType(string value)
+        public static ConstantType ParseType(string value)
         {
             if (value.EndsWith("f"))
                 return ConstantType.Float32;
@@ -32,6 +35,22 @@ namespace VulkanGen
             {
                 return ConstantType.UInt32;
             }
+        }
+
+        public static ConstantDefinition FromXML(XElement elem)
+        {
+            ConstantDefinition constant = new ConstantDefinition();
+            constant.Name = elem.Attribute("name").Value;
+            constant.Comment = elem.Attribute("comment")?.Value;
+            constant.Alias = elem.Attribute("alias")?.Value;
+
+            if (constant.Alias == null)
+            {
+                constant.Value = elem.Attribute("value").Value;
+                constant.type = ParseType(constant.Value);
+            }
+
+            return constant;
         }
     }
 }

@@ -10,61 +10,64 @@ namespace VulkanGen
     public enum EnumType
     {
         Enum,
-        bitmask,
-        Constants,
+        Bitmask,
     }
 
     public class EnumDefinition
     {
         public string Name;
         public EnumType Type;
-        public List<EnumValue> Enums = new List<EnumValue>();
+        public List<EnumValue> Values = new List<EnumValue>();
 
-        public EnumDefinition Clone()
+        public static EnumDefinition FromXML(XElement elem)
         {
-            return new EnumDefinition
+            EnumDefinition enums = new EnumDefinition();
+            enums.Name = elem.Attribute("name").Value;
+            enums.Type = elem.Attribute("type").Value == "enum" ? EnumType.Enum : EnumType.Bitmask;
+            var values = elem.Elements("enum");
+            foreach (var v in values)
             {
-                Name = Name,
-                Type = Type,
-                Enums = (from p in Enums select new EnumValue { Name = p.Name, ShortName = p.ShortName, Value = p.Value }).ToList()
-            };
+                enums.Values.Add(EnumValue.FromXML(v));
+            }
+
+            return enums;
         }
     }
 
     public class EnumValue
     {
         public string Name;
-        public string ShortName;
-        public string Value;
+        public string Alias;
+        public int Value;
+        public string Comment;
 
-
-        public void Initialize(XDocument specDoc, string enumName)
+        internal static EnumValue FromXML(XElement elem)
         {
-            Name = enumName;
-            ShortName = ComputeShortName(enumName);
+            EnumValue enumValue = new EnumValue();
+            enumValue.Name = elem.Attribute("name").Value;
+            enumValue.Comment = elem.Attribute("comment")?.Value;
+            enumValue.Alias = elem.Attribute("alias")?.Value;
 
-            ////foreach (var enumElements in specDoc.Root.Elements("enums"))
-            ////{
-            ////    foreach (var enumElem in enumElements.Elements("enum"))
-            ////    {
-
-            ////    }
-            ////}
-        }
-
-        private string ComputeShortName(string enumName)
-        {
-            string result = string.Empty;
-            string lowername = enumName.ToLower();
-            var strings = lowername.Split('_');
-
-            for (int i = 1; i < strings.Length; i++)
+            string valueString = elem.Attribute("value")?.Value;
+            if (valueString != null)
             {
-                string temp = strings[i];
-                result += char.ToUpper(temp[0]) + temp.Substring(1);
+                if (valueString.StartsWith("0x"))
+                {
+                    valueString = valueString.Substring(2);
+                    enumValue.Value = int.Parse(valueString, System.Globalization.NumberStyles.HexNumber);
+                }
+                else
+                {
+                    enumValue.Value = int.Parse(valueString);
+                }
+            }
+            else if(enumValue.Alias == null)
+            {
+                string bitpos = elem.Attribute("bitpos").Value;
+                enumValue.Value = 1 << int.Parse(bitpos);
             }
 
-            return result;
+            return enumValue;
         }
     }
 }
