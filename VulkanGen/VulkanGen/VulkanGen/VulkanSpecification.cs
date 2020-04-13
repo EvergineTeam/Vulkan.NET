@@ -18,7 +18,8 @@ namespace VulkanGen
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
-        public List<FeatureDefinition> Versions = new List<FeatureDefinition>();
+        public List<FeatureDefinition> Feature = new List<FeatureDefinition>();
+        public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
         public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
 
         public static VulkanSpecification FromFile(string xmlFile)
@@ -78,6 +79,12 @@ namespace VulkanGen
                 spec.TypeDefs.Add(TypedefDefinition.FromXML(type));
             }
 
+            // BaseTypes
+            spec.BaseTypes = types.Elements("type").Where(bt => bt.Attribute("category")?.Value == "basetype")
+                .ToDictionary(
+                    bt => bt.Element("name").Value,
+                    bt => bt.Element("type").Value);
+
             // Handles
             var handles = types.Elements("type").Where(h => h.Attribute("category")?.Value == "handle");
             foreach (var h in handles)
@@ -93,7 +100,12 @@ namespace VulkanGen
             }
 
             // Features
-
+            var features = registry.Elements("feature");
+            foreach (var feature in features)
+            {
+                spec.Feature.Add(FeatureDefinition.FromXML(feature));
+            
+            }
 
             // Extensions
             var extensions = registry.Element("extensions").Elements("extension");

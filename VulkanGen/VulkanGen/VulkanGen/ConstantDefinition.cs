@@ -20,7 +20,7 @@ namespace VulkanGen
         public string Name;
         public string Value;
         public string Alias;
-        public ConstantType type;
+        public ConstantType Type;
         public string Comment;
 
         public static ConstantType ParseType(string value)
@@ -47,10 +47,30 @@ namespace VulkanGen
             if (constant.Alias == null)
             {
                 constant.Value = elem.Attribute("value").Value;
-                constant.type = ParseType(constant.Value);
+                constant.Type = ParseType(constant.Value);
             }
 
             return constant;
+        }
+
+        public static object NormalizeValue(string value)
+        {
+            return value.Replace("ULL", "UL");
+        }
+
+        public static string ToCSharp(ConstantType type)
+        {
+            switch (type)
+            {
+                case ConstantType.UInt32:
+                    return "uint";
+                case ConstantType.UInt64:
+                    return "ulong";
+                case ConstantType.Float32:
+                    return "float";
+                default:
+                    throw new InvalidOperationException("Invalid value");
+            }
         }
     }
 }

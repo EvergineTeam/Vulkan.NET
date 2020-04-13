@@ -115,7 +115,6 @@ namespace VulkanGen
 
             return extension;
         }
-
     }
 
     public class EnumExtension
