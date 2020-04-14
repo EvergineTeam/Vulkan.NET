@@ -57,20 +57,5 @@ namespace VulkanGen
         {
             return value.Replace("ULL", "UL");
         }
-
-        public static string ToCSharp(ConstantType type)
-        {
-            switch (type)
-            {
-                case ConstantType.UInt32:
-                    return "uint";
-                case ConstantType.UInt64:
-                    return "ulong";
-                case ConstantType.Float32:
-                    return "float";
-                default:
-                    throw new InvalidOperationException("Invalid value");
-            }
-        }
     }
 }
