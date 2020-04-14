@@ -49,7 +49,7 @@ namespace WaveEngine.Bindings.Vulkan
 		[FieldOffset(0)]
 		public float valueFloat;
 		[FieldOffset(0)]
-		public VkBool32 valueBool;
+		public uint valueBool;
 		[FieldOffset(0)]
 		public byte* valueString;
 	}
@@ -58,7 +58,7 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkPipelineExecutableStatisticValueKHR
 	{
 		[FieldOffset(0)]
-		public VkBool32 b32;
+		public uint b32;
 		[FieldOffset(0)]
 		public long i64;
 		[FieldOffset(0)]
@@ -71,7 +71,7 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkDeviceOrHostAddressKHR
 	{
 		[FieldOffset(0)]
-		public VkDeviceAddress deviceAddress;
+		public ulong deviceAddress;
 		[FieldOffset(0)]
 		public void* hostAddress;
 	}
@@ -80,7 +80,7 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkDeviceOrHostAddressConstKHR
 	{
 		[FieldOffset(0)]
-		public VkDeviceAddress deviceAddress;
+		public ulong deviceAddress;
 		[FieldOffset(0)]
 		public void* hostAddress;
 	}

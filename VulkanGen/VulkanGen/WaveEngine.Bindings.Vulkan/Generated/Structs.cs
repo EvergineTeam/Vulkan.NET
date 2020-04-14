@@ -140,7 +140,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceQueueCreateFlags flags;
+		public uint flags;
 		public uint queueFamilyIndex;
 		public uint queueCount;
 		public float* pQueuePriorities;
@@ -151,7 +151,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceCreateFlags flags;
+		public uint flags;
 		public uint queueCreateInfoCount;
 		public IntPtr pQueueCreateInfos;
 		public uint enabledLayerCount;
@@ -166,7 +166,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkInstanceCreateFlags flags;
+		public uint flags;
 		public IntPtr pApplicationInfo;
 		public uint enabledLayerCount;
 		public byte** ppEnabledLayerNames;
@@ -177,7 +177,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkQueueFamilyProperties
 	{
-		public VkQueueFlags queueFlags;
+		public uint queueFlags;
 		public uint queueCount;
 		public uint timestampValidBits;
 		public VkExtent3D minImageTransferGranularity;
@@ -197,24 +197,24 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize allocationSize;
+		public ulong allocationSize;
 		public uint memoryTypeIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryRequirements
 	{
-		public VkDeviceSize size;
-		public VkDeviceSize alignment;
+		public ulong size;
+		public ulong alignment;
 		public uint memoryTypeBits;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSparseImageFormatProperties
 	{
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 		public VkExtent3D imageGranularity;
-		public VkSparseImageFormatFlags flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -222,23 +222,23 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkSparseImageFormatProperties formatProperties;
 		public uint imageMipTailFirstLod;
-		public VkDeviceSize imageMipTailSize;
-		public VkDeviceSize imageMipTailOffset;
-		public VkDeviceSize imageMipTailStride;
+		public ulong imageMipTailSize;
+		public ulong imageMipTailOffset;
+		public ulong imageMipTailStride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryType
 	{
-		public VkMemoryPropertyFlags propertyFlags;
+		public uint propertyFlags;
 		public uint heapIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryHeap
 	{
-		public VkDeviceSize size;
-		public VkMemoryHeapFlags flags;
+		public ulong size;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -247,16 +247,16 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDeviceMemory memory;
-		public VkDeviceSize offset;
-		public VkDeviceSize size;
+		public ulong offset;
+		public ulong size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkFormatProperties
 	{
-		public VkFormatFeatureFlags linearTilingFeatures;
-		public VkFormatFeatureFlags optimalTilingFeatures;
-		public VkFormatFeatureFlags bufferFeatures;
+		public uint linearTilingFeatures;
+		public uint optimalTilingFeatures;
+		public uint bufferFeatures;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -265,16 +265,16 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkExtent3D maxExtent;
 		public uint maxMipLevels;
 		public uint maxArrayLayers;
-		public VkSampleCountFlags sampleCounts;
-		public VkDeviceSize maxResourceSize;
+		public uint sampleCounts;
+		public ulong maxResourceSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDescriptorBufferInfo
 	{
 		public VkBuffer buffer;
-		public VkDeviceSize offset;
-		public VkDeviceSize range;
+		public ulong offset;
+		public ulong range;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -319,9 +319,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBufferCreateFlags flags;
-		public VkDeviceSize size;
-		public VkBufferUsageFlags usage;
+		public uint flags;
+		public ulong size;
+		public uint usage;
 		public VkSharingMode sharingMode;
 		public uint queueFamilyIndexCount;
 		public uint* pQueueFamilyIndices;
@@ -332,17 +332,17 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBufferViewCreateFlags flags;
+		public uint flags;
 		public VkBuffer buffer;
 		public VkFormat format;
-		public VkDeviceSize offset;
-		public VkDeviceSize range;
+		public ulong offset;
+		public ulong range;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkImageSubresource
 	{
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 		public uint mipLevel;
 		public uint arrayLayer;
 	}
@@ -350,7 +350,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkImageSubresourceLayers
 	{
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 		public uint mipLevel;
 		public uint baseArrayLayer;
 		public uint layerCount;
@@ -359,7 +359,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkImageSubresourceRange
 	{
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 		public uint baseMipLevel;
 		public uint levelCount;
 		public uint baseArrayLayer;
@@ -371,8 +371,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
+		public uint srcAccessMask;
+		public uint dstAccessMask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -380,13 +380,13 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
+		public uint srcAccessMask;
+		public uint dstAccessMask;
 		public uint srcQueueFamilyIndex;
 		public uint dstQueueFamilyIndex;
 		public VkBuffer buffer;
-		public VkDeviceSize offset;
-		public VkDeviceSize size;
+		public ulong offset;
+		public ulong size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -394,8 +394,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
+		public uint srcAccessMask;
+		public uint dstAccessMask;
 		public VkImageLayout oldLayout;
 		public VkImageLayout newLayout;
 		public uint srcQueueFamilyIndex;
@@ -409,7 +409,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageCreateFlags flags;
+		public uint flags;
 		public VkImageType imageType;
 		public VkFormat format;
 		public VkExtent3D extent;
@@ -417,7 +417,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint arrayLayers;
 		public VkSampleCountFlagBits samples;
 		public VkImageTiling tiling;
-		public VkImageUsageFlags usage;
+		public uint usage;
 		public VkSharingMode sharingMode;
 		public uint queueFamilyIndexCount;
 		public uint* pQueueFamilyIndices;
@@ -427,11 +427,11 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSubresourceLayout
 	{
-		public VkDeviceSize offset;
-		public VkDeviceSize size;
-		public VkDeviceSize rowPitch;
-		public VkDeviceSize arrayPitch;
-		public VkDeviceSize depthPitch;
+		public ulong offset;
+		public ulong size;
+		public ulong rowPitch;
+		public ulong arrayPitch;
+		public ulong depthPitch;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -439,7 +439,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageViewCreateFlags flags;
+		public uint flags;
 		public VkImage image;
 		public VkImageViewType viewType;
 		public VkFormat format;
@@ -450,19 +450,19 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBufferCopy
 	{
-		public VkDeviceSize srcOffset;
-		public VkDeviceSize dstOffset;
-		public VkDeviceSize size;
+		public ulong srcOffset;
+		public ulong dstOffset;
+		public ulong size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSparseMemoryBind
 	{
-		public VkDeviceSize resourceOffset;
-		public VkDeviceSize size;
+		public ulong resourceOffset;
+		public ulong size;
 		public VkDeviceMemory memory;
-		public VkDeviceSize memoryOffset;
-		public VkSparseMemoryBindFlags flags;
+		public ulong memoryOffset;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -472,8 +472,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkOffset3D offset;
 		public VkExtent3D extent;
 		public VkDeviceMemory memory;
-		public VkDeviceSize memoryOffset;
-		public VkSparseMemoryBindFlags flags;
+		public ulong memoryOffset;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -539,7 +539,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBufferImageCopy
 	{
-		public VkDeviceSize bufferOffset;
+		public ulong bufferOffset;
 		public uint bufferRowLength;
 		public uint bufferImageHeight;
 		public VkImageSubresourceLayers imageSubresource;
@@ -562,8 +562,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkShaderModuleCreateFlags flags;
-		public IntPtr codeSize;
+		public uint flags;
+		public UIntPtr codeSize;
 		public uint* pCode;
 	}
 
@@ -573,7 +573,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint binding;
 		public VkDescriptorType descriptorType;
 		public uint descriptorCount;
-		public VkShaderStageFlags stageFlags;
+		public uint stageFlags;
 		public IntPtr pImmutableSamplers;
 	}
 
@@ -582,7 +582,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDescriptorSetLayoutCreateFlags flags;
+		public uint flags;
 		public uint bindingCount;
 		public IntPtr pBindings;
 	}
@@ -599,7 +599,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDescriptorPoolCreateFlags flags;
+		public uint flags;
 		public uint maxSets;
 		public uint poolSizeCount;
 		public IntPtr pPoolSizes;
@@ -620,7 +620,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public uint constantID;
 		public uint offset;
-		public IntPtr size;
+		public UIntPtr size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -628,7 +628,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public uint mapEntryCount;
 		public IntPtr pMapEntries;
-		public IntPtr dataSize;
+		public UIntPtr dataSize;
 		public void* pData;
 	}
 
@@ -637,7 +637,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineShaderStageCreateFlags flags;
+		public uint flags;
 		public VkShaderStageFlagBits stage;
 		public VkShaderModule module;
 		public byte* pName;
@@ -649,7 +649,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCreateFlags flags;
+		public uint flags;
 		public VkPipelineShaderStageCreateInfo stage;
 		public VkPipelineLayout layout;
 		public VkPipeline basePipelineHandle;
@@ -678,7 +678,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineVertexInputStateCreateFlags flags;
+		public uint flags;
 		public uint vertexBindingDescriptionCount;
 		public IntPtr pVertexBindingDescriptions;
 		public uint vertexAttributeDescriptionCount;
@@ -690,9 +690,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineInputAssemblyStateCreateFlags flags;
+		public uint flags;
 		public VkPrimitiveTopology topology;
-		public VkBool32 primitiveRestartEnable;
+		public uint primitiveRestartEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -700,7 +700,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineTessellationStateCreateFlags flags;
+		public uint flags;
 		public uint patchControlPoints;
 	}
 
@@ -709,7 +709,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineViewportStateCreateFlags flags;
+		public uint flags;
 		public uint viewportCount;
 		public IntPtr pViewports;
 		public uint scissorCount;
@@ -721,13 +721,13 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRasterizationStateCreateFlags flags;
-		public VkBool32 depthClampEnable;
-		public VkBool32 rasterizerDiscardEnable;
+		public uint flags;
+		public uint depthClampEnable;
+		public uint rasterizerDiscardEnable;
 		public VkPolygonMode polygonMode;
-		public VkCullModeFlags cullMode;
+		public uint cullMode;
 		public VkFrontFace frontFace;
-		public VkBool32 depthBiasEnable;
+		public uint depthBiasEnable;
 		public float depthBiasConstantFactor;
 		public float depthBiasClamp;
 		public float depthBiasSlopeFactor;
@@ -739,26 +739,26 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineMultisampleStateCreateFlags flags;
+		public uint flags;
 		public VkSampleCountFlagBits rasterizationSamples;
-		public VkBool32 sampleShadingEnable;
+		public uint sampleShadingEnable;
 		public float minSampleShading;
 		public IntPtr pSampleMask;
-		public VkBool32 alphaToCoverageEnable;
-		public VkBool32 alphaToOneEnable;
+		public uint alphaToCoverageEnable;
+		public uint alphaToOneEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPipelineColorBlendAttachmentState
 	{
-		public VkBool32 blendEnable;
+		public uint blendEnable;
 		public VkBlendFactor srcColorBlendFactor;
 		public VkBlendFactor dstColorBlendFactor;
 		public VkBlendOp colorBlendOp;
 		public VkBlendFactor srcAlphaBlendFactor;
 		public VkBlendFactor dstAlphaBlendFactor;
 		public VkBlendOp alphaBlendOp;
-		public VkColorComponentFlags colorWriteMask;
+		public uint colorWriteMask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -766,8 +766,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineColorBlendStateCreateFlags flags;
-		public VkBool32 logicOpEnable;
+		public uint flags;
+		public uint logicOpEnable;
 		public VkLogicOp logicOp;
 		public uint attachmentCount;
 		public IntPtr pAttachments;
@@ -779,7 +779,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineDynamicStateCreateFlags flags;
+		public uint flags;
 		public uint dynamicStateCount;
 		public IntPtr pDynamicStates;
 	}
@@ -801,12 +801,12 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineDepthStencilStateCreateFlags flags;
-		public VkBool32 depthTestEnable;
-		public VkBool32 depthWriteEnable;
+		public uint flags;
+		public uint depthTestEnable;
+		public uint depthWriteEnable;
 		public VkCompareOp depthCompareOp;
-		public VkBool32 depthBoundsTestEnable;
-		public VkBool32 stencilTestEnable;
+		public uint depthBoundsTestEnable;
+		public uint stencilTestEnable;
 		public VkStencilOpState front;
 		public VkStencilOpState back;
 		public float minDepthBounds;
@@ -818,7 +818,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCreateFlags flags;
+		public uint flags;
 		public uint stageCount;
 		public IntPtr pStages;
 		public IntPtr pVertexInputState;
@@ -842,15 +842,15 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCacheCreateFlags flags;
-		public IntPtr initialDataSize;
+		public uint flags;
+		public UIntPtr initialDataSize;
 		public void* pInitialData;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPushConstantRange
 	{
-		public VkShaderStageFlags stageFlags;
+		public uint stageFlags;
 		public uint offset;
 		public uint size;
 	}
@@ -860,7 +860,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineLayoutCreateFlags flags;
+		public uint flags;
 		public uint setLayoutCount;
 		public IntPtr pSetLayouts;
 		public uint pushConstantRangeCount;
@@ -872,7 +872,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSamplerCreateFlags flags;
+		public uint flags;
 		public VkFilter magFilter;
 		public VkFilter minFilter;
 		public VkSamplerMipmapMode mipmapMode;
@@ -880,14 +880,14 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkSamplerAddressMode addressModeV;
 		public VkSamplerAddressMode addressModeW;
 		public float mipLodBias;
-		public VkBool32 anisotropyEnable;
+		public uint anisotropyEnable;
 		public float maxAnisotropy;
-		public VkBool32 compareEnable;
+		public uint compareEnable;
 		public VkCompareOp compareOp;
 		public float minLod;
 		public float maxLod;
 		public VkBorderColor borderColor;
-		public VkBool32 unnormalizedCoordinates;
+		public uint unnormalizedCoordinates;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -895,7 +895,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkCommandPoolCreateFlags flags;
+		public uint flags;
 		public uint queueFamilyIndex;
 	}
 
@@ -917,9 +917,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkRenderPass renderPass;
 		public uint subpass;
 		public VkFramebuffer framebuffer;
-		public VkBool32 occlusionQueryEnable;
-		public VkQueryControlFlags queryFlags;
-		public VkQueryPipelineStatisticFlags pipelineStatistics;
+		public uint occlusionQueryEnable;
+		public uint queryFlags;
+		public uint pipelineStatistics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -927,7 +927,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkCommandBufferUsageFlags flags;
+		public uint flags;
 		public IntPtr pInheritanceInfo;
 	}
 
@@ -953,7 +953,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkClearAttachment
 	{
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 		public uint colorAttachment;
 		public VkClearValue clearValue;
 	}
@@ -961,7 +961,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkAttachmentDescription
 	{
-		public VkAttachmentDescriptionFlags flags;
+		public uint flags;
 		public VkFormat format;
 		public VkSampleCountFlagBits samples;
 		public VkAttachmentLoadOp loadOp;
@@ -982,7 +982,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSubpassDescription
 	{
-		public VkSubpassDescriptionFlags flags;
+		public uint flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint inputAttachmentCount;
 		public IntPtr pInputAttachments;
@@ -999,11 +999,11 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public uint srcSubpass;
 		public uint dstSubpass;
-		public VkPipelineStageFlags srcStageMask;
-		public VkPipelineStageFlags dstStageMask;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
-		public VkDependencyFlags dependencyFlags;
+		public uint srcStageMask;
+		public uint dstStageMask;
+		public uint srcAccessMask;
+		public uint dstAccessMask;
+		public uint dependencyFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1011,7 +1011,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkRenderPassCreateFlags flags;
+		public uint flags;
 		public uint attachmentCount;
 		public IntPtr pAttachments;
 		public uint subpassCount;
@@ -1025,7 +1025,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkEventCreateFlags flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1033,77 +1033,77 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkFenceCreateFlags flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceFeatures
 	{
-		public VkBool32 robustBufferAccess;
-		public VkBool32 fullDrawIndexUint32;
-		public VkBool32 imageCubeArray;
-		public VkBool32 independentBlend;
-		public VkBool32 geometryShader;
-		public VkBool32 tessellationShader;
-		public VkBool32 sampleRateShading;
-		public VkBool32 dualSrcBlend;
-		public VkBool32 logicOp;
-		public VkBool32 multiDrawIndirect;
-		public VkBool32 drawIndirectFirstInstance;
-		public VkBool32 depthClamp;
-		public VkBool32 depthBiasClamp;
-		public VkBool32 fillModeNonSolid;
-		public VkBool32 depthBounds;
-		public VkBool32 wideLines;
-		public VkBool32 largePoints;
-		public VkBool32 alphaToOne;
-		public VkBool32 multiViewport;
-		public VkBool32 samplerAnisotropy;
-		public VkBool32 textureCompressionETC2;
-		public VkBool32 textureCompressionASTC_LDR;
-		public VkBool32 textureCompressionBC;
-		public VkBool32 occlusionQueryPrecise;
-		public VkBool32 pipelineStatisticsQuery;
-		public VkBool32 vertexPipelineStoresAndAtomics;
-		public VkBool32 fragmentStoresAndAtomics;
-		public VkBool32 shaderTessellationAndGeometryPointSize;
-		public VkBool32 shaderImageGatherExtended;
-		public VkBool32 shaderStorageImageExtendedFormats;
-		public VkBool32 shaderStorageImageMultisample;
-		public VkBool32 shaderStorageImageReadWithoutFormat;
-		public VkBool32 shaderStorageImageWriteWithoutFormat;
-		public VkBool32 shaderUniformBufferArrayDynamicIndexing;
-		public VkBool32 shaderSampledImageArrayDynamicIndexing;
-		public VkBool32 shaderStorageBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageImageArrayDynamicIndexing;
-		public VkBool32 shaderClipDistance;
-		public VkBool32 shaderCullDistance;
-		public VkBool32 shaderFloat64;
-		public VkBool32 shaderInt64;
-		public VkBool32 shaderInt16;
-		public VkBool32 shaderResourceResidency;
-		public VkBool32 shaderResourceMinLod;
-		public VkBool32 sparseBinding;
-		public VkBool32 sparseResidencyBuffer;
-		public VkBool32 sparseResidencyImage2D;
-		public VkBool32 sparseResidencyImage3D;
-		public VkBool32 sparseResidency2Samples;
-		public VkBool32 sparseResidency4Samples;
-		public VkBool32 sparseResidency8Samples;
-		public VkBool32 sparseResidency16Samples;
-		public VkBool32 sparseResidencyAliased;
-		public VkBool32 variableMultisampleRate;
-		public VkBool32 inheritedQueries;
+		public uint robustBufferAccess;
+		public uint fullDrawIndexUint32;
+		public uint imageCubeArray;
+		public uint independentBlend;
+		public uint geometryShader;
+		public uint tessellationShader;
+		public uint sampleRateShading;
+		public uint dualSrcBlend;
+		public uint logicOp;
+		public uint multiDrawIndirect;
+		public uint drawIndirectFirstInstance;
+		public uint depthClamp;
+		public uint depthBiasClamp;
+		public uint fillModeNonSolid;
+		public uint depthBounds;
+		public uint wideLines;
+		public uint largePoints;
+		public uint alphaToOne;
+		public uint multiViewport;
+		public uint samplerAnisotropy;
+		public uint textureCompressionETC2;
+		public uint textureCompressionASTC_LDR;
+		public uint textureCompressionBC;
+		public uint occlusionQueryPrecise;
+		public uint pipelineStatisticsQuery;
+		public uint vertexPipelineStoresAndAtomics;
+		public uint fragmentStoresAndAtomics;
+		public uint shaderTessellationAndGeometryPointSize;
+		public uint shaderImageGatherExtended;
+		public uint shaderStorageImageExtendedFormats;
+		public uint shaderStorageImageMultisample;
+		public uint shaderStorageImageReadWithoutFormat;
+		public uint shaderStorageImageWriteWithoutFormat;
+		public uint shaderUniformBufferArrayDynamicIndexing;
+		public uint shaderSampledImageArrayDynamicIndexing;
+		public uint shaderStorageBufferArrayDynamicIndexing;
+		public uint shaderStorageImageArrayDynamicIndexing;
+		public uint shaderClipDistance;
+		public uint shaderCullDistance;
+		public uint shaderFloat64;
+		public uint shaderInt64;
+		public uint shaderInt16;
+		public uint shaderResourceResidency;
+		public uint shaderResourceMinLod;
+		public uint sparseBinding;
+		public uint sparseResidencyBuffer;
+		public uint sparseResidencyImage2D;
+		public uint sparseResidencyImage3D;
+		public uint sparseResidency2Samples;
+		public uint sparseResidency4Samples;
+		public uint sparseResidency8Samples;
+		public uint sparseResidency16Samples;
+		public uint sparseResidencyAliased;
+		public uint variableMultisampleRate;
+		public uint inheritedQueries;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceSparseProperties
 	{
-		public VkBool32 residencyStandard2DBlockShape;
-		public VkBool32 residencyStandard2DMultisampleBlockShape;
-		public VkBool32 residencyStandard3DBlockShape;
-		public VkBool32 residencyAlignedMipSize;
-		public VkBool32 residencyNonResidentStrict;
+		public uint residencyStandard2DBlockShape;
+		public uint residencyStandard2DMultisampleBlockShape;
+		public uint residencyStandard3DBlockShape;
+		public uint residencyAlignedMipSize;
+		public uint residencyNonResidentStrict;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1120,8 +1120,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint maxPushConstantsSize;
 		public uint maxMemoryAllocationCount;
 		public uint maxSamplerAllocationCount;
-		public VkDeviceSize bufferImageGranularity;
-		public VkDeviceSize sparseAddressSpaceSize;
+		public ulong bufferImageGranularity;
+		public ulong sparseAddressSpaceSize;
 		public uint maxBoundDescriptorSets;
 		public uint maxPerStageDescriptorSamplers;
 		public uint maxPerStageDescriptorUniformBuffers;
@@ -1175,10 +1175,10 @@ namespace WaveEngine.Bindings.Vulkan
 		public fixed uint maxViewportDimensions[2];
 		public fixed float viewportBoundsRange[2];
 		public uint viewportSubPixelBits;
-		public IntPtr minMemoryMapAlignment;
-		public VkDeviceSize minTexelBufferOffsetAlignment;
-		public VkDeviceSize minUniformBufferOffsetAlignment;
-		public VkDeviceSize minStorageBufferOffsetAlignment;
+		public UIntPtr minMemoryMapAlignment;
+		public ulong minTexelBufferOffsetAlignment;
+		public ulong minUniformBufferOffsetAlignment;
+		public ulong minStorageBufferOffsetAlignment;
 		public int minTexelOffset;
 		public uint maxTexelOffset;
 		public int minTexelGatherOffset;
@@ -1189,18 +1189,18 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint maxFramebufferWidth;
 		public uint maxFramebufferHeight;
 		public uint maxFramebufferLayers;
-		public VkSampleCountFlags framebufferColorSampleCounts;
-		public VkSampleCountFlags framebufferDepthSampleCounts;
-		public VkSampleCountFlags framebufferStencilSampleCounts;
-		public VkSampleCountFlags framebufferNoAttachmentsSampleCounts;
+		public uint framebufferColorSampleCounts;
+		public uint framebufferDepthSampleCounts;
+		public uint framebufferStencilSampleCounts;
+		public uint framebufferNoAttachmentsSampleCounts;
 		public uint maxColorAttachments;
-		public VkSampleCountFlags sampledImageColorSampleCounts;
-		public VkSampleCountFlags sampledImageIntegerSampleCounts;
-		public VkSampleCountFlags sampledImageDepthSampleCounts;
-		public VkSampleCountFlags sampledImageStencilSampleCounts;
-		public VkSampleCountFlags storageImageSampleCounts;
+		public uint sampledImageColorSampleCounts;
+		public uint sampledImageIntegerSampleCounts;
+		public uint sampledImageDepthSampleCounts;
+		public uint sampledImageStencilSampleCounts;
+		public uint storageImageSampleCounts;
 		public uint maxSampleMaskWords;
-		public VkBool32 timestampComputeAndGraphics;
+		public uint timestampComputeAndGraphics;
 		public float timestampPeriod;
 		public uint maxClipDistances;
 		public uint maxCullDistances;
@@ -1210,11 +1210,11 @@ namespace WaveEngine.Bindings.Vulkan
 		public fixed float lineWidthRange[2];
 		public float pointSizeGranularity;
 		public float lineWidthGranularity;
-		public VkBool32 strictLines;
-		public VkBool32 standardSampleLocations;
-		public VkDeviceSize optimalBufferCopyOffsetAlignment;
-		public VkDeviceSize optimalBufferCopyRowPitchAlignment;
-		public VkDeviceSize nonCoherentAtomSize;
+		public uint strictLines;
+		public uint standardSampleLocations;
+		public ulong optimalBufferCopyOffsetAlignment;
+		public ulong optimalBufferCopyRowPitchAlignment;
+		public ulong nonCoherentAtomSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1222,7 +1222,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSemaphoreCreateFlags flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1230,10 +1230,10 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkQueryPoolCreateFlags flags;
+		public uint flags;
 		public VkQueryType queryType;
 		public uint queryCount;
-		public VkQueryPipelineStatisticFlags pipelineStatistics;
+		public uint pipelineStatistics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1241,7 +1241,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkFramebufferCreateFlags flags;
+		public uint flags;
 		public VkRenderPass renderPass;
 		public uint attachmentCount;
 		public IntPtr pAttachments;
@@ -1298,9 +1298,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public byte* displayName;
 		public VkExtent2D physicalDimensions;
 		public VkExtent2D physicalResolution;
-		public VkSurfaceTransformFlagsKHR supportedTransforms;
-		public VkBool32 planeReorderPossible;
-		public VkBool32 persistentContent;
+		public uint supportedTransforms;
+		public uint planeReorderPossible;
+		public uint persistentContent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1329,14 +1329,14 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDisplayModeCreateFlagsKHR flags;
+		public uint flags;
 		public VkDisplayModeParametersKHR parameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDisplayPlaneCapabilitiesKHR
 	{
-		public VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+		public uint supportedAlpha;
 		public VkOffset2D minSrcPosition;
 		public VkOffset2D maxSrcPosition;
 		public VkExtent2D minSrcExtent;
@@ -1352,7 +1352,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDisplaySurfaceCreateFlagsKHR flags;
+		public uint flags;
 		public VkDisplayModeKHR displayMode;
 		public uint planeIndex;
 		public uint planeStackIndex;
@@ -1369,7 +1369,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkRect2D srcRect;
 		public VkRect2D dstRect;
-		public VkBool32 persistent;
+		public uint persistent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1381,10 +1381,10 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkExtent2D minImageExtent;
 		public VkExtent2D maxImageExtent;
 		public uint maxImageArrayLayers;
-		public VkSurfaceTransformFlagsKHR supportedTransforms;
+		public uint supportedTransforms;
 		public VkSurfaceTransformFlagBitsKHR currentTransform;
-		public VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
-		public VkImageUsageFlags supportedUsageFlags;
+		public uint supportedCompositeAlpha;
+		public uint supportedUsageFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1392,7 +1392,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAndroidSurfaceCreateFlagsKHR flags;
+		public uint flags;
 		public IntPtr window;
 	}
 
@@ -1401,7 +1401,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkViSurfaceCreateFlagsNN flags;
+		public uint flags;
 		public void* window;
 	}
 
@@ -1410,7 +1410,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkWaylandSurfaceCreateFlagsKHR flags;
+		public uint flags;
 		public IntPtr display;
 		public IntPtr surface;
 	}
@@ -1420,9 +1420,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkWin32SurfaceCreateFlagsKHR flags;
-		public HINSTANCE hinstance;
-		public HWND hwnd;
+		public uint flags;
+		public IntPtr hinstance;
+		public IntPtr hwnd;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1430,9 +1430,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkXlibSurfaceCreateFlagsKHR flags;
+		public uint flags;
 		public IntPtr dpy;
-		public Window window;
+		public IntPtr window;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1440,9 +1440,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkXcbSurfaceCreateFlagsKHR flags;
+		public uint flags;
 		public IntPtr connection;
-		public xcb_window_t window;
+		public IntPtr window;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1450,8 +1450,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
-		public zx_handle_t imagePipeHandle;
+		public uint flags;
+		public IntPtr imagePipeHandle;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1459,8 +1459,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkStreamDescriptorSurfaceCreateFlagsGGP flags;
-		public GgpStreamDescriptor streamDescriptor;
+		public uint flags;
+		public IntPtr streamDescriptor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1475,21 +1475,21 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSwapchainCreateFlagsKHR flags;
+		public uint flags;
 		public VkSurfaceKHR surface;
 		public uint minImageCount;
 		public VkFormat imageFormat;
 		public VkColorSpaceKHR imageColorSpace;
 		public VkExtent2D imageExtent;
 		public uint imageArrayLayers;
-		public VkImageUsageFlags imageUsage;
+		public uint imageUsage;
 		public VkSharingMode imageSharingMode;
 		public uint queueFamilyIndexCount;
 		public uint* pQueueFamilyIndices;
 		public VkSurfaceTransformFlagBitsKHR preTransform;
 		public VkCompositeAlphaFlagBitsKHR compositeAlpha;
 		public VkPresentModeKHR presentMode;
-		public VkBool32 clipped;
+		public uint clipped;
 		public VkSwapchainKHR oldSwapchain;
 	}
 
@@ -1511,7 +1511,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDebugReportFlagsEXT flags;
+		public uint flags;
 		public IntPtr pfnCallback;
 		public void* pUserData;
 	}
@@ -1550,7 +1550,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDebugReportObjectTypeEXT objectType;
-		public ulong object;
+		public ulong VkObject;
 		public byte* pObjectName;
 	}
 
@@ -1560,9 +1560,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDebugReportObjectTypeEXT objectType;
-		public ulong object;
+		public ulong VkObject;
 		public ulong tagName;
-		public IntPtr tagSize;
+		public UIntPtr tagSize;
 		public void* pTag;
 	}
 
@@ -1580,7 +1580,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 dedicatedAllocation;
+		public uint dedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1588,7 +1588,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 dedicatedAllocation;
+		public uint dedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1604,9 +1604,9 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkExternalImageFormatPropertiesNV
 	{
 		public VkImageFormatProperties imageFormatProperties;
-		public VkExternalMemoryFeatureFlagsNV externalMemoryFeatures;
-		public VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes;
-		public VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
+		public uint externalMemoryFeatures;
+		public uint exportFromImportedHandleTypes;
+		public uint compatibleHandleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1614,7 +1614,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlagsNV handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1622,7 +1622,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlagsNV handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1630,8 +1630,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlagsNV handleType;
-		public HANDLE handle;
+		public uint handleType;
+		public IntPtr handle;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1662,7 +1662,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 deviceGeneratedCommands;
+		public uint deviceGeneratedCommands;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1712,7 +1712,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBindIndexBufferIndirectCommandNV
 	{
-		public VkDeviceAddress bufferAddress;
+		public ulong bufferAddress;
 		public uint size;
 		public VkIndexType indexType;
 	}
@@ -1720,7 +1720,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBindVertexBufferIndirectCommandNV
 	{
-		public VkDeviceAddress bufferAddress;
+		public ulong bufferAddress;
 		public uint size;
 		public uint stride;
 	}
@@ -1735,7 +1735,7 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkIndirectCommandsStreamNV
 	{
 		public VkBuffer buffer;
-		public VkDeviceSize offset;
+		public ulong offset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1747,12 +1747,12 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint stream;
 		public uint offset;
 		public uint vertexBindingUnit;
-		public VkBool32 vertexDynamicStride;
+		public uint vertexDynamicStride;
 		public VkPipelineLayout pushconstantPipelineLayout;
-		public VkShaderStageFlags pushconstantShaderStageFlags;
+		public uint pushconstantShaderStageFlags;
 		public uint pushconstantOffset;
 		public uint pushconstantSize;
-		public VkIndirectStateFlagsNV indirectStateFlags;
+		public uint indirectStateFlags;
 		public uint indexTypeCount;
 		public IntPtr pIndexTypes;
 		public uint* pIndexTypeValues;
@@ -1763,7 +1763,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkIndirectCommandsLayoutUsageFlagsNV flags;
+		public uint flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint tokenCount;
 		public IntPtr pTokens;
@@ -1783,12 +1783,12 @@ namespace WaveEngine.Bindings.Vulkan
 		public IntPtr pStreams;
 		public uint sequencesCount;
 		public VkBuffer preprocessBuffer;
-		public VkDeviceSize preprocessOffset;
-		public VkDeviceSize preprocessSize;
+		public ulong preprocessOffset;
+		public ulong preprocessSize;
 		public VkBuffer sequencesCountBuffer;
-		public VkDeviceSize sequencesCountOffset;
+		public ulong sequencesCountOffset;
 		public VkBuffer sequencesIndexBuffer;
-		public VkDeviceSize sequencesIndexOffset;
+		public ulong sequencesIndexOffset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1862,8 +1862,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkFormat format;
 		public VkImageType type;
 		public VkImageTiling tiling;
-		public VkImageUsageFlags usage;
-		public VkImageCreateFlags flags;
+		public uint usage;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1918,7 +1918,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkFormat format;
 		public VkImageType type;
 		public VkSampleCountFlagBits samples;
-		public VkImageUsageFlags usage;
+		public uint usage;
 		public VkImageTiling tiling;
 	}
 
@@ -1994,8 +1994,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 variablePointersStorageBuffer;
-		public VkBool32 variablePointers;
+		public uint variablePointersStorageBuffer;
+		public uint variablePointers;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2016,9 +2016,9 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkExternalMemoryProperties
 	{
-		public VkExternalMemoryFeatureFlags externalMemoryFeatures;
-		public VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes;
-		public VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
+		public uint externalMemoryFeatures;
+		public uint exportFromImportedHandleTypes;
+		public uint compatibleHandleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2057,8 +2057,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBufferCreateFlags flags;
-		public VkBufferUsageFlags usage;
+		public uint flags;
+		public uint usage;
 		public VkExternalMemoryHandleTypeFlagBits handleType;
 	}
 
@@ -2089,7 +2089,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public byte driverUUID;
 		public byte deviceLUID;
 		public uint deviceNodeMask;
-		public VkBool32 deviceLUIDValid;
+		public uint deviceLUIDValid;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2102,7 +2102,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlags handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2115,7 +2115,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlags handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2128,7 +2128,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalMemoryHandleTypeFlags handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2142,8 +2142,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkExternalMemoryHandleTypeFlagBits handleType;
-		public HANDLE handle;
-		public LPCWSTR name;
+		public IntPtr handle;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2153,7 +2153,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public IntPtr pAttributes;
 		public uint dwAccess;
-		public LPCWSTR name;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2231,9 +2231,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
-		public VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
-		public VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
+		public uint exportFromImportedHandleTypes;
+		public uint compatibleHandleTypes;
+		public uint externalSemaphoreFeatures;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2246,7 +2246,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalSemaphoreHandleTypeFlags handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2260,10 +2260,10 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkSemaphore semaphore;
-		public VkSemaphoreImportFlags flags;
+		public uint flags;
 		public VkExternalSemaphoreHandleTypeFlagBits handleType;
-		public HANDLE handle;
-		public LPCWSTR name;
+		public IntPtr handle;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2273,7 +2273,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public IntPtr pAttributes;
 		public uint dwAccess;
-		public LPCWSTR name;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2302,7 +2302,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkSemaphore semaphore;
-		public VkSemaphoreImportFlags flags;
+		public uint flags;
 		public VkExternalSemaphoreHandleTypeFlagBits handleType;
 		public int fd;
 	}
@@ -2334,9 +2334,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
-		public VkExternalFenceHandleTypeFlags compatibleHandleTypes;
-		public VkExternalFenceFeatureFlags externalFenceFeatures;
+		public uint exportFromImportedHandleTypes;
+		public uint compatibleHandleTypes;
+		public uint externalFenceFeatures;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2349,7 +2349,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkExternalFenceHandleTypeFlags handleTypes;
+		public uint handleTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2363,10 +2363,10 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkFence fence;
-		public VkFenceImportFlags flags;
+		public uint flags;
 		public VkExternalFenceHandleTypeFlagBits handleType;
-		public HANDLE handle;
-		public LPCWSTR name;
+		public IntPtr handle;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2376,7 +2376,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public IntPtr pAttributes;
 		public uint dwAccess;
-		public LPCWSTR name;
+		public IntPtr name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2394,7 +2394,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkFence fence;
-		public VkFenceImportFlags flags;
+		public uint flags;
 		public VkExternalFenceHandleTypeFlagBits handleType;
 		public int fd;
 	}
@@ -2413,9 +2413,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 multiview;
-		public VkBool32 multiviewGeometryShader;
-		public VkBool32 multiviewTessellationShader;
+		public uint multiview;
+		public uint multiviewGeometryShader;
+		public uint multiviewTessellationShader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2466,11 +2466,11 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkExtent2D minImageExtent;
 		public VkExtent2D maxImageExtent;
 		public uint maxImageArrayLayers;
-		public VkSurfaceTransformFlagsKHR supportedTransforms;
+		public uint supportedTransforms;
 		public VkSurfaceTransformFlagBitsKHR currentTransform;
-		public VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
-		public VkImageUsageFlags supportedUsageFlags;
-		public VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
+		public uint supportedCompositeAlpha;
+		public uint supportedUsageFlags;
+		public uint supportedSurfaceCounters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2502,7 +2502,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSurfaceCounterFlagsEXT surfaceCounters;
+		public uint surfaceCounters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2512,7 +2512,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public uint physicalDeviceCount;
 		public VkPhysicalDevice physicalDevices;
-		public VkBool32 subsetAllocation;
+		public uint subsetAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2525,7 +2525,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkMemoryAllocateFlags flags;
+		public uint flags;
 		public uint deviceMask;
 	}
 
@@ -2541,7 +2541,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkBuffer buffer;
 		public VkDeviceMemory memory;
-		public VkDeviceSize memoryOffset;
+		public ulong memoryOffset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2570,7 +2570,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkImage image;
 		public VkDeviceMemory memory;
-		public VkDeviceSize memoryOffset;
+		public ulong memoryOffset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2660,7 +2660,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint presentMask;
-		public VkDeviceGroupPresentModeFlagsKHR modes;
+		public uint modes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2721,7 +2721,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceGroupPresentModeFlagsKHR modes;
+		public uint modes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2731,8 +2731,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint dstArrayElement;
 		public uint descriptorCount;
 		public VkDescriptorType descriptorType;
-		public IntPtr offset;
-		public IntPtr stride;
+		public UIntPtr offset;
+		public UIntPtr stride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2745,7 +2745,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDescriptorUpdateTemplateCreateFlags flags;
+		public uint flags;
 		public uint descriptorUpdateEntryCount;
 		public IntPtr pDescriptorUpdateEntries;
 		public VkDescriptorUpdateTemplateType templateType;
@@ -2787,7 +2787,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 localDimmingSupport;
+		public uint localDimmingSupport;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2795,7 +2795,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 localDimmingEnable;
+		public uint localDimmingEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2835,7 +2835,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkIOSSurfaceCreateFlagsMVK flags;
+		public uint flags;
 		public void* pView;
 	}
 
@@ -2844,7 +2844,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkMacOSSurfaceCreateFlagsMVK flags;
+		public uint flags;
 		public void* pView;
 	}
 
@@ -2853,7 +2853,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkMetalSurfaceCreateFlagsEXT flags;
+		public uint flags;
 		public IntPtr pLayer;
 	}
 
@@ -2869,7 +2869,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 viewportWScalingEnable;
+		public uint viewportWScalingEnable;
 		public uint viewportCount;
 		public IntPtr pViewportWScalings;
 	}
@@ -2888,7 +2888,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineViewportSwizzleStateCreateFlagsNV flags;
+		public uint flags;
 		public uint viewportCount;
 		public IntPtr pViewportSwizzles;
 	}
@@ -2906,7 +2906,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
+		public uint flags;
 		public VkDiscardRectangleModeEXT discardRectangleMode;
 		public uint discardRectangleCount;
 		public IntPtr pDiscardRectangles;
@@ -2917,7 +2917,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 perViewPositionAllComponents;
+		public uint perViewPositionAllComponents;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2925,7 +2925,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public uint subpass;
 		public uint inputAttachmentIndex;
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3017,7 +3017,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageUsageFlags sharedPresentSupportedUsageFlags;
+		public uint sharedPresentSupportedUsageFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3025,10 +3025,10 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 storageBuffer16BitAccess;
-		public VkBool32 uniformAndStorageBuffer16BitAccess;
-		public VkBool32 storagePushConstant16;
-		public VkBool32 storageInputOutput16;
+		public uint storageBuffer16BitAccess;
+		public uint uniformAndStorageBuffer16BitAccess;
+		public uint storagePushConstant16;
+		public uint storageInputOutput16;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3042,9 +3042,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint subgroupSize;
-		public VkShaderStageFlags supportedStages;
-		public VkSubgroupFeatureFlags supportedOperations;
-		public VkBool32 quadOperationsInAllStages;
+		public uint supportedStages;
+		public uint supportedOperations;
+		public uint quadOperationsInAllStages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3052,7 +3052,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderSubgroupExtendedTypes;
+		public uint shaderSubgroupExtendedTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3143,8 +3143,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 prefersDedicatedAllocation;
-		public VkBool32 requiresDedicatedAllocation;
+		public uint prefersDedicatedAllocation;
+		public uint requiresDedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3171,7 +3171,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageUsageFlags usage;
+		public uint usage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3217,7 +3217,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkChromaLocation xChromaOffset;
 		public VkChromaLocation yChromaOffset;
 		public VkFilter chromaFilter;
-		public VkBool32 forceExplicitReconstruction;
+		public uint forceExplicitReconstruction;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3256,7 +3256,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 samplerYcbcrConversion;
+		public uint samplerYcbcrConversion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3282,7 +3282,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 supportsTextureGatherLODBiasAMD;
+		public uint supportsTextureGatherLODBiasAMD;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3291,8 +3291,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBuffer buffer;
-		public VkDeviceSize offset;
-		public VkConditionalRenderingFlagsEXT flags;
+		public ulong offset;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3300,7 +3300,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 protectedSubmit;
+		public uint protectedSubmit;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3308,7 +3308,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 protectedMemory;
+		public uint protectedMemory;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3316,7 +3316,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 protectedNoFault;
+		public uint protectedNoFault;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3324,7 +3324,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceQueueCreateFlags flags;
+		public uint flags;
 		public uint queueFamilyIndex;
 		public uint queueIndex;
 	}
@@ -3334,8 +3334,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCoverageToColorStateCreateFlagsNV flags;
-		public VkBool32 coverageToColorEnable;
+		public uint flags;
+		public uint coverageToColorEnable;
 		public uint coverageToColorLocation;
 	}
 
@@ -3344,8 +3344,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 filterMinmaxSingleComponentFormats;
-		public VkBool32 filterMinmaxImageComponentMapping;
+		public uint filterMinmaxSingleComponentFormats;
+		public uint filterMinmaxImageComponentMapping;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3401,7 +3401,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 sampleLocationsEnable;
+		public uint sampleLocationsEnable;
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
@@ -3410,11 +3410,11 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSampleCountFlags sampleLocationSampleCounts;
+		public uint sampleLocationSampleCounts;
 		public VkExtent2D maxSampleLocationGridSize;
 		public fixed float sampleLocationCoordinateRange[2];
 		public uint sampleLocationSubPixelBits;
-		public VkBool32 variableSampleLocations;
+		public uint variableSampleLocations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3443,7 +3443,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 advancedBlendCoherentOperations;
+		public uint advancedBlendCoherentOperations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3452,11 +3452,11 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint advancedBlendMaxColorAttachments;
-		public VkBool32 advancedBlendIndependentBlend;
-		public VkBool32 advancedBlendNonPremultipliedSrcColor;
-		public VkBool32 advancedBlendNonPremultipliedDstColor;
-		public VkBool32 advancedBlendCorrelatedOverlap;
-		public VkBool32 advancedBlendAllOperations;
+		public uint advancedBlendIndependentBlend;
+		public uint advancedBlendNonPremultipliedSrcColor;
+		public uint advancedBlendNonPremultipliedDstColor;
+		public uint advancedBlendCorrelatedOverlap;
+		public uint advancedBlendAllOperations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3464,8 +3464,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 srcPremultiplied;
-		public VkBool32 dstPremultiplied;
+		public uint srcPremultiplied;
+		public uint dstPremultiplied;
 		public VkBlendOverlapEXT blendOverlap;
 	}
 
@@ -3474,8 +3474,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 inlineUniformBlock;
-		public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+		public uint inlineUniformBlock;
+		public uint descriptorBindingInlineUniformBlockUpdateAfterBind;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3512,9 +3512,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCoverageModulationStateCreateFlagsNV flags;
+		public uint flags;
 		public VkCoverageModulationModeNV coverageModulationMode;
-		public VkBool32 coverageModulationTableEnable;
+		public uint coverageModulationTableEnable;
 		public uint coverageModulationTableCount;
 		public float* pCoverageModulationTable;
 	}
@@ -3538,8 +3538,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkValidationCacheCreateFlagsEXT flags;
-		public IntPtr initialDataSize;
+		public uint flags;
+		public UIntPtr initialDataSize;
 		public void* pInitialData;
 	}
 
@@ -3557,7 +3557,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint maxPerSetDescriptors;
-		public VkDeviceSize maxMemoryAllocationSize;
+		public ulong maxMemoryAllocationSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3570,7 +3570,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 supported;
+		public uint supported;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3583,7 +3583,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderDrawParameters;
+		public uint shaderDrawParameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3596,8 +3596,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderFloat16;
-		public VkBool32 shaderInt8;
+		public uint shaderFloat16;
+		public uint shaderInt8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3617,21 +3617,21 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-		public VkBool32 shaderDenormPreserveFloat16;
-		public VkBool32 shaderDenormPreserveFloat32;
-		public VkBool32 shaderDenormPreserveFloat64;
-		public VkBool32 shaderDenormFlushToZeroFloat16;
-		public VkBool32 shaderDenormFlushToZeroFloat32;
-		public VkBool32 shaderDenormFlushToZeroFloat64;
-		public VkBool32 shaderRoundingModeRTEFloat16;
-		public VkBool32 shaderRoundingModeRTEFloat32;
-		public VkBool32 shaderRoundingModeRTEFloat64;
-		public VkBool32 shaderRoundingModeRTZFloat16;
-		public VkBool32 shaderRoundingModeRTZFloat32;
-		public VkBool32 shaderRoundingModeRTZFloat64;
+		public uint shaderSignedZeroInfNanPreserveFloat16;
+		public uint shaderSignedZeroInfNanPreserveFloat32;
+		public uint shaderSignedZeroInfNanPreserveFloat64;
+		public uint shaderDenormPreserveFloat16;
+		public uint shaderDenormPreserveFloat32;
+		public uint shaderDenormPreserveFloat64;
+		public uint shaderDenormFlushToZeroFloat16;
+		public uint shaderDenormFlushToZeroFloat32;
+		public uint shaderDenormFlushToZeroFloat64;
+		public uint shaderRoundingModeRTEFloat16;
+		public uint shaderRoundingModeRTEFloat32;
+		public uint shaderRoundingModeRTEFloat64;
+		public uint shaderRoundingModeRTZFloat16;
+		public uint shaderRoundingModeRTZFloat32;
+		public uint shaderRoundingModeRTZFloat64;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3644,7 +3644,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 hostQueryReset;
+		public uint hostQueryReset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3676,7 +3676,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSwapchainImageUsageFlagsANDROID usage;
+		public uint usage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3684,7 +3684,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 sharedImage;
+		public uint sharedImage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3693,14 +3693,14 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint numUsedVgprs;
 		public uint numUsedSgprs;
 		public uint ldsSizePerLocalWorkGroup;
-		public IntPtr ldsUsageSizeInBytes;
-		public IntPtr scratchMemUsageInBytes;
+		public UIntPtr ldsUsageSizeInBytes;
+		public UIntPtr scratchMemUsageInBytes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkShaderStatisticsInfoAMD
 	{
-		public VkShaderStageFlags shaderStageMask;
+		public uint shaderStageMask;
 		public VkShaderResourceUsageAMD resourceUsage;
 		public uint numPhysicalVgprs;
 		public uint numPhysicalSgprs;
@@ -3735,7 +3735,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkObjectType objectType;
 		public ulong objectHandle;
 		public ulong tagName;
-		public IntPtr tagSize;
+		public UIntPtr tagSize;
 		public void* pTag;
 	}
 
@@ -3753,9 +3753,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDebugUtilsMessengerCreateFlagsEXT flags;
-		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
-		public VkDebugUtilsMessageTypeFlagsEXT messageType;
+		public uint flags;
+		public uint messageSeverity;
+		public uint messageType;
 		public IntPtr pfnUserCallback;
 		public void* pUserData;
 	}
@@ -3765,7 +3765,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
+		public uint flags;
 		public byte* pMessageIdName;
 		public int messageIdNumber;
 		public byte* pMessage;
@@ -3799,7 +3799,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize minImportedHostPointerAlignment;
+		public ulong minImportedHostPointerAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3810,12 +3810,12 @@ namespace WaveEngine.Bindings.Vulkan
 		public float primitiveOverestimationSize;
 		public float maxExtraPrimitiveOverestimationSize;
 		public float extraPrimitiveOverestimationSizeGranularity;
-		public VkBool32 primitiveUnderestimation;
-		public VkBool32 conservativePointAndLineRasterization;
-		public VkBool32 degenerateTrianglesRasterized;
-		public VkBool32 degenerateLinesRasterized;
-		public VkBool32 fullyCoveredFragmentShaderInputVariable;
-		public VkBool32 conservativeRasterizationPostDepthCoverage;
+		public uint primitiveUnderestimation;
+		public uint conservativePointAndLineRasterization;
+		public uint degenerateTrianglesRasterized;
+		public uint degenerateLinesRasterized;
+		public uint fullyCoveredFragmentShaderInputVariable;
+		public uint conservativeRasterizationPostDepthCoverage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3852,7 +3852,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
+		public uint shaderCoreFeatures;
 		public uint activeComputeUnitCount;
 	}
 
@@ -3861,7 +3861,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
+		public uint flags;
 		public VkConservativeRasterizationModeEXT conservativeRasterizationMode;
 		public float extraPrimitiveOverestimationSize;
 	}
@@ -3871,26 +3871,26 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexing;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexing;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-		public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUpdateUnusedWhilePending;
-		public VkBool32 descriptorBindingPartiallyBound;
-		public VkBool32 descriptorBindingVariableDescriptorCount;
-		public VkBool32 runtimeDescriptorArray;
+		public uint shaderInputAttachmentArrayDynamicIndexing;
+		public uint shaderUniformTexelBufferArrayDynamicIndexing;
+		public uint shaderStorageTexelBufferArrayDynamicIndexing;
+		public uint shaderUniformBufferArrayNonUniformIndexing;
+		public uint shaderSampledImageArrayNonUniformIndexing;
+		public uint shaderStorageBufferArrayNonUniformIndexing;
+		public uint shaderStorageImageArrayNonUniformIndexing;
+		public uint shaderInputAttachmentArrayNonUniformIndexing;
+		public uint shaderUniformTexelBufferArrayNonUniformIndexing;
+		public uint shaderStorageTexelBufferArrayNonUniformIndexing;
+		public uint descriptorBindingUniformBufferUpdateAfterBind;
+		public uint descriptorBindingSampledImageUpdateAfterBind;
+		public uint descriptorBindingStorageImageUpdateAfterBind;
+		public uint descriptorBindingStorageBufferUpdateAfterBind;
+		public uint descriptorBindingUniformTexelBufferUpdateAfterBind;
+		public uint descriptorBindingStorageTexelBufferUpdateAfterBind;
+		public uint descriptorBindingUpdateUnusedWhilePending;
+		public uint descriptorBindingPartiallyBound;
+		public uint descriptorBindingVariableDescriptorCount;
+		public uint runtimeDescriptorArray;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3904,13 +3904,13 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint maxUpdateAfterBindDescriptorsInAllPools;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-		public VkBool32 robustBufferAccessUpdateAfterBind;
-		public VkBool32 quadDivergentImplicitLod;
+		public uint shaderUniformBufferArrayNonUniformIndexingNative;
+		public uint shaderSampledImageArrayNonUniformIndexingNative;
+		public uint shaderStorageBufferArrayNonUniformIndexingNative;
+		public uint shaderStorageImageArrayNonUniformIndexingNative;
+		public uint shaderInputAttachmentArrayNonUniformIndexingNative;
+		public uint robustBufferAccessUpdateAfterBind;
+		public uint quadDivergentImplicitLod;
 		public uint maxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 		public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
@@ -3979,7 +3979,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAttachmentDescriptionFlags flags;
+		public uint flags;
 		public VkFormat format;
 		public VkSampleCountFlagBits samples;
 		public VkAttachmentLoadOp loadOp;
@@ -4002,7 +4002,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public uint attachment;
 		public VkImageLayout layout;
-		public VkImageAspectFlags aspectMask;
+		public uint aspectMask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4015,7 +4015,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSubpassDescriptionFlags flags;
+		public uint flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint viewMask;
 		public uint inputAttachmentCount;
@@ -4040,11 +4040,11 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public uint srcSubpass;
 		public uint dstSubpass;
-		public VkPipelineStageFlags srcStageMask;
-		public VkPipelineStageFlags dstStageMask;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
-		public VkDependencyFlags dependencyFlags;
+		public uint srcStageMask;
+		public uint dstStageMask;
+		public uint srcAccessMask;
+		public uint dstAccessMask;
+		public uint dependencyFlags;
 		public int viewOffset;
 	}
 
@@ -4058,7 +4058,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkRenderPassCreateFlags flags;
+		public uint flags;
 		public uint attachmentCount;
 		public IntPtr pAttachments;
 		public uint subpassCount;
@@ -4104,7 +4104,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 timelineSemaphore;
+		public uint timelineSemaphore;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4160,7 +4160,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkSemaphoreWaitFlags flags;
+		public uint flags;
 		public uint semaphoreCount;
 		public IntPtr pSemaphores;
 		public ulong* pValues;
@@ -4241,7 +4241,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize allocationSize;
+		public ulong allocationSize;
 		public uint memoryTypeBits;
 	}
 
@@ -4260,7 +4260,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkFormat format;
 		public ulong externalFormat;
-		public VkFormatFeatureFlags formatFeatures;
+		public uint formatFeatures;
 		public VkComponentMapping samplerYcbcrConversionComponents;
 		public VkSamplerYcbcrModelConversion suggestedYcbcrModel;
 		public VkSamplerYcbcrRange suggestedYcbcrRange;
@@ -4273,7 +4273,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 conditionalRenderingEnable;
+		public uint conditionalRenderingEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4289,9 +4289,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 storageBuffer8BitAccess;
-		public VkBool32 uniformAndStorageBuffer8BitAccess;
-		public VkBool32 storagePushConstant8;
+		public uint storageBuffer8BitAccess;
+		public uint uniformAndStorageBuffer8BitAccess;
+		public uint storagePushConstant8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4304,8 +4304,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 conditionalRendering;
-		public VkBool32 inheritedConditionalRendering;
+		public uint conditionalRendering;
+		public uint inheritedConditionalRendering;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4313,9 +4313,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 vulkanMemoryModel;
-		public VkBool32 vulkanMemoryModelDeviceScope;
-		public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
+		public uint vulkanMemoryModel;
+		public uint vulkanMemoryModelDeviceScope;
+		public uint vulkanMemoryModelAvailabilityVisibilityChains;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4328,8 +4328,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderBufferInt64Atomics;
-		public VkBool32 shaderSharedInt64Atomics;
+		public uint shaderBufferInt64Atomics;
+		public uint shaderSharedInt64Atomics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4342,8 +4342,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 vertexAttributeInstanceRateDivisor;
-		public VkBool32 vertexAttributeInstanceRateZeroDivisor;
+		public uint vertexAttributeInstanceRateDivisor;
+		public uint vertexAttributeInstanceRateZeroDivisor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4351,7 +4351,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineStageFlags checkpointExecutionStageMask;
+		public uint checkpointExecutionStageMask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4368,10 +4368,10 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkResolveModeFlags supportedDepthResolveModes;
-		public VkResolveModeFlags supportedStencilResolveModes;
-		public VkBool32 independentResolveNone;
-		public VkBool32 independentResolve;
+		public uint supportedDepthResolveModes;
+		public uint supportedStencilResolveModes;
+		public uint independentResolveNone;
+		public uint independentResolve;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4407,7 +4407,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 decodeModeSharedExponent;
+		public uint decodeModeSharedExponent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4415,8 +4415,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 transformFeedback;
-		public VkBool32 geometryStreams;
+		public uint transformFeedback;
+		public uint geometryStreams;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4426,14 +4426,14 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public uint maxTransformFeedbackStreams;
 		public uint maxTransformFeedbackBuffers;
-		public VkDeviceSize maxTransformFeedbackBufferSize;
+		public ulong maxTransformFeedbackBufferSize;
 		public uint maxTransformFeedbackStreamDataSize;
 		public uint maxTransformFeedbackBufferDataSize;
 		public uint maxTransformFeedbackBufferDataStride;
-		public VkBool32 transformFeedbackQueries;
-		public VkBool32 transformFeedbackStreamsLinesTriangles;
-		public VkBool32 transformFeedbackRasterizationStreamSelect;
-		public VkBool32 transformFeedbackDraw;
+		public uint transformFeedbackQueries;
+		public uint transformFeedbackStreamsLinesTriangles;
+		public uint transformFeedbackRasterizationStreamSelect;
+		public uint transformFeedbackDraw;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4441,7 +4441,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
+		public uint flags;
 		public uint rasterizationStream;
 	}
 
@@ -4450,7 +4450,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 representativeFragmentTest;
+		public uint representativeFragmentTest;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4458,7 +4458,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 representativeFragmentTestEnable;
+		public uint representativeFragmentTestEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4466,7 +4466,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 exclusiveScissor;
+		public uint exclusiveScissor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4483,7 +4483,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 cornerSampledImage;
+		public uint cornerSampledImage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4491,8 +4491,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 computeDerivativeGroupQuads;
-		public VkBool32 computeDerivativeGroupLinear;
+		public uint computeDerivativeGroupQuads;
+		public uint computeDerivativeGroupLinear;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4500,7 +4500,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 fragmentShaderBarycentric;
+		public uint fragmentShaderBarycentric;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4508,7 +4508,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 imageFootprint;
+		public uint imageFootprint;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4516,7 +4516,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 dedicatedAllocationImageAliasing;
+		public uint dedicatedAllocationImageAliasing;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4531,7 +4531,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shadingRateImageEnable;
+		public uint shadingRateImageEnable;
 		public uint viewportCount;
 		public IntPtr pShadingRatePalettes;
 	}
@@ -4541,8 +4541,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shadingRateImage;
-		public VkBool32 shadingRateCoarseSampleOrder;
+		public uint shadingRateImage;
+		public uint shadingRateCoarseSampleOrder;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4587,8 +4587,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 taskShader;
-		public VkBool32 meshShader;
+		public uint taskShader;
+		public uint meshShader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4648,7 +4648,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCreateFlags flags;
+		public uint flags;
 		public uint stageCount;
 		public IntPtr pStages;
 		public uint groupCount;
@@ -4664,7 +4664,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCreateFlags flags;
+		public uint flags;
 		public uint stageCount;
 		public IntPtr pStages;
 		public uint groupCount;
@@ -4683,16 +4683,16 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBuffer vertexData;
-		public VkDeviceSize vertexOffset;
+		public ulong vertexOffset;
 		public uint vertexCount;
-		public VkDeviceSize vertexStride;
+		public ulong vertexStride;
 		public VkFormat vertexFormat;
 		public VkBuffer indexData;
-		public VkDeviceSize indexOffset;
+		public ulong indexOffset;
 		public uint indexCount;
 		public VkIndexType indexType;
 		public VkBuffer transformData;
-		public VkDeviceSize transformOffset;
+		public ulong transformOffset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4703,7 +4703,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkBuffer aabbData;
 		public uint numAABBs;
 		public uint stride;
-		public VkDeviceSize offset;
+		public ulong offset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4720,7 +4720,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkGeometryTypeKHR geometryType;
 		public VkGeometryDataNV geometry;
-		public VkGeometryFlagsKHR flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4740,7 +4740,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize compactedSize;
+		public ulong compactedSize;
 		public VkAccelerationStructureInfoNV info;
 	}
 
@@ -4751,7 +4751,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkAccelerationStructureKHR accelerationStructure;
 		public VkDeviceMemory memory;
-		public VkDeviceSize memoryOffset;
+		public ulong memoryOffset;
 		public uint deviceIndexCount;
 		public uint* pDeviceIndices;
 	}
@@ -4799,15 +4799,15 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 rayTracing;
-		public VkBool32 rayTracingShaderGroupHandleCaptureReplay;
-		public VkBool32 rayTracingShaderGroupHandleCaptureReplayMixed;
-		public VkBool32 rayTracingAccelerationStructureCaptureReplay;
-		public VkBool32 rayTracingIndirectTraceRays;
-		public VkBool32 rayTracingIndirectAccelerationStructureBuild;
-		public VkBool32 rayTracingHostAccelerationStructureCommands;
-		public VkBool32 rayQuery;
-		public VkBool32 rayTracingPrimitiveCulling;
+		public uint rayTracing;
+		public uint rayTracingShaderGroupHandleCaptureReplay;
+		public uint rayTracingShaderGroupHandleCaptureReplayMixed;
+		public uint rayTracingAccelerationStructureCaptureReplay;
+		public uint rayTracingIndirectTraceRays;
+		public uint rayTracingIndirectAccelerationStructureBuild;
+		public uint rayTracingHostAccelerationStructureCommands;
+		public uint rayQuery;
+		public uint rayTracingPrimitiveCulling;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4845,9 +4845,9 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkStridedBufferRegionKHR
 	{
 		public VkBuffer buffer;
-		public VkDeviceSize offset;
-		public VkDeviceSize stride;
-		public VkDeviceSize size;
+		public ulong offset;
+		public ulong stride;
+		public ulong size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4872,7 +4872,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public ulong drmFormatModifier;
 		public uint drmFormatModifierPlaneCount;
-		public VkFormatFeatureFlags drmFormatModifierTilingFeatures;
+		public uint drmFormatModifierTilingFeatures;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4918,7 +4918,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageUsageFlags stencilUsage;
+		public uint stencilUsage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4939,9 +4939,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 fragmentDensityMap;
-		public VkBool32 fragmentDensityMapDynamic;
-		public VkBool32 fragmentDensityMapNonSubsampledImages;
+		public uint fragmentDensityMap;
+		public uint fragmentDensityMapDynamic;
+		public uint fragmentDensityMapNonSubsampledImages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4951,7 +4951,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkExtent2D minFragmentDensityTexelSize;
 		public VkExtent2D maxFragmentDensityTexelSize;
-		public VkBool32 fragmentDensityInvocations;
+		public uint fragmentDensityInvocations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4967,7 +4967,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 scalarBlockLayout;
+		public uint scalarBlockLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4980,7 +4980,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 supportsProtected;
+		public uint supportsProtected;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4988,7 +4988,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 uniformBufferStandardLayout;
+		public uint uniformBufferStandardLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5001,7 +5001,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 depthClipEnable;
+		public uint depthClipEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5009,8 +5009,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
-		public VkBool32 depthClipEnable;
+		public uint flags;
+		public uint depthClipEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5018,8 +5018,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize heapBudget;
-		public VkDeviceSize heapUsage;
+		public ulong heapBudget;
+		public ulong heapUsage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5027,7 +5027,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 memoryPriority;
+		public uint memoryPriority;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5043,9 +5043,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5058,9 +5058,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5104,7 +5104,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceAddress deviceAddress;
+		public ulong deviceAddress;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5120,8 +5120,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 filterCubic;
-		public VkBool32 filterCubicMinmax;
+		public uint filterCubic;
+		public uint filterCubicMinmax;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5129,7 +5129,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 imagelessFramebuffer;
+		public uint imagelessFramebuffer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5156,8 +5156,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkImageCreateFlags flags;
-		public VkImageUsageFlags usage;
+		public uint flags;
+		public uint usage;
 		public uint width;
 		public uint height;
 		public uint layerCount;
@@ -5189,7 +5189,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 textureCompressionASTC_HDR;
+		public uint textureCompressionASTC_HDR;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5197,8 +5197,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 cooperativeMatrix;
-		public VkBool32 cooperativeMatrixRobustBufferAccess;
+		public uint cooperativeMatrix;
+		public uint cooperativeMatrixRobustBufferAccess;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5206,7 +5206,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkShaderStageFlags cooperativeMatrixSupportedStages;
+		public uint cooperativeMatrixSupportedStages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5229,7 +5229,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 ycbcrImageArrays;
+		public uint ycbcrImageArrays;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5247,8 +5247,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceAddress deviceAddress;
-		public VkDeviceSize size;
+		public ulong deviceAddress;
+		public ulong size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5256,13 +5256,13 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public GgpFrameToken frameToken;
+		public IntPtr frameToken;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPipelineCreationFeedbackEXT
 	{
-		public VkPipelineCreationFeedbackFlagsEXT flags;
+		public uint flags;
 		public ulong duration;
 	}
 
@@ -5289,7 +5289,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public HMONITOR hmonitor;
+		public IntPtr hmonitor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5297,7 +5297,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 fullScreenExclusiveSupported;
+		public uint fullScreenExclusiveSupported;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5305,8 +5305,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 performanceCounterQueryPools;
-		public VkBool32 performanceCounterMultipleQueryPools;
+		public uint performanceCounterQueryPools;
+		public uint performanceCounterMultipleQueryPools;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5314,7 +5314,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 allowCommandBufferQueryCopies;
+		public uint allowCommandBufferQueryCopies;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5333,7 +5333,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPerformanceCounterDescriptionFlagsKHR flags;
+		public uint flags;
 		public byte name;
 		public byte category;
 		public byte description;
@@ -5354,7 +5354,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkAcquireProfilingLockFlagsKHR flags;
+		public uint flags;
 		public ulong timeout;
 	}
 
@@ -5371,7 +5371,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkHeadlessSurfaceCreateFlagsEXT flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5379,7 +5379,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 coverageReductionMode;
+		public uint coverageReductionMode;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5387,7 +5387,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCoverageReductionStateCreateFlagsNV flags;
+		public uint flags;
 		public VkCoverageReductionModeNV coverageReductionMode;
 	}
 
@@ -5398,8 +5398,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkCoverageReductionModeNV coverageReductionMode;
 		public VkSampleCountFlagBits rasterizationSamples;
-		public VkSampleCountFlags depthStencilSamples;
-		public VkSampleCountFlags colorSamples;
+		public uint depthStencilSamples;
+		public uint colorSamples;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5407,7 +5407,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderIntegerFunctions2;
+		public uint shaderIntegerFunctions2;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5460,7 +5460,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkPerformanceOverrideTypeINTEL type;
-		public VkBool32 enable;
+		public uint enable;
 		public ulong parameter;
 	}
 
@@ -5477,8 +5477,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderSubgroupClock;
-		public VkBool32 shaderDeviceClock;
+		public uint shaderSubgroupClock;
+		public uint shaderDeviceClock;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5486,7 +5486,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 indexTypeUint8;
+		public uint indexTypeUint8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5503,7 +5503,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderSMBuiltins;
+		public uint shaderSMBuiltins;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5511,9 +5511,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 fragmentShaderSampleInterlock;
-		public VkBool32 fragmentShaderPixelInterlock;
-		public VkBool32 fragmentShaderShadingRateInterlock;
+		public uint fragmentShaderSampleInterlock;
+		public uint fragmentShaderPixelInterlock;
+		public uint fragmentShaderShadingRateInterlock;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5521,7 +5521,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 separateDepthStencilLayouts;
+		public uint separateDepthStencilLayouts;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5561,7 +5561,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 pipelineExecutableInfo;
+		public uint pipelineExecutableInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5577,7 +5577,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkShaderStageFlags stages;
+		public uint stages;
 		public byte name;
 		public byte description;
 		public uint subgroupSize;
@@ -5610,8 +5610,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public byte name;
 		public byte description;
-		public VkBool32 isText;
-		public IntPtr dataSize;
+		public uint isText;
+		public UIntPtr dataSize;
 		public void* pData;
 	}
 
@@ -5620,7 +5620,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 shaderDemoteToHelperInvocation;
+		public uint shaderDemoteToHelperInvocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5628,7 +5628,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 texelBufferAlignment;
+		public uint texelBufferAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5636,10 +5636,10 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
-		public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-		public VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
-		public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+		public ulong storageTexelBufferOffsetAlignmentBytes;
+		public uint storageTexelBufferOffsetSingleTexelAlignment;
+		public ulong uniformTexelBufferOffsetAlignmentBytes;
+		public uint uniformTexelBufferOffsetSingleTexelAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5647,8 +5647,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 subgroupSizeControl;
-		public VkBool32 computeFullSubgroups;
+		public uint subgroupSizeControl;
+		public uint computeFullSubgroups;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5659,7 +5659,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint minSubgroupSize;
 		public uint maxSubgroupSize;
 		public uint maxComputeWorkgroupSubgroups;
-		public VkShaderStageFlags requiredSubgroupSizeStages;
+		public uint requiredSubgroupSizeStages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5701,12 +5701,12 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 rectangularLines;
-		public VkBool32 bresenhamLines;
-		public VkBool32 smoothLines;
-		public VkBool32 stippledRectangularLines;
-		public VkBool32 stippledBresenhamLines;
-		public VkBool32 stippledSmoothLines;
+		public uint rectangularLines;
+		public uint bresenhamLines;
+		public uint smoothLines;
+		public uint stippledRectangularLines;
+		public uint stippledBresenhamLines;
+		public uint stippledSmoothLines;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5723,9 +5723,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkLineRasterizationModeEXT lineRasterizationMode;
-		public VkBool32 stippledLineEnable;
+		public uint stippledLineEnable;
 		public uint lineStippleFactor;
-		public uint16_t lineStipplePattern;
+		public ushort lineStipplePattern;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5733,7 +5733,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 pipelineCreationCacheControl;
+		public uint pipelineCreationCacheControl;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5741,18 +5741,18 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 storageBuffer16BitAccess;
-		public VkBool32 uniformAndStorageBuffer16BitAccess;
-		public VkBool32 storagePushConstant16;
-		public VkBool32 storageInputOutput16;
-		public VkBool32 multiview;
-		public VkBool32 multiviewGeometryShader;
-		public VkBool32 multiviewTessellationShader;
-		public VkBool32 variablePointersStorageBuffer;
-		public VkBool32 variablePointers;
-		public VkBool32 protectedMemory;
-		public VkBool32 samplerYcbcrConversion;
-		public VkBool32 shaderDrawParameters;
+		public uint storageBuffer16BitAccess;
+		public uint uniformAndStorageBuffer16BitAccess;
+		public uint storagePushConstant16;
+		public uint storageInputOutput16;
+		public uint multiview;
+		public uint multiviewGeometryShader;
+		public uint multiviewTessellationShader;
+		public uint variablePointersStorageBuffer;
+		public uint variablePointers;
+		public uint protectedMemory;
+		public uint samplerYcbcrConversion;
+		public uint shaderDrawParameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5764,17 +5764,17 @@ namespace WaveEngine.Bindings.Vulkan
 		public byte driverUUID;
 		public byte deviceLUID;
 		public uint deviceNodeMask;
-		public VkBool32 deviceLUIDValid;
+		public uint deviceLUIDValid;
 		public uint subgroupSize;
-		public VkShaderStageFlags subgroupSupportedStages;
-		public VkSubgroupFeatureFlags subgroupSupportedOperations;
-		public VkBool32 subgroupQuadOperationsInAllStages;
+		public uint subgroupSupportedStages;
+		public uint subgroupSupportedOperations;
+		public uint subgroupQuadOperationsInAllStages;
 		public VkPointClippingBehavior pointClippingBehavior;
 		public uint maxMultiviewViewCount;
 		public uint maxMultiviewInstanceIndex;
-		public VkBool32 protectedNoFault;
+		public uint protectedNoFault;
 		public uint maxPerSetDescriptors;
-		public VkDeviceSize maxMemoryAllocationSize;
+		public ulong maxMemoryAllocationSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5782,53 +5782,53 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 samplerMirrorClampToEdge;
-		public VkBool32 drawIndirectCount;
-		public VkBool32 storageBuffer8BitAccess;
-		public VkBool32 uniformAndStorageBuffer8BitAccess;
-		public VkBool32 storagePushConstant8;
-		public VkBool32 shaderBufferInt64Atomics;
-		public VkBool32 shaderSharedInt64Atomics;
-		public VkBool32 shaderFloat16;
-		public VkBool32 shaderInt8;
-		public VkBool32 descriptorIndexing;
-		public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexing;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexing;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-		public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUpdateUnusedWhilePending;
-		public VkBool32 descriptorBindingPartiallyBound;
-		public VkBool32 descriptorBindingVariableDescriptorCount;
-		public VkBool32 runtimeDescriptorArray;
-		public VkBool32 samplerFilterMinmax;
-		public VkBool32 scalarBlockLayout;
-		public VkBool32 imagelessFramebuffer;
-		public VkBool32 uniformBufferStandardLayout;
-		public VkBool32 shaderSubgroupExtendedTypes;
-		public VkBool32 separateDepthStencilLayouts;
-		public VkBool32 hostQueryReset;
-		public VkBool32 timelineSemaphore;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
-		public VkBool32 vulkanMemoryModel;
-		public VkBool32 vulkanMemoryModelDeviceScope;
-		public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
-		public VkBool32 shaderOutputViewportIndex;
-		public VkBool32 shaderOutputLayer;
-		public VkBool32 subgroupBroadcastDynamicId;
+		public uint samplerMirrorClampToEdge;
+		public uint drawIndirectCount;
+		public uint storageBuffer8BitAccess;
+		public uint uniformAndStorageBuffer8BitAccess;
+		public uint storagePushConstant8;
+		public uint shaderBufferInt64Atomics;
+		public uint shaderSharedInt64Atomics;
+		public uint shaderFloat16;
+		public uint shaderInt8;
+		public uint descriptorIndexing;
+		public uint shaderInputAttachmentArrayDynamicIndexing;
+		public uint shaderUniformTexelBufferArrayDynamicIndexing;
+		public uint shaderStorageTexelBufferArrayDynamicIndexing;
+		public uint shaderUniformBufferArrayNonUniformIndexing;
+		public uint shaderSampledImageArrayNonUniformIndexing;
+		public uint shaderStorageBufferArrayNonUniformIndexing;
+		public uint shaderStorageImageArrayNonUniformIndexing;
+		public uint shaderInputAttachmentArrayNonUniformIndexing;
+		public uint shaderUniformTexelBufferArrayNonUniformIndexing;
+		public uint shaderStorageTexelBufferArrayNonUniformIndexing;
+		public uint descriptorBindingUniformBufferUpdateAfterBind;
+		public uint descriptorBindingSampledImageUpdateAfterBind;
+		public uint descriptorBindingStorageImageUpdateAfterBind;
+		public uint descriptorBindingStorageBufferUpdateAfterBind;
+		public uint descriptorBindingUniformTexelBufferUpdateAfterBind;
+		public uint descriptorBindingStorageTexelBufferUpdateAfterBind;
+		public uint descriptorBindingUpdateUnusedWhilePending;
+		public uint descriptorBindingPartiallyBound;
+		public uint descriptorBindingVariableDescriptorCount;
+		public uint runtimeDescriptorArray;
+		public uint samplerFilterMinmax;
+		public uint scalarBlockLayout;
+		public uint imagelessFramebuffer;
+		public uint uniformBufferStandardLayout;
+		public uint shaderSubgroupExtendedTypes;
+		public uint separateDepthStencilLayouts;
+		public uint hostQueryReset;
+		public uint timelineSemaphore;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
+		public uint vulkanMemoryModel;
+		public uint vulkanMemoryModelDeviceScope;
+		public uint vulkanMemoryModelAvailabilityVisibilityChains;
+		public uint shaderOutputViewportIndex;
+		public uint shaderOutputLayer;
+		public uint subgroupBroadcastDynamicId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5842,29 +5842,29 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkConformanceVersion conformanceVersion;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-		public VkBool32 shaderDenormPreserveFloat16;
-		public VkBool32 shaderDenormPreserveFloat32;
-		public VkBool32 shaderDenormPreserveFloat64;
-		public VkBool32 shaderDenormFlushToZeroFloat16;
-		public VkBool32 shaderDenormFlushToZeroFloat32;
-		public VkBool32 shaderDenormFlushToZeroFloat64;
-		public VkBool32 shaderRoundingModeRTEFloat16;
-		public VkBool32 shaderRoundingModeRTEFloat32;
-		public VkBool32 shaderRoundingModeRTEFloat64;
-		public VkBool32 shaderRoundingModeRTZFloat16;
-		public VkBool32 shaderRoundingModeRTZFloat32;
-		public VkBool32 shaderRoundingModeRTZFloat64;
+		public uint shaderSignedZeroInfNanPreserveFloat16;
+		public uint shaderSignedZeroInfNanPreserveFloat32;
+		public uint shaderSignedZeroInfNanPreserveFloat64;
+		public uint shaderDenormPreserveFloat16;
+		public uint shaderDenormPreserveFloat32;
+		public uint shaderDenormPreserveFloat64;
+		public uint shaderDenormFlushToZeroFloat16;
+		public uint shaderDenormFlushToZeroFloat32;
+		public uint shaderDenormFlushToZeroFloat64;
+		public uint shaderRoundingModeRTEFloat16;
+		public uint shaderRoundingModeRTEFloat32;
+		public uint shaderRoundingModeRTEFloat64;
+		public uint shaderRoundingModeRTZFloat16;
+		public uint shaderRoundingModeRTZFloat32;
+		public uint shaderRoundingModeRTZFloat64;
 		public uint maxUpdateAfterBindDescriptorsInAllPools;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-		public VkBool32 robustBufferAccessUpdateAfterBind;
-		public VkBool32 quadDivergentImplicitLod;
+		public uint shaderUniformBufferArrayNonUniformIndexingNative;
+		public uint shaderSampledImageArrayNonUniformIndexingNative;
+		public uint shaderStorageBufferArrayNonUniformIndexingNative;
+		public uint shaderStorageImageArrayNonUniformIndexingNative;
+		public uint shaderInputAttachmentArrayNonUniformIndexingNative;
+		public uint robustBufferAccessUpdateAfterBind;
+		public uint quadDivergentImplicitLod;
 		public uint maxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 		public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
@@ -5880,14 +5880,14 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint maxDescriptorSetUpdateAfterBindSampledImages;
 		public uint maxDescriptorSetUpdateAfterBindStorageImages;
 		public uint maxDescriptorSetUpdateAfterBindInputAttachments;
-		public VkResolveModeFlags supportedDepthResolveModes;
-		public VkResolveModeFlags supportedStencilResolveModes;
-		public VkBool32 independentResolveNone;
-		public VkBool32 independentResolve;
-		public VkBool32 filterMinmaxSingleComponentFormats;
-		public VkBool32 filterMinmaxImageComponentMapping;
+		public uint supportedDepthResolveModes;
+		public uint supportedStencilResolveModes;
+		public uint independentResolveNone;
+		public uint independentResolve;
+		public uint filterMinmaxSingleComponentFormats;
+		public uint filterMinmaxImageComponentMapping;
 		public ulong maxTimelineSemaphoreValueDifference;
-		public VkSampleCountFlags framebufferIntegerColorSampleCounts;
+		public uint framebufferIntegerColorSampleCounts;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5895,7 +5895,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineCompilerControlFlagsAMD compilerControlFlags;
+		public uint compilerControlFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5903,7 +5903,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 deviceCoherentMemory;
+		public uint deviceCoherentMemory;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5913,7 +5913,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public byte name;
 		public byte version;
-		public VkToolPurposeFlagsEXT purposes;
+		public uint purposes;
 		public byte description;
 		public byte layer;
 	}
@@ -5925,7 +5925,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkFormat vertexFormat;
 		public VkDeviceOrHostAddressConstKHR vertexData;
-		public VkDeviceSize vertexStride;
+		public ulong vertexStride;
 		public VkIndexType indexType;
 		public VkDeviceOrHostAddressConstKHR indexData;
 		public VkDeviceOrHostAddressConstKHR transformData;
@@ -5937,7 +5937,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDeviceOrHostAddressConstKHR data;
-		public VkDeviceSize stride;
+		public ulong stride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5945,7 +5945,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 arrayOfPointers;
+		public uint arrayOfPointers;
 		public VkDeviceOrHostAddressConstKHR data;
 	}
 
@@ -5956,7 +5956,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pNext;
 		public VkGeometryTypeKHR geometryType;
 		public VkAccelerationStructureGeometryDataKHR geometry;
-		public VkGeometryFlagsKHR flags;
+		public uint flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5965,11 +5965,11 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkAccelerationStructureTypeKHR type;
-		public VkBuildAccelerationStructureFlagsKHR flags;
-		public VkBool32 update;
+		public uint flags;
+		public uint update;
 		public VkAccelerationStructureKHR srcAccelerationStructure;
 		public VkAccelerationStructureKHR dstAccelerationStructure;
-		public VkBool32 geometryArrayOfPointers;
+		public uint geometryArrayOfPointers;
 		public uint geometryCount;
 		public IntPtr ppGeometries;
 		public VkDeviceOrHostAddressKHR scratchData;
@@ -5994,7 +5994,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkIndexType indexType;
 		public uint maxVertexCount;
 		public VkFormat vertexFormat;
-		public VkBool32 allowsTransforms;
+		public uint allowsTransforms;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6002,12 +6002,12 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceSize compactedSize;
+		public ulong compactedSize;
 		public VkAccelerationStructureTypeKHR type;
-		public VkBuildAccelerationStructureFlagsKHR flags;
+		public uint flags;
 		public uint maxGeometryCount;
 		public IntPtr pGeometryInfos;
-		public VkDeviceAddress deviceAddress;
+		public ulong deviceAddress;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6044,7 +6044,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint instanceCustomIndex;
 		public uint mask;
 		public uint instanceShaderBindingTableRecordOffset;
-		public VkGeometryInstanceFlagsKHR flags;
+		public uint flags;
 		public ulong accelerationStructureReference;
 	}
 
@@ -6148,7 +6148,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 diagnosticsConfig;
+		public uint diagnosticsConfig;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6156,7 +6156,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkDeviceDiagnosticsConfigFlagsNV flags;
+		public uint flags;
 	}
 
 }

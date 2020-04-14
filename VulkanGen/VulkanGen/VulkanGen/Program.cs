@@ -87,7 +87,7 @@ namespace VulkanGen
                     file.WriteLine("\t{");
                     foreach (var member in union.Members)
                     {
-                        string csType = Helpers.ConvertToCSharpType(member);
+                        string csType = Helpers.ConvertToCSharpType(member, vulkanSpec);
 
                         file.WriteLine($"\t\t[FieldOffset(0)]");
                         if (member.ElementCount > 1)
@@ -121,7 +121,7 @@ namespace VulkanGen
                     file.WriteLine("\t{");
                     foreach (var member in structure.Members)
                     {
-                        string csType = Helpers.ConvertToCSharpType(member);
+                        string csType = Helpers.ConvertToCSharpType(member, vulkanSpec);
 
                         if (member.ElementCount > 1)
                         {
@@ -129,7 +129,7 @@ namespace VulkanGen
                         }
                         else
                         {
-                            file.WriteLine($"\t\tpublic {csType} {member.Name};");
+                            file.WriteLine($"\t\tpublic {csType} {Helpers.ValidatedName(member.Name)};");
                         }
                     }
 
