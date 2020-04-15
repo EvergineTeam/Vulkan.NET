@@ -20,6 +20,7 @@ namespace VulkanGen
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
         public List<FeatureDefinition> Feature = new List<FeatureDefinition>();
         public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
+        public Dictionary<string, string> Alias = new Dictionary<string, string>();
         public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
 
         public static VulkanSpecification FromFile(string xmlFile)
@@ -57,9 +58,16 @@ namespace VulkanGen
                 spec.Enums.Add(EnumDefinition.FromXML(e));
             }
 
-            // Structs
             var types = registry.Elements("types");
-            var structs = types.Elements("type").Where(s => s.Attribute("category")?.Value == "struct");
+
+            // Alias
+            spec.Alias = types.Elements("type").Where(a => a.Attribute("alias") != null)
+                .ToDictionary(
+                    a => a.Attribute("name").Value,
+                    a => a.Attribute("alias").Value);
+
+            // Structs
+            var structs = types.Elements("type").Where(s => s.Attribute("category")?.Value == "struct" && s.Attribute("alias") == null);
             foreach (var s in structs)
             {
                 spec.Structs.Add(StructureDefinition.FromXML(s));

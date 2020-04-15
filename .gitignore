@@ -2,3 +2,4 @@
 VulkanGen/VulkanGen/VulkanGen/bin
 *.suo
 VulkanGen/VulkanGen/WaveEngine.Bindings.Vulkan/obj
+VulkanGen/VulkanGen/WaveEngine.Bindings.Vulkan/bin

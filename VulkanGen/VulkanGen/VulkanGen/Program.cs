@@ -125,7 +125,10 @@ namespace VulkanGen
 
                         if (member.ElementCount > 1)
                         {
-                            file.WriteLine($"\t\tpublic fixed {csType} {member.Name}[{member.ElementCount}];");
+                            for (int i = 0; i < member.ElementCount; i++)
+                            {
+                                file.WriteLine($"\t\tpublic {csType} {member.Name}_{i};");
+                            }
                         }
                         else
                         {

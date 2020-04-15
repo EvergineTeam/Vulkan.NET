@@ -46,10 +46,12 @@ namespace VulkanGen
 
         public static string ConvertToCSharpType(Member member, VulkanSpecification spec)
         {
-            if (member.Type.StartsWith("PFN") || IsIntPtr(member.Type))
+            string memberType = member.Type;
+
+            if (member.Type.StartsWith("PFN") || IsIntPtr(memberType))
                 return "IntPtr";
 
-            string result = ConvertBasicTypes(member.Type);
+            string result = ConvertBasicTypes(memberType);
             if (result == string.Empty)
             {
                 if (member.PointerLevel > 0)
@@ -58,14 +60,19 @@ namespace VulkanGen
                 }
                 else
                 {
-                    spec.BaseTypes.TryGetValue(member.Type, out string baseType);
+                    if (spec.Alias.TryGetValue(memberType, out string alias))
+                    {
+                        memberType = alias;
+                    }
+
+                    spec.BaseTypes.TryGetValue(memberType, out string baseType);
                     if (baseType != null)
                     {
                         result = ConvertBasicTypes(baseType);
                     }
                     else
                     {
-                        var typeDef = spec.TypeDefs.Find(t => t.Name == member.Type);
+                        var typeDef = spec.TypeDefs.Find(t => t.Name == memberType);
                         if (typeDef != null)
                         {
                             spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
@@ -73,26 +80,20 @@ namespace VulkanGen
                             {
                                 result = ConvertBasicTypes(baseType);
                             }
-                            else
-                            {
-                                result = member.Type;
-                            }
                         }
                         else
                         {
-                            result = member.Type;
+                            result = memberType;
                         }
                     }
                 }
             }
-            else
+
+            if (member.PointerLevel > 0)
             {
-                if (member.PointerLevel > 0)
+                for (int i = 0; i < member.PointerLevel; i++)
                 {
-                    for (int i = 0; i < member.PointerLevel; i++)
-                    {
-                        result += "*";
-                    }
+                    result += "*";
                 }
             }
 
@@ -126,6 +127,8 @@ namespace VulkanGen
                     return "UIntPtr";
                 case "float":
                     return "float";
+                case "double":
+                    return "double";
                 case "void":
                     return "void";
                 default:
