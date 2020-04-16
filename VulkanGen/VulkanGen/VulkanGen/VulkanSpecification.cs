@@ -13,6 +13,7 @@ namespace VulkanGen
         public List<TagDefinition> Tags = new List<TagDefinition>();
         public List<ConstantDefinition> Consntants = new List<ConstantDefinition>();
         public List<TypedefDefinition> TypeDefs = new List<TypedefDefinition>();
+        public List<FuncpointerDefinition> FuncPointers = new List<FuncpointerDefinition>();
         public List<EnumDefinition> Enums = new List<EnumDefinition>();
         public List<StructureDefinition> Structs = new List<StructureDefinition>();
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
@@ -59,6 +60,13 @@ namespace VulkanGen
             }
 
             var types = registry.Elements("types");
+
+            // FuncPointers
+            var funcPointers = types.Elements("type").Where(f => f.Attribute("category")?.Value == "funcpointer");
+            foreach (var func in funcPointers)
+            {
+                spec.FuncPointers.Add(FuncpointerDefinition.FromXML(func));
+            }
 
             // Alias
             spec.Alias = types.Elements("type").Where(a => a.Attribute("alias") != null)

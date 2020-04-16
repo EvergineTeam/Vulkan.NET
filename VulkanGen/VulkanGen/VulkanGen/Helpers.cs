@@ -100,7 +100,7 @@ namespace VulkanGen
             return result;
         }
 
-        private static string ConvertBasicTypes(string type)
+        public static string ConvertBasicTypes(string type)
         {
             switch (type)
             {
@@ -121,7 +121,6 @@ namespace VulkanGen
                 case "int32_t":
                     return "int";
                 case "int64_t":
-                    ////case "int64_t*":
                     return "long";
                 case "size_t":
                     return "UIntPtr";
@@ -136,7 +135,7 @@ namespace VulkanGen
             }
         }
 
-        private static bool IsIntPtr(string type)
+        public static bool IsIntPtr(string type)
         {
             switch (type)
             {

@@ -39,6 +39,48 @@ namespace VulkanGen
                 file.WriteLine("}");
             }
 
+            // Delegates
+            using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Delegates.cs")))
+            {
+                file.WriteLine("using System;\n");
+                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("{");
+
+                foreach (var func in vulkanSpec.FuncPointers)
+                {
+                    file.Write($"\tpublic unsafe delegate {func.Type} {func.Name}(");
+                    if (func.Parameters.Count > 0)
+                    {
+                        file.Write("\n");
+                        string type, convertedType;
+
+                        for (int p = 0; p < func.Parameters.Count; p++)
+                        {
+                            if (p > 0)
+                                file.Write(",\n");
+
+                            type = func.Parameters[p].Type;
+                            var typeDef = vulkanSpec.TypeDefs.Find(t => t.Name == type);
+                            if (typeDef != null)
+                            {
+                                vulkanSpec.BaseTypes.TryGetValue(typeDef.Type, out type);
+                            }
+
+                            convertedType = Helpers.ConvertBasicTypes(type);
+                            if (convertedType == string.Empty)
+                            {
+                                convertedType = type;
+                            }
+
+                            file.Write($"\t\t{convertedType} {Helpers.ValidatedName(func.Parameters[p].Name)}");
+                        }
+                    }
+                    file.Write(");\n\n");
+                }
+
+                file.WriteLine("}");
+            }
+
             // Enums
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Enums.cs")))
             {
