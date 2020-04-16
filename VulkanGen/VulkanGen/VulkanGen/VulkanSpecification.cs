@@ -11,7 +11,7 @@ namespace VulkanGen
     {
         public List<PlatformDefinition> Platforms = new List<PlatformDefinition>();
         public List<TagDefinition> Tags = new List<TagDefinition>();
-        public List<ConstantDefinition> Consntants = new List<ConstantDefinition>();
+        public List<ConstantDefinition> Constants = new List<ConstantDefinition>();
         public List<TypedefDefinition> TypeDefs = new List<TypedefDefinition>();
         public List<FuncpointerDefinition> FuncPointers = new List<FuncpointerDefinition>();
         public List<EnumDefinition> Enums = new List<EnumDefinition>();
@@ -49,7 +49,7 @@ namespace VulkanGen
             var constants = (registry.Elements("enums").Where(e => e.Attribute("name").Value == "API Constants")).Elements("enum");
             foreach (var c in constants)
             {
-                spec.Consntants.Add(ConstantDefinition.FromXML(c));
+                spec.Constants.Add(ConstantDefinition.FromXML(c));
             }
 
             // Enums

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 
 namespace VulkanGen
 {
@@ -22,11 +21,11 @@ namespace VulkanGen
                 file.WriteLine("\tpublic static partial class Vulkan");
                 file.WriteLine("\t{");
 
-                foreach (var constant in vulkanSpec.Consntants)
+                foreach (var constant in vulkanSpec.Constants)
                 {
                     if (constant.Alias != null)
                     {
-                        var refConstant = vulkanSpec.Consntants.FirstOrDefault(c => c.Name == constant.Alias);
+                        var refConstant = vulkanSpec.Constants.FirstOrDefault(c => c.Name == constant.Alias);
                         file.WriteLine($"\t\tpublic const {refConstant.Type.ToCSharp()} {constant.Name} = {refConstant.Name};");
                     }
                     else
@@ -213,6 +212,64 @@ namespace VulkanGen
                     file.WriteLine("}\n");
                 }
 
+                file.WriteLine("}");
+            }
+
+            // Commands
+            using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Commands.cs")))
+            {
+                file.WriteLine("using System;");
+                file.WriteLine("using System.Runtime.InteropServices;\n");
+                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("{");
+                file.WriteLine("\tpublic static unsafe partial class VulkanNative");
+                file.WriteLine("\t{");
+
+                foreach (var command in vulkanSpec.Commands)
+                {
+                    if (command.Alias != null)
+                        continue;
+
+                    string type, convertedType;
+                    type = command.Prototype.Type;
+
+                    vulkanSpec.BaseTypes.TryGetValue(type, out string baseType);
+                    if (baseType != null)
+                    {
+                        type = baseType;
+                    }
+                    else
+                    {
+                        var typeDef = vulkanSpec.TypeDefs.Find(t => t.Name == type);
+                        if (typeDef != null)
+                        {
+                            vulkanSpec.BaseTypes.TryGetValue(typeDef.Type, out type);
+                        }
+                    }
+
+                    convertedType = Helpers.ConvertBasicTypes(type);
+                    if (convertedType == string.Empty)
+                    {
+                        convertedType = type;
+                    }
+
+                    file.WriteLine("\t\t[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
+
+                    // private delegate void glTexBuffer_t(TextureTarget target, InternalFormat internalformat, uint buffer);
+                    // Delegate
+                    file.WriteLine($"\t\tprivate delegate {convertedType} {command.Prototype.Name}Delegate({command.GetParametersSignature(vulkanSpec)});");
+
+                    // private static glTexBuffer_t p_glTexBuffer;
+                    // internal function
+                    file.WriteLine($"\t\tprivate static {command.Prototype.Name}Delegate {command.Prototype.Name}_ptr;");
+
+                    // public static void glTexBuffer(TextureTarget target, InternalFormat internalformat, uint buffer) => p_glTexBuffer(target, internalformat, buffer);
+                    // public function
+                    file.WriteLine($"\t\tpublic static {convertedType} {command.Prototype.Name}({command.GetParametersSignature(vulkanSpec)})");
+                    file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignatureWithoutTypes()});\n");
+                }
+
+                file.WriteLine("\t}");
                 file.WriteLine("}");
             }
         }

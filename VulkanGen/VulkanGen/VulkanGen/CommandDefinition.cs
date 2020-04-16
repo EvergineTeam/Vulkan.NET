@@ -54,6 +54,35 @@ namespace VulkanGen
 
             return command;
         }
+
+        public string GetParametersSignature(VulkanSpecification spec)
+        {
+            StringBuilder signature = new StringBuilder();
+            foreach (var p in Parameters)
+            {
+                string convertedType = Helpers.ConvertToCSharpType(p, spec);
+                string convertedName = Helpers.ValidatedName(p.Name);
+                signature.Append($"{convertedType} {convertedName}, ");
+            }
+
+            signature.Length -= 2;
+
+            return signature.ToString();
+        }
+
+        public string GetParametersSignatureWithoutTypes()
+        {
+            StringBuilder signature = new StringBuilder();
+            foreach (var p in Parameters)
+            {
+                string convertedName = Helpers.ValidatedName(p.Name);
+                signature.Append($"{convertedName}, ");
+            }
+
+            signature.Length -= 2;
+
+            return signature.ToString();
+        }
     }
 
     public class Proto

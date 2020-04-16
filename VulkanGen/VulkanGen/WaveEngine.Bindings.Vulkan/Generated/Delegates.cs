@@ -36,11 +36,11 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(
 		uint flags,
 		VkDebugReportObjectTypeEXT objectType,
-		ulong VkObject,
+		ulong vkObject,
 		UIntPtr location,
 		int messageCode,
-		char* pLayerPrefix,
-		char* pMessage,
+		byte* pLayerPrefix,
+		byte* pMessage,
 		void* pUserData);
 
 	public unsafe delegate VkBool32 PFN_vkDebugUtilsMessengerCallbackEXT(
