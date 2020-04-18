@@ -16,7 +16,7 @@ namespace VulkanGen
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
 
-        public static VulkanVersion FromSpec(VulkanSpecification spec, string versionName, string[] extensions)
+        public static VulkanVersion FromSpec(VulkanSpecification spec, string versionName, IEnumerable<ExtensionDefinition> extensions)
         {
             VulkanVersion version = new VulkanVersion();
             version.Constants = spec.Constants;
@@ -61,6 +61,37 @@ namespace VulkanGen
                 if (feature.Name == versionName)
                 {
                     break;
+                }
+            }
+
+            foreach (var extension in extensions)
+            {
+                // Extend Enums
+                foreach (var enumType in extension.Enums)
+                {
+                    if (enumType.Extends != null & enumType.Alias == null)
+                    {
+                        string name = enumType.Extends;
+                        var enumDefinition = spec.Enums.Find(c => c.Name == name);
+
+                        EnumValue newValue = new EnumValue();
+                        newValue.Name = enumType.Name;
+                        newValue.Value = int.Parse(enumType.Value);
+                        enumDefinition.Values.Add(newValue);
+                    }
+                }
+
+                // Add commands
+                foreach (var command in extension.Commands)
+                {
+                    string name = command;
+                    if (spec.Alias.TryGetValue(name, out string alias))
+                    {
+                        name = alias;
+                    }
+
+                    var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
+                    version.Commands.Add(commandDefinition);
                 }
             }
 

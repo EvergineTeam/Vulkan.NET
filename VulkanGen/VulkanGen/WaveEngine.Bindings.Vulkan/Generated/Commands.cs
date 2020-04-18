@@ -1073,6 +1073,168 @@ namespace WaveEngine.Bindings.Vulkan
 		public static ulong vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, IntPtr pInfo)
 			=> vkGetDeviceMemoryOpaqueCaptureAddress_ptr(device, pInfo);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateAccelerationStructureKHRDelegate(VkDevice device, IntPtr pCreateInfo, IntPtr pAllocator, IntPtr pAccelerationStructure);
+		private static vkCreateAccelerationStructureKHRDelegate vkCreateAccelerationStructureKHR_ptr;
+		public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, IntPtr pCreateInfo, IntPtr pAllocator, IntPtr pAccelerationStructure)
+			=> vkCreateAccelerationStructureKHR_ptr(device, pCreateInfo, pAllocator, pAccelerationStructure);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyAccelerationStructureKHRDelegate(VkDevice device, VkAccelerationStructureKHR accelerationStructure, IntPtr pAllocator);
+		private static vkDestroyAccelerationStructureKHRDelegate vkDestroyAccelerationStructureKHR_ptr;
+		public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, IntPtr pAllocator)
+			=> vkDestroyAccelerationStructureKHR_ptr(device, accelerationStructure, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetAccelerationStructureMemoryRequirementsKHRDelegate(VkDevice device, IntPtr pInfo, IntPtr pMemoryRequirements);
+		private static vkGetAccelerationStructureMemoryRequirementsKHRDelegate vkGetAccelerationStructureMemoryRequirementsKHR_ptr;
+		public static void vkGetAccelerationStructureMemoryRequirementsKHR(VkDevice device, IntPtr pInfo, IntPtr pMemoryRequirements)
+			=> vkGetAccelerationStructureMemoryRequirementsKHR_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBindAccelerationStructureMemoryKHRDelegate(VkDevice device, uint bindInfoCount, IntPtr pBindInfos);
+		private static vkBindAccelerationStructureMemoryKHRDelegate vkBindAccelerationStructureMemoryKHR_ptr;
+		public static VkResult vkBindAccelerationStructureMemoryKHR(VkDevice device, uint bindInfoCount, IntPtr pBindInfos)
+			=> vkBindAccelerationStructureMemoryKHR_ptr(device, bindInfoCount, pBindInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBuildAccelerationStructureKHRDelegate(VkCommandBuffer commandBuffer, uint infoCount, IntPtr pInfos, IntPtr ppOffsetInfos);
+		private static vkCmdBuildAccelerationStructureKHRDelegate vkCmdBuildAccelerationStructureKHR_ptr;
+		public static void vkCmdBuildAccelerationStructureKHR(VkCommandBuffer commandBuffer, uint infoCount, IntPtr pInfos, IntPtr ppOffsetInfos)
+			=> vkCmdBuildAccelerationStructureKHR_ptr(commandBuffer, infoCount, pInfos, ppOffsetInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBuildAccelerationStructureIndirectKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pInfo, VkBuffer indirectBuffer, ulong indirectOffset, uint indirectStride);
+		private static vkCmdBuildAccelerationStructureIndirectKHRDelegate vkCmdBuildAccelerationStructureIndirectKHR_ptr;
+		public static void vkCmdBuildAccelerationStructureIndirectKHR(VkCommandBuffer commandBuffer, IntPtr pInfo, VkBuffer indirectBuffer, ulong indirectOffset, uint indirectStride)
+			=> vkCmdBuildAccelerationStructureIndirectKHR_ptr(commandBuffer, pInfo, indirectBuffer, indirectOffset, indirectStride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBuildAccelerationStructureKHRDelegate(VkDevice device, uint infoCount, IntPtr pInfos, IntPtr ppOffsetInfos);
+		private static vkBuildAccelerationStructureKHRDelegate vkBuildAccelerationStructureKHR_ptr;
+		public static VkResult vkBuildAccelerationStructureKHR(VkDevice device, uint infoCount, IntPtr pInfos, IntPtr ppOffsetInfos)
+			=> vkBuildAccelerationStructureKHR_ptr(device, infoCount, pInfos, ppOffsetInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyAccelerationStructureKHRDelegate(VkDevice device, IntPtr pInfo);
+		private static vkCopyAccelerationStructureKHRDelegate vkCopyAccelerationStructureKHR_ptr;
+		public static VkResult vkCopyAccelerationStructureKHR(VkDevice device, IntPtr pInfo)
+			=> vkCopyAccelerationStructureKHR_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyAccelerationStructureToMemoryKHRDelegate(VkDevice device, IntPtr pInfo);
+		private static vkCopyAccelerationStructureToMemoryKHRDelegate vkCopyAccelerationStructureToMemoryKHR_ptr;
+		public static VkResult vkCopyAccelerationStructureToMemoryKHR(VkDevice device, IntPtr pInfo)
+			=> vkCopyAccelerationStructureToMemoryKHR_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyMemoryToAccelerationStructureKHRDelegate(VkDevice device, IntPtr pInfo);
+		private static vkCopyMemoryToAccelerationStructureKHRDelegate vkCopyMemoryToAccelerationStructureKHR_ptr;
+		public static VkResult vkCopyMemoryToAccelerationStructureKHR(VkDevice device, IntPtr pInfo)
+			=> vkCopyMemoryToAccelerationStructureKHR_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkWriteAccelerationStructuresPropertiesKHRDelegate(VkDevice device, uint accelerationStructureCount, IntPtr pAccelerationStructures, VkQueryType queryType, UIntPtr dataSize, void* pData, UIntPtr stride);
+		private static vkWriteAccelerationStructuresPropertiesKHRDelegate vkWriteAccelerationStructuresPropertiesKHR_ptr;
+		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, IntPtr pAccelerationStructures, VkQueryType queryType, UIntPtr dataSize, void* pData, UIntPtr stride)
+			=> vkWriteAccelerationStructuresPropertiesKHR_ptr(device, accelerationStructureCount, pAccelerationStructures, queryType, dataSize, pData, stride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyAccelerationStructureKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pInfo);
+		private static vkCmdCopyAccelerationStructureKHRDelegate vkCmdCopyAccelerationStructureKHR_ptr;
+		public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, IntPtr pInfo)
+			=> vkCmdCopyAccelerationStructureKHR_ptr(commandBuffer, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyAccelerationStructureToMemoryKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pInfo);
+		private static vkCmdCopyAccelerationStructureToMemoryKHRDelegate vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
+		public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, IntPtr pInfo)
+			=> vkCmdCopyAccelerationStructureToMemoryKHR_ptr(commandBuffer, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyMemoryToAccelerationStructureKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pInfo);
+		private static vkCmdCopyMemoryToAccelerationStructureKHRDelegate vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
+		public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, IntPtr pInfo)
+			=> vkCmdCopyMemoryToAccelerationStructureKHR_ptr(commandBuffer, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdTraceRaysKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pRaygenShaderBindingTable, IntPtr pMissShaderBindingTable, IntPtr pHitShaderBindingTable, IntPtr pCallableShaderBindingTable, uint width, uint height, uint depth);
+		private static vkCmdTraceRaysKHRDelegate vkCmdTraceRaysKHR_ptr;
+		public static void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, IntPtr pRaygenShaderBindingTable, IntPtr pMissShaderBindingTable, IntPtr pHitShaderBindingTable, IntPtr pCallableShaderBindingTable, uint width, uint height, uint depth)
+			=> vkCmdTraceRaysKHR_ptr(commandBuffer, pRaygenShaderBindingTable, pMissShaderBindingTable, pHitShaderBindingTable, pCallableShaderBindingTable, width, height, depth);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateRayTracingPipelinesKHRDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, IntPtr pCreateInfos, IntPtr pAllocator, IntPtr pPipelines);
+		private static vkCreateRayTracingPipelinesKHRDelegate vkCreateRayTracingPipelinesKHR_ptr;
+		public static VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, IntPtr pCreateInfos, IntPtr pAllocator, IntPtr pPipelines)
+			=> vkCreateRayTracingPipelinesKHR_ptr(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetRayTracingShaderGroupHandlesKHRDelegate(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, UIntPtr dataSize, void* pData);
+		private static vkGetRayTracingShaderGroupHandlesKHRDelegate vkGetRayTracingShaderGroupHandlesKHR_ptr;
+		public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, UIntPtr dataSize, void* pData)
+			=> vkGetRayTracingShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate ulong vkGetAccelerationStructureDeviceAddressKHRDelegate(VkDevice device, IntPtr pInfo);
+		private static vkGetAccelerationStructureDeviceAddressKHRDelegate vkGetAccelerationStructureDeviceAddressKHR_ptr;
+		public static ulong vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, IntPtr pInfo)
+			=> vkGetAccelerationStructureDeviceAddressKHR_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHRDelegate(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, UIntPtr dataSize, void* pData);
+		private static vkGetRayTracingCaptureReplayShaderGroupHandlesKHRDelegate vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
+		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, UIntPtr dataSize, void* pData)
+			=> vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWriteAccelerationStructuresPropertiesKHRDelegate(VkCommandBuffer commandBuffer, uint accelerationStructureCount, IntPtr pAccelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
+		private static vkCmdWriteAccelerationStructuresPropertiesKHRDelegate vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
+		public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, IntPtr pAccelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
+			=> vkCmdWriteAccelerationStructuresPropertiesKHR_ptr(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdTraceRaysIndirectKHRDelegate(VkCommandBuffer commandBuffer, IntPtr pRaygenShaderBindingTable, IntPtr pMissShaderBindingTable, IntPtr pHitShaderBindingTable, IntPtr pCallableShaderBindingTable, VkBuffer buffer, ulong offset);
+		private static vkCmdTraceRaysIndirectKHRDelegate vkCmdTraceRaysIndirectKHR_ptr;
+		public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, IntPtr pRaygenShaderBindingTable, IntPtr pMissShaderBindingTable, IntPtr pHitShaderBindingTable, IntPtr pCallableShaderBindingTable, VkBuffer buffer, ulong offset)
+			=> vkCmdTraceRaysIndirectKHR_ptr(commandBuffer, pRaygenShaderBindingTable, pMissShaderBindingTable, pHitShaderBindingTable, pCallableShaderBindingTable, buffer, offset);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDeviceAccelerationStructureCompatibilityKHRDelegate(VkDevice device, IntPtr version);
+		private static vkGetDeviceAccelerationStructureCompatibilityKHRDelegate vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
+		public static VkResult vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, IntPtr version)
+			=> vkGetDeviceAccelerationStructureCompatibilityKHR_ptr(device, version);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateDeferredOperationKHRDelegate(VkDevice device, IntPtr pAllocator, IntPtr pDeferredOperation);
+		private static vkCreateDeferredOperationKHRDelegate vkCreateDeferredOperationKHR_ptr;
+		public static VkResult vkCreateDeferredOperationKHR(VkDevice device, IntPtr pAllocator, IntPtr pDeferredOperation)
+			=> vkCreateDeferredOperationKHR_ptr(device, pAllocator, pDeferredOperation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyDeferredOperationKHRDelegate(VkDevice device, VkDeferredOperationKHR operation, IntPtr pAllocator);
+		private static vkDestroyDeferredOperationKHRDelegate vkDestroyDeferredOperationKHR_ptr;
+		public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, IntPtr pAllocator)
+			=> vkDestroyDeferredOperationKHR_ptr(device, operation, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate uint vkGetDeferredOperationMaxConcurrencyKHRDelegate(VkDevice device, VkDeferredOperationKHR operation);
+		private static vkGetDeferredOperationMaxConcurrencyKHRDelegate vkGetDeferredOperationMaxConcurrencyKHR_ptr;
+		public static uint vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation)
+			=> vkGetDeferredOperationMaxConcurrencyKHR_ptr(device, operation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDeferredOperationResultKHRDelegate(VkDevice device, VkDeferredOperationKHR operation);
+		private static vkGetDeferredOperationResultKHRDelegate vkGetDeferredOperationResultKHR_ptr;
+		public static VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation)
+			=> vkGetDeferredOperationResultKHR_ptr(device, operation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkDeferredOperationJoinKHRDelegate(VkDevice device, VkDeferredOperationKHR operation);
+		private static vkDeferredOperationJoinKHRDelegate vkDeferredOperationJoinKHR_ptr;
+		public static VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation)
+			=> vkDeferredOperationJoinKHR_ptr(device, operation);
+
 		private static void LoadFuncionPointers()
 		{
 			nativeLib.LoadFunction("vkCreateInstance",  out vkCreateInstance_ptr);
@@ -1253,6 +1415,33 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkGetBufferDeviceAddress",  out vkGetBufferDeviceAddress_ptr);
 			nativeLib.LoadFunction("vkGetBufferOpaqueCaptureAddress",  out vkGetBufferOpaqueCaptureAddress_ptr);
 			nativeLib.LoadFunction("vkGetDeviceMemoryOpaqueCaptureAddress",  out vkGetDeviceMemoryOpaqueCaptureAddress_ptr);
+			nativeLib.LoadFunction("vkCreateAccelerationStructureKHR",  out vkCreateAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkDestroyAccelerationStructureKHR",  out vkDestroyAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkGetAccelerationStructureMemoryRequirementsKHR",  out vkGetAccelerationStructureMemoryRequirementsKHR_ptr);
+			nativeLib.LoadFunction("vkBindAccelerationStructureMemoryKHR",  out vkBindAccelerationStructureMemoryKHR_ptr);
+			nativeLib.LoadFunction("vkCmdBuildAccelerationStructureKHR",  out vkCmdBuildAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkCmdBuildAccelerationStructureIndirectKHR",  out vkCmdBuildAccelerationStructureIndirectKHR_ptr);
+			nativeLib.LoadFunction("vkBuildAccelerationStructureKHR",  out vkBuildAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkCopyAccelerationStructureKHR",  out vkCopyAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkCopyAccelerationStructureToMemoryKHR",  out vkCopyAccelerationStructureToMemoryKHR_ptr);
+			nativeLib.LoadFunction("vkCopyMemoryToAccelerationStructureKHR",  out vkCopyMemoryToAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkWriteAccelerationStructuresPropertiesKHR",  out vkWriteAccelerationStructuresPropertiesKHR_ptr);
+			nativeLib.LoadFunction("vkCmdCopyAccelerationStructureKHR",  out vkCmdCopyAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkCmdCopyAccelerationStructureToMemoryKHR",  out vkCmdCopyAccelerationStructureToMemoryKHR_ptr);
+			nativeLib.LoadFunction("vkCmdCopyMemoryToAccelerationStructureKHR",  out vkCmdCopyMemoryToAccelerationStructureKHR_ptr);
+			nativeLib.LoadFunction("vkCmdTraceRaysKHR",  out vkCmdTraceRaysKHR_ptr);
+			nativeLib.LoadFunction("vkCreateRayTracingPipelinesKHR",  out vkCreateRayTracingPipelinesKHR_ptr);
+			nativeLib.LoadFunction("vkGetRayTracingShaderGroupHandlesKHR",  out vkGetRayTracingShaderGroupHandlesKHR_ptr);
+			nativeLib.LoadFunction("vkGetAccelerationStructureDeviceAddressKHR",  out vkGetAccelerationStructureDeviceAddressKHR_ptr);
+			nativeLib.LoadFunction("vkGetRayTracingCaptureReplayShaderGroupHandlesKHR",  out vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr);
+			nativeLib.LoadFunction("vkCmdWriteAccelerationStructuresPropertiesKHR",  out vkCmdWriteAccelerationStructuresPropertiesKHR_ptr);
+			nativeLib.LoadFunction("vkCmdTraceRaysIndirectKHR",  out vkCmdTraceRaysIndirectKHR_ptr);
+			nativeLib.LoadFunction("vkGetDeviceAccelerationStructureCompatibilityKHR",  out vkGetDeviceAccelerationStructureCompatibilityKHR_ptr);
+			nativeLib.LoadFunction("vkCreateDeferredOperationKHR",  out vkCreateDeferredOperationKHR_ptr);
+			nativeLib.LoadFunction("vkDestroyDeferredOperationKHR",  out vkDestroyDeferredOperationKHR_ptr);
+			nativeLib.LoadFunction("vkGetDeferredOperationMaxConcurrencyKHR",  out vkGetDeferredOperationMaxConcurrencyKHR_ptr);
+			nativeLib.LoadFunction("vkGetDeferredOperationResultKHR",  out vkGetDeferredOperationResultKHR_ptr);
+			nativeLib.LoadFunction("vkDeferredOperationJoinKHR",  out vkDeferredOperationJoinKHR_ptr);
 		}
 	}
 }

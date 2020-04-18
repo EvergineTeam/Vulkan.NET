@@ -12,7 +12,11 @@ namespace VulkanGen
             string outputPath = "..\\..\\..\\..\\WaveEngine.Bindings.Vulkan\\Generated";
 
             var vulkanSpec = VulkanSpecification.FromFile(vkFile);
-            var vulkanVersion = VulkanVersion.FromSpec(vulkanSpec, "VK_VERSION_1_2", null);
+
+            // Add provisional extensions
+            var extensions = vulkanSpec.Extensions.Where(e => e.IsProvisional);
+
+            var vulkanVersion = VulkanVersion.FromSpec(vulkanSpec, "AllVersions", extensions);
 
             // Write Constants
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Constants.cs")))
