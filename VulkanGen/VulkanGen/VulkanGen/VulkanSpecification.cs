@@ -74,6 +74,13 @@ namespace VulkanGen
                     a => a.Attribute("name").Value,
                     a => a.Attribute("alias").Value);
 
+            // Command Alias
+            var commandAlias = registry.Element("commands").Elements("command").Where(c => c.Attribute("alias") != null);
+            foreach (var c in commandAlias)
+            {
+                spec.Alias.Add(c.Attribute("name").Value, c.Attribute("alias").Value);
+            }
+
             // Structs
             var structs = types.Elements("type").Where(s => s.Attribute("category")?.Value == "struct" && s.Attribute("alias") == null);
             foreach (var s in structs)
@@ -109,7 +116,7 @@ namespace VulkanGen
             }
 
             // Commands
-            var commands = registry.Element("commands").Elements("command");
+            var commands = registry.Element("commands").Elements("command").Where(c => c.Attribute("alias") == null);
             foreach (var command in commands)
             {
                 spec.Commands.Add(CommandDefinition.FromXML(command));

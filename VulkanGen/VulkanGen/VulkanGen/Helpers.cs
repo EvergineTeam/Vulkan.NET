@@ -48,17 +48,17 @@ namespace VulkanGen
             return 4;
         }
 
-        public static string ConvertToCSharpType(Member member, VulkanSpecification spec)
+        public static string ConvertToCSharpType(string type, int pointerlevel, VulkanSpecification spec)
         {
-            string memberType = member.Type;
+            string memberType = type;
 
-            if (member.Type.StartsWith("PFN") || IsIntPtr(memberType))
+            if (type.StartsWith("PFN") || IsIntPtr(memberType))
                 return "IntPtr";
 
             string result = ConvertBasicTypes(memberType);
             if (result == string.Empty)
             {
-                if (member.PointerLevel > 0)
+                if (pointerlevel > 0)
                 {
                     return "IntPtr";
                 }
@@ -93,65 +93,9 @@ namespace VulkanGen
                 }
             }
 
-            if (member.PointerLevel > 0)
+            if (pointerlevel > 0)
             {
-                for (int i = 0; i < member.PointerLevel; i++)
-                {
-                    result += "*";
-                }
-            }
-
-            return result;
-        }
-
-        public static string ConvertToCSharpType(Param p, VulkanSpecification spec)
-        {
-            string memberType = p.Type;
-
-            if (p.Type.StartsWith("PFN") || IsIntPtr(memberType))
-                return "IntPtr";
-
-            string result = ConvertBasicTypes(memberType);
-            if (result == string.Empty)
-            {
-                if (p.PointerLevel > 0)
-                {
-                    return "IntPtr";
-                }
-                else
-                {
-                    if (spec.Alias.TryGetValue(memberType, out string alias))
-                    {
-                        memberType = alias;
-                    }
-
-                    spec.BaseTypes.TryGetValue(memberType, out string baseType);
-                    if (baseType != null)
-                    {
-                        result = ConvertBasicTypes(baseType);
-                    }
-                    else
-                    {
-                        var typeDef = spec.TypeDefs.Find(t => t.Name == memberType);
-                        if (typeDef != null)
-                        {
-                            spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
-                            if (baseType != null)
-                            {
-                                result = ConvertBasicTypes(baseType);
-                            }
-                        }
-                        else
-                        {
-                            result = memberType;
-                        }
-                    }
-                }
-            }
-
-            if (p.PointerLevel > 0)
-            {
-                for (int i = 0; i < p.PointerLevel; i++)
+                for (int i = 0; i < pointerlevel; i++)
                 {
                     result += "*";
                 }

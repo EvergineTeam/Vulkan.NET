@@ -128,7 +128,7 @@ namespace VulkanGen
                     file.WriteLine("\t{");
                     foreach (var member in union.Members)
                     {
-                        string csType = Helpers.ConvertToCSharpType(member, vulkanSpec);
+                        string csType = Helpers.ConvertToCSharpType(member.Type, member.PointerLevel, vulkanSpec);
 
                         file.WriteLine($"\t\t[FieldOffset(0)]");
                         if (member.ElementCount > 1)
@@ -162,7 +162,7 @@ namespace VulkanGen
                     file.WriteLine("\t{");
                     foreach (var member in structure.Members)
                     {
-                        string csType = Helpers.ConvertToCSharpType(member, vulkanSpec);
+                        string csType = Helpers.ConvertToCSharpType(member.Type, member.PointerLevel, vulkanSpec);
 
                         if (member.ElementCount > 1)
                         {
@@ -227,9 +227,6 @@ namespace VulkanGen
 
                 foreach (var command in vulkanSpec.Commands)
                 {
-                    if (command.Alias != null)
-                        continue;
-
                     string type, convertedType;
                     type = command.Prototype.Type;
 
@@ -253,22 +250,28 @@ namespace VulkanGen
                         convertedType = type;
                     }
 
-                    file.WriteLine("\t\t[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
+                    file.WriteLine("\t\t[UnmanagedFunctionPointer(CallConv)]");
 
-                    // private delegate void glTexBuffer_t(TextureTarget target, InternalFormat internalformat, uint buffer);
                     // Delegate
                     file.WriteLine($"\t\tprivate delegate {convertedType} {command.Prototype.Name}Delegate({command.GetParametersSignature(vulkanSpec)});");
 
-                    // private static glTexBuffer_t p_glTexBuffer;
                     // internal function
                     file.WriteLine($"\t\tprivate static {command.Prototype.Name}Delegate {command.Prototype.Name}_ptr;");
 
-                    // public static void glTexBuffer(TextureTarget target, InternalFormat internalformat, uint buffer) => p_glTexBuffer(target, internalformat, buffer);
                     // public function
                     file.WriteLine($"\t\tpublic static {convertedType} {command.Prototype.Name}({command.GetParametersSignature(vulkanSpec)})");
                     file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignatureWithoutTypes()});\n");
                 }
 
+                file.WriteLine($"\t\tprivate static void LoadFuncionPointers()");
+                file.WriteLine("\t\t{");
+
+                foreach (var command in vulkanSpec.Commands)
+                {
+                    file.WriteLine($"\t\t\tnativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                }
+
+                file.WriteLine("\t\t}");
                 file.WriteLine("\t}");
                 file.WriteLine("}");
             }

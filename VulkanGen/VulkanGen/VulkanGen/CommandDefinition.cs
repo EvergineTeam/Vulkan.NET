@@ -11,8 +11,6 @@ namespace VulkanGen
     {
         public Proto Prototype;
         public List<Param> Parameters = new List<Param>();
-        public string Name;
-        public string Alias;
         public string[] Queues;
         public string RenderPass;
         public string[] CmdBufferLevel;
@@ -25,8 +23,6 @@ namespace VulkanGen
         {
             CommandDefinition command = new CommandDefinition();
 
-            command.Name = elem.Attribute("name")?.Value;
-            command.Alias = elem.Attribute("alias")?.Value;
             command.SuccessCodes = elem.Attribute("successcodes")?.Value.Split(',');
             command.ErrorCodes = elem.Attribute("errorcodes")?.Value.Split(',');
             command.Queues = elem.Attribute("queues")?.Value.Split(',');
@@ -60,7 +56,7 @@ namespace VulkanGen
             StringBuilder signature = new StringBuilder();
             foreach (var p in Parameters)
             {
-                string convertedType = Helpers.ConvertToCSharpType(p, spec);
+                string convertedType = Helpers.ConvertToCSharpType(p.Type, p.PointerLevel, spec);
                 string convertedName = Helpers.ValidatedName(p.Name);
                 signature.Append($"{convertedType} {convertedName}, ");
             }
