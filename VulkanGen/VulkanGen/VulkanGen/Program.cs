@@ -12,6 +12,7 @@ namespace VulkanGen
             string outputPath = "..\\..\\..\\..\\WaveEngine.Bindings.Vulkan\\Generated";
 
             var vulkanSpec = VulkanSpecification.FromFile(vkFile);
+            var vulkanVersion = VulkanVersion.FromSpec(vulkanSpec, "VK_VERSION_1_2", null);
 
             // Write Constants
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Constants.cs")))
@@ -21,11 +22,11 @@ namespace VulkanGen
                 file.WriteLine("\tpublic static partial class Vulkan");
                 file.WriteLine("\t{");
 
-                foreach (var constant in vulkanSpec.Constants)
+                foreach (var constant in vulkanVersion.Constants)
                 {
                     if (constant.Alias != null)
                     {
-                        var refConstant = vulkanSpec.Constants.FirstOrDefault(c => c.Name == constant.Alias);
+                        var refConstant = vulkanVersion.Constants.FirstOrDefault(c => c.Name == constant.Alias);
                         file.WriteLine($"\t\tpublic const {refConstant.Type.ToCSharp()} {constant.Name} = {refConstant.Name};");
                     }
                     else
@@ -45,7 +46,7 @@ namespace VulkanGen
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
 
-                foreach (var func in vulkanSpec.FuncPointers)
+                foreach (var func in vulkanVersion.FuncPointers)
                 {
                     file.Write($"\tpublic unsafe delegate {func.Type} {func.Name}(");
                     if (func.Parameters.Count > 0)
@@ -87,7 +88,7 @@ namespace VulkanGen
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
 
-                foreach (var e in vulkanSpec.Enums)
+                foreach (var e in vulkanVersion.Enums)
                 {
                     if (e.Type == EnumType.Bitmask)
                         file.WriteLine("\t[Flags]");
@@ -121,7 +122,7 @@ namespace VulkanGen
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
 
-                foreach (var union in vulkanSpec.Unions)
+                foreach (var union in vulkanVersion.Unions)
                 {
                     file.WriteLine("\t[StructLayout(LayoutKind.Explicit)]");
                     file.WriteLine($"\tpublic unsafe partial struct {union.Name}");
@@ -155,7 +156,7 @@ namespace VulkanGen
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
 
-                foreach (var structure in vulkanSpec.Structs)
+                foreach (var structure in vulkanVersion.Structs)
                 {
                     file.WriteLine("\t[StructLayout(LayoutKind.Sequential)]");
                     file.WriteLine($"\tpublic unsafe partial struct {structure.Name}");
@@ -190,7 +191,7 @@ namespace VulkanGen
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
 
-                foreach (var handle in vulkanSpec.Handles)
+                foreach (var handle in vulkanVersion.Handles)
                 {
                     file.WriteLine($"\tpublic partial struct {handle.Name} : IEquatable<{handle.Name}>");
                     file.WriteLine("{");
@@ -225,7 +226,7 @@ namespace VulkanGen
                 file.WriteLine("\tpublic static unsafe partial class VulkanNative");
                 file.WriteLine("\t{");
 
-                foreach (var command in vulkanSpec.Commands)
+                foreach (var command in vulkanVersion.Commands)
                 {
                     string type, convertedType;
                     type = command.Prototype.Type;
@@ -266,7 +267,7 @@ namespace VulkanGen
                 file.WriteLine($"\t\tprivate static void LoadFuncionPointers()");
                 file.WriteLine("\t\t{");
 
-                foreach (var command in vulkanSpec.Commands)
+                foreach (var command in vulkanVersion.Commands)
                 {
                     file.WriteLine($"\t\t\tnativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }

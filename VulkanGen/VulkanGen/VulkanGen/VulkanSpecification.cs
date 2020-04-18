@@ -19,7 +19,7 @@ namespace VulkanGen
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
-        public List<FeatureDefinition> Feature = new List<FeatureDefinition>();
+        public List<FeatureDefinition> Features = new List<FeatureDefinition>();
         public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
         public Dictionary<string, string> Alias = new Dictionary<string, string>();
         public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
@@ -126,7 +126,7 @@ namespace VulkanGen
             var features = registry.Elements("feature");
             foreach (var feature in features)
             {
-                spec.Feature.Add(FeatureDefinition.FromXML(feature));
+                spec.Features.Add(FeatureDefinition.FromXML(feature));
             
             }
 
