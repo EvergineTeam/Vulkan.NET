@@ -3,3 +3,6 @@ VulkanGen/VulkanGen/VulkanGen/bin
 *.suo
 VulkanGen/VulkanGen/WaveEngine.Bindings.Vulkan/obj
 VulkanGen/VulkanGen/WaveEngine.Bindings.Vulkan/bin
+VulkanGen/VulkanGen/VKDrawTriangle/bin
+VulkanGen/VulkanGen/VKDrawTriangle/obj
+VulkanGen/VulkanGen/.vs/VulkanGen/DesignTimeBuild
