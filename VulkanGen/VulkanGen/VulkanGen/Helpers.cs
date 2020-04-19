@@ -58,37 +58,30 @@ namespace VulkanGen
             string result = ConvertBasicTypes(memberType);
             if (result == string.Empty)
             {
-                if (pointerlevel > 0)
+                if (spec.Alias.TryGetValue(memberType, out string alias))
                 {
-                    return "IntPtr";
+                    memberType = alias;
+                }
+
+                spec.BaseTypes.TryGetValue(memberType, out string baseType);
+                if (baseType != null)
+                {
+                    result = ConvertBasicTypes(baseType);
                 }
                 else
                 {
-                    if (spec.Alias.TryGetValue(memberType, out string alias))
+                    var typeDef = spec.TypeDefs.Find(t => t.Name == memberType);
+                    if (typeDef != null)
                     {
-                        memberType = alias;
-                    }
-
-                    spec.BaseTypes.TryGetValue(memberType, out string baseType);
-                    if (baseType != null)
-                    {
-                        result = ConvertBasicTypes(baseType);
+                        spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
+                        if (baseType != null)
+                        {
+                            result = ConvertBasicTypes(baseType);
+                        }
                     }
                     else
                     {
-                        var typeDef = spec.TypeDefs.Find(t => t.Name == memberType);
-                        if (typeDef != null)
-                        {
-                            spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
-                            if (baseType != null)
-                            {
-                                result = ConvertBasicTypes(baseType);
-                            }
-                        }
-                        else
-                        {
-                            result = memberType;
-                        }
+                        result = memberType;
                     }
                 }
             }
@@ -182,6 +175,9 @@ namespace VulkanGen
                 case "RROutput":
                 case "SECURITY_ATTRIBUTES":
                 case "VisualID":
+                case "wl_display":
+                case "wl_surface":
+                case "Display":
                     return true;
                 default:
                     return false;
