@@ -51,27 +51,23 @@ namespace VulkanGen
             return command;
         }
 
-        public string GetParametersSignature(VulkanSpecification spec)
+        public string GetParametersSignature(VulkanSpecification spec, bool useTypes = true, bool useRef = false)
         {
             StringBuilder signature = new StringBuilder();
             foreach (var p in Parameters)
             {
                 string convertedType = Helpers.ConvertToCSharpType(p.Type, p.PointerLevel, spec);
                 string convertedName = Helpers.ValidatedName(p.Name);
-                signature.Append($"{convertedType} {convertedName}, ");
-            }
 
-            signature.Length -= 2;
+                if (useRef && p.PointerLevel == 1 && convertedType != "void*")
+                {
+                    signature.Append("ref ");
+                    convertedType = convertedType.Replace("*", "");
+                }
 
-            return signature.ToString();
-        }
+                if (useTypes)
+                    signature.Append($"{convertedType} ");
 
-        public string GetParametersSignatureWithoutTypes()
-        {
-            StringBuilder signature = new StringBuilder();
-            foreach (var p in Parameters)
-            {
-                string convertedName = Helpers.ValidatedName(p.Name);
                 signature.Append($"{convertedName}, ");
             }
 

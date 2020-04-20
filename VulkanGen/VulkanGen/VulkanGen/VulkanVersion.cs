@@ -33,7 +33,7 @@ namespace VulkanGen
                 // Extend Enums
                 foreach (var enumType in feature.Enums)
                 {
-                    if (enumType.Extends != null  & enumType.Alias == null)
+                    if (enumType.Extends != null & enumType.Alias == null)
                     {
                         string name = enumType.Extends;
                         var enumDefinition = spec.Enums.Find(c => c.Name == name);
@@ -74,10 +74,14 @@ namespace VulkanGen
                         string name = enumType.Extends;
                         var enumDefinition = spec.Enums.Find(c => c.Name == name);
 
-                        EnumValue newValue = new EnumValue();
-                        newValue.Name = enumType.Name;
-                        newValue.Value = int.Parse(enumType.Value);
-                        enumDefinition.Values.Add(newValue);
+
+                        if (!enumDefinition.Values.Exists(e => e.Name == enumType.Name))
+                        {
+                            EnumValue newValue = new EnumValue();
+                            newValue.Name = enumType.Name;
+                            newValue.Value = int.Parse(enumType.Value);
+                            enumDefinition.Values.Add(newValue);
+                        }
                     }
                 }
 
@@ -91,7 +95,9 @@ namespace VulkanGen
                     }
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
-                    version.Commands.Add(commandDefinition);
+
+                    if(!version.Commands.Exists(c => c.Prototype.Name == name))
+                        version.Commands.Add(commandDefinition);
                 }
             }
 

@@ -92,7 +92,9 @@ namespace VulkanGen
                         ConstantExtension constant = new ConstantExtension();
                         constant.Name = enumName;
                         constant.Alias = e.Attribute("alias")?.Value;
-                        constant.Value = e.Attribute("value")?.Value;
+                        string rawValue = e.Attribute("value")?.Value;
+                        if(rawValue != null)
+                            constant.Value = FilterString(rawValue);
 
                         extension.Constants.Add(constant);
                     }
@@ -114,6 +116,11 @@ namespace VulkanGen
             }
 
             return extension;
+        }
+
+        private static string FilterString(string value)
+        {
+            return value.Replace("&quot;", "");
         }
     }
 

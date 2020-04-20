@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VulkanGen", "VulkanGen\Vulk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.Bindings.Vulkan", "WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj", "{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKDrawTriangle", "VKDrawTriangle\VKDrawTriangle.csproj", "{0A5681F0-DA4F-4B4A-A06E-A3B711D95A45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKDrawTriangle", "VKDrawTriangle\VKDrawTriangle.csproj", "{98855056-ABA7-4D8F-A0CD-097DEC38F444}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A5681F0-DA4F-4B4A-A06E-A3B711D95A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A5681F0-DA4F-4B4A-A06E-A3B711D95A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A5681F0-DA4F-4B4A-A06E-A3B711D95A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A5681F0-DA4F-4B4A-A06E-A3B711D95A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98855056-ABA7-4D8F-A0CD-097DEC38F444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98855056-ABA7-4D8F-A0CD-097DEC38F444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98855056-ABA7-4D8F-A0CD-097DEC38F444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98855056-ABA7-4D8F-A0CD-097DEC38F444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

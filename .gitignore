@@ -6,3 +6,4 @@ VulkanGen/VulkanGen/WaveEngine.Bindings.Vulkan/bin
 VulkanGen/VulkanGen/VKDrawTriangle/bin
 VulkanGen/VulkanGen/VKDrawTriangle/obj
 VulkanGen/VulkanGen/.vs/VulkanGen/DesignTimeBuild
+VulkanGen/VulkanGen/VKDrawTriangle/VKDrawTriangle.csproj.user
