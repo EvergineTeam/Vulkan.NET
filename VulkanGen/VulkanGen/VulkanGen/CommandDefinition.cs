@@ -51,19 +51,13 @@ namespace VulkanGen
             return command;
         }
 
-        public string GetParametersSignature(VulkanSpecification spec, bool useTypes = true, bool useRef = false)
+        public string GetParametersSignature(VulkanSpecification spec, bool useTypes = true)
         {
             StringBuilder signature = new StringBuilder();
             foreach (var p in Parameters)
             {
                 string convertedType = Helpers.ConvertToCSharpType(p.Type, p.PointerLevel, spec);
                 string convertedName = Helpers.ValidatedName(p.Name);
-
-                if (useRef && p.PointerLevel == 1 && convertedType != "void*")
-                {
-                    signature.Append("ref ");
-                    convertedType = convertedType.Replace("*", "");
-                }
 
                 if (useTypes)
                     signature.Append($"{convertedType} ");

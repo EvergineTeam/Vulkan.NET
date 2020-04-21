@@ -15,7 +15,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Shaders\compile.bat" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Shaders\frag.spv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Shaders\vert.spv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -73,10 +73,17 @@ namespace VulkanGen
                     var typeDef = spec.TypeDefs.Find(t => t.Name == memberType);
                     if (typeDef != null)
                     {
-                        spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
-                        if (baseType != null)
+                        if (typeDef.Requires != null)
                         {
-                            result = ConvertBasicTypes(baseType);
+                            result = typeDef.Requires;
+                        }
+                        else
+                        {
+                            spec.BaseTypes.TryGetValue(typeDef.Type, out baseType);
+                            if (baseType != null)
+                            {
+                                result = ConvertBasicTypes(baseType);
+                            }
                         }
                     }
                     else
@@ -148,6 +155,14 @@ namespace VulkanGen
                     return "double*";
                 case "void":
                     return "void";
+                case "VkBool32":
+                    return "VkBool32";
+                case "VkExtent2D":
+                    return "VkExtent2D";
+                case "VkOffset2D":
+                    return "VkOffset2D";
+                case "VkRect2D":
+                    return "VkRect2D";
                 default:
                     return string.Empty;
             }

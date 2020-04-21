@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 using WaveEngine.Bindings.Vulkan;
 
@@ -53,66 +55,80 @@ namespace VKDrawTriangle
 
         public void DrawFrame()
         {
-            vkPresentQueue.WaitIdle();
+            VulkanNative.vkQueueWaitIdle(vkPresentQueue);
 
-            uint imageIndex = vkDevice.AcquireNextImageKHR(vkSwapChain, ulong.MaxValue, vkImageAvailableSemaphore);
+            uint imageIndex;
+            VulkanNative.vkAcquireNextImageKHR(vkDevice, vkSwapChain, ulong.MaxValue, vkImageAvailableSemaphore, 0, &imageIndex);
 
-            var submitInfo = new SubmitInfo()
+            VkSemaphore* waitSemaphores = stackalloc VkSemaphore[] { vkImageAvailableSemaphore };
+            VkPipelineStageFlagBits* waitStages = stackalloc VkPipelineStageFlagBits[] { VkPipelineStageFlagBits.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
+            VkSemaphore* signalSemaphores = stackalloc VkSemaphore[] { vkRenderFinishedSemaphore };
+            VkCommandBuffer* commandBuffers = stackalloc VkCommandBuffer[] { vkCommandBuffers[imageIndex] };
+            var submitInfo = new VkSubmitInfo()
             {
-                WaitSemaphores = new Semaphore[] { vkImageAvailableSemaphore },
-                WaitDstStageMask = new PipelineStageFlags[] { PipelineStageFlags.ColorAttachmentOutput },
-                CommandBuffers = new CommandBuffer[] { vkCommandBuffers[imageIndex] },
-                SignalSemaphores = new Semaphore[] { vkRenderFinishedSemaphore },
+                sType = VkStructureType.VK_STRUCTURE_TYPE_SUBMIT_INFO,
+                pWaitSemaphores = waitSemaphores,
+                waitSemaphoreCount = 1,
+                pWaitDstStageMask = waitStages,
+                commandBufferCount = 1,
+                pCommandBuffers = commandBuffers,
+                pSignalSemaphores = signalSemaphores,
             };
 
-            vkGraphicsQueue.Submit(submitInfo);
+            var result = VulkanNative.vkQueueSubmit(vkGraphicsQueue, 1, &submitInfo, 0);
+            Helpers.CheckErrors(result);
 
-            var presentInfo = new PresentInfoKhr()
+            VkSwapchainKHR* swapChains = stackalloc VkSwapchainKHR[] { vkSwapChain };
+            var presentInfo = new VkPresentInfoKHR()
             {
-                WaitSemaphores = new Semaphore[] { vkRenderFinishedSemaphore },
-                Swapchains = new SwapchainKhr[] { vkSwapChain },
-                ImageIndices = new uint[] { imageIndex },
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
+                waitSemaphoreCount = 1,
+                pWaitSemaphores = signalSemaphores,
+                pSwapchains = swapChains,
+                pImageIndices = &imageIndex,
             };
 
-            vkPresentQueue.PresentKHR(presentInfo);
+            VulkanNative.vkQueuePresentKHR(vkPresentQueue, &presentInfo);
         }
 
         public void CleanUp()
         {
-            vkDevice.WaitIdle();
+            VulkanNative.vkDeviceWaitIdle(vkDevice);
 
-            vkDevice.DestroySemaphore(vkImageAvailableSemaphore);
-            vkDevice.DestroySemaphore(vkRenderFinishedSemaphore);
+            VulkanNative.vkDestroySemaphore(vkDevice, vkImageAvailableSemaphore, null);
+            VulkanNative.vkDestroySemaphore(vkDevice, vkRenderFinishedSemaphore, null);
 
-            vkDevice.DestroyCommandPool(vkCommandPool);
+            VulkanNative.vkDestroyCommandPool(vkDevice, vkCommandPool, null);
 
             foreach (var framebuffer in vkSwapChainFramebuffers)
             {
-                vkDevice.DestroyFramebuffer(framebuffer);
+                VulkanNative.vkDestroyFramebuffer(vkDevice, framebuffer, null);
             }
 
-            vkDevice.DestroyPipeline(vkGraphicsPipeline);
-            vkDevice.DestroyPipelineLayout(vkPipelineLayout);
-            vkDevice.DestroyRenderPass(vkRenderPass);
+            VulkanNative.vkDestroyPipeline(vkDevice, vkGraphicsPipeline, null);
+            VulkanNative.vkDestroyPipelineLayout(vkDevice, vkPipelineLayout, null);
+            VulkanNative.vkDestroyRenderPass(vkDevice, vkRenderPass, null);
 
             foreach (var imageview in vkSwapChainImageViews)
             {
-                vkDevice.DestroyImageView(imageview);
+                VulkanNative.vkDestroyImageView(vkDevice, imageview, null);
             }
 
-            vkDevice.DestroySwapchainKHR(vkSwapChain);
-            vkDevice.Destroy();
-            vkInstance.DestroySurfaceKHR(vkSurface);
-            vkInstance.Destroy();
+            VulkanNative.vkDestroySwapchainKHR(vkDevice, vkSwapChain, null);
+            VulkanNative.vkDestroyDevice(vkDevice, null);
+
+            VulkanNative.vkDestroySurfaceKHR(vkInstance, vkSurface, null);
+            VulkanNative.vkDestroyInstance(vkInstance, null);
         }
 
         private void CreateInstance()
         {
-            ApplicationInfo appInfo = new ApplicationInfo()
+            VkApplicationInfo appInfo = new VkApplicationInfo()
             {
-                ApplicationName = "Hello Triangle",
-                EngineName = "WaveEngine",
-                EngineVersion = Vulkan.Version.Make(3, 0, 0),
+                sType = VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO,
+                pApplicationName = "Hello Triangle".ToPointer(),
+                pEngineName = "WaveEngine".ToPointer(),
+                engineVersion = Helpers.Version(3, 0, 0),
             };
 
             string[] extensions = new string[]
@@ -121,72 +137,110 @@ namespace VKDrawTriangle
                 "VK_KHR_win32_surface",
             };
 
-            InstanceCreateInfo createInfo = new InstanceCreateInfo()
+            IntPtr* extensionsToEnableArray = stackalloc IntPtr[extensions.Length];
+            for (int i = 0; i < extensions.Length; i++)
             {
-                EnabledExtensionNames = extensions,
-                ApplicationInfo = appInfo,
+                string extension = extensions[i];
+                extensionsToEnableArray[i] = Marshal.StringToHGlobalAnsi(extension);
+            }
+
+            VkInstanceCreateInfo createInfo = new VkInstanceCreateInfo()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
+                ppEnabledExtensionNames = (byte**)extensionsToEnableArray,
+                pApplicationInfo = &appInfo,
             };
 
-            vkInstance = new Instance(createInfo);
+            for (int i = 0; i < extensions.Length; i++)
+            {
+                Marshal.FreeHGlobal(extensionsToEnableArray[i]);
+            }
+
+            VkInstance newInstance;
+            VkResult result = VulkanNative.vkCreateInstance(&createInfo, null, &newInstance);
+            this.vkInstance = newInstance;
+            Helpers.CheckErrors(result);
         }
 
         private void CreateSurface(IntPtr windowHandle)
         {
-            vkSurface = vkInstance.CreateWin32SurfaceKHR(
-                            new Win32SurfaceCreateInfoKhr()
-                            {
-                                Hinstance = Process.GetCurrentProcess().Handle,
-                                Hwnd = windowHandle
-                            });
+            VkWin32SurfaceCreateInfoKHR windowsSurfaceInfo = new VkWin32SurfaceCreateInfoKHR();
+            windowsSurfaceInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+            windowsSurfaceInfo.hwnd = windowHandle;
+            windowsSurfaceInfo.hinstance = Process.GetCurrentProcess().Handle;
+
+            VkSurfaceKHR newVkSurface;
+            var result = VulkanNative.vkCreateWin32SurfaceKHR(this.vkInstance,&windowsSurfaceInfo, null, &newVkSurface);
+            this.vkSurface = newVkSurface;
+            Helpers.CheckErrors(result);
         }
 
         private void CreatePhysicalDevice()
         {
-            var physicalDevices = vkInstance.EnumeratePhysicalDevices();
-
-            if (physicalDevices.Length == 0)
+            uint deviceCount = 0;
+            VulkanNative.vkEnumeratePhysicalDevices(this.vkInstance, &deviceCount, null);
+            if (deviceCount == 0)
             {
-                throw new InvalidOperationException("No devices with vulkan support available.");
+                throw new InvalidOperationException("No physical devices exist.");
             }
 
-            foreach (var device in physicalDevices)
-            {
-                var features = device.GetFeatures();
-                var properties = device.GetProperties();
+            VkPhysicalDevice* physicalDevicesPtr = stackalloc VkPhysicalDevice[(int)deviceCount];
+            VulkanNative.vkEnumeratePhysicalDevices(this.vkInstance, &deviceCount, physicalDevicesPtr);
 
-                if (properties.DeviceType == PhysicalDeviceType.DiscreteGpu)
-                {
-                    vkPhysicalDevice = device;
-                    break;
-                }
-            }
+            this.vkPhysicalDevice = physicalDevicesPtr[0];
         }
 
         private void CreateLogicalDevice()
         {
             var indices = new QueueFamilyIndices(vkPhysicalDevice, vkSurface);
 
-            var queueCreateInfos = new DeviceQueueCreateInfo[]
+            float priority = 1f;
+            var queueCreateInfos = stackalloc VkDeviceQueueCreateInfo[]
             {
-                new DeviceQueueCreateInfo()
+                new VkDeviceQueueCreateInfo()
                 {
-                    QueueFamilyIndex = (uint)indices.GraphicsFamily,
-                    QueueCount = 1,
-                    QueuePriorities = new float[] { 1.0f },
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
+                    queueFamilyIndex = (uint)indices.GraphicsFamily,
+                    queueCount = 1,
+                    pQueuePriorities = &priority,
                 }
             };
 
-            var createInfo = new DeviceCreateInfo()
+            int extensionsCount = 1;
+            IntPtr* extensionsToEnableArray = stackalloc IntPtr[extensionsCount];
+            for (int i = 0; i < extensionsCount; i++)
             {
-                EnabledExtensionNames = new string[] { "VK_KHR_swapchain" },
-                QueueCreateInfos = queueCreateInfos,
-                EnabledFeatures = new PhysicalDeviceFeatures(),
+                string extension = "VK_KHR_swapchain";
+                extensionsToEnableArray[i] = Marshal.StringToHGlobalAnsi(extension);
+            }
+
+            VkPhysicalDeviceFeatures deviceFeatures = new VkPhysicalDeviceFeatures();
+
+            var createInfo = new VkDeviceCreateInfo()
+            {
+                ppEnabledExtensionNames = (byte**)extensionsToEnableArray,
+                enabledExtensionCount = (uint)extensionsCount,
+                pQueueCreateInfos = queueCreateInfos,
+                queueCreateInfoCount = 1,
+                pEnabledFeatures = &deviceFeatures,
             };
 
-            vkDevice = vkPhysicalDevice.CreateDevice(createInfo);
+            VkDevice newDevice;
+            VulkanNative.vkCreateDevice(this.vkPhysicalDevice, &createInfo, null, &newDevice);
+            this.vkDevice = newDevice;
 
-            vkGraphicsQueue = vkDevice.GetQueue((uint)indices.GraphicsFamily, 0);
-            vkPresentQueue = vkDevice.GetQueue((uint)indices.PresentFamily, 0);
+            for (int i = 0; i < extensionsCount; i++)
+            {
+                Marshal.FreeHGlobal(extensionsToEnableArray[i]);
+            }
+
+            VkQueue newGraphicsQueue;
+            VulkanNative.vkGetDeviceQueue(vkDevice, (uint)indices.GraphicsFamily, 0, &newGraphicsQueue);
+            this.vkGraphicsQueue = newGraphicsQueue;
+
+            VkQueue newPresentQueue;
+            VulkanNative.vkGetDeviceQueue(vkDevice, (uint)indices.PresentFamily, 0, &newPresentQueue);
+            this.vkPresentQueue = newPresentQueue;
         }
 
         private void CreateSwapChain()
@@ -197,59 +251,75 @@ namespace VKDrawTriangle
             VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.presentModes);
             VkExtent2D extent = ChooseSwapExtent(swapChainSupport.capabilities);
 
-            uint imageCount = swapChainSupport.capabilities.MinImageCount + 1;
-            if (swapChainSupport.capabilities.MaxImageCount > 0)
+            uint imageCount = swapChainSupport.capabilities.minImageCount + 1;
+            if (swapChainSupport.capabilities.maxImageCount > 0 && imageCount > swapChainSupport.capabilities.maxImageCount)
             {
-                imageCount = Math.Min(imageCount, swapChainSupport.capabilities.MaxImageCount);
+                imageCount = Math.Min(imageCount, swapChainSupport.capabilities.maxImageCount);
             }
 
             var createInfo = new VkSwapchainCreateInfoKHR()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
+                surface = vkSurface,
                 minImageCount = imageCount,
                 imageFormat = surfaceFormat.format,
                 imageColorSpace = surfaceFormat.colorSpace,
                 imageExtent = extent,
                 imageArrayLayers = 1,
-                imageUsage = ImageUsageFlags.ColorAttachment,
+                imageUsage = VkImageUsageFlagBits.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
                 preTransform = swapChainSupport.capabilities.currentTransform,
                 compositeAlpha = VkCompositeAlphaFlagBitsKHR.VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
                 presentMode = presentMode,
-                surface = vkSurface,
+                clipped = true,
             };
 
             var indices = new QueueFamilyIndices(vkPhysicalDevice, vkSurface);
+
+            uint* QueueFamilyIndicesPtr = stackalloc uint[]
+            {
+                (uint)indices.GraphicsFamily,
+                (uint)indices.PresentFamily,
+            };
+
             if (indices.GraphicsFamily != indices.PresentFamily)
             {
-                createInfo.ImageSharingMode = SharingMode.Concurrent;
-                createInfo.QueueFamilyIndices = new[]
-                {
-                    (uint)indices.GraphicsFamily,
-                    (uint)indices.PresentFamily,
-                };
+                createInfo.imageSharingMode = VkSharingMode.VK_SHARING_MODE_CONCURRENT;
+                createInfo.pQueueFamilyIndices = QueueFamilyIndicesPtr;
             }
             else
             {
-                createInfo.ImageSharingMode = SharingMode.Exclusive;
+                createInfo.imageSharingMode = VkSharingMode.VK_SHARING_MODE_EXCLUSIVE;
             }
 
-            vkSwapChain = vkDevice.CreateSwapchainKHR(createInfo);
-            vkSwapChainImages = vkDevice.GetSwapchainImagesKHR(vkSwapChain);
-            vkSwapChainImageFormat = surfaceFormat.Format;
+            VkSwapchainKHR newSwapChain;
+            VulkanNative.vkCreateSwapchainKHR(vkDevice, &createInfo, null, &newSwapChain);
+            vkSwapChain = newSwapChain;
+
+            VulkanNative.vkGetSwapchainImagesKHR(vkDevice, vkSwapChain, &imageCount, null);
+            VkImage* images = stackalloc VkImage[(int)imageCount];
+            VulkanNative.vkGetSwapchainImagesKHR(vkDevice, vkSwapChain, &imageCount, images);
+
+            vkSwapChainImages = new VkImage[imageCount];
+            for (int i = 0; i < imageCount; i++)
+            {
+                vkSwapChainImages[i] = images[i];
+            }
+
+            vkSwapChainImageFormat = surfaceFormat.format;
             vkSwapChainExtent = extent;
         }
 
 
-        private SurfaceFormatKhr ChooseSwapSurfaceFormat(SurfaceFormatKhr[] formats)
+        private VkSurfaceFormatKHR ChooseSwapSurfaceFormat(VkSurfaceFormatKHR[] formats)
         {
-            if (formats.Length == 1 && formats[0].Format == Format.Undefined)
+            if (formats.Length == 1 && formats[0].format == VkFormat.VK_FORMAT_UNDEFINED)
             {
-                return new SurfaceFormatKhr() { Format = Format.B8G8R8A8Unorm, ColorSpace = ColorSpaceKhr.SrgbNonlinear };
+                return new VkSurfaceFormatKHR() { format = VkFormat.VK_FORMAT_B8G8R8A8_UNORM, colorSpace = VkColorSpaceKHR.VK_COLORSPACE_SRGB_NONLINEAR_KHR };
             }
 
             foreach (var availableFormat in formats)
             {
-                if (availableFormat.Format == Format.B8G8R8A8Unorm && availableFormat.ColorSpace == ColorSpaceKhr.SrgbNonlinear)
+                if (availableFormat.format == VkFormat.VK_FORMAT_B8G8R8A8_UNORM && availableFormat.colorSpace == VkColorSpaceKHR.VK_COLORSPACE_SRGB_NONLINEAR_KHR)
                 {
                     return availableFormat;
                 }
@@ -258,121 +328,128 @@ namespace VKDrawTriangle
             return formats[0];
         }
 
-        private PresentModeKhr ChooseSwapPresentMode(PresentModeKhr[] presentModes)
+        private VkPresentModeKHR ChooseSwapPresentMode(VkPresentModeKHR[] presentModes)
         {
-            PresentModeKhr bestMode = PresentModeKhr.Fifo;
+            VkPresentModeKHR bestMode = VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR;
 
             foreach (var availablePresentMode in presentModes)
             {
-                if (availablePresentMode == PresentModeKhr.Mailbox)
+                if (availablePresentMode == VkPresentModeKHR.VK_PRESENT_MODE_MAILBOX_KHR)
                 {
                     return availablePresentMode;
                 }
-                else if (availablePresentMode == PresentModeKhr.Immediate)
+                else if (availablePresentMode == VkPresentModeKHR.VK_PRESENT_MODE_IMMEDIATE_KHR)
                 {
-                    bestMode = PresentModeKhr.Immediate;
+                    bestMode = VkPresentModeKHR.VK_PRESENT_MODE_IMMEDIATE_KHR;
                 }
             }
 
             return bestMode;
         }
 
-        private Extent2D ChooseSwapExtent(SurfaceCapabilitiesKhr capabilities)
+        private VkExtent2D ChooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities)
         {
-            if (capabilities.CurrentExtent.Width != uint.MaxValue)
+            if (capabilities.currentExtent.width != uint.MaxValue)
             {
-                return capabilities.CurrentExtent;
+                return capabilities.currentExtent;
             }
 
-            return new Extent2D()
+            return new VkExtent2D()
             {
-                Width = Math.Max(capabilities.MinImageExtent.Width, Math.Min(capabilities.MaxImageExtent.Width, (uint)this.width)),
-                Height = Math.Max(capabilities.MinImageExtent.Height, Math.Min(capabilities.MaxImageExtent.Height, (uint)this.height)),
+                width = Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, (uint)this.width)),
+                height = Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, (uint)this.height)),
             };
         }
 
         private void CreateImageViews()
         {
-            vkSwapChainImageViews = new ImageView[vkSwapChainImages.Length];
+            vkSwapChainImageViews = new VkImageView[vkSwapChainImages.Length];
 
             for (int i = 0; i < vkSwapChainImages.Length; i++)
             {
                 var image = vkSwapChainImages[i];
-                ImageViewCreateInfo createInfo = new ImageViewCreateInfo()
+                VkImageViewCreateInfo createInfo = new VkImageViewCreateInfo()
                 {
-                    Image = image,
-                    ViewType = ImageViewType.View2D,
-                    Format = vkSwapChainImageFormat,
-                    Components = new ComponentMapping()
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,
+                    image = image,
+                    viewType = VkImageViewType.VK_IMAGE_VIEW_TYPE_2D,
+                    format = vkSwapChainImageFormat,
+                    components = new VkComponentMapping()
                     {
-                        R = ComponentSwizzle.Identity,
-                        G = ComponentSwizzle.Identity,
-                        B = ComponentSwizzle.Identity,
-                        A = ComponentSwizzle.Identity
+                        r = VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY,
+                        g = VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY,
+                        b = VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY,
+                        a = VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY,
                     },
-                    SubresourceRange = new ImageSubresourceRange()
+                    subresourceRange = new VkImageSubresourceRange()
                     {
-                        AspectMask = ImageAspectFlags.Color,
-                        BaseMipLevel = 0,
-                        LevelCount = 1,
-                        BaseArrayLayer = 0,
-                        LayerCount = 1
+                        aspectMask = VkImageAspectFlagBits.VK_IMAGE_ASPECT_COLOR_BIT,
+                        baseMipLevel = 0,
+                        levelCount = 1,
+                        baseArrayLayer = 0,
+                        layerCount = 1
                     }
                 };
 
-                vkSwapChainImageViews[i] = vkDevice.CreateImageView(createInfo);
+                VkImageView* newImageView = null;
+                VulkanNative.vkCreateImageView(vkDevice, &createInfo, null, newImageView);
+                vkSwapChainImageViews[i] = *newImageView;
             }
         }
 
         private void CreateRenderPass()
         {
-            var colorAttachment = new AttachmentDescription()
+            var colorAttachment = new VkAttachmentDescription()
             {
-                Format = vkSwapChainImageFormat,
-                Samples = SampleCountFlags.Count1,
-                LoadOp = AttachmentLoadOp.Clear,
-                StoreOp = AttachmentStoreOp.Store,
-                StencilLoadOp = AttachmentLoadOp.DontCare,
-                StencilStoreOp = AttachmentStoreOp.DontCare,
-                InitialLayout = ImageLayout.Undefined,
-                FinalLayout = ImageLayout.PresentSrcKhr,
+                format = vkSwapChainImageFormat,
+                samples = VkSampleCountFlagBits.VK_SAMPLE_COUNT_1_BIT,
+                loadOp = VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR,
+                storeOp = VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE,
+                stencilLoadOp = VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE,
+                stencilStoreOp = VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE,
+                initialLayout = VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED,
+                finalLayout = VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR,
             };
 
-            var colorAttachmentRef = new AttachmentReference()
+            var colorAttachmentRef = new VkAttachmentReference()
             {
-                Attachment = 0,
-                Layout = Vulkan.ImageLayout.ColorAttachmentOptimal,
+                attachment = 0,
+                layout = VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
             };
 
-            var subpass = new SubpassDescription()
+            var subpass = new VkSubpassDescription()
             {
-                PipelineBindPoint = PipelineBindPoint.Graphics,
-                ColorAttachmentCount = 1,
-                ColorAttachments = new AttachmentReference[] { colorAttachmentRef },
+                pipelineBindPoint = VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS,
+                colorAttachmentCount = 1,
+                pColorAttachments = &colorAttachmentRef,
             };
 
-            var dependency = new SubpassDependency()
+            var dependency = new VkSubpassDependency()
             {
-                SrcSubpass = VK_SUBPASS_EXTERNAL,
-                SrcStageMask = PipelineStageFlags.ColorAttachmentOutput,
-                SrcAccessMask = 0,
+                srcSubpass = VK_SUBPASS_EXTERNAL,
+                srcStageMask = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                srcAccessMask = 0,
 
-                DstSubpass = 0,
-                DstStageMask = PipelineStageFlags.ColorAttachmentOutput,
-                DstAccessMask = AccessFlags.ColorAttachmentRead | AccessFlags.ColorAttachmentWrite,
+                dstSubpass = 0,
+                dstStageMask = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                dstAccessMask = VkAccessFlagBits.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT | VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR,
             };
 
-            var renderPassInfo = new RenderPassCreateInfo()
+            var renderPassInfo = new VkRenderPassCreateInfo()
             {
-                AttachmentCount = 1,
-                Attachments = new AttachmentDescription[] { colorAttachment },
-                SubpassCount = 1,
-                Subpasses = new SubpassDescription[] { subpass },
-                DependencyCount = 1,
-                Dependencies = new SubpassDependency[] { dependency },
+                sType = VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
+                attachmentCount = 1,
+                pAttachments = &colorAttachment,
+                subpassCount = 1,
+                pSubpasses = &subpass,
+                dependencyCount = 1,
+                pDependencies = &dependency,
             };
 
-            vkRenderPass = vkDevice.CreateRenderPass(renderPassInfo);
+            VkRenderPass newRenderPass;
+            var result = VulkanNative.vkCreateRenderPass(vkDevice, &renderPassInfo, null, &newRenderPass);
+            vkRenderPass = newRenderPass;
+            Helpers.CheckErrors(result);
         }
 
         private void CreateGraphicsPipeline()
@@ -381,151 +458,204 @@ namespace VKDrawTriangle
             var vertShaderCode = System.IO.File.ReadAllBytes("Shaders/vert.spv");
             var fragShaderCode = System.IO.File.ReadAllBytes("Shaders/frag.spv");
 
-            var vertShaderModule = vkDevice.CreateShaderModule(vertShaderCode);
-            var fragShaderModule = vkDevice.CreateShaderModule(fragShaderCode);
+            var vertShaderModule = CreateShaderModule(vertShaderCode);
+            var fragShaderModule = CreateShaderModule(fragShaderCode);
 
-            var vertShaderStageInfo = new PipelineShaderStageCreateInfo()
+            string name = "main";
+            int byteCount = System.Text.Encoding.UTF8.GetByteCount(name);
+            byte* utf8Ptr = stackalloc byte[byteCount];
+
+            fixed (char* namePtr = name)
             {
-                Stage = ShaderStageFlags.Vertex,
-                Module = vertShaderModule,
-                Name = "main",
+                System.Text.Encoding.UTF8.GetBytes(namePtr, name.Length, utf8Ptr, byteCount);
+            }
+
+            var vertShaderStageInfo = new VkPipelineShaderStageCreateInfo()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+                stage = VkShaderStageFlagBits.VK_SHADER_STAGE_VERTEX_BIT,
+                module = vertShaderModule,
+                pName = utf8Ptr,
             };
 
-            var fragShaderStageInfo = new PipelineShaderStageCreateInfo()
+            var fragShaderStageInfo = new VkPipelineShaderStageCreateInfo()
             {
-                Stage = ShaderStageFlags.Fragment,
-                Module = fragShaderModule,
-                Name = "main",
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+                stage = VkShaderStageFlagBits.VK_SHADER_STAGE_FRAGMENT_BIT,
+                module = fragShaderModule,
+                pName = utf8Ptr,
             };
 
-            var shaderStages = new PipelineShaderStageCreateInfo[] { vertShaderStageInfo, fragShaderStageInfo };
+            var shaderStages = stackalloc VkPipelineShaderStageCreateInfo[] { vertShaderStageInfo, fragShaderStageInfo };
 
             // VertexInput
-            var vertexInputInfo = new PipelineVertexInputStateCreateInfo()
+            var vertexInputInfo = new VkPipelineVertexInputStateCreateInfo()
             {
-                VertexBindingDescriptionCount = 0,
-                VertexBindingDescriptions = null,
-                VertexAttributeDescriptionCount = 0,
-                VertexAttributeDescriptions = null,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
+                vertexBindingDescriptionCount = 0,
+                pVertexBindingDescriptions = null,
+                vertexAttributeDescriptionCount = 0,
+                pVertexAttributeDescriptions = null,
             };
 
-            var inputAssembly = new PipelineInputAssemblyStateCreateInfo()
+            var inputAssembly = new VkPipelineInputAssemblyStateCreateInfo()
             {
-                Topology = PrimitiveTopology.TriangleList,
-                PrimitiveRestartEnable = false,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
+                topology = VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST,
+                primitiveRestartEnable = false,
             };
 
-            var viewport = new Viewport()
+            var viewport = new VkViewport()
             {
-                X = 0f,
-                Y = 0f,
-                Width = (float)vkSwapChainExtent.Width,
-                Height = (float)vkSwapChainExtent.Height,
-                MinDepth = 0f,
-                MaxDepth = 1f,
+                x = 0f,
+                y = 0f,
+                width = (float)vkSwapChainExtent.width,
+                height = (float)vkSwapChainExtent.height,
+                minDepth = 0f,
+                maxDepth = 1f,
             };
 
-            var scissor = new Rect2D()
+            var scissor = new VkRect2D()
             {
-                Offset = new Offset2D() { X = 0, Y = 0 },
-                Extent = vkSwapChainExtent,
+                offset = new VkOffset2D() { x = 0, y = 0 },
+                extent = vkSwapChainExtent,
             };
 
-            var viewportState = new PipelineViewportStateCreateInfo()
+            var viewportState = new VkPipelineViewportStateCreateInfo()
             {
-                ViewportCount = 1,
-                Viewports = new Viewport[] { viewport },
-                ScissorCount = 1,
-                Scissors = new Rect2D[] { scissor },
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
+                viewportCount = 1,
+                pViewports = &viewport,
+                scissorCount = 1,
+                pScissors = &scissor,
             };
 
-            var rasterizer = new PipelineRasterizationStateCreateInfo()
+            var rasterizer = new VkPipelineRasterizationStateCreateInfo()
             {
-                DepthClampEnable = false,
-                RasterizerDiscardEnable = false,
-                PolygonMode = PolygonMode.Fill,
-                LineWidth = 1f,
-                CullMode = CullModeFlags.Back,
-                FrontFace = FrontFace.Clockwise,
-                DepthBiasEnable = false,
-                DepthBiasConstantFactor = 0f,
-                DepthBiasClamp = 0f,
-                DepthBiasSlopeFactor = 0f,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
+                depthClampEnable = false,
+                rasterizerDiscardEnable = false,
+                polygonMode = VkPolygonMode.VK_POLYGON_MODE_FILL,
+                lineWidth = 1f,
+                cullMode = VkCullModeFlagBits.VK_CULL_MODE_BACK_BIT,
+                frontFace = VkFrontFace.VK_FRONT_FACE_CLOCKWISE,
+                depthBiasEnable = false,
+                depthBiasConstantFactor = 0f,
+                depthBiasClamp = 0f,
+                depthBiasSlopeFactor = 0f,
             };
 
-            var multisampling = new PipelineMultisampleStateCreateInfo()
+            var multisampling = new VkPipelineMultisampleStateCreateInfo()
             {
-                SampleShadingEnable = false,
-                RasterizationSamples = SampleCountFlags.Count1,
-                MinSampleShading = 1f,
-                SampleMask = null,
-                AlphaToCoverageEnable = false,
-                AlphaToOneEnable = false,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO,
+                sampleShadingEnable = false,
+                rasterizationSamples = VkSampleCountFlagBits.VK_SAMPLE_COUNT_1_BIT,
+                minSampleShading = 1f,
+                pSampleMask = null,
+                alphaToCoverageEnable = false,
+                alphaToOneEnable = false,
             };
 
-            var colorBlendAttachmend = new PipelineColorBlendAttachmentState()
+            var colorBlendAttachment = new VkPipelineColorBlendAttachmentState()
             {
-                ColorWriteMask = ColorComponentFlags.R | ColorComponentFlags.G | ColorComponentFlags.B | ColorComponentFlags.A,
-                BlendEnable = false,
+                colorWriteMask = VkColorComponentFlagBits.VK_COLOR_COMPONENT_R_BIT | VkColorComponentFlagBits.VK_COLOR_COMPONENT_G_BIT | VkColorComponentFlagBits.VK_COLOR_COMPONENT_B_BIT | VkColorComponentFlagBits.VK_COLOR_COMPONENT_A_BIT,
+                blendEnable = false,
             };
 
-            var colorBlending = new PipelineColorBlendStateCreateInfo()
+
+            var colorBlending = new VkPipelineColorBlendStateCreateInfo()
             {
-                LogicOpEnable = false,
-                LogicOp = LogicOp.Copy,
-                Attachments = new PipelineColorBlendAttachmentState[] { colorBlendAttachmend },
-                BlendConstants = new float[] { 0f, 0f, 0f, 0f },
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
+                logicOpEnable = false,
+                logicOp = VkLogicOp.VK_LOGIC_OP_COPY,
+                pAttachments = &colorBlendAttachment,
+                blendConstants_0 = 0f,
+                blendConstants_1 = 0f,
+                blendConstants_2 = 0f,
+                blendConstants_3 = 0f,
             };
 
-            var pipelineLayoutInfo = new PipelineLayoutCreateInfo()
+            var pipelineLayoutInfo = new VkPipelineLayoutCreateInfo()
             {
-                SetLayoutCount = 0,
-                PushConstantRangeCount = 0,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
+                setLayoutCount = 0,
+                pushConstantRangeCount = 0,
             };
 
-            vkPipelineLayout = vkDevice.CreatePipelineLayout(pipelineLayoutInfo);
+            VkPipelineLayout newPipelineLayout;
+            var result = VulkanNative.vkCreatePipelineLayout(vkDevice, &pipelineLayoutInfo, null, &newPipelineLayout);
+            vkPipelineLayout = newPipelineLayout;
+            Helpers.CheckErrors(result);
 
-            var pipelineInfo = new GraphicsPipelineCreateInfo()
+            var pipelineInfo = new VkGraphicsPipelineCreateInfo()
             {
-                StageCount = 2,
-                Stages = shaderStages,
-                VertexInputState = vertexInputInfo,
-                InputAssemblyState = inputAssembly,
-                ViewportState = viewportState,
-                RasterizationState = rasterizer,
-                MultisampleState = multisampling,
-                DepthStencilState = null,
-                ColorBlendState = colorBlending,
-                DynamicState = null,
-                Layout = vkPipelineLayout,
-                RenderPass = vkRenderPass,
-                Subpass = 0,
-                BasePipelineHandle = null,
-                BasePipelineIndex = -1,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
+                stageCount = 2,
+                pStages = shaderStages,
+                pVertexInputState = &vertexInputInfo,
+                pInputAssemblyState = &inputAssembly,
+                pViewportState = &viewportState,
+                pRasterizationState = &rasterizer,
+                pMultisampleState = &multisampling,
+                pDepthStencilState = null,
+                pColorBlendState = &colorBlending,
+                pDynamicState = null,
+                layout = vkPipelineLayout,
+                renderPass = vkRenderPass,
+                subpass = 0,
+                basePipelineHandle = 0,
+                basePipelineIndex = -1,
             };
 
-            vkGraphicsPipeline = vkDevice.CreateGraphicsPipelines(null, new GraphicsPipelineCreateInfo[] { pipelineInfo })[0];
+            VkPipeline newPipeline;
+            VulkanNative.vkCreateGraphicsPipelines(vkDevice, 0, 1, &pipelineInfo, null, &newPipeline);
+            vkGraphicsPipeline = newPipeline;
+
+            VulkanNative.vkDestroyShaderModule(vkDevice, vertShaderModule, null);
+            VulkanNative.vkDestroyShaderModule(vkDevice, fragShaderModule, null);
+        }
+
+        private VkShaderModule CreateShaderModule(byte[] shaderCode)
+        {
+            VkShaderModuleCreateInfo createInfo = new VkShaderModuleCreateInfo()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
+                codeSize = (UIntPtr)shaderCode.Length,
+            };
+
+            fixed (byte* sourcePointer = shaderCode)
+            {
+                createInfo.pCode = (uint*)sourcePointer;
+            }
+
+            VkShaderModule newShaderModule;
+            VulkanNative.vkCreateShaderModule(vkDevice, &createInfo, null, &newShaderModule);
+
+            return newShaderModule;
         }
 
         private void CreateFrameBuffers()
         {
-            vkSwapChainFramebuffers = new Framebuffer[vkSwapChainImageViews.Length];
+            vkSwapChainFramebuffers = new VkFramebuffer[vkSwapChainImageViews.Length];
 
             for (int i = 0; i < vkSwapChainImageViews.Length; i++)
             {
-                var attachments = new ImageView[] { vkSwapChainImageViews[i] };
+                var attachments = stackalloc VkImageView[] { vkSwapChainImageViews[i] };
 
-                var frameBufferInfo = new FramebufferCreateInfo()
+                var frameBufferInfo = new VkFramebufferCreateInfo()
                 {
-                    RenderPass = vkRenderPass,
-                    AttachmentCount = 1,
-                    Attachments = attachments,
-                    Width = vkSwapChainExtent.Width,
-                    Height = vkSwapChainExtent.Height,
-                    Layers = 1,
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO,
+                    renderPass = vkRenderPass,
+                    attachmentCount = 1,
+                    pAttachments = attachments,
+                    width = vkSwapChainExtent.width,
+                    height = vkSwapChainExtent.height,
+                    layers = 1,
                 };
 
-                vkSwapChainFramebuffers[i] = vkDevice.CreateFramebuffer(frameBufferInfo);
+                VkFramebuffer newFrameBuffer;
+                VulkanNative.vkCreateFramebuffer(vkDevice, &frameBufferInfo, null, &newFrameBuffer);
+                vkSwapChainFramebuffers[i] = newFrameBuffer;
             }
         }
 
@@ -533,62 +663,80 @@ namespace VKDrawTriangle
         {
             var indices = new QueueFamilyIndices(vkPhysicalDevice, vkSurface);
 
-            var poolInfo = new CommandPoolCreateInfo()
+            var poolInfo = new VkCommandPoolCreateInfo()
             {
-                QueueFamilyIndex = (uint)indices.GraphicsFamily,
-                Flags = 0,
+                queueFamilyIndex = (uint)indices.GraphicsFamily,
+                flags = 0,
             };
 
-            vkCommandPool = vkDevice.CreateCommandPool(poolInfo);
+            VkCommandPool newCommandPool;
+            VulkanNative.vkCreateCommandPool(vkDevice, &poolInfo, null, &newCommandPool);
+            vkCommandPool = newCommandPool;
         }
 
         private void CreateCommandBuffers()
         {
-            var allocInfo = new CommandBufferAllocateInfo()
+            var allocInfo = new VkCommandBufferAllocateInfo()
             {
-                CommandPool = vkCommandPool,
-                Level = CommandBufferLevel.Primary,
-                CommandBufferCount = (uint)vkSwapChainFramebuffers.Length,
+                commandPool = vkCommandPool,
+                level = VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY,
+                commandBufferCount = (uint)vkSwapChainFramebuffers.Length,
             };
 
-            vkCommandBuffers = vkDevice.AllocateCommandBuffers(allocInfo);
+            vkCommandBuffers = new VkCommandBuffer[vkSwapChainFramebuffers.Length];
+            fixed(VkCommandBuffer* newCommandBuffer = vkCommandBuffers)
+            VulkanNative.vkAllocateCommandBuffers(vkDevice, &allocInfo, newCommandBuffer);
 
             for (int i = 0; i < vkCommandBuffers.Length; i++)
             {
-                var beginInfo = new CommandBufferBeginInfo()
+                var commandBuffer = vkCommandBuffers[i];
+
+                var beginInfo = new VkCommandBufferBeginInfo()
                 {
-                    Flags = CommandBufferUsageFlags.SimultaneousUse,
-                    InheritanceInfo = null,
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,
+                    flags = VkCommandBufferUsageFlagBits.VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT,
+                    pInheritanceInfo = null,
                 };
 
-                var buffer = vkCommandBuffers[i];
-                buffer.Begin(beginInfo);
+                var result = VulkanNative.vkBeginCommandBuffer(commandBuffer, &beginInfo);
+                Helpers.CheckErrors(result);
 
-                var renderPassInfo = new RenderPassBeginInfo()
+                VkClearValue clearColor = new VkClearValue()
                 {
-                    RenderPass = vkRenderPass,
-                    Framebuffer = vkSwapChainFramebuffers[i],
-                    RenderArea = new Rect2D() { Extent = vkSwapChainExtent },
-                    ClearValues = new ClearValue[] { new ClearValue() { Color = new ClearColorValue(new float[] { 0.0f, 0.0f, 0.0f, 1.0f }) } },
+                    color = new VkClearColorValue(0, 0, 0, 1f),
                 };
 
-                buffer.CmdBeginRenderPass(renderPassInfo, SubpassContents.Inline);
-                buffer.CmdBindPipeline(PipelineBindPoint.Graphics, vkGraphicsPipeline);
-                buffer.CmdDraw(3, 1, 0, 0);
-                buffer.CmdEndRenderPass();
-                buffer.End();
+                var renderPassInfo = new VkRenderPassBeginInfo()
+                {
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO,
+                    renderPass = vkRenderPass,
+                    framebuffer = vkSwapChainFramebuffers[i],
+                    renderArea = new VkRect2D() { extent = vkSwapChainExtent },
+                    pClearValues = &clearColor,
+                    clearValueCount = 1,
+                };
+
+                VulkanNative.vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VkSubpassContents.VK_SUBPASS_CONTENTS_INLINE);
+                VulkanNative.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS, vkGraphicsPipeline);
+                VulkanNative.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+                VulkanNative.vkCmdEndRenderPass(commandBuffer);
+                result = VulkanNative.vkEndCommandBuffer(commandBuffer);
+                Helpers.CheckErrors(result);
             }
         }
 
         private void CreateSemaphores()
         {
-            var semaphoreInfo = new VkSemaphoreCreateInfo();
+            var semaphoreInfo = new VkSemaphoreCreateInfo()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO,
+            };
 
-            fixed(VkSemaphore* vkSemaphore = &vkImageAvailableSemaphore)
-            VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
+            fixed (VkSemaphore* vkSemaphore = &vkImageAvailableSemaphore)
+                VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
 
             fixed (VkSemaphore* vkSemaphore = &vkRenderFinishedSemaphore)
-            VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
+                VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
         }
     }
 }

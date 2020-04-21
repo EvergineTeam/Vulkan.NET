@@ -264,22 +264,6 @@ namespace VulkanGen
                     // public function
                     file.WriteLine($"\t\tpublic static {convertedType} {command.Prototype.Name}({command.GetParametersSignature(vulkanSpec)})");
                     file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignature(vulkanSpec, useTypes: false)});\n");
-
-                    // Ref versions
-                    if (command.Parameters.Exists(p => p.PointerLevel == 1 && p.Type != "void"))
-                    {
-                        file.WriteLine("\t\t[UnmanagedFunctionPointer(CallConv)]");
-
-                        // Delegate
-                        file.WriteLine($"\t\tprivate delegate {convertedType} {command.Prototype.Name}DelegateRef({command.GetParametersSignature(vulkanSpec, useRef: true)});");
-
-                        // internal function
-                        file.WriteLine($"\t\tprivate static {command.Prototype.Name}DelegateRef {command.Prototype.Name}Ref_ptr;");
-
-                        // public function
-                        file.WriteLine($"\t\tpublic static {convertedType} {command.Prototype.Name}({command.GetParametersSignature(vulkanSpec, useRef: true)})");
-                        file.WriteLine($"\t\t\t=> {command.Prototype.Name}Ref_ptr({command.GetParametersSignature(vulkanSpec, false, true)});\n");
-                    }
                 }
 
                 file.WriteLine($"\t\tprivate static void LoadFuncionPointers()");
