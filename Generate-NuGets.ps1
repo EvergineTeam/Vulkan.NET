@@ -13,19 +13,13 @@
 param (
     [Parameter(mandatory=$true)][string]$version,	
 	[string]$outputFolderBase = "nupkgs",
-	[string]$buildVerbosity = "minimal",
+	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
 	[string]$vulkanBindingsCsprojPath = "VulkanGen\VulkanGen\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj"
 )
 
 # Utility functions
 function LogDebug($line) { Write-Host "##[debug] $line" -Foreground Blue -Background Black }
-
-# Locate build tools
-$msbuildPath = tools\vswhere.exe -latest -prerelease -products * -requires Microsoft.Component.MSBuild -property installationPath
-if(-Not $?) { exit $lastexitcode }
-$msbuildPath = Resolve-Path (Join-Path $msbuildPath 'MSBuild\*\Bin\MSBuild.exe')
-if (-Not (Test-Path $msbuildPath)) { throw "MSBuild not found." }
 
 # Show variables
 LogDebug "############## VARIABLES ##############"
@@ -42,6 +36,6 @@ $absoluteOutputFolder = Resolve-Path $outputFolder
 
 # Generate packages
 LogDebug "START packaging process"
-& $msbuildPath /nologo "$vulkanBindingsCsprojPath" /t:restore,build,pack /p:Configuration=$buildConfiguration /v:$buildVerbosity /p:PackageOutputPath="$absoluteOutputFolder" /p:IncludeSymbols=true /p:Version=$version
+& dotnet pack "$vulkanBindingsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:PackageOutputPath="$absoluteOutputFolder" -p:IncludeSymbols=true -p:Version=$version
 
 LogDebug "END packaging process"
