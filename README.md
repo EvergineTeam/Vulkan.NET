@@ -2,7 +2,7 @@
 This repository contains low-level bindings for Vulkan used in WaveEngine for .NET Core and .NET 5.0.
 This binding is generated from vk.xml file included in the KhronosRegistry folder.
 
-[![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Releases/WaveEngine.Bindings.Vulkan?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build/latest?definitionId=26&branchName=master)
+[![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Releases/WaveEngine.Bindings.Vulkan?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build?definitionId=58)
 
 ## Features
 
