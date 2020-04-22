@@ -60,15 +60,15 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, pMemoryProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate PFN_vkVoidFunction vkGetInstanceProcAddrDelegate(VkInstance instance, byte* pName);
+		private delegate IntPtr vkGetInstanceProcAddrDelegate(VkInstance instance, byte* pName);
 		private static vkGetInstanceProcAddrDelegate vkGetInstanceProcAddr_ptr;
-		public static PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, byte* pName)
+		public static IntPtr vkGetInstanceProcAddr(VkInstance instance, byte* pName)
 			=> vkGetInstanceProcAddr_ptr(instance, pName);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate PFN_vkVoidFunction vkGetDeviceProcAddrDelegate(VkDevice device, byte* pName);
+		private delegate IntPtr vkGetDeviceProcAddrDelegate(VkDevice device, byte* pName);
 		private static vkGetDeviceProcAddrDelegate vkGetDeviceProcAddr_ptr;
-		public static PFN_vkVoidFunction vkGetDeviceProcAddr(VkDevice device, byte* pName)
+		public static IntPtr vkGetDeviceProcAddr(VkDevice device, byte* pName)
 			=> vkGetDeviceProcAddr_ptr(device, pName);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1188,9 +1188,9 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkCreateXlibSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate uint vkGetPhysicalDeviceXlibPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr dpy, IntPtr visualID);
+		private delegate VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr dpy, IntPtr visualID);
 		private static vkGetPhysicalDeviceXlibPresentationSupportKHRDelegate vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
-		public static uint vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr dpy, IntPtr visualID)
+		public static VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr dpy, IntPtr visualID)
 			=> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, dpy, visualID);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1200,9 +1200,9 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkCreateXcbSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate uint vkGetPhysicalDeviceXcbPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr connection, IntPtr visual_id);
+		private delegate VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr connection, IntPtr visual_id);
 		private static vkGetPhysicalDeviceXcbPresentationSupportKHRDelegate vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
-		public static uint vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr connection, IntPtr visual_id)
+		public static VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr connection, IntPtr visual_id)
 			=> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, connection, visual_id);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1212,9 +1212,9 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkCreateWaylandSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate uint vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display);
+		private delegate VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display);
 		private static vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
-		public static uint vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
+		public static VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
 			=> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1230,9 +1230,9 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkCreateWin32SurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate uint vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex);
+		private delegate VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex);
 		private static vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
-		public static uint vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
+		public static VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
 			=> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex);
 
 		[UnmanagedFunctionPointer(CallConv)]

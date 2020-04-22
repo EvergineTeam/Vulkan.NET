@@ -55,10 +55,12 @@ namespace VKDrawTriangle
 
         public void DrawFrame()
         {
-            VulkanNative.vkQueueWaitIdle(vkPresentQueue);
+            var result = VulkanNative.vkQueueWaitIdle(vkPresentQueue);
+            Helpers.CheckErrors(result);
 
             uint imageIndex;
-            VulkanNative.vkAcquireNextImageKHR(vkDevice, vkSwapChain, ulong.MaxValue, vkImageAvailableSemaphore, 0, &imageIndex);
+            result = VulkanNative.vkAcquireNextImageKHR(vkDevice, vkSwapChain, ulong.MaxValue, vkImageAvailableSemaphore, 0, &imageIndex);
+            Helpers.CheckErrors(result);
 
             VkSemaphore* waitSemaphores = stackalloc VkSemaphore[] { vkImageAvailableSemaphore };
             VkPipelineStageFlagBits* waitStages = stackalloc VkPipelineStageFlagBits[] { VkPipelineStageFlagBits.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
@@ -72,10 +74,11 @@ namespace VKDrawTriangle
                 pWaitDstStageMask = waitStages,
                 commandBufferCount = 1,
                 pCommandBuffers = commandBuffers,
+                signalSemaphoreCount = 1,
                 pSignalSemaphores = signalSemaphores,
             };
 
-            var result = VulkanNative.vkQueueSubmit(vkGraphicsQueue, 1, &submitInfo, 0);
+            result = VulkanNative.vkQueueSubmit(vkGraphicsQueue, 1, &submitInfo, 0);
             Helpers.CheckErrors(result);
 
             VkSwapchainKHR* swapChains = stackalloc VkSwapchainKHR[] { vkSwapChain };
@@ -84,11 +87,13 @@ namespace VKDrawTriangle
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
                 waitSemaphoreCount = 1,
                 pWaitSemaphores = signalSemaphores,
+                swapchainCount = 1,
                 pSwapchains = swapChains,
                 pImageIndices = &imageIndex,
             };
 
-            VulkanNative.vkQueuePresentKHR(vkPresentQueue, &presentInfo);
+            result = VulkanNative.vkQueuePresentKHR(vkPresentQueue, &presentInfo);
+            Helpers.CheckErrors(result);
         }
 
         public void CleanUp()
@@ -118,11 +123,20 @@ namespace VKDrawTriangle
             VulkanNative.vkDestroyDevice(vkDevice, null);
 
             VulkanNative.vkDestroySurfaceKHR(vkInstance, vkSurface, null);
+
+            this.debugCallbackFunc = null;
+            IntPtr destroyFuncPtr = VulkanNative.vkGetInstanceProcAddr(this.vkInstance, "vkDestroyDebugReportCallbackEXT".ToPointer());
+            vkDestroyDebugReportCallbackEXT_d destroyDel = Marshal.GetDelegateForFunctionPointer<vkDestroyDebugReportCallbackEXT_d>(destroyFuncPtr);
+            destroyDel(this.vkInstance, this.debugCallbackHandle, null);
+
             VulkanNative.vkDestroyInstance(vkInstance, null);
         }
 
         private void CreateInstance()
         {
+            ////var availableExtensions = EnumerateInstanceExtensions();
+            ////var availableLayers = EnumerateInstanceLayers();
+
             VkApplicationInfo appInfo = new VkApplicationInfo()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -135,6 +149,7 @@ namespace VKDrawTriangle
             {
                 "VK_KHR_surface",
                 "VK_KHR_win32_surface",
+                "VK_EXT_debug_report",
             };
 
             IntPtr* extensionsToEnableArray = stackalloc IntPtr[extensions.Length];
@@ -144,22 +159,139 @@ namespace VKDrawTriangle
                 extensionsToEnableArray[i] = Marshal.StringToHGlobalAnsi(extension);
             }
 
+            string[] layers = new string[]
+            {
+                "VK_LAYER_LUNARG_standard_validation"
+            };
+
+            IntPtr* layersToEnableArray = stackalloc IntPtr[layers.Length];
+            for (int i = 0; i < layers.Length; i++)
+            {
+                string layer = layers[i];
+                layersToEnableArray[i] = Marshal.StringToHGlobalAnsi(layer);
+            }
+
             VkInstanceCreateInfo createInfo = new VkInstanceCreateInfo()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
                 ppEnabledExtensionNames = (byte**)extensionsToEnableArray,
+                enabledExtensionCount = (uint)extensions.Length,
+                enabledLayerCount = (uint)layers.Length,
+                ppEnabledLayerNames = (byte**)layersToEnableArray,
                 pApplicationInfo = &appInfo,
             };
+
+            VkInstance newInstance;
+            var result = VulkanNative.vkCreateInstance(&createInfo, null, &newInstance);
+            this.vkInstance = newInstance;
+            Helpers.CheckErrors(result);
 
             for (int i = 0; i < extensions.Length; i++)
             {
                 Marshal.FreeHGlobal(extensionsToEnableArray[i]);
             }
 
-            VkInstance newInstance;
-            VkResult result = VulkanNative.vkCreateInstance(&createInfo, null, &newInstance);
-            this.vkInstance = newInstance;
+            for (int i = 0; i < layers.Length; i++)
+            {
+                Marshal.FreeHGlobal(layersToEnableArray[i]);
+            }
+
+            EnableDebugCallback();
+        }
+
+        internal delegate VkResult vkCreateDebugReportCallbackEXT_d(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, IntPtr allocatorPtr, out VkDebugReportCallbackEXT ret);
+
+        internal delegate void vkDestroyDebugReportCallbackEXT_d(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* pAllocator);
+
+        internal delegate VkResult vkDebugMarkerSetObjectNameEXT_d(VkDevice device, VkDebugMarkerObjectNameInfoEXT* pNameInfo);
+
+        private VkDebugReportCallbackEXT debugCallbackHandle;
+        private PFN_vkDebugReportCallbackEXT debugCallbackFunc;
+
+        private void EnableDebugCallback(VkDebugReportFlagBitsEXT flags = VkDebugReportFlagBitsEXT.VK_DEBUG_REPORT_ERROR_BIT_EXT | VkDebugReportFlagBitsEXT.VK_DEBUG_REPORT_WARNING_BIT_EXT | VkDebugReportFlagBitsEXT.VK_DEBUG_REPORT_DEBUG_BIT_EXT)
+        {
+            Debug.WriteLine("Enabling Vulkan Debug callbacks.");
+
+            this.debugCallbackFunc = this.DebugCallback;
+            IntPtr debugFunctionPtr = Marshal.GetFunctionPointerForDelegate(this.debugCallbackFunc);
+
+            VkDebugReportCallbackCreateInfoEXT debugCallbackCI = new VkDebugReportCallbackCreateInfoEXT();
+            debugCallbackCI.sType = VkStructureType.VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+            debugCallbackCI.flags = flags;
+            debugCallbackCI.pfnCallback = debugFunctionPtr;
+
+            var createFnPtr = VulkanNative.vkGetInstanceProcAddr(this.vkInstance, "vkCreateDebugReportCallbackEXT".ToPointer());
+
+            if (createFnPtr == IntPtr.Zero)
+            {
+                return;
+            }
+
+            vkCreateDebugReportCallbackEXT_d createDelegate = Marshal.GetDelegateForFunctionPointer<vkCreateDebugReportCallbackEXT_d>(createFnPtr);
+            VkResult result = createDelegate(this.vkInstance, &debugCallbackCI, IntPtr.Zero, out this.debugCallbackHandle);
             Helpers.CheckErrors(result);
+        }
+
+        private VkBool32 DebugCallback(uint flags, VkDebugReportObjectTypeEXT objectType, ulong @object, UIntPtr location, int messageCode, byte* pLayerPrefix, byte* pMessage, void* pUserData)
+        {
+            string message = Marshal.PtrToStringAnsi((IntPtr)pMessage);
+            VkDebugReportFlagBitsEXT debugReportFlags = (VkDebugReportFlagBitsEXT)flags;
+
+            string fullMessage = $"[{debugReportFlags}] ({objectType}) {message}";
+
+            if (debugReportFlags == VkDebugReportFlagBitsEXT.VK_DEBUG_REPORT_ERROR_BIT_EXT)
+            {
+                throw new InvalidOperationException(fullMessage);
+            }
+
+            return false;
+        }
+
+        public string[] EnumerateInstanceExtensions()
+        {
+            uint propCount = 0;
+            VkResult result = VulkanNative.vkEnumerateInstanceExtensionProperties((byte*)null, &propCount, null);
+            Helpers.CheckErrors(result);
+
+            if (propCount == 0)
+            {
+                return Array.Empty<string>();
+            }
+
+            VkExtensionProperties* props = stackalloc VkExtensionProperties[(int)propCount];
+            VulkanNative.vkEnumerateInstanceExtensionProperties((byte*)null, &propCount, props);
+
+            string[] ret = new string[propCount];
+            for (int i = 0; i < propCount; i++)
+            {
+                    ret[i] = Marshal.PtrToStringAnsi((IntPtr)props[i].extensionName);
+            }
+
+            return ret;
+        }
+
+        public string[] EnumerateInstanceLayers()
+        {
+            uint propCount = 0;
+            VkResult result = VulkanNative.vkEnumerateInstanceLayerProperties(&propCount, null);
+            Helpers.CheckErrors(result);
+
+            if (propCount == 0)
+            {
+                return Array.Empty<string>();
+            }
+
+            VkLayerProperties* props = stackalloc VkLayerProperties[(int)propCount];
+            result = VulkanNative.vkEnumerateInstanceLayerProperties(&propCount, props);
+            Helpers.CheckErrors(result);
+
+            string[] ret = new string[propCount];
+            for (int i = 0; i < propCount; i++)
+            {
+                ret[i] = Marshal.PtrToStringAnsi((IntPtr)props[i].layerName);
+            }
+
+            return ret;
         }
 
         private void CreateSurface(IntPtr windowHandle)
@@ -218,6 +350,7 @@ namespace VKDrawTriangle
 
             var createInfo = new VkDeviceCreateInfo()
             {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
                 ppEnabledExtensionNames = (byte**)extensionsToEnableArray,
                 enabledExtensionCount = (uint)extensionsCount,
                 pQueueCreateInfos = queueCreateInfos,
@@ -226,8 +359,9 @@ namespace VKDrawTriangle
             };
 
             VkDevice newDevice;
-            VulkanNative.vkCreateDevice(this.vkPhysicalDevice, &createInfo, null, &newDevice);
+            var result = VulkanNative.vkCreateDevice(this.vkPhysicalDevice, &createInfo, null, &newDevice);
             this.vkDevice = newDevice;
+            Helpers.CheckErrors(result);
 
             for (int i = 0; i < extensionsCount; i++)
             {
@@ -292,12 +426,14 @@ namespace VKDrawTriangle
             }
 
             VkSwapchainKHR newSwapChain;
-            VulkanNative.vkCreateSwapchainKHR(vkDevice, &createInfo, null, &newSwapChain);
+            var result = VulkanNative.vkCreateSwapchainKHR(vkDevice, &createInfo, null, &newSwapChain);
             vkSwapChain = newSwapChain;
+            Helpers.CheckErrors(result);
 
             VulkanNative.vkGetSwapchainImagesKHR(vkDevice, vkSwapChain, &imageCount, null);
             VkImage* images = stackalloc VkImage[(int)imageCount];
-            VulkanNative.vkGetSwapchainImagesKHR(vkDevice, vkSwapChain, &imageCount, images);
+            result = VulkanNative.vkGetSwapchainImagesKHR(vkDevice, vkSwapChain, &imageCount, images);
+            Helpers.CheckErrors(result);
 
             vkSwapChainImages = new VkImage[imageCount];
             for (int i = 0; i < imageCount; i++)
@@ -367,11 +503,10 @@ namespace VKDrawTriangle
 
             for (int i = 0; i < vkSwapChainImages.Length; i++)
             {
-                var image = vkSwapChainImages[i];
                 VkImageViewCreateInfo createInfo = new VkImageViewCreateInfo()
                 {
-                    sType = VkStructureType.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,
-                    image = image,
+                    sType = VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,
+                    image = vkSwapChainImages[i],
                     viewType = VkImageViewType.VK_IMAGE_VIEW_TYPE_2D,
                     format = vkSwapChainImageFormat,
                     components = new VkComponentMapping()
@@ -391,9 +526,10 @@ namespace VKDrawTriangle
                     }
                 };
 
-                VkImageView* newImageView = null;
-                VulkanNative.vkCreateImageView(vkDevice, &createInfo, null, newImageView);
-                vkSwapChainImageViews[i] = *newImageView;
+                VkImageView newImageView;
+                var result = VulkanNative.vkCreateImageView(vkDevice, &createInfo, null, &newImageView);
+                vkSwapChainImageViews[i] = newImageView;
+                Helpers.CheckErrors(result);
             }
         }
 
@@ -432,7 +568,7 @@ namespace VKDrawTriangle
 
                 dstSubpass = 0,
                 dstStageMask = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
-                dstAccessMask = VkAccessFlagBits.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT | VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR,
+                dstAccessMask = VkAccessFlagBits.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,
             };
 
             var renderPassInfo = new VkRenderPassCreateInfo()
@@ -569,6 +705,7 @@ namespace VKDrawTriangle
                 logicOpEnable = false,
                 logicOp = VkLogicOp.VK_LOGIC_OP_COPY,
                 pAttachments = &colorBlendAttachment,
+                attachmentCount = 1,
                 blendConstants_0 = 0f,
                 blendConstants_1 = 0f,
                 blendConstants_2 = 0f,
@@ -577,7 +714,7 @@ namespace VKDrawTriangle
 
             var pipelineLayoutInfo = new VkPipelineLayoutCreateInfo()
             {
-                sType = VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
                 setLayoutCount = 0,
                 pushConstantRangeCount = 0,
             };
@@ -608,8 +745,9 @@ namespace VKDrawTriangle
             };
 
             VkPipeline newPipeline;
-            VulkanNative.vkCreateGraphicsPipelines(vkDevice, 0, 1, &pipelineInfo, null, &newPipeline);
+            result = VulkanNative.vkCreateGraphicsPipelines(vkDevice, 0, 1, &pipelineInfo, null, &newPipeline);
             vkGraphicsPipeline = newPipeline;
+            Helpers.CheckErrors(result);
 
             VulkanNative.vkDestroyShaderModule(vkDevice, vertShaderModule, null);
             VulkanNative.vkDestroyShaderModule(vkDevice, fragShaderModule, null);
@@ -629,7 +767,8 @@ namespace VKDrawTriangle
             }
 
             VkShaderModule newShaderModule;
-            VulkanNative.vkCreateShaderModule(vkDevice, &createInfo, null, &newShaderModule);
+            var result = VulkanNative.vkCreateShaderModule(vkDevice, &createInfo, null, &newShaderModule);
+            Helpers.CheckErrors(result);
 
             return newShaderModule;
         }
@@ -654,8 +793,9 @@ namespace VKDrawTriangle
                 };
 
                 VkFramebuffer newFrameBuffer;
-                VulkanNative.vkCreateFramebuffer(vkDevice, &frameBufferInfo, null, &newFrameBuffer);
+                var result = VulkanNative.vkCreateFramebuffer(vkDevice, &frameBufferInfo, null, &newFrameBuffer);
                 vkSwapChainFramebuffers[i] = newFrameBuffer;
+                Helpers.CheckErrors(result);
             }
         }
 
@@ -665,19 +805,22 @@ namespace VKDrawTriangle
 
             var poolInfo = new VkCommandPoolCreateInfo()
             {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,
                 queueFamilyIndex = (uint)indices.GraphicsFamily,
                 flags = 0,
             };
 
             VkCommandPool newCommandPool;
-            VulkanNative.vkCreateCommandPool(vkDevice, &poolInfo, null, &newCommandPool);
+            var result = VulkanNative.vkCreateCommandPool(vkDevice, &poolInfo, null, &newCommandPool);
             vkCommandPool = newCommandPool;
+            Helpers.CheckErrors(result);
         }
 
         private void CreateCommandBuffers()
         {
             var allocInfo = new VkCommandBufferAllocateInfo()
             {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
                 commandPool = vkCommandPool,
                 level = VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY,
                 commandBufferCount = (uint)vkSwapChainFramebuffers.Length,
@@ -732,11 +875,14 @@ namespace VKDrawTriangle
                 sType = VkStructureType.VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO,
             };
 
-            fixed (VkSemaphore* vkSemaphore = &vkImageAvailableSemaphore)
-                VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
+            VkSemaphore vkSemaphore;
+            var result = VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, &vkSemaphore);
+            vkImageAvailableSemaphore = vkSemaphore;
+            Helpers.CheckErrors(result);
 
-            fixed (VkSemaphore* vkSemaphore = &vkRenderFinishedSemaphore)
-                VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, vkSemaphore);
+            result = VulkanNative.vkCreateSemaphore(vkDevice, &semaphoreInfo, null, &vkSemaphore);
+            vkRenderFinishedSemaphore = vkSemaphore;
+            Helpers.CheckErrors(result);
         }
     }
 }

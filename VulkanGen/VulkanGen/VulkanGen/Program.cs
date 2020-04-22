@@ -230,28 +230,7 @@ namespace VulkanGen
 
                 foreach (var command in vulkanVersion.Commands)
                 {
-                    string type, convertedType;
-                    type = command.Prototype.Type;
-
-                    vulkanSpec.BaseTypes.TryGetValue(type, out string baseType);
-                    if (baseType != null)
-                    {
-                        type = baseType;
-                    }
-                    else
-                    {
-                        var typeDef = vulkanSpec.TypeDefs.Find(t => t.Name == type);
-                        if (typeDef != null)
-                        {
-                            vulkanSpec.BaseTypes.TryGetValue(typeDef.Type, out type);
-                        }
-                    }
-
-                    convertedType = Helpers.ConvertBasicTypes(type);
-                    if (convertedType == string.Empty)
-                    {
-                        convertedType = type;
-                    }
+                    string convertedType = Helpers.ConvertToCSharpType(command.Prototype.Type, 0, vulkanSpec);
 
                     file.WriteLine("\t\t[UnmanagedFunctionPointer(CallConv)]");
 
