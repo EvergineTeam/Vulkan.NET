@@ -168,6 +168,28 @@ namespace VulkanGen
             }
         }
 
+        public static bool SupportFixed(string type)
+        {
+            switch (type)
+            {
+                case "bool":
+                case "byte":
+                case "short":
+                case "int":
+                case "long":
+                case "char":
+                case "sbyte":
+                case "ushort":
+                case "uint":
+                case "ulong":
+                case "float":
+                case "double":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         public static bool IsIntPtr(string type)
         {
             switch (type)

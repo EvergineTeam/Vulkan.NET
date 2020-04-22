@@ -90,8 +90,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public uint vendorID;
 		public uint deviceID;
 		public VkPhysicalDeviceType deviceType;
-		public byte deviceName;
-		public byte pipelineCacheUUID;
+		public fixed byte deviceName[(int)Vulkan.VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+		public fixed byte pipelineCacheUUID[(int)Vulkan.VK_UUID_SIZE];
 		public VkPhysicalDeviceLimits limits;
 		public VkPhysicalDeviceSparseProperties sparseProperties;
 	}
@@ -99,17 +99,17 @@ namespace WaveEngine.Bindings.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkExtensionProperties
 	{
-		public byte extensionName;
+		public fixed byte extensionName[(int)Vulkan.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkLayerProperties
 	{
-		public byte layerName;
+		public fixed byte layerName[(int)Vulkan.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
 		public uint implementationVersion;
-		public byte description;
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -187,9 +187,55 @@ namespace WaveEngine.Bindings.Vulkan
 	public unsafe partial struct VkPhysicalDeviceMemoryProperties
 	{
 		public uint memoryTypeCount;
-		public VkMemoryType memoryTypes;
+		public VkMemoryType memoryTypes_0;
+		public VkMemoryType memoryTypes_1;
+		public VkMemoryType memoryTypes_2;
+		public VkMemoryType memoryTypes_3;
+		public VkMemoryType memoryTypes_4;
+		public VkMemoryType memoryTypes_5;
+		public VkMemoryType memoryTypes_6;
+		public VkMemoryType memoryTypes_7;
+		public VkMemoryType memoryTypes_8;
+		public VkMemoryType memoryTypes_9;
+		public VkMemoryType memoryTypes_10;
+		public VkMemoryType memoryTypes_11;
+		public VkMemoryType memoryTypes_12;
+		public VkMemoryType memoryTypes_13;
+		public VkMemoryType memoryTypes_14;
+		public VkMemoryType memoryTypes_15;
+		public VkMemoryType memoryTypes_16;
+		public VkMemoryType memoryTypes_17;
+		public VkMemoryType memoryTypes_18;
+		public VkMemoryType memoryTypes_19;
+		public VkMemoryType memoryTypes_20;
+		public VkMemoryType memoryTypes_21;
+		public VkMemoryType memoryTypes_22;
+		public VkMemoryType memoryTypes_23;
+		public VkMemoryType memoryTypes_24;
+		public VkMemoryType memoryTypes_25;
+		public VkMemoryType memoryTypes_26;
+		public VkMemoryType memoryTypes_27;
+		public VkMemoryType memoryTypes_28;
+		public VkMemoryType memoryTypes_29;
+		public VkMemoryType memoryTypes_30;
+		public VkMemoryType memoryTypes_31;
 		public uint memoryHeapCount;
-		public VkMemoryHeap memoryHeaps;
+		public VkMemoryHeap memoryHeaps_0;
+		public VkMemoryHeap memoryHeaps_1;
+		public VkMemoryHeap memoryHeaps_2;
+		public VkMemoryHeap memoryHeaps_3;
+		public VkMemoryHeap memoryHeaps_4;
+		public VkMemoryHeap memoryHeaps_5;
+		public VkMemoryHeap memoryHeaps_6;
+		public VkMemoryHeap memoryHeaps_7;
+		public VkMemoryHeap memoryHeaps_8;
+		public VkMemoryHeap memoryHeaps_9;
+		public VkMemoryHeap memoryHeaps_10;
+		public VkMemoryHeap memoryHeaps_11;
+		public VkMemoryHeap memoryHeaps_12;
+		public VkMemoryHeap memoryHeaps_13;
+		public VkMemoryHeap memoryHeaps_14;
+		public VkMemoryHeap memoryHeaps_15;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1921,8 +1967,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDriverId driverID;
-		public byte driverName;
-		public byte driverInfo;
+		public fixed byte driverName[(int)Vulkan.VK_MAX_DRIVER_NAME_SIZE];
+		public fixed byte driverInfo[(int)Vulkan.VK_MAX_DRIVER_INFO_SIZE];
 		public VkConformanceVersion conformanceVersion;
 	}
 
@@ -2006,9 +2052,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public byte deviceUUID;
-		public byte driverUUID;
-		public byte deviceLUID;
+		public fixed byte deviceUUID[(int)Vulkan.VK_UUID_SIZE];
+		public fixed byte driverUUID[(int)Vulkan.VK_UUID_SIZE];
+		public fixed byte deviceLUID[(int)Vulkan.VK_LUID_SIZE];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 	}
@@ -2367,7 +2413,38 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint physicalDeviceCount;
-		public VkPhysicalDevice physicalDevices;
+		public VkPhysicalDevice physicalDevices_0;
+		public VkPhysicalDevice physicalDevices_1;
+		public VkPhysicalDevice physicalDevices_2;
+		public VkPhysicalDevice physicalDevices_3;
+		public VkPhysicalDevice physicalDevices_4;
+		public VkPhysicalDevice physicalDevices_5;
+		public VkPhysicalDevice physicalDevices_6;
+		public VkPhysicalDevice physicalDevices_7;
+		public VkPhysicalDevice physicalDevices_8;
+		public VkPhysicalDevice physicalDevices_9;
+		public VkPhysicalDevice physicalDevices_10;
+		public VkPhysicalDevice physicalDevices_11;
+		public VkPhysicalDevice physicalDevices_12;
+		public VkPhysicalDevice physicalDevices_13;
+		public VkPhysicalDevice physicalDevices_14;
+		public VkPhysicalDevice physicalDevices_15;
+		public VkPhysicalDevice physicalDevices_16;
+		public VkPhysicalDevice physicalDevices_17;
+		public VkPhysicalDevice physicalDevices_18;
+		public VkPhysicalDevice physicalDevices_19;
+		public VkPhysicalDevice physicalDevices_20;
+		public VkPhysicalDevice physicalDevices_21;
+		public VkPhysicalDevice physicalDevices_22;
+		public VkPhysicalDevice physicalDevices_23;
+		public VkPhysicalDevice physicalDevices_24;
+		public VkPhysicalDevice physicalDevices_25;
+		public VkPhysicalDevice physicalDevices_26;
+		public VkPhysicalDevice physicalDevices_27;
+		public VkPhysicalDevice physicalDevices_28;
+		public VkPhysicalDevice physicalDevices_29;
+		public VkPhysicalDevice physicalDevices_30;
+		public VkPhysicalDevice physicalDevices_31;
 		public VkBool32 subsetAllocation;
 	}
 
@@ -2465,7 +2542,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint presentMask;
+		public fixed uint presentMask[(int)Vulkan.VK_MAX_DEVICE_GROUP_SIZE];
 		public VkDeviceGroupPresentModeFlagBitsKHR modes;
 	}
 
@@ -4529,8 +4606,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public ulong heapBudget;
-		public ulong heapUsage;
+		public fixed ulong heapBudget[(int)Vulkan.VK_MAX_MEMORY_HEAPS];
+		public fixed ulong heapUsage[(int)Vulkan.VK_MAX_MEMORY_HEAPS];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4791,7 +4868,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkPerformanceCounterUnitKHR unit;
 		public VkPerformanceCounterScopeKHR scope;
 		public VkPerformanceCounterStorageKHR storage;
-		public byte uuid;
+		public fixed byte uuid[(int)Vulkan.VK_UUID_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4800,9 +4877,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkPerformanceCounterDescriptionFlagBitsKHR flags;
-		public byte name;
-		public byte category;
-		public byte description;
+		public fixed byte name[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte category[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5024,8 +5101,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkShaderStageFlagBits stages;
-		public byte name;
-		public byte description;
+		public fixed byte name[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
 		public uint subgroupSize;
 	}
 
@@ -5043,8 +5120,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public byte name;
-		public byte description;
+		public fixed byte name[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
 		public VkPipelineExecutableStatisticFormatKHR format;
 		public VkPipelineExecutableStatisticValueKHR value;
 	}
@@ -5054,8 +5131,8 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public byte name;
-		public byte description;
+		public fixed byte name[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
 		public VkBool32 isText;
 		public UIntPtr dataSize;
 		public void* pData;
@@ -5196,9 +5273,9 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public byte deviceUUID;
-		public byte driverUUID;
-		public byte deviceLUID;
+		public fixed byte deviceUUID[(int)Vulkan.VK_UUID_SIZE];
+		public fixed byte driverUUID[(int)Vulkan.VK_UUID_SIZE];
+		public fixed byte deviceLUID[(int)Vulkan.VK_LUID_SIZE];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 		public uint subgroupSize;
@@ -5273,8 +5350,8 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDriverId driverID;
-		public byte driverName;
-		public byte driverInfo;
+		public fixed byte driverName[(int)Vulkan.VK_MAX_DRIVER_NAME_SIZE];
+		public fixed byte driverInfo[(int)Vulkan.VK_MAX_DRIVER_INFO_SIZE];
 		public VkConformanceVersion conformanceVersion;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
@@ -5347,11 +5424,11 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public byte name;
-		public byte version;
+		public fixed byte name[(int)Vulkan.VK_MAX_EXTENSION_NAME_SIZE];
+		public fixed byte version[(int)Vulkan.VK_MAX_EXTENSION_NAME_SIZE];
 		public VkToolPurposeFlagBitsEXT purposes;
-		public byte description;
-		public byte layer;
+		public fixed byte description[(int)Vulkan.VK_MAX_DESCRIPTION_SIZE];
+		public fixed byte layer[(int)Vulkan.VK_MAX_EXTENSION_NAME_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

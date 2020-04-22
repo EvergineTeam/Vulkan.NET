@@ -174,6 +174,23 @@ namespace VulkanGen
                                 file.WriteLine($"\t\tpublic {csType} {member.Name}_{i};");
                             }
                         }
+                        else if (member.ConstantValue != null)
+                        {
+                            var validConstant = vulkanVersion.Constants.FirstOrDefault(c => c.Name == member.ConstantValue);
+
+                            if (Helpers.SupportFixed(csType))
+                            {
+                                file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)Vulkan.{validConstant.Name}];");
+                            }
+                            else
+                            {
+                                int count = int.Parse(validConstant.Value);
+                                for (int i = 0; i < count; i++)
+                                {
+                                    file.WriteLine($"\t\tpublic {csType} {member.Name}_{i};");
+                                }
+                            }
+                        }
                         else
                         {
                             file.WriteLine($"\t\tpublic {csType} {Helpers.ValidatedName(member.Name)};");
