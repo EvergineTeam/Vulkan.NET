@@ -131,12 +131,14 @@ namespace WaveEngine.Bindings.Vulkan
 
 	public enum VkPipelineCacheHeaderVersion
 	{
+		None = 0,
 		VK_PIPELINE_CACHE_HEADER_VERSION_ONE = 1,
 	}
 
 	[Flags]
 	public enum VkPipelineCacheCreateFlagBits
 	{
+		None = 0,
 		VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT = 1,
 	}
 
@@ -1159,6 +1161,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkQueueFlagBits
 	{
+		None = 0,
 		VK_QUEUE_GRAPHICS_BIT = 1,
 		VK_QUEUE_COMPUTE_BIT = 2,
 		VK_QUEUE_TRANSFER_BIT = 4,
@@ -1171,6 +1174,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkRenderPassCreateFlagBits
 	{
+		None = 0,
 		VK_RENDER_PASS_CREATE_RESERVED_0_BIT_KHR = 1,
 		VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = 2,
 	}
@@ -1178,12 +1182,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDeviceQueueCreateFlagBits
 	{
+		None = 0,
 		VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkMemoryPropertyFlagBits
 	{
+		None = 0,
 		VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = 1,
 		VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = 2,
 		VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = 4,
@@ -1197,6 +1203,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkMemoryHeapFlagBits
 	{
+		None = 0,
 		VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = 1,
 		VK_MEMORY_HEAP_MULTI_INSTANCE_BIT = 2,
 		VK_MEMORY_HEAP_RESERVED_2_BIT_KHR = 4,
@@ -1205,6 +1212,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkAccessFlagBits
 	{
+		None = 0,
 		VK_ACCESS_INDIRECT_COMMAND_READ_BIT = 1,
 		VK_ACCESS_INDEX_READ_BIT = 2,
 		VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT = 4,
@@ -1241,6 +1249,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkBufferUsageFlagBits
 	{
+		None = 0,
 		VK_BUFFER_USAGE_TRANSFER_SRC_BIT = 1,
 		VK_BUFFER_USAGE_TRANSFER_DST_BIT = 2,
 		VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT = 4,
@@ -1265,6 +1274,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkBufferCreateFlagBits
 	{
+		None = 0,
 		VK_BUFFER_CREATE_SPARSE_BINDING_BIT = 1,
 		VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = 2,
 		VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = 4,
@@ -1275,6 +1285,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkShaderStageFlagBits
 	{
+		None = 0,
 		VK_SHADER_STAGE_VERTEX_BIT = 1,
 		VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT = 2,
 		VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT = 4,
@@ -1296,6 +1307,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkImageUsageFlagBits
 	{
+		None = 0,
 		VK_IMAGE_USAGE_TRANSFER_SRC_BIT = 1,
 		VK_IMAGE_USAGE_TRANSFER_DST_BIT = 2,
 		VK_IMAGE_USAGE_SAMPLED_BIT = 4,
@@ -1319,6 +1331,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkImageCreateFlagBits
 	{
+		None = 0,
 		VK_IMAGE_CREATE_SPARSE_BINDING_BIT = 1,
 		VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT = 2,
 		VK_IMAGE_CREATE_SPARSE_ALIASED_BIT = 4,
@@ -1339,12 +1352,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkImageViewCreateFlagBits
 	{
+		None = 0,
 		VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT = 1,
 	}
 
 	[Flags]
 	public enum VkSamplerCreateFlagBits
 	{
+		None = 0,
 		VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT = 1,
 		VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT = 2,
 	}
@@ -1352,6 +1367,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkPipelineCreateFlagBits
 	{
+		None = 0,
 		VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT = 1,
 		VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT = 2,
 		VK_PIPELINE_CREATE_DERIVATIVE_BIT = 4,
@@ -1375,6 +1391,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkPipelineShaderStageCreateFlagBits
 	{
+		None = 0,
 		VK_PIPELINE_SHADER_STAGE_CREATE_RESERVED_2_BIT_NV = 4,
 		VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 1,
 		VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT = 2,
@@ -1384,6 +1401,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkColorComponentFlagBits
 	{
+		None = 0,
 		VK_COLOR_COMPONENT_R_BIT = 1,
 		VK_COLOR_COMPONENT_G_BIT = 2,
 		VK_COLOR_COMPONENT_B_BIT = 4,
@@ -1393,6 +1411,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkFenceCreateFlagBits
 	{
+		None = 0,
 		VK_FENCE_CREATE_SIGNALED_BIT = 1,
 	}
 
@@ -1405,6 +1424,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkFormatFeatureFlagBits
 	{
+		None = 0,
 		VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = 1,
 		VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = 2,
 		VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT = 4,
@@ -1440,12 +1460,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkQueryControlFlagBits
 	{
+		None = 0,
 		VK_QUERY_CONTROL_PRECISE_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkQueryResultFlagBits
 	{
+		None = 0,
 		VK_QUERY_RESULT_64_BIT = 1,
 		VK_QUERY_RESULT_WAIT_BIT = 2,
 		VK_QUERY_RESULT_WITH_AVAILABILITY_BIT = 4,
@@ -1455,6 +1477,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkCommandBufferUsageFlagBits
 	{
+		None = 0,
 		VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = 1,
 		VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = 2,
 		VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = 4,
@@ -1463,6 +1486,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkQueryPipelineStatisticFlagBits
 	{
+		None = 0,
 		VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT = 1,
 		VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT = 2,
 		VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT = 4,
@@ -1479,6 +1503,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkImageAspectFlagBits
 	{
+		None = 0,
 		VK_IMAGE_ASPECT_COLOR_BIT = 1,
 		VK_IMAGE_ASPECT_DEPTH_BIT = 2,
 		VK_IMAGE_ASPECT_STENCIL_BIT = 4,
@@ -1495,6 +1520,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSparseImageFormatFlagBits
 	{
+		None = 0,
 		VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = 1,
 		VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT = 2,
 		VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT = 4,
@@ -1503,12 +1529,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSparseMemoryBindFlagBits
 	{
+		None = 0,
 		VK_SPARSE_MEMORY_BIND_METADATA_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkPipelineStageFlagBits
 	{
+		None = 0,
 		VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT = 1,
 		VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT = 2,
 		VK_PIPELINE_STAGE_VERTEX_INPUT_BIT = 4,
@@ -1542,6 +1570,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkCommandPoolCreateFlagBits
 	{
+		None = 0,
 		VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = 1,
 		VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT = 2,
 		VK_COMMAND_POOL_CREATE_PROTECTED_BIT = 4,
@@ -1550,18 +1579,21 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkCommandPoolResetFlagBits
 	{
+		None = 0,
 		VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkCommandBufferResetFlagBits
 	{
+		None = 0,
 		VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkSampleCountFlagBits
 	{
+		None = 0,
 		VK_SAMPLE_COUNT_1_BIT = 1,
 		VK_SAMPLE_COUNT_2_BIT = 2,
 		VK_SAMPLE_COUNT_4_BIT = 4,
@@ -1574,6 +1606,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkAttachmentDescriptionFlagBits
 	{
+		None = 0,
 		VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = 1,
 	}
 
@@ -1589,6 +1622,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDescriptorPoolCreateFlagBits
 	{
+		None = 0,
 		VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = 1,
 		VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT = 2,
 	}
@@ -1596,6 +1630,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDependencyFlagBits
 	{
+		None = 0,
 		VK_DEPENDENCY_BY_REGION_BIT = 1,
 		VK_DEPENDENCY_DEVICE_GROUP_BIT = 4,
 		VK_DEPENDENCY_VIEW_LOCAL_BIT = 2,
@@ -1610,6 +1645,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSemaphoreWaitFlagBits
 	{
+		None = 0,
 		VK_SEMAPHORE_WAIT_ANY_BIT = 1,
 	}
 
@@ -1647,6 +1683,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDisplayPlaneAlphaFlagBitsKHR
 	{
+		None = 0,
 		VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = 1,
 		VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR = 2,
 		VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR = 4,
@@ -1656,6 +1693,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkCompositeAlphaFlagBitsKHR
 	{
+		None = 0,
 		VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR = 1,
 		VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR = 2,
 		VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR = 4,
@@ -1665,6 +1703,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSurfaceTransformFlagBitsKHR
 	{
+		None = 0,
 		VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 1,
 		VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 2,
 		VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = 4,
@@ -1679,6 +1718,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSwapchainImageUsageFlagBitsANDROID
 	{
+		None = 0,
 		VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_ANDROID = 1,
 	}
 
@@ -1693,6 +1733,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDebugReportFlagBitsEXT
 	{
+		None = 0,
 		VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 1,
 		VK_DEBUG_REPORT_WARNING_BIT_EXT = 2,
 		VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT = 4,
@@ -1748,6 +1789,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalMemoryHandleTypeFlagBitsNV
 	{
+		None = 0,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV = 1,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV = 2,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV = 4,
@@ -1757,6 +1799,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalMemoryFeatureFlagBitsNV
 	{
+		None = 0,
 		VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV = 1,
 		VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV = 2,
 		VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV = 4,
@@ -1790,6 +1833,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSubgroupFeatureFlagBits
 	{
+		None = 0,
 		VK_SUBGROUP_FEATURE_BASIC_BIT = 1,
 		VK_SUBGROUP_FEATURE_VOTE_BIT = 2,
 		VK_SUBGROUP_FEATURE_ARITHMETIC_BIT = 4,
@@ -1804,6 +1848,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkIndirectCommandsLayoutUsageFlagBitsNV
 	{
+		None = 0,
 		VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV = 1,
 		VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV = 2,
 		VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV = 4,
@@ -1812,6 +1857,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkIndirectStateFlagBitsNV
 	{
+		None = 0,
 		VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV = 1,
 	}
 
@@ -1830,6 +1876,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDescriptorSetLayoutCreateFlagBits
 	{
+		None = 0,
 		VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT = 2,
 		VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR = 1,
 	}
@@ -1837,6 +1884,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalMemoryHandleTypeFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT = 1,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT = 2,
 		VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = 4,
@@ -1853,6 +1901,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalMemoryFeatureFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT = 1,
 		VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT = 2,
 		VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT = 4,
@@ -1861,6 +1910,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalSemaphoreHandleTypeFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT = 1,
 		VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 2,
 		VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = 4,
@@ -1871,6 +1921,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalSemaphoreFeatureFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT = 1,
 		VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT = 2,
 	}
@@ -1878,12 +1929,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSemaphoreImportFlagBits
 	{
+		None = 0,
 		VK_SEMAPHORE_IMPORT_TEMPORARY_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkExternalFenceHandleTypeFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT = 1,
 		VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 2,
 		VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = 4,
@@ -1893,6 +1946,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkExternalFenceFeatureFlagBits
 	{
+		None = 0,
 		VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT = 1,
 		VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT = 2,
 	}
@@ -1900,12 +1954,14 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkFenceImportFlagBits
 	{
+		None = 0,
 		VK_FENCE_IMPORT_TEMPORARY_BIT = 1,
 	}
 
 	[Flags]
 	public enum VkSurfaceCounterFlagBitsEXT
 	{
+		None = 0,
 		VK_SURFACE_COUNTER_VBLANK_EXT = 1,
 	}
 
@@ -1929,6 +1985,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkPeerMemoryFeatureFlagBits
 	{
+		None = 0,
 		VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT = 1,
 		VK_PEER_MEMORY_FEATURE_COPY_DST_BIT = 2,
 		VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT = 4,
@@ -1938,6 +1995,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkMemoryAllocateFlagBits
 	{
+		None = 0,
 		VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT = 1,
 		VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT = 2,
 		VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT = 4,
@@ -1946,6 +2004,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDeviceGroupPresentModeFlagBitsKHR
 	{
+		None = 0,
 		VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 1,
 		VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR = 2,
 		VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR = 4,
@@ -1955,6 +2014,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSwapchainCreateFlagBitsKHR
 	{
+		None = 0,
 		VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR = 4,
 	}
 
@@ -1979,6 +2039,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkSubpassDescriptionFlagBits
 	{
+		None = 0,
 		VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX = 1,
 		VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX = 2,
 		VK_SUBPASS_DESCRIPTION_RESERVED_2_BIT_QCOM = 4,
@@ -2048,6 +2109,7 @@ namespace WaveEngine.Bindings.Vulkan
 
 	public enum VkValidationCacheHeaderVersionEXT
 	{
+		None = 0,
 		VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT = 1,
 	}
 
@@ -2060,6 +2122,7 @@ namespace WaveEngine.Bindings.Vulkan
 
 	public enum VkQueueGlobalPriorityEXT
 	{
+		None = 0,
 		VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT = 128,
 		VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT = 256,
 		VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT = 512,
@@ -2069,6 +2132,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDebugUtilsMessageSeverityFlagBitsEXT
 	{
+		None = 0,
 		VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = 1,
 		VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT = 16,
 		VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT = 256,
@@ -2078,6 +2142,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDebugUtilsMessageTypeFlagBitsEXT
 	{
+		None = 0,
 		VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT = 1,
 		VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT = 2,
 		VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT = 4,
@@ -2093,6 +2158,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDescriptorBindingFlagBits
 	{
+		None = 0,
 		VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT = 1,
 		VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT = 2,
 		VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT = 4,
@@ -2101,6 +2167,7 @@ namespace WaveEngine.Bindings.Vulkan
 
 	public enum VkVendorId
 	{
+		None = 0,
 		VK_VENDOR_ID_VIV = 65537,
 		VK_VENDOR_ID_VSI = 65538,
 		VK_VENDOR_ID_KAZAN = 65539,
@@ -2109,6 +2176,7 @@ namespace WaveEngine.Bindings.Vulkan
 
 	public enum VkDriverId
 	{
+		None = 0,
 		VK_DRIVER_ID_AMD_PROPRIETARY = 1,
 		VK_DRIVER_ID_AMD_OPEN_SOURCE = 2,
 		VK_DRIVER_ID_MESA_RADV = 3,
@@ -2126,6 +2194,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkConditionalRenderingFlagBitsEXT
 	{
+		None = 0,
 		VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT = 1,
 	}
 
@@ -2166,6 +2235,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkGeometryInstanceFlagBitsKHR
 	{
+		None = 0,
 		VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR = 1,
 		VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR = 2,
 		VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR = 4,
@@ -2175,6 +2245,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkGeometryFlagBitsKHR
 	{
+		None = 0,
 		VK_GEOMETRY_OPAQUE_BIT_KHR = 1,
 		VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR = 2,
 	}
@@ -2182,6 +2253,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkBuildAccelerationStructureFlagBitsKHR
 	{
+		None = 0,
 		VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR = 1,
 		VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR = 2,
 		VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR = 4,
@@ -2241,11 +2313,13 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkFramebufferCreateFlagBits
 	{
+		None = 0,
 		VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT = 1,
 	}
 
 	public enum VkScopeNV
 	{
+		None = 0,
 		VK_SCOPE_DEVICE_NV = 1,
 		VK_SCOPE_WORKGROUP_NV = 2,
 		VK_SCOPE_SUBGROUP_NV = 3,
@@ -2270,6 +2344,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkDeviceDiagnosticsConfigFlagBitsNV
 	{
+		None = 0,
 		VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV = 1,
 		VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV = 2,
 		VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV = 4,
@@ -2278,6 +2353,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkPipelineCreationFeedbackFlagBitsEXT
 	{
+		None = 0,
 		VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT = 1,
 		VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT = 2,
 		VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT = 4,
@@ -2329,6 +2405,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkPerformanceCounterDescriptionFlagBitsKHR
 	{
+		None = 0,
 		VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR = 1,
 		VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR = 2,
 	}
@@ -2402,6 +2479,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkShaderModuleCreateFlagBits
 	{
+		None = 0,
 		VK_SHADER_MODULE_CREATE_RESERVED_0_BIT_NV = 1,
 	}
 
@@ -2414,6 +2492,7 @@ namespace WaveEngine.Bindings.Vulkan
 	[Flags]
 	public enum VkToolPurposeFlagBitsEXT
 	{
+		None = 0,
 		VK_TOOL_PURPOSE_VALIDATION_BIT_EXT = 1,
 		VK_TOOL_PURPOSE_PROFILING_BIT_EXT = 2,
 		VK_TOOL_PURPOSE_TRACING_BIT_EXT = 4,

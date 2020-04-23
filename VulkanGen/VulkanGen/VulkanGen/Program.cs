@@ -98,16 +98,14 @@ namespace VulkanGen
                     file.WriteLine($"\tpublic enum {e.Name}");
                     file.WriteLine("\t{");
 
-                    if (e.Values.Count == 0)
+                    if (!(e.Values.Exists(v => v.Value == 0)))
                     {
                         file.WriteLine("\t\tNone = 0,");
                     }
-                    else
+
+                    foreach (var member in e.Values)
                     {
-                        foreach (var member in e.Values)
-                        {
-                            file.WriteLine($"\t\t{member.Name} = {member.Value},");
-                        }
+                        file.WriteLine($"\t\t{member.Name} = {member.Value},");
                     }
 
                     file.WriteLine("\t}\n");
