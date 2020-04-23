@@ -21,7 +21,7 @@ namespace VulkanGen
             {
                 file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
                 file.WriteLine("{");
-                file.WriteLine("\tpublic static partial class Vulkan");
+                file.WriteLine("\tpublic static partial class VulkanNative");
                 file.WriteLine("\t{");
 
                 foreach (var constant in vulkanVersion.Constants)
@@ -178,7 +178,7 @@ namespace VulkanGen
 
                             if (Helpers.SupportFixed(csType))
                             {
-                                file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)Vulkan.{validConstant.Name}];");
+                                file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)VulkanNative.{validConstant.Name}];");
                             }
                             else
                             {

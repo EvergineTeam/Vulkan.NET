@@ -1,6 +1,6 @@
 namespace WaveEngine.Bindings.Vulkan
 {
-	public static partial class Vulkan
+	public static partial class VulkanNative
 	{
 		public const uint VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256;
 		public const uint VK_UUID_SIZE = 16;
