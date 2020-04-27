@@ -305,25 +305,21 @@ namespace VulkanRaytracing
 
         public bool IsValidationLayerAvailable(string layerName)
         {
-            /*uint propertyCount = 0;
+            uint propertyCount = 0;
             VulkanNative.vkEnumerateInstanceLayerProperties(&propertyCount, null);
-            VkLayerProperties[] properties = new VkLayerProperties[propertyCount];
-            fixed (VkLayerProperties* propertiesPtr = properties)
-            {
-                var result = VulkanNative.vkEnumerateInstanceLayerProperties(&propertyCount, propertiesPtr);
-                Helpers.CheckErrors(result);
-            }
+            VkLayerProperties* properties = stackalloc VkLayerProperties[(int)propertyCount];
+            var result = VulkanNative.vkEnumerateInstanceLayerProperties(&propertyCount, properties);
+            Helpers.CheckErrors(result);
 
             // loop through all toggled layers and check if we can enable each
-            for (uint ii = 0; ii < properties.Length; ++ii)
+            for (uint ii = 0; ii < propertyCount; ++ii)
             {
                 string pLayerName = Helpers.GetString(properties[ii].layerName);
                 if (layerName.Equals(pLayerName))
                     return true;
             }
 
-            return false;*/
-            return true;
+            return false;
         }
 
         public int Main()
@@ -942,7 +938,7 @@ namespace VulkanRaytracing
                 transformOffset = 0x0,
             };
 
-            VkAccelerationStructureBuildOffsetInfoKHR[] accelerationBuildOffsets = new VkAccelerationStructureBuildOffsetInfoKHR[] { accelerationBuildOffsetInfo };
+            VkAccelerationStructureBuildOffsetInfoKHR* accelerationBuildOffsets = stackalloc VkAccelerationStructureBuildOffsetInfoKHR[] { accelerationBuildOffsetInfo };
 
             VkCommandBuffer commandBuffer = default;
 
@@ -966,10 +962,7 @@ namespace VulkanRaytracing
             result = VulkanNative.vkBeginCommandBuffer(commandBuffer, &commandBufferBeginInfo);
             Helpers.CheckErrors(result);
 
-            fixed (VkAccelerationStructureBuildOffsetInfoKHR* accelerationBuildOffsetsPtr = &accelerationBuildOffsets[0])
-            {
-                VulkanNative.vkCmdBuildAccelerationStructureKHR(commandBuffer, 1, &accelerationBuildGeometryInfo, (VkAccelerationStructureBuildOffsetInfoKHR**)accelerationBuildOffsetsPtr);
-            }
+            VulkanNative.vkCmdBuildAccelerationStructureKHR(commandBuffer, 1, &accelerationBuildGeometryInfo, (VkAccelerationStructureBuildOffsetInfoKHR**)&accelerationBuildOffsets);
 
             result = VulkanNative.vkEndCommandBuffer(commandBuffer);
             Helpers.CheckErrors(result);
@@ -1117,7 +1110,7 @@ namespace VulkanRaytracing
                 transformOffset = 0x0,
             };
 
-            VkAccelerationStructureBuildOffsetInfoKHR[] accelerationBuildOffsets = new VkAccelerationStructureBuildOffsetInfoKHR[] { accelerationBuildOffsetInfo };
+            VkAccelerationStructureBuildOffsetInfoKHR* accelerationBuildOffsets = stackalloc VkAccelerationStructureBuildOffsetInfoKHR[] { accelerationBuildOffsetInfo };
 
             VkCommandBuffer commandBuffer = default;
 
@@ -1141,10 +1134,7 @@ namespace VulkanRaytracing
             result = VulkanNative.vkBeginCommandBuffer(commandBuffer, &commandBufferBeginInfo);
             Helpers.CheckErrors(result);
 
-            fixed (VkAccelerationStructureBuildOffsetInfoKHR* accelerationBuildOffsetsPtr = &accelerationBuildOffsets[0])
-            {
-                VulkanNative.vkCmdBuildAccelerationStructureKHR(commandBuffer, 1, &accelerationBuildGeometryInfo, (VkAccelerationStructureBuildOffsetInfoKHR**)accelerationBuildOffsetsPtr);
-            }
+            VulkanNative.vkCmdBuildAccelerationStructureKHR(commandBuffer, 1, &accelerationBuildGeometryInfo, (VkAccelerationStructureBuildOffsetInfoKHR**)&accelerationBuildOffsets);
 
             result = VulkanNative.vkEndCommandBuffer(commandBuffer);
             Helpers.CheckErrors(result);
@@ -1277,26 +1267,22 @@ namespace VulkanRaytracing
                 stageFlags = VkShaderStageFlagBits.VK_SHADER_STAGE_RAYGEN_BIT_KHR,
             };
 
-            VkDescriptorSetLayoutBinding[] bindings = new VkDescriptorSetLayoutBinding[] { accelerationStructureLayoutBinding, storageImageLayoutBinding };
+            VkDescriptorSetLayoutBinding* bindings = stackalloc VkDescriptorSetLayoutBinding[] { accelerationStructureLayoutBinding, storageImageLayoutBinding };
             VkDescriptorSetLayoutCreateInfo layoutInfo;
-            fixed (VkDescriptorSetLayoutBinding* bindingsPtr = &bindings[0])
+            layoutInfo = new VkDescriptorSetLayoutCreateInfo()
             {
-                layoutInfo = new VkDescriptorSetLayoutCreateInfo()
-                {
-                    sType = VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
-                    pNext = null,
-                    flags = 0,
-                    bindingCount = (uint)bindings.Length,
-                    pBindings = bindingsPtr,
-                };
-            }
+                sType = VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
+                pNext = null,
+                flags = 0,
+                bindingCount = (uint)2,
+                pBindings = bindings,
+            };
 
             VkResult result;
-            fixed (VkDescriptorSetLayout* descriptorSeLayoutPtr = &descriptorSetLayout)
-            {
-                result = VulkanNative.vkCreateDescriptorSetLayout(device, &layoutInfo, null, descriptorSeLayoutPtr);
-                Helpers.CheckErrors(result);
-            }
+            VkDescriptorSetLayout newDescriptorSetLayout;
+            result = VulkanNative.vkCreateDescriptorSetLayout(device, &layoutInfo, null, &newDescriptorSetLayout);
+            Helpers.CheckErrors(result);
+            descriptorSetLayout = newDescriptorSetLayout;
         }
         private void RTDescriptorSet()
         {
@@ -1421,11 +1407,10 @@ namespace VulkanRaytracing
             }
 
             VkResult result;
-            fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
-            {
-                result = VulkanNative.vkCreatePipelineLayout(device, &pipelineLayoutInfo, null, pipelineLayoutPtr);
-                Helpers.CheckErrors(result);
-            }
+            VkPipelineLayout newPipelineLayout;
+            result = VulkanNative.vkCreatePipelineLayout(device, &pipelineLayoutInfo, null, &newPipelineLayout);
+            Helpers.CheckErrors(result);
+            pipelineLayout = newPipelineLayout;
         }
         private void RTPipeline()
         {
