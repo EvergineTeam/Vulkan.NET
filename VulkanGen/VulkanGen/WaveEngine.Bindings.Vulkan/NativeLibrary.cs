@@ -26,9 +26,14 @@ namespace WaveEngine.Bindings.Vulkan
         protected abstract void FreeLibrary(IntPtr libraryHandle);
         protected abstract IntPtr LoadFunction(string functionName);
 
-        public void LoadFunction<T>(string name, out T field)
+        public unsafe void LoadFunction<T>(VkInstance instance, string name, out T field)
         {
             IntPtr funcPtr = LoadFunction(name);
+            if (funcPtr == IntPtr.Zero)
+            {
+                funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
+            }
+
             if (funcPtr != IntPtr.Zero)
             {
                 field = Marshal.GetDelegateForFunctionPointer<T>(funcPtr);
@@ -36,6 +41,7 @@ namespace WaveEngine.Bindings.Vulkan
             else
             {
                 field = default(T);
+                Debug.WriteLine($" ===> Error loading function {name}");
             }
         }
 
