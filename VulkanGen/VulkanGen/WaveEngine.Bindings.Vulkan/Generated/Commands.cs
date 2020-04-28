@@ -2583,6 +2583,8 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkCmdBindPipelineShaderGroupNV",  out vkCmdBindPipelineShaderGroupNV_ptr);
 			nativeLib.LoadFunction("vkCreateIndirectCommandsLayoutNV",  out vkCreateIndirectCommandsLayoutNV_ptr);
 			nativeLib.LoadFunction("vkDestroyIndirectCommandsLayoutNV",  out vkDestroyIndirectCommandsLayoutNV_ptr);
+
+			nativeLib.DestroyInstance();
 		}
 	}
 }

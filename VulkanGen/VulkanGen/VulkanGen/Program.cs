@@ -268,6 +268,7 @@ namespace VulkanGen
                     file.WriteLine($"\t\t\tnativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }
 
+                file.WriteLine("\n\t\t\tnativeLib.DestroyInstance();");
                 file.WriteLine("\t\t}");
                 file.WriteLine("\t}");
                 file.WriteLine("}");
