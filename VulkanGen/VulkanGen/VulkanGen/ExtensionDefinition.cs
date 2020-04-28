@@ -67,7 +67,14 @@ namespace VulkanGen
                                 direction = -1;
                             }
 
-                            int value = direction * (1000000000 + (extension.Number - 1) * 1000 + offset);
+                            string extstring = e.Attribute("extnumber")?.Value;
+                            int extNumber = extension.Number;
+                            if (extstring != null)
+                            {
+                                extNumber = int.Parse(extstring);
+                            }
+
+                            int value = direction * (1000000000 + (extNumber - 1) * 1000 + offset);
                             valueString = value.ToString();
                         }
                         else
@@ -93,7 +100,7 @@ namespace VulkanGen
                         constant.Name = enumName;
                         constant.Alias = e.Attribute("alias")?.Value;
                         string rawValue = e.Attribute("value")?.Value;
-                        if(rawValue != null)
+                        if (rawValue != null)
                             constant.Value = FilterString(rawValue);
 
                         extension.Constants.Add(constant);
