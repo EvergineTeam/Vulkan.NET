@@ -9,6 +9,7 @@ namespace WaveEngine.Bindings.Vulkan
     {
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
+        private VkInstance instance;
 
         public IntPtr NativeHandle => libraryHandle;
 
@@ -26,11 +27,25 @@ namespace WaveEngine.Bindings.Vulkan
         protected abstract void FreeLibrary(IntPtr libraryHandle);
         protected abstract IntPtr LoadFunction(string functionName);
 
-        public unsafe void LoadFunction<T>(VkInstance instance, string name, out T field)
+        public unsafe void LoadFunction<T>(string name, out T field)
         {
             IntPtr funcPtr = LoadFunction(name);
             if (funcPtr == IntPtr.Zero)
             {
+                if (instance == IntPtr.Zero)
+                {
+                    VkInstanceCreateInfo createInfo = new VkInstanceCreateInfo();
+
+                    VkInstance newInstace;
+                    var result = VulkanNative.vkCreateInstance(&createInfo, null, &newInstace);
+                    instance = newInstace;
+
+                    if (result != VkResult.VK_SUCCESS)
+                    {
+                        throw new Exception("Error creating dummy vulkan instance");
+                    }
+                }
+
                 funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
             }
 
