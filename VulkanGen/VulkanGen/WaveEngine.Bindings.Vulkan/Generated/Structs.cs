@@ -1728,6 +1728,30 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDevicePrivateDataCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint privateDataSlotRequestCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPrivateDataSlotCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPrivateDataSlotCreateFlagBitsEXT flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePrivateDataFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 privateData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	{
 		public VkStructureType sType;
@@ -5432,6 +5456,32 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkClearColorValue customBorderColor;
+		public VkFormat format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxCustomBorderColorSamplers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 customBorderColors;
+		public VkBool32 customBorderColorWithoutFormat;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkAccelerationStructureGeometryTrianglesDataKHR
 	{
 		public VkStructureType sType;
@@ -5666,6 +5716,25 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDeviceDiagnosticsConfigFlagBitsNV flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 robustBufferAccess2;
+		public VkBool32 robustImageAccess2;
+		public VkBool32 nullDescriptor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong robustStorageBufferAccessSizeAlignment;
+		public ulong robustUniformBufferAccessSizeAlignment;
 	}
 
 }

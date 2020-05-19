@@ -527,6 +527,21 @@ namespace WaveEngine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
+{
+		public readonly ulong Handle;
+		public VkPrivateDataSlotEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static VkPrivateDataSlotEXT Null => new VkPrivateDataSlotEXT(0);
+		public static implicit operator VkPrivateDataSlotEXT(ulong handle) => new VkPrivateDataSlotEXT(handle);
+		public static bool operator ==(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(VkPrivateDataSlotEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
+		public bool Equals(VkPrivateDataSlotEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkPrivateDataSlotEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 {
 		public readonly ulong Handle;
