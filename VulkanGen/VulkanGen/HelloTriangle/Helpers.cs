@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using WaveEngine.Bindings.Vulkan;
 
-namespace VulkanRaytracing
+namespace KHRRTXHelloTriangle
 {
     public unsafe static class Helpers
     {
