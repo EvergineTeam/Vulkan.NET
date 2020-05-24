@@ -13,7 +13,7 @@ namespace KHRRTXHelloTriangle
         private void InitWindow()
         {
             window = new Form();
-            window.Text = "Vulkan Triangle Rasterization";
+            window.Text = "Vulkan Triangle Raytracing (KHR)";
             window.Size = new System.Drawing.Size((int)WIDTH, (int)HEIGHT);
             window.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             window.Show();
@@ -33,15 +33,29 @@ namespace KHRRTXHelloTriangle
 
             this.CreateSwapChain();
 
-            this.CreateImageViews();
+            this.CreateCommandPool();          
 
-            this.CreateRenderPass();
+            // Begin Raytracing
 
-            this.CreateGraphicsPipeline();
+            this.InitRayTracing();
 
-            this.CreateFramebuffers();
+            this.CreateBottomLevelAS();
 
-            this.CreateCommandPool();
+            this.CreateTopLevelAS();
+
+            this.CreateOffscreenBuffer();
+
+            this.CreateRTDescriptorSetLayout();
+
+            this.CreateRTDescriptorSet();
+
+            this.CreateRTPipelineLayout();
+
+            this.CreateRTPipeline();
+
+            this.CreateShaderBindingTable();
+
+            // End Raytracing
 
             this.CreateCommandBuffers();
 
@@ -73,21 +87,17 @@ namespace KHRRTXHelloTriangle
 
             VulkanNative.vkDestroyCommandPool(this.device, this.commandPool, null);
 
-            foreach (var framebuffer in this.swapChainFramebuffers)
-            {
-                VulkanNative.vkDestroyFramebuffer(this.device, framebuffer, null);
-            }
+            VulkanNative.vkDestroyAccelerationStructureKHR(this.device, this.bottomLevelAS, null);
 
-            VulkanNative.vkDestroyPipeline(this.device, this.graphicsPipeline, null);
+            VulkanNative.vkDestroyAccelerationStructureKHR(this.device, this.topLevelAS, null);
+
+            VulkanNative.vkDestroyDescriptorSetLayout(this.device, this.descriptorSetLayout, null);
+
+            VulkanNative.vkDestroyDescriptorPool(this.device, this.descriptorPool, null);
+
+            VulkanNative.vkDestroyPipeline(this.device, this.pipeline, null);
 
             VulkanNative.vkDestroyPipelineLayout(this.device, this.pipelineLayout, null);
-
-            VulkanNative.vkDestroyRenderPass(this.device, this.renderPass, null);
-
-            foreach (var imageView in this.swapChainImageViews)
-            {
-                VulkanNative.vkDestroyImageView(this.device, imageView, null);
-            }
 
             VulkanNative.vkDestroySwapchainKHR(this.device, this.swapChain, null);
 
