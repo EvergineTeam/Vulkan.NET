@@ -5601,14 +5601,20 @@ namespace WaveEngine.Bindings.Vulkan
 		public float matrix_11;
 	}
 
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Explicit)]
 	public unsafe partial struct VkAccelerationStructureInstanceKHR
 	{
+		[FieldOffset(0)]
 		public VkTransformMatrixKHR transform;
+		[FieldOffset(48)]
 		public uint instanceCustomIndex;
+		[FieldOffset(51)]
 		public uint mask;
+		[FieldOffset(52)]
 		public uint instanceShaderBindingTableRecordOffset;
+		[FieldOffset(55)]
 		public VkGeometryInstanceFlagBitsKHR flags;
+		[FieldOffset(56)]
 		public ulong accelerationStructureReference;
 	}
 
