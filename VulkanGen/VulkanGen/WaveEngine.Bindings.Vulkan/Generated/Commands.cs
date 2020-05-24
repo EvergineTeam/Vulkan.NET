@@ -2213,6 +2213,30 @@ namespace WaveEngine.Bindings.Vulkan
 		public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* pAllocator)
 			=> vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, pAllocator);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreatePrivateDataSlotEXTDelegate(VkDevice device, VkPrivateDataSlotCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPrivateDataSlotEXT* pPrivateDataSlot);
+		private static vkCreatePrivateDataSlotEXTDelegate vkCreatePrivateDataSlotEXT_ptr;
+		public static VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPrivateDataSlotEXT* pPrivateDataSlot)
+			=> vkCreatePrivateDataSlotEXT_ptr(device, pCreateInfo, pAllocator, pPrivateDataSlot);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyPrivateDataSlotEXTDelegate(VkDevice device, VkPrivateDataSlotEXT privateDataSlot, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyPrivateDataSlotEXTDelegate vkDestroyPrivateDataSlotEXT_ptr;
+		public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotEXT privateDataSlot, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyPrivateDataSlotEXT_ptr(device, privateDataSlot, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkSetPrivateDataEXTDelegate(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong data);
+		private static vkSetPrivateDataEXTDelegate vkSetPrivateDataEXT_ptr;
+		public static VkResult vkSetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong data)
+			=> vkSetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPrivateDataEXTDelegate(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* pData);
+		private static vkGetPrivateDataEXTDelegate vkGetPrivateDataEXT_ptr;
+		public static void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* pData)
+			=> vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, pData);
+
 		private static void LoadFuncionPointers()
 		{
 			nativeLib.LoadFunction("vkCreateInstance",  out vkCreateInstance_ptr);
@@ -2583,6 +2607,10 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkCmdBindPipelineShaderGroupNV",  out vkCmdBindPipelineShaderGroupNV_ptr);
 			nativeLib.LoadFunction("vkCreateIndirectCommandsLayoutNV",  out vkCreateIndirectCommandsLayoutNV_ptr);
 			nativeLib.LoadFunction("vkDestroyIndirectCommandsLayoutNV",  out vkDestroyIndirectCommandsLayoutNV_ptr);
+			nativeLib.LoadFunction("vkCreatePrivateDataSlotEXT",  out vkCreatePrivateDataSlotEXT_ptr);
+			nativeLib.LoadFunction("vkDestroyPrivateDataSlotEXT",  out vkDestroyPrivateDataSlotEXT_ptr);
+			nativeLib.LoadFunction("vkSetPrivateDataEXT",  out vkSetPrivateDataEXT_ptr);
+			nativeLib.LoadFunction("vkGetPrivateDataEXT",  out vkGetPrivateDataEXT_ptr);
 
 			nativeLib.DestroyInstance();
 		}

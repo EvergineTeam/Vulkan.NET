@@ -161,7 +161,7 @@ namespace VKDrawTriangle
 
             string[] layers = new string[]
             {
-                "VK_LAYER_LUNARG_standard_validation"
+                "VK_LAYER_KHRONOS_validation"
             };
 
             IntPtr* layersToEnableArray = stackalloc IntPtr[layers.Length];

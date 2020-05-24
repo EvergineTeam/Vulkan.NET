@@ -106,7 +106,7 @@ namespace VulkanGen
             spec.BaseTypes = types.Elements("type").Where(bt => bt.Attribute("category")?.Value == "basetype")
                 .ToDictionary(
                     bt => bt.Element("name").Value,
-                    bt => bt.Element("type").Value);
+                    bt => bt.Element("type")?.Value);
 
             // Handles
             var handles = types.Elements("type").Where(h => h.Attribute("category")?.Value == "handle");

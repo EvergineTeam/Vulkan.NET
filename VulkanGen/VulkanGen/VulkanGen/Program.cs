@@ -158,11 +158,28 @@ namespace VulkanGen
 
                 foreach (var structure in vulkanVersion.Structs)
                 {
-                    file.WriteLine("\t[StructLayout(LayoutKind.Sequential)]");
+                    var useExplicitLayout = structure.Members.Any(s => s.ExplicityLayoutValue.HasValue == true);
+                    int layoutValue = 0;
+                    if (useExplicitLayout)
+                    {
+                        file.WriteLine("\t[StructLayout(LayoutKind.Explicit)]");
+                    }
+                    else
+                    {
+                        file.WriteLine("\t[StructLayout(LayoutKind.Sequential)]");
+                    }
                     file.WriteLine($"\tpublic unsafe partial struct {structure.Name}");
                     file.WriteLine("\t{");
+
+
                     foreach (var member in structure.Members)
                     {
+                        if (useExplicitLayout)
+                        {
+                            file.WriteLine($"\t\t[FieldOffset({layoutValue})]");
+                            layoutValue += Member.GetSizeInBytes(member, vulkanVersion);
+                        }
+
                         string csType = Helpers.ConvertToCSharpType(member.Type, member.PointerLevel, vulkanSpec);
 
                         if (member.ElementCount > 1)
