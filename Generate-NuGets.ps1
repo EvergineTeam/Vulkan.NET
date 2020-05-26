@@ -15,7 +15,7 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$vulkanBindingsCsprojPath = "VulkanGen\VulkanGen\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj"
+	[string]$vulkanBindingsCsprojPath = "VulkanGen\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj"
 )
 
 # Utility functions
