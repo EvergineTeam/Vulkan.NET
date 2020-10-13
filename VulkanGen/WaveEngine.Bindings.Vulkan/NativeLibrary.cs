@@ -9,7 +9,7 @@ namespace WaveEngine.Bindings.Vulkan
     {
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
-        private VkInstance instance;
+        internal VkInstance instance;
 
         public IntPtr NativeHandle => libraryHandle;
 
@@ -23,28 +23,6 @@ namespace WaveEngine.Bindings.Vulkan
             }
         }
 
-        public unsafe void CreateInstance()
-        {
-            VkInstanceCreateInfo createInfo = new VkInstanceCreateInfo();
-
-            VkInstance newInstace;
-            var result = VulkanNative.vkCreateInstance(&createInfo, null, &newInstace);
-            instance = newInstace;
-
-            if (result != VkResult.VK_SUCCESS)
-            {
-                throw new Exception("Error creating dummy vulkan instance");
-            }
-        }
-
-        public unsafe void DestroyInstance()
-        {
-            if (instance != IntPtr.Zero)
-            {
-                VulkanNative.vkDestroyInstance(instance, null);
-            }
-        }
-
         protected abstract IntPtr LoadLibrary(string libraryName);
         protected abstract void FreeLibrary(IntPtr libraryHandle);
         protected abstract IntPtr LoadFunction(string functionName);
@@ -54,12 +32,10 @@ namespace WaveEngine.Bindings.Vulkan
             IntPtr funcPtr = LoadFunction(name);
             if (funcPtr == IntPtr.Zero)
             {
-                if (instance == IntPtr.Zero)
+                if (instance != IntPtr.Zero)
                 {
-                    CreateInstance();
+                    funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
                 }
-
-                funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
             }
 
             if (funcPtr != IntPtr.Zero)
@@ -77,7 +53,6 @@ namespace WaveEngine.Bindings.Vulkan
         {
             FreeLibrary(libraryHandle);
         }
-
 
         public static NativeLibrary Load(string libraryName)
         {

@@ -277,15 +277,19 @@ namespace VulkanGen
                     file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignature(vulkanSpec, useTypes: false)});\n");
                 }
 
-                file.WriteLine($"\t\tprivate static void LoadFuncionPointers()");
+                file.WriteLine($"\t\tpublic static void LoadFuncionPointers(VkInstance instance = default)");
                 file.WriteLine("\t\t{");
+                file.WriteLine("\t\t\tif (instance != default)");
+                file.WriteLine("\t\t\t{");
+                file.WriteLine("\t\t\t\tnativeLib.instance = instance;");
+                file.WriteLine("\t\t\t}");
+                file.WriteLine();
 
                 foreach (var command in vulkanVersion.Commands)
                 {
                     file.WriteLine($"\t\t\tnativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }
 
-                file.WriteLine("\n\t\t\tnativeLib.DestroyInstance();");
                 file.WriteLine("\t\t}");
                 file.WriteLine("\t}");
                 file.WriteLine("}");

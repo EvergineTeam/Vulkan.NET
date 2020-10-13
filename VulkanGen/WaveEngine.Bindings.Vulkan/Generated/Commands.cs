@@ -2237,8 +2237,13 @@ namespace WaveEngine.Bindings.Vulkan
 		public static void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* pData)
 			=> vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, pData);
 
-		private static void LoadFuncionPointers()
+		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
+			if (instance != default)
+			{
+				nativeLib.instance = instance;
+			}
+
 			nativeLib.LoadFunction("vkCreateInstance",  out vkCreateInstance_ptr);
 			nativeLib.LoadFunction("vkDestroyInstance",  out vkDestroyInstance_ptr);
 			nativeLib.LoadFunction("vkEnumeratePhysicalDevices",  out vkEnumeratePhysicalDevices_ptr);
@@ -2611,8 +2616,6 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkDestroyPrivateDataSlotEXT",  out vkDestroyPrivateDataSlotEXT_ptr);
 			nativeLib.LoadFunction("vkSetPrivateDataEXT",  out vkSetPrivateDataEXT_ptr);
 			nativeLib.LoadFunction("vkGetPrivateDataEXT",  out vkGetPrivateDataEXT_ptr);
-
-			nativeLib.DestroyInstance();
 		}
 	}
 }

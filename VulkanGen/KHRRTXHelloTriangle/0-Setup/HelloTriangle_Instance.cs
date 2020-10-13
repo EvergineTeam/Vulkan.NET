@@ -69,6 +69,7 @@ namespace KHRRTXHelloTriangle
             fixed (VkInstance* instancePtr = &instance)
             {
                 Helpers.CheckErrors(VulkanNative.vkCreateInstance(&createInfo, null, instancePtr));
+                VulkanNative.LoadFuncionPointers(instance);
             }
         }
 
