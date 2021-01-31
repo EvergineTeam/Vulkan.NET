@@ -206,27 +206,30 @@ namespace VulkanGen
         {
             switch (type)
             {
+                case "Display":
+                case "VisualID":
+                case "Window":
+                case "RROutput":
+                case "wl_display":
+                case "wl_surface":
                 case "HINSTANCE":
                 case "HWND":
-                case "Window":
+                case "HMONITOR":
+                case "HANDLE":
+                case "SECURITY_ATTRIBUTES":
+                case "DWORD":
+                case "LPCWSTR":
                 case "xcb_connection_t":
-                case "xcb_window_t":
                 case "xcb_visualid_t":
+                case "xcb_window_t":
+                case "IDirectFB":
+                case "IDirectFBSurface":
                 case "zx_handle_t":
                 case "GgpStreamDescriptor":
-                case "HANDLE":
-                case "LPCWSTR":
-                case "HMONITOR":
                 case "GgpFrameToken":
                 case "CAMetalLayer":
                 case "AHardwareBuffer":
                 case "ANativeWindow":
-                case "RROutput":
-                case "SECURITY_ATTRIBUTES":
-                case "VisualID":
-                case "wl_display":
-                case "wl_surface":
-                case "Display":
                     return true;
                 default:
                     return false;

@@ -96,7 +96,7 @@ namespace VulkanGen
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
 
-                    if(!version.Commands.Exists(c => c.Prototype.Name == name))
+                    if(!version.Commands.Exists(c => c?.Prototype.Name == name))
                         version.Commands.Add(commandDefinition);
                 }
             }
