@@ -2322,6 +2322,42 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetEvent2KHRDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfoKHR* pDependencyInfo);
+		private static vkCmdSetEvent2KHRDelegate vkCmdSetEvent2KHR_ptr;
+		public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfoKHR* pDependencyInfo)
+			=> vkCmdSetEvent2KHR_ptr(commandBuffer, vkEvent, pDependencyInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdResetEvent2KHRDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask);
+		private static vkCmdResetEvent2KHRDelegate vkCmdResetEvent2KHR_ptr;
+		public static void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask)
+			=> vkCmdResetEvent2KHR_ptr(commandBuffer, vkEvent, stageMask);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWaitEvents2KHRDelegate(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfoKHR* pDependencyInfos);
+		private static vkCmdWaitEvents2KHRDelegate vkCmdWaitEvents2KHR_ptr;
+		public static void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfoKHR* pDependencyInfos)
+			=> vkCmdWaitEvents2KHR_ptr(commandBuffer, eventCount, pEvents, pDependencyInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPipelineBarrier2KHRDelegate(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* pDependencyInfo);
+		private static vkCmdPipelineBarrier2KHRDelegate vkCmdPipelineBarrier2KHR_ptr;
+		public static void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* pDependencyInfo)
+			=> vkCmdPipelineBarrier2KHR_ptr(commandBuffer, pDependencyInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWriteTimestamp2KHRDelegate(VkCommandBuffer commandBuffer, ulong stage, VkQueryPool queryPool, uint query);
+		private static vkCmdWriteTimestamp2KHRDelegate vkCmdWriteTimestamp2KHR_ptr;
+		public static void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, ulong stage, VkQueryPool queryPool, uint query)
+			=> vkCmdWriteTimestamp2KHR_ptr(commandBuffer, stage, queryPool, query);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkQueueSubmit2KHRDelegate(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* pSubmits, VkFence fence);
+		private static vkQueueSubmit2KHRDelegate vkQueueSubmit2KHR_ptr;
+		public static VkResult vkQueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* pSubmits, VkFence fence)
+			=> vkQueueSubmit2KHR_ptr(queue, submitCount, pSubmits, fence);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetFragmentShadingRateEnumNVDelegate(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps);
 		private static vkCmdSetFragmentShadingRateEnumNVDelegate vkCmdSetFragmentShadingRateEnumNV_ptr;
 		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
@@ -2780,6 +2816,12 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkDestroyPrivateDataSlotEXT",  out vkDestroyPrivateDataSlotEXT_ptr);
 			nativeLib.LoadFunction("vkSetPrivateDataEXT",  out vkSetPrivateDataEXT_ptr);
 			nativeLib.LoadFunction("vkGetPrivateDataEXT",  out vkGetPrivateDataEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetEvent2KHR",  out vkCmdSetEvent2KHR_ptr);
+			nativeLib.LoadFunction("vkCmdResetEvent2KHR",  out vkCmdResetEvent2KHR_ptr);
+			nativeLib.LoadFunction("vkCmdWaitEvents2KHR",  out vkCmdWaitEvents2KHR_ptr);
+			nativeLib.LoadFunction("vkCmdPipelineBarrier2KHR",  out vkCmdPipelineBarrier2KHR_ptr);
+			nativeLib.LoadFunction("vkCmdWriteTimestamp2KHR",  out vkCmdWriteTimestamp2KHR_ptr);
+			nativeLib.LoadFunction("vkQueueSubmit2KHR",  out vkQueueSubmit2KHR_ptr);
 			nativeLib.LoadFunction("vkCmdSetFragmentShadingRateEnumNV",  out vkCmdSetFragmentShadingRateEnumNV_ptr);
 			nativeLib.LoadFunction("vkCmdCopyBuffer2KHR",  out vkCmdCopyBuffer2KHR_ptr);
 			nativeLib.LoadFunction("vkCmdCopyImage2KHR",  out vkCmdCopyImage2KHR_ptr);
