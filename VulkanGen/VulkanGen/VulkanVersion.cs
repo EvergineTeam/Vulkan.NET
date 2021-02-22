@@ -66,6 +66,11 @@ namespace VulkanGen
 
             foreach (var extension in extensions)
             {
+                if (extension.Supported == "disabled")
+                {
+                    continue;
+                }
+
                 // Extend Enums
                 foreach (var enumType in extension.Enums)
                 {

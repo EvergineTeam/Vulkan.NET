@@ -1236,30 +1236,6 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetSwapchainGrallocUsageANDROIDDelegate(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, int* grallocUsage);
-		private static vkGetSwapchainGrallocUsageANDROIDDelegate vkGetSwapchainGrallocUsageANDROID_ptr;
-		public static VkResult vkGetSwapchainGrallocUsageANDROID(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, int* grallocUsage)
-			=> vkGetSwapchainGrallocUsageANDROID_ptr(device, format, imageUsage, grallocUsage);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkAcquireImageANDROIDDelegate(VkDevice device, VkImage image, int nativeFenceFd, VkSemaphore semaphore, VkFence fence);
-		private static vkAcquireImageANDROIDDelegate vkAcquireImageANDROID_ptr;
-		public static VkResult vkAcquireImageANDROID(VkDevice device, VkImage image, int nativeFenceFd, VkSemaphore semaphore, VkFence fence)
-			=> vkAcquireImageANDROID_ptr(device, image, nativeFenceFd, semaphore, fence);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkQueueSignalReleaseImageANDROIDDelegate(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* pWaitSemaphores, VkImage image, int* pNativeFenceFd);
-		private static vkQueueSignalReleaseImageANDROIDDelegate vkQueueSignalReleaseImageANDROID_ptr;
-		public static VkResult vkQueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* pWaitSemaphores, VkImage image, int* pNativeFenceFd)
-			=> vkQueueSignalReleaseImageANDROID_ptr(queue, waitSemaphoreCount, pWaitSemaphores, image, pNativeFenceFd);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetSwapchainGrallocUsage2ANDROIDDelegate(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ulong* grallocConsumerUsage, ulong* grallocProducerUsage);
-		private static vkGetSwapchainGrallocUsage2ANDROIDDelegate vkGetSwapchainGrallocUsage2ANDROID_ptr;
-		public static VkResult vkGetSwapchainGrallocUsage2ANDROID(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ulong* grallocConsumerUsage, ulong* grallocProducerUsage)
-			=> vkGetSwapchainGrallocUsage2ANDROID_ptr(device, format, imageUsage, swapchainImageUsage, grallocConsumerUsage, grallocProducerUsage);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateDebugReportCallbackEXTDelegate(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback);
 		private static vkCreateDebugReportCallbackEXTDelegate vkCreateDebugReportCallbackEXT_ptr;
 		public static VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback)
@@ -2623,10 +2599,6 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkCreateAndroidSurfaceKHR",  out vkCreateAndroidSurfaceKHR_ptr);
 			nativeLib.LoadFunction("vkCreateWin32SurfaceKHR",  out vkCreateWin32SurfaceKHR_ptr);
 			nativeLib.LoadFunction("vkGetPhysicalDeviceWin32PresentationSupportKHR",  out vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr);
-			nativeLib.LoadFunction("vkGetSwapchainGrallocUsageANDROID",  out vkGetSwapchainGrallocUsageANDROID_ptr);
-			nativeLib.LoadFunction("vkAcquireImageANDROID",  out vkAcquireImageANDROID_ptr);
-			nativeLib.LoadFunction("vkQueueSignalReleaseImageANDROID",  out vkQueueSignalReleaseImageANDROID_ptr);
-			nativeLib.LoadFunction("vkGetSwapchainGrallocUsage2ANDROID",  out vkGetSwapchainGrallocUsage2ANDROID_ptr);
 			nativeLib.LoadFunction("vkCreateDebugReportCallbackEXT",  out vkCreateDebugReportCallbackEXT_ptr);
 			nativeLib.LoadFunction("vkDestroyDebugReportCallbackEXT",  out vkDestroyDebugReportCallbackEXT_ptr);
 			nativeLib.LoadFunction("vkDebugReportMessageEXT",  out vkDebugReportMessageEXT_ptr);

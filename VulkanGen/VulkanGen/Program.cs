@@ -14,12 +14,7 @@ namespace VulkanGen
 
             var vulkanSpec = VulkanSpecification.FromFile(vkFile);
 
-            var extensions = vulkanSpec.Extensions;
-
-            // Issue: missed extension definition in the VK specification xml
-            extensions.RemoveAll(e => e.Name == "VK_QNX_screen_surface");
-
-            var vulkanVersion = VulkanVersion.FromSpec(vulkanSpec, "AllVersions", extensions.ToImmutableList());
+            var vulkanVersion = VulkanVersion.FromSpec(vulkanSpec, "AllVersions", vulkanSpec.Extensions.ToImmutableList());
 
             // Write Constants
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Constants.cs")))
