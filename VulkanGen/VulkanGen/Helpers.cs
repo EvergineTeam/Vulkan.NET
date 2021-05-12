@@ -9,21 +9,6 @@ namespace VulkanGen
 {
     public static class Helpers
     {
-        public static string ToCSharp(this ConstantType type)
-        {
-            switch (type)
-            {
-                case ConstantType.UInt32:
-                    return "uint";
-                case ConstantType.UInt64:
-                    return "ulong";
-                case ConstantType.Float32:
-                    return "float";
-                default:
-                    throw new InvalidOperationException("Invalid value");
-            }
-        }
-
         public static string ValidatedName(string name)
         {
             if (name == "object")
@@ -230,6 +215,22 @@ namespace VulkanGen
                 case "CAMetalLayer":
                 case "AHardwareBuffer":
                 case "ANativeWindow":
+                // NV extension
+                case "_screen_context":
+                case "_screen_window":
+                case "StdVideoH264ProfileIdc":
+                case "StdVideoH264PictureParameterSet":
+                case "StdVideoH264SequenceParameterSet":
+                case "StdVideoDecodeH264PictureInfo":
+                case "StdVideoDecodeH264ReferenceInfo":
+                case "StdVideoDecodeH264Mvc":
+                case "StdVideoH265SequenceParameterSet":
+                case "StdVideoH265PictureParameterSet":
+                case "StdVideoDecodeH265PictureInfo":
+                case "StdVideoDecodeH265ReferenceInfo":
+                case "StdVideoEncodeH264PictureInfo":
+                case "StdVideoEncodeH264SliceHeader":
+                case "StdVideoH265ProfileIdc":
                     return true;
                 default:
                     return false;

@@ -1284,6 +1284,84 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkCmdDebugMarkerInsertEXT_ptr(commandBuffer, pMarkerInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceVideoCapabilitiesKHRDelegate(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities);
+		private static vkGetPhysicalDeviceVideoCapabilitiesKHRDelegate vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities)
+			=> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr(physicalDevice, pVideoProfile, pCapabilities);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceVideoFormatPropertiesKHRDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoFormatInfoKHR* pVideoFormatInfo, uint* pVideoFormatPropertyCount, VkVideoFormatPropertiesKHR* pVideoFormatProperties);
+		private static vkGetPhysicalDeviceVideoFormatPropertiesKHRDelegate vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceVideoFormatPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoFormatInfoKHR* pVideoFormatInfo, uint* pVideoFormatPropertyCount, VkVideoFormatPropertiesKHR* pVideoFormatProperties)
+			=> vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr(physicalDevice, pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateVideoSessionKHRDelegate(VkDevice device, VkVideoSessionCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkVideoSessionKHR* pVideoSession);
+		private static vkCreateVideoSessionKHRDelegate vkCreateVideoSessionKHR_ptr;
+		public static VkResult vkCreateVideoSessionKHR(VkDevice device, VkVideoSessionCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkVideoSessionKHR* pVideoSession)
+			=> vkCreateVideoSessionKHR_ptr(device, pCreateInfo, pAllocator, pVideoSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyVideoSessionKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyVideoSessionKHRDelegate vkDestroyVideoSessionKHR_ptr;
+		public static void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyVideoSessionKHR_ptr(device, videoSession, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetVideoSessionMemoryRequirementsKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint* pVideoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* pVideoSessionMemoryRequirements);
+		private static vkGetVideoSessionMemoryRequirementsKHRDelegate vkGetVideoSessionMemoryRequirementsKHR_ptr;
+		public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, uint* pVideoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* pVideoSessionMemoryRequirements)
+			=> vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, pVideoSessionMemoryRequirementsCount, pVideoSessionMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBindVideoSessionMemoryKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint videoSessionBindMemoryCount, VkVideoBindMemoryKHR* pVideoSessionBindMemories);
+		private static vkBindVideoSessionMemoryKHRDelegate vkBindVideoSessionMemoryKHR_ptr;
+		public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, uint videoSessionBindMemoryCount, VkVideoBindMemoryKHR* pVideoSessionBindMemories)
+			=> vkBindVideoSessionMemoryKHR_ptr(device, videoSession, videoSessionBindMemoryCount, pVideoSessionBindMemories);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateVideoSessionParametersKHRDelegate(VkDevice device, VkVideoSessionParametersCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkVideoSessionParametersKHR* pVideoSessionParameters);
+		private static vkCreateVideoSessionParametersKHRDelegate vkCreateVideoSessionParametersKHR_ptr;
+		public static VkResult vkCreateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkVideoSessionParametersKHR* pVideoSessionParameters)
+			=> vkCreateVideoSessionParametersKHR_ptr(device, pCreateInfo, pAllocator, pVideoSessionParameters);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkUpdateVideoSessionParametersKHRDelegate(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkVideoSessionParametersUpdateInfoKHR* pUpdateInfo);
+		private static vkUpdateVideoSessionParametersKHRDelegate vkUpdateVideoSessionParametersKHR_ptr;
+		public static VkResult vkUpdateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkVideoSessionParametersUpdateInfoKHR* pUpdateInfo)
+			=> vkUpdateVideoSessionParametersKHR_ptr(device, videoSessionParameters, pUpdateInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyVideoSessionParametersKHRDelegate(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyVideoSessionParametersKHRDelegate vkDestroyVideoSessionParametersKHR_ptr;
+		public static void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyVideoSessionParametersKHR_ptr(device, videoSessionParameters, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBeginVideoCodingKHRDelegate(VkCommandBuffer commandBuffer, VkVideoBeginCodingInfoKHR* pBeginInfo);
+		private static vkCmdBeginVideoCodingKHRDelegate vkCmdBeginVideoCodingKHR_ptr;
+		public static void vkCmdBeginVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoBeginCodingInfoKHR* pBeginInfo)
+			=> vkCmdBeginVideoCodingKHR_ptr(commandBuffer, pBeginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndVideoCodingKHRDelegate(VkCommandBuffer commandBuffer, VkVideoEndCodingInfoKHR* pEndCodingInfo);
+		private static vkCmdEndVideoCodingKHRDelegate vkCmdEndVideoCodingKHR_ptr;
+		public static void vkCmdEndVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoEndCodingInfoKHR* pEndCodingInfo)
+			=> vkCmdEndVideoCodingKHR_ptr(commandBuffer, pEndCodingInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdControlVideoCodingKHRDelegate(VkCommandBuffer commandBuffer, VkVideoCodingControlInfoKHR* pCodingControlInfo);
+		private static vkCmdControlVideoCodingKHRDelegate vkCmdControlVideoCodingKHR_ptr;
+		public static void vkCmdControlVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoCodingControlInfoKHR* pCodingControlInfo)
+			=> vkCmdControlVideoCodingKHR_ptr(commandBuffer, pCodingControlInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDecodeVideoKHRDelegate(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* pFrameInfo);
+		private static vkCmdDecodeVideoKHRDelegate vkCmdDecodeVideoKHR_ptr;
+		public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* pFrameInfo)
+			=> vkCmdDecodeVideoKHR_ptr(commandBuffer, pFrameInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBindTransformFeedbackBuffersEXTDelegate(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* pBuffers, ulong* pOffsets, ulong* pSizes);
 		private static vkCmdBindTransformFeedbackBuffersEXTDelegate vkCmdBindTransformFeedbackBuffersEXT_ptr;
 		public static void vkCmdBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* pBuffers, ulong* pOffsets, ulong* pSizes)
@@ -1318,6 +1396,36 @@ namespace WaveEngine.Bindings.Vulkan
 		private static vkCmdDrawIndirectByteCountEXTDelegate vkCmdDrawIndirectByteCountEXT_ptr;
 		public static void vkCmdDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBuffer counterBuffer, ulong counterBufferOffset, uint counterOffset, uint vertexStride)
 			=> vkCmdDrawIndirectByteCountEXT_ptr(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateCuModuleNVXDelegate(VkDevice device, VkCuModuleCreateInfoNVX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCuModuleNVX* pModule);
+		private static vkCreateCuModuleNVXDelegate vkCreateCuModuleNVX_ptr;
+		public static VkResult vkCreateCuModuleNVX(VkDevice device, VkCuModuleCreateInfoNVX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCuModuleNVX* pModule)
+			=> vkCreateCuModuleNVX_ptr(device, pCreateInfo, pAllocator, pModule);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateCuFunctionNVXDelegate(VkDevice device, VkCuFunctionCreateInfoNVX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCuFunctionNVX* pFunction);
+		private static vkCreateCuFunctionNVXDelegate vkCreateCuFunctionNVX_ptr;
+		public static VkResult vkCreateCuFunctionNVX(VkDevice device, VkCuFunctionCreateInfoNVX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCuFunctionNVX* pFunction)
+			=> vkCreateCuFunctionNVX_ptr(device, pCreateInfo, pAllocator, pFunction);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyCuModuleNVXDelegate(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyCuModuleNVXDelegate vkDestroyCuModuleNVX_ptr;
+		public static void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyCuModuleNVX_ptr(device, module, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyCuFunctionNVXDelegate(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyCuFunctionNVXDelegate vkDestroyCuFunctionNVX_ptr;
+		public static void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyCuFunctionNVX_ptr(device, function, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCuLaunchKernelNVXDelegate(VkCommandBuffer commandBuffer, VkCuLaunchInfoNVX* pLaunchInfo);
+		private static vkCmdCuLaunchKernelNVXDelegate vkCmdCuLaunchKernelNVX_ptr;
+		public static void vkCmdCuLaunchKernelNVX(VkCommandBuffer commandBuffer, VkCuLaunchInfoNVX* pLaunchInfo)
+			=> vkCmdCuLaunchKernelNVX_ptr(commandBuffer, pLaunchInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate uint vkGetImageViewHandleNVXDelegate(VkDevice device, VkImageViewHandleInfoNVX* pInfo);
@@ -2322,6 +2430,12 @@ namespace WaveEngine.Bindings.Vulkan
 			=> vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEncodeVideoKHRDelegate(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* pEncodeInfo);
+		private static vkCmdEncodeVideoKHRDelegate vkCmdEncodeVideoKHR_ptr;
+		public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* pEncodeInfo)
+			=> vkCmdEncodeVideoKHR_ptr(commandBuffer, pEncodeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetEvent2KHRDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfoKHR* pDependencyInfo);
 		private static vkCmdSetEvent2KHRDelegate vkCmdSetEvent2KHR_ptr;
 		public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfoKHR* pDependencyInfo)
@@ -2422,6 +2536,84 @@ namespace WaveEngine.Bindings.Vulkan
 		private static vkGetPhysicalDeviceDirectFBPresentationSupportEXTDelegate vkGetPhysicalDeviceDirectFBPresentationSupportEXT_ptr;
 		public static VkBool32 vkGetPhysicalDeviceDirectFBPresentationSupportEXT(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr dfb)
 			=> vkGetPhysicalDeviceDirectFBPresentationSupportEXT_ptr(physicalDevice, queueFamilyIndex, dfb);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetVertexInputEXTDelegate(VkCommandBuffer commandBuffer, uint vertexBindingDescriptionCount, VkVertexInputBindingDescription2EXT* pVertexBindingDescriptions, uint vertexAttributeDescriptionCount, VkVertexInputAttributeDescription2EXT* pVertexAttributeDescriptions);
+		private static vkCmdSetVertexInputEXTDelegate vkCmdSetVertexInputEXT_ptr;
+		public static void vkCmdSetVertexInputEXT(VkCommandBuffer commandBuffer, uint vertexBindingDescriptionCount, VkVertexInputBindingDescription2EXT* pVertexBindingDescriptions, uint vertexAttributeDescriptionCount, VkVertexInputAttributeDescription2EXT* pVertexAttributeDescriptions)
+			=> vkCmdSetVertexInputEXT_ptr(commandBuffer, vertexBindingDescriptionCount, pVertexBindingDescriptions, vertexAttributeDescriptionCount, pVertexAttributeDescriptions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemoryZirconHandleFUCHSIADelegate(VkDevice device, VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, IntPtr pZirconHandle);
+		private static vkGetMemoryZirconHandleFUCHSIADelegate vkGetMemoryZirconHandleFUCHSIA_ptr;
+		public static VkResult vkGetMemoryZirconHandleFUCHSIA(VkDevice device, VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, IntPtr pZirconHandle)
+			=> vkGetMemoryZirconHandleFUCHSIA_ptr(device, pGetZirconHandleInfo, pZirconHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemoryZirconHandlePropertiesFUCHSIADelegate(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, IntPtr zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
+		private static vkGetMemoryZirconHandlePropertiesFUCHSIADelegate vkGetMemoryZirconHandlePropertiesFUCHSIA_ptr;
+		public static VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, IntPtr zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties)
+			=> vkGetMemoryZirconHandlePropertiesFUCHSIA_ptr(device, handleType, zirconHandle, pMemoryZirconHandleProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkImportSemaphoreZirconHandleFUCHSIADelegate(VkDevice device, VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
+		private static vkImportSemaphoreZirconHandleFUCHSIADelegate vkImportSemaphoreZirconHandleFUCHSIA_ptr;
+		public static VkResult vkImportSemaphoreZirconHandleFUCHSIA(VkDevice device, VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo)
+			=> vkImportSemaphoreZirconHandleFUCHSIA_ptr(device, pImportSemaphoreZirconHandleInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetSemaphoreZirconHandleFUCHSIADelegate(VkDevice device, VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, IntPtr pZirconHandle);
+		private static vkGetSemaphoreZirconHandleFUCHSIADelegate vkGetSemaphoreZirconHandleFUCHSIA_ptr;
+		public static VkResult vkGetSemaphoreZirconHandleFUCHSIA(VkDevice device, VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, IntPtr pZirconHandle)
+			=> vkGetSemaphoreZirconHandleFUCHSIA_ptr(device, pGetZirconHandleInfo, pZirconHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetPatchControlPointsEXTDelegate(VkCommandBuffer commandBuffer, uint patchControlPoints);
+		private static vkCmdSetPatchControlPointsEXTDelegate vkCmdSetPatchControlPointsEXT_ptr;
+		public static void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, uint patchControlPoints)
+			=> vkCmdSetPatchControlPointsEXT_ptr(commandBuffer, patchControlPoints);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetRasterizerDiscardEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable);
+		private static vkCmdSetRasterizerDiscardEnableEXTDelegate vkCmdSetRasterizerDiscardEnableEXT_ptr;
+		public static void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable)
+			=> vkCmdSetRasterizerDiscardEnableEXT_ptr(commandBuffer, rasterizerDiscardEnable);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDepthBiasEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable);
+		private static vkCmdSetDepthBiasEnableEXTDelegate vkCmdSetDepthBiasEnableEXT_ptr;
+		public static void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable)
+			=> vkCmdSetDepthBiasEnableEXT_ptr(commandBuffer, depthBiasEnable);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetLogicOpEXTDelegate(VkCommandBuffer commandBuffer, VkLogicOp logicOp);
+		private static vkCmdSetLogicOpEXTDelegate vkCmdSetLogicOpEXT_ptr;
+		public static void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp)
+			=> vkCmdSetLogicOpEXT_ptr(commandBuffer, logicOp);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetPrimitiveRestartEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable);
+		private static vkCmdSetPrimitiveRestartEnableEXTDelegate vkCmdSetPrimitiveRestartEnableEXT_ptr;
+		public static void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable)
+			=> vkCmdSetPrimitiveRestartEnableEXT_ptr(commandBuffer, primitiveRestartEnable);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateScreenSurfaceQNXDelegate(VkInstance instance, VkScreenSurfaceCreateInfoQNX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+		private static vkCreateScreenSurfaceQNXDelegate vkCreateScreenSurfaceQNX_ptr;
+		public static VkResult vkCreateScreenSurfaceQNX(VkInstance instance, VkScreenSurfaceCreateInfoQNX* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
+			=> vkCreateScreenSurfaceQNX_ptr(instance, pCreateInfo, pAllocator, pSurface);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNXDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr window);
+		private static vkGetPhysicalDeviceScreenPresentationSupportQNXDelegate vkGetPhysicalDeviceScreenPresentationSupportQNX_ptr;
+		public static VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr window)
+			=> vkGetPhysicalDeviceScreenPresentationSupportQNX_ptr(physicalDevice, queueFamilyIndex, window);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetColorWriteEnableEXTDelegate(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* pColorWriteEnables);
+		private static vkCmdSetColorWriteEnableEXTDelegate vkCmdSetColorWriteEnableEXT_ptr;
+		public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* pColorWriteEnables)
+			=> vkCmdSetColorWriteEnableEXT_ptr(commandBuffer, attachmentCount, pColorWriteEnables);
 
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
@@ -2643,12 +2835,30 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkCmdDebugMarkerBeginEXT",  out vkCmdDebugMarkerBeginEXT_ptr);
 			nativeLib.LoadFunction("vkCmdDebugMarkerEndEXT",  out vkCmdDebugMarkerEndEXT_ptr);
 			nativeLib.LoadFunction("vkCmdDebugMarkerInsertEXT",  out vkCmdDebugMarkerInsertEXT_ptr);
+			nativeLib.LoadFunction("vkGetPhysicalDeviceVideoCapabilitiesKHR",  out vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr);
+			nativeLib.LoadFunction("vkGetPhysicalDeviceVideoFormatPropertiesKHR",  out vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr);
+			nativeLib.LoadFunction("vkCreateVideoSessionKHR",  out vkCreateVideoSessionKHR_ptr);
+			nativeLib.LoadFunction("vkDestroyVideoSessionKHR",  out vkDestroyVideoSessionKHR_ptr);
+			nativeLib.LoadFunction("vkGetVideoSessionMemoryRequirementsKHR",  out vkGetVideoSessionMemoryRequirementsKHR_ptr);
+			nativeLib.LoadFunction("vkBindVideoSessionMemoryKHR",  out vkBindVideoSessionMemoryKHR_ptr);
+			nativeLib.LoadFunction("vkCreateVideoSessionParametersKHR",  out vkCreateVideoSessionParametersKHR_ptr);
+			nativeLib.LoadFunction("vkUpdateVideoSessionParametersKHR",  out vkUpdateVideoSessionParametersKHR_ptr);
+			nativeLib.LoadFunction("vkDestroyVideoSessionParametersKHR",  out vkDestroyVideoSessionParametersKHR_ptr);
+			nativeLib.LoadFunction("vkCmdBeginVideoCodingKHR",  out vkCmdBeginVideoCodingKHR_ptr);
+			nativeLib.LoadFunction("vkCmdEndVideoCodingKHR",  out vkCmdEndVideoCodingKHR_ptr);
+			nativeLib.LoadFunction("vkCmdControlVideoCodingKHR",  out vkCmdControlVideoCodingKHR_ptr);
+			nativeLib.LoadFunction("vkCmdDecodeVideoKHR",  out vkCmdDecodeVideoKHR_ptr);
 			nativeLib.LoadFunction("vkCmdBindTransformFeedbackBuffersEXT",  out vkCmdBindTransformFeedbackBuffersEXT_ptr);
 			nativeLib.LoadFunction("vkCmdBeginTransformFeedbackEXT",  out vkCmdBeginTransformFeedbackEXT_ptr);
 			nativeLib.LoadFunction("vkCmdEndTransformFeedbackEXT",  out vkCmdEndTransformFeedbackEXT_ptr);
 			nativeLib.LoadFunction("vkCmdBeginQueryIndexedEXT",  out vkCmdBeginQueryIndexedEXT_ptr);
 			nativeLib.LoadFunction("vkCmdEndQueryIndexedEXT",  out vkCmdEndQueryIndexedEXT_ptr);
 			nativeLib.LoadFunction("vkCmdDrawIndirectByteCountEXT",  out vkCmdDrawIndirectByteCountEXT_ptr);
+			nativeLib.LoadFunction("vkCreateCuModuleNVX",  out vkCreateCuModuleNVX_ptr);
+			nativeLib.LoadFunction("vkCreateCuFunctionNVX",  out vkCreateCuFunctionNVX_ptr);
+			nativeLib.LoadFunction("vkDestroyCuModuleNVX",  out vkDestroyCuModuleNVX_ptr);
+			nativeLib.LoadFunction("vkDestroyCuFunctionNVX",  out vkDestroyCuFunctionNVX_ptr);
+			nativeLib.LoadFunction("vkCmdCuLaunchKernelNVX",  out vkCmdCuLaunchKernelNVX_ptr);
 			nativeLib.LoadFunction("vkGetImageViewHandleNVX",  out vkGetImageViewHandleNVX_ptr);
 			nativeLib.LoadFunction("vkGetImageViewAddressNVX",  out vkGetImageViewAddressNVX_ptr);
 			nativeLib.LoadFunction("vkGetShaderInfoAMD",  out vkGetShaderInfoAMD_ptr);
@@ -2816,6 +3026,7 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkDestroyPrivateDataSlotEXT",  out vkDestroyPrivateDataSlotEXT_ptr);
 			nativeLib.LoadFunction("vkSetPrivateDataEXT",  out vkSetPrivateDataEXT_ptr);
 			nativeLib.LoadFunction("vkGetPrivateDataEXT",  out vkGetPrivateDataEXT_ptr);
+			nativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
 			nativeLib.LoadFunction("vkCmdSetEvent2KHR",  out vkCmdSetEvent2KHR_ptr);
 			nativeLib.LoadFunction("vkCmdResetEvent2KHR",  out vkCmdResetEvent2KHR_ptr);
 			nativeLib.LoadFunction("vkCmdWaitEvents2KHR",  out vkCmdWaitEvents2KHR_ptr);
@@ -2833,6 +3044,19 @@ namespace WaveEngine.Bindings.Vulkan
 			nativeLib.LoadFunction("vkGetWinrtDisplayNV",  out vkGetWinrtDisplayNV_ptr);
 			nativeLib.LoadFunction("vkCreateDirectFBSurfaceEXT",  out vkCreateDirectFBSurfaceEXT_ptr);
 			nativeLib.LoadFunction("vkGetPhysicalDeviceDirectFBPresentationSupportEXT",  out vkGetPhysicalDeviceDirectFBPresentationSupportEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetVertexInputEXT",  out vkCmdSetVertexInputEXT_ptr);
+			nativeLib.LoadFunction("vkGetMemoryZirconHandleFUCHSIA",  out vkGetMemoryZirconHandleFUCHSIA_ptr);
+			nativeLib.LoadFunction("vkGetMemoryZirconHandlePropertiesFUCHSIA",  out vkGetMemoryZirconHandlePropertiesFUCHSIA_ptr);
+			nativeLib.LoadFunction("vkImportSemaphoreZirconHandleFUCHSIA",  out vkImportSemaphoreZirconHandleFUCHSIA_ptr);
+			nativeLib.LoadFunction("vkGetSemaphoreZirconHandleFUCHSIA",  out vkGetSemaphoreZirconHandleFUCHSIA_ptr);
+			nativeLib.LoadFunction("vkCmdSetPatchControlPointsEXT",  out vkCmdSetPatchControlPointsEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetRasterizerDiscardEnableEXT",  out vkCmdSetRasterizerDiscardEnableEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetDepthBiasEnableEXT",  out vkCmdSetDepthBiasEnableEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetLogicOpEXT",  out vkCmdSetLogicOpEXT_ptr);
+			nativeLib.LoadFunction("vkCmdSetPrimitiveRestartEnableEXT",  out vkCmdSetPrimitiveRestartEnableEXT_ptr);
+			nativeLib.LoadFunction("vkCreateScreenSurfaceQNX",  out vkCreateScreenSurfaceQNX_ptr);
+			nativeLib.LoadFunction("vkGetPhysicalDeviceScreenPresentationSupportQNX",  out vkGetPhysicalDeviceScreenPresentationSupportQNX_ptr);
+			nativeLib.LoadFunction("vkCmdSetColorWriteEnableEXT",  out vkCmdSetColorWriteEnableEXT_ptr);
 		}
 	}
 }

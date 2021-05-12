@@ -10,7 +10,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public const uint VK_MAX_DESCRIPTION_SIZE = 256;
 		public const uint VK_MAX_MEMORY_TYPES = 32;
 		public const uint VK_MAX_MEMORY_HEAPS = 16;
-		public const float VK_LOD_CLAMP_NONE = 1000.0f;
+		public const float VK_LOD_CLAMP_NONE = 1000.0F;
 		public const uint VK_REMAINING_MIP_LEVELS = (~0U);
 		public const uint VK_REMAINING_ARRAY_LAYERS = (~0U);
 		public const ulong VK_WHOLE_SIZE = (~0UL);
@@ -18,9 +18,9 @@ namespace WaveEngine.Bindings.Vulkan
 		public const uint VK_TRUE = 1;
 		public const uint VK_FALSE = 0;
 		public const uint VK_QUEUE_FAMILY_IGNORED = (~0U);
-		public const uint VK_QUEUE_FAMILY_EXTERNAL = (~0U-1);
+		public const uint VK_QUEUE_FAMILY_EXTERNAL = (~1U);
 		public const uint VK_QUEUE_FAMILY_EXTERNAL_KHR = VK_QUEUE_FAMILY_EXTERNAL;
-		public const uint VK_QUEUE_FAMILY_FOREIGN_EXT = (~0U-2);
+		public const uint VK_QUEUE_FAMILY_FOREIGN_EXT = (~2U);
 		public const uint VK_SUBPASS_EXTERNAL = (~0U);
 		public const uint VK_MAX_DEVICE_GROUP_SIZE = 32;
 		public const uint VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE;

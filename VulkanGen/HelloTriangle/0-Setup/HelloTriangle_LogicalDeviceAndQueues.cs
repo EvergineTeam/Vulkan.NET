@@ -37,21 +37,6 @@ namespace KHRRTXHelloTriangle
 
             VkPhysicalDeviceFeatures deviceFeatures = default;
 
-            // Raytracing extensions
-            VkPhysicalDeviceRayTracingFeaturesKHR deviceRayTracingFeatures = new VkPhysicalDeviceRayTracingFeaturesKHR()
-            {
-                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_FEATURES_KHR,
-                pNext = null,
-                rayTracing = true,
-            };
-
-            VkPhysicalDeviceVulkan12Features deviceVulkan12Features = new VkPhysicalDeviceVulkan12Features()
-            {
-                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES,
-                pNext = &deviceRayTracingFeatures,
-                bufferDeviceAddress = true,
-            };
-
             int deviceExtensionsCount = deviceExtensions.Length;
             IntPtr* deviceExtensionsArray = stackalloc IntPtr[deviceExtensionsCount];
             for (int i = 0; i < deviceExtensionsCount; i++)
@@ -62,7 +47,6 @@ namespace KHRRTXHelloTriangle
 
             VkDeviceCreateInfo createInfo = new VkDeviceCreateInfo();
             createInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-            createInfo.pNext = &deviceVulkan12Features;
 
             VkDeviceQueueCreateInfo[] queueCreateInfosArray = queueCreateInfos.ToArray();
             fixed (VkDeviceQueueCreateInfo* queueCreateInfosArrayPtr = &queueCreateInfosArray[0])

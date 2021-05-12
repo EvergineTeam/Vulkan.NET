@@ -1533,6 +1533,16 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkScreenSurfaceCreateInfoQNX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint flags;
+		public IntPtr context;
+		public IntPtr window;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSurfaceFormatKHR
 	{
 		public VkFormat format;
@@ -2138,6 +2148,32 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMemoryZirconHandleInfoFUCHSIA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExternalMemoryHandleTypeFlags handleType;
+		public IntPtr handle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryZirconHandlePropertiesFUCHSIA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint memoryTypeBits;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryGetZirconHandleInfoFUCHSIA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDeviceMemory memory;
+		public VkExternalMemoryHandleTypeFlags handleType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryWin32HandlePropertiesKHR
 	{
 		public VkStructureType sType;
@@ -2275,6 +2311,26 @@ namespace WaveEngine.Bindings.Vulkan
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSemaphoreGetFdInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSemaphore semaphore;
+		public VkExternalSemaphoreHandleTypeFlags handleType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSemaphore semaphore;
+		public VkSemaphoreImportFlags flags;
+		public VkExternalSemaphoreHandleTypeFlags handleType;
+		public IntPtr zirconHandle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -5788,6 +5844,16 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 extendedDynamicState2;
+		public VkBool32 extendedDynamicState2LogicOp;
+		public VkBool32 extendedDynamicState2PatchControlPoints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkRenderPassTransformBeginInfoQCOM
 	{
 		public VkStructureType sType;
@@ -6191,6 +6257,53 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 vertexInputDynamicState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVertexInputBindingDescription2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint binding;
+		public uint stride;
+		public VkVertexInputRate inputRate;
+		public uint divisor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVertexInputAttributeDescription2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint location;
+		public uint binding;
+		public VkFormat format;
+		public uint offset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 colorWriteEnable;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineColorWriteCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint attachmentCount;
+		public VkBool32* pColorWriteEnables;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryBarrier2KHR
 	{
 		public VkStructureType sType;
@@ -6305,6 +6418,551 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 synchronization2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoQueueFamilyProperties2KHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoCodecOperationFlagsKHR videoCodecOperations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoProfilesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint profileCount;
+		public VkVideoProfileKHR* pProfiles;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoFormatInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageUsageFlags imageUsage;
+		public VkVideoProfilesKHR* pVideoProfiles;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoFormatPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFormat format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoProfileKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoCodecOperationFlagsKHR videoCodecOperation;
+		public VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
+		public VkVideoComponentDepthFlagBitsKHR lumaBitDepth;
+		public VkVideoComponentDepthFlagBitsKHR chromaBitDepth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoCapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoCapabilitiesFlagsKHR capabilityFlags;
+		public ulong minBitstreamBufferOffsetAlignment;
+		public ulong minBitstreamBufferSizeAlignment;
+		public VkExtent2D videoPictureExtentGranularity;
+		public VkExtent2D minExtent;
+		public VkExtent2D maxExtent;
+		public uint maxReferencePicturesSlotsCount;
+		public uint maxReferencePicturesActiveCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoGetMemoryPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint memoryBindIndex;
+		public VkMemoryRequirements2* pMemoryRequirements;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoBindMemoryKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint memoryBindIndex;
+		public VkDeviceMemory memory;
+		public ulong memoryOffset;
+		public ulong memorySize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoPictureResourceKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkOffset2D codedOffset;
+		public VkExtent2D codedExtent;
+		public uint baseArrayLayer;
+		public VkImageView imageViewBinding;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoReferenceSlotKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public sbyte slotIndex;
+		public VkVideoPictureResourceKHR* pPictureResource;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoDecodeFlagsKHR flags;
+		public VkOffset2D codedOffset;
+		public VkExtent2D codedExtent;
+		public VkBuffer srcBuffer;
+		public ulong srcBufferOffset;
+		public ulong srcBufferRange;
+		public VkVideoPictureResourceKHR dstPictureResource;
+		public VkVideoReferenceSlotKHR* pSetupReferenceSlot;
+		public uint referenceSlotCount;
+		public VkVideoReferenceSlotKHR* pReferenceSlots;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264ProfileEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr stdProfileIdc;
+		public VkVideoDecodeH264FieldLayoutFlagsEXT fieldLayout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264CapabilitiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxLevel;
+		public VkOffset2D fieldOffsetGranularity;
+		public VkExtensionProperties stdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264SessionCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint flags;
+		public VkExtensionProperties* pStdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264SessionParametersAddInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint spsStdCount;
+		public IntPtr pSpsStd;
+		public uint ppsStdCount;
+		public IntPtr pPpsStd;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264SessionParametersCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxSpsStdCount;
+		public uint maxPpsStdCount;
+		public VkVideoDecodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264PictureInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdPictureInfo;
+		public uint slicesCount;
+		public uint* pSlicesDataOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264DpbSlotInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdReferenceInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264MvcEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdMvc;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265ProfileEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr stdProfileIdc;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265CapabilitiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxLevel;
+		public VkExtensionProperties stdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265SessionCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint flags;
+		public VkExtensionProperties* pStdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265SessionParametersAddInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint spsStdCount;
+		public IntPtr pSpsStd;
+		public uint ppsStdCount;
+		public IntPtr pPpsStd;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265SessionParametersCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxSpsStdCount;
+		public uint maxPpsStdCount;
+		public VkVideoDecodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265PictureInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdPictureInfo;
+		public uint slicesCount;
+		public uint* pSlicesDataOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265DpbSlotInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdReferenceInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoSessionCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint queueFamilyIndex;
+		public VkVideoSessionCreateFlagsKHR flags;
+		public VkVideoProfileKHR* pVideoProfile;
+		public VkFormat pictureFormat;
+		public VkExtent2D maxCodedExtent;
+		public VkFormat referencePicturesFormat;
+		public uint maxReferencePicturesSlotsCount;
+		public uint maxReferencePicturesActiveCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoSessionParametersCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoSessionParametersKHR videoSessionParametersTemplate;
+		public VkVideoSessionKHR videoSession;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoSessionParametersUpdateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint updateSequenceCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoBeginCodingInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint flags;
+		public VkVideoCodingQualityPresetFlagsKHR codecQualityPreset;
+		public VkVideoSessionKHR videoSession;
+		public VkVideoSessionParametersKHR videoSessionParameters;
+		public uint referenceSlotCount;
+		public VkVideoReferenceSlotKHR* pReferenceSlots;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEndCodingInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoCodingControlInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoCodingControlFlagsKHR flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeFlagsKHR flags;
+		public uint qualityLevel;
+		public VkExtent2D codedExtent;
+		public VkBuffer dstBitstreamBuffer;
+		public ulong dstBitstreamBufferOffset;
+		public ulong dstBitstreamBufferMaxRange;
+		public VkVideoPictureResourceKHR srcPictureResource;
+		public VkVideoReferenceSlotKHR* pSetupReferenceSlot;
+		public uint referenceSlotCount;
+		public VkVideoReferenceSlotKHR* pReferenceSlots;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeRateControlInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeRateControlFlagsKHR flags;
+		public VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
+		public uint averageBitrate;
+		public ushort peakToAverageBitrateRatio;
+		public ushort frameRateNumerator;
+		public ushort frameRateDenominator;
+		public uint virtualBufferSizeInMs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264CapabilitiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeH264CapabilitiesFlagsEXT flags;
+		public VkVideoEncodeH264InputModeFlagsEXT inputModeFlags;
+		public VkVideoEncodeH264OutputModeFlagsEXT outputModeFlags;
+		public VkExtent2D minPictureSizeInMbs;
+		public VkExtent2D maxPictureSizeInMbs;
+		public VkExtent2D inputImageDataAlignment;
+		public byte maxNumL0ReferenceForP;
+		public byte maxNumL0ReferenceForB;
+		public byte maxNumL1Reference;
+		public byte qualityLevelCount;
+		public VkExtensionProperties stdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264SessionCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeH264CreateFlagsEXT flags;
+		public VkExtent2D maxPictureSizeInMbs;
+		public VkExtensionProperties* pStdExtensionVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint spsStdCount;
+		public IntPtr pSpsStd;
+		public uint ppsStdCount;
+		public IntPtr pPpsStd;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxSpsStdCount;
+		public uint maxPpsStdCount;
+		public VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264DpbSlotInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public sbyte slotIndex;
+		public IntPtr pStdPictureInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264VclFrameInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public byte refDefaultFinalList0EntryCount;
+		public VkVideoEncodeH264DpbSlotInfoEXT* pRefDefaultFinalList0Entries;
+		public byte refDefaultFinalList1EntryCount;
+		public VkVideoEncodeH264DpbSlotInfoEXT* pRefDefaultFinalList1Entries;
+		public uint naluSliceEntryCount;
+		public VkVideoEncodeH264NaluSliceEXT* pNaluSliceEntries;
+		public VkVideoEncodeH264DpbSlotInfoEXT* pCurrentPictureInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264EmitPictureParametersEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public byte spsId;
+		public VkBool32 emitSpsEnable;
+		public uint ppsIdEntryCount;
+		public byte* ppsIdEntries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264ProfileEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr stdProfileIdc;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264NaluSliceEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pSliceHeaderStd;
+		public uint mbCount;
+		public byte refFinalList0EntryCount;
+		public VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList0Entries;
+		public byte refFinalList1EntryCount;
+		public VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList1Entries;
+		public uint precedingNaluBytes;
+		public byte minQp;
+		public byte maxQp;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 inheritedViewportScissor2D;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCommandBufferInheritanceViewportScissorInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 viewportScissor2D;
+		public uint viewportDepthCount;
+		public VkViewport* pViewportDepths;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 ycbcr2plane444Formats;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 provokingVertexLast;
+		public VkBool32 transformFeedbackPreservesProvokingVertex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 provokingVertexModePerPipeline;
+		public VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkProvokingVertexModeEXT provokingVertexMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCuModuleCreateInfoNVX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr dataSize;
+		public void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCuFunctionCreateInfoNVX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCuModuleNVX module;
+		public byte* pName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCuLaunchInfoNVX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCuFunctionNVX function;
+		public uint gridDimX;
+		public uint gridDimY;
+		public uint gridDimZ;
+		public uint blockDimX;
+		public uint blockDimY;
+		public uint blockDimZ;
+		public uint sharedMemBytes;
+		public UIntPtr paramCount;
+		public void* pParams;
+		public UIntPtr extraCount;
+		public void* pExtras;
 	}
 
 }
