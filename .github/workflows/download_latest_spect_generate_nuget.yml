@@ -1,0 +1,37 @@
+name: Update_and_Generate_NuGet
+on:
+  [push]
+  #schedule:
+  #- cron: '0 0 1 * *'
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      nugetOutputPath: ${{  'nupkgs'  }}
+      xrFile: ${{  'vk.xml'  }}
+      xrPath: ${{  'KhronosRegistry'  }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: "5.8.x"
+      #- name: Add WaveNightlyFeed
+      #  run: sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
+      - name: remove vk xml
+        run: rm ${{ env.xrPath  }}/${{  env.xrFile  }}
+      - name: download vk file
+        uses: carlosperate/download-file-action@v1.0.3
+        with:
+          # URL of the file to download
+          file-url: https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml
+          # Path to download the file
+          location: ${{ env.xrPath  }}/
+      - name: Generate NuGet packages
+        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          path: ${{  env.nugetOutputPath  }}/
