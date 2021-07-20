@@ -4,6 +4,7 @@ This binding is generated from vk.xml file included in the KhronosRegistry folde
 
 [![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Releases/WaveEngine.Bindings.Vulkan?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build?definitionId=58)
 [![Nuget](https://img.shields.io/nuget/v/WaveEngine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/WaveEngine.Bindings.Vulkan)
+[![Update_and_Generate_NuGet](https://github.com/WaveEngine/Vulkan.NET/actions/workflows/download_latest_spect_generate_nuget.yml/badge.svg)](https://github.com/WaveEngine/Vulkan.NET/actions/workflows/download_latest_spect_generate_nuget.yml)
 
 ## Features
 
