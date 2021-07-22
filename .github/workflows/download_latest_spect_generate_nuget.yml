@@ -41,7 +41,7 @@ jobs:
           
   build:
     needs: [download]    
-    if: ${{ needs.download.outputs.output1 == needs.download.outputs.output2  }}
+    if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
