@@ -1,71 +1,71 @@
 name: Update_and_Commit
 on:
-  [push]
-  #schedule:
-  #- cron: '0 0 1 * *'
+  #[push]
+  schedule:
+    - cron: "0 0 1 * *"
 
 env:
-  xrFile: ${{  'vk.xml'  }}
-  xrTmpFile: ${{  'vk.xml_tmp'  }}  
-  xrPath: ${{  'KhronosRegistry'  }}
-  xrUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
-  xrSelfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/feature/updateAndGenerateNuget/KhronosRegistry/vk.xml'  }}
+  filePath: ${{  'vk.xml'  }}
+  fileTmpPath: ${{  'vk.xml_tmp'  }}
+  basePath: ${{  'KhronosRegistry'  }}
+  sourceUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
+  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/feature/updateAndGenerateNuget/KhronosRegistry/vk.xml'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
-jobs:   
+jobs:
   download:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.xr.outputs.hash1 }}
-      output2: ${{ steps.xr.outputs.hash2 }}
-      output3: ${{ steps.xr.outputs.date }}
+      output1: ${{ steps.fileHash.outputs.hash1 }}
+      output2: ${{ steps.fileHash.outputs.hash2 }}
+      output3: ${{ steps.fileHash.outputs.date }}
     steps:
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrFile  }}
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}
       - name: download our file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrSelfUrl  }}
-          file-name: ${{  env.xrTmpFile  }}
-      - name: Get hash from saved xr
-        id: xr        
+          file-url: ${{  env.selfUrl  }}
+          file-name: ${{  env.fileTmpPath  }}
+      - name: Get file hash
+        id: fileHash
         run: |
           echo "::set-output name=hash1::${{ hashFiles('vk.xml')  }}"
           echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}" 
           echo "::set-output name=date::$(date +'%Y.%m.%d')"
-          
+
   build:
-    needs: [download]    
+    needs: [download]
     if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+          dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
       - uses: nuget/setup-nuget@v1
         with:
-          nuget-version: '5.8.x'    
+          nuget-version: "5.8.x"
       - name: remove old file
         run: |
-            cd ${{  env.xrPath  }}
-            rm ${{  env.xrFile  }}
-            ls
+          cd ${{  env.basePath  }}
+          rm ${{  env.filePath  }}
+          ls
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrFile  }}          
-          location: ${{ env.xrPath  }}/
-      - name: Generate NuGet packages      
-        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}  
-      - name: Publish NuGet      
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}
+          location: ${{ env.basePath  }}/
+      - name: Generate NuGet packages
+        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
+      - name: Publish NuGet
         if: ${{ success() }}
         run: |
           cd ${{  env.nugetOutputPath  }}
@@ -76,7 +76,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new xr file
-          add_options: '-u'      
+          add_options: "-u"
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
@@ -84,8 +84,7 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          #mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
-          mail: mgomar@plainconcepts.com
+          mail: mgomar@plainconcepts.com,jferrero@plainconcepts.com,jcanton@plainconcepts.com
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
