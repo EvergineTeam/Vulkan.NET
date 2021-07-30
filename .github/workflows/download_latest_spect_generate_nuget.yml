@@ -8,13 +8,13 @@ env:
   filePath: ${{  'vk.xml'  }}
   fileTmpPath: ${{  'vk.xml_tmp'  }}
   basePath: ${{  'KhronosRegistry'  }}
-  sourceUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
-  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/feature/updateAndGenerateNuget/KhronosRegistry/vk.xml'  }}
+  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/registry/vk.xml'  }}
+  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
 jobs:
   download:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       output1: ${{ steps.fileHash.outputs.hash1 }}
       output2: ${{ steps.fileHash.outputs.hash2 }}
@@ -65,18 +65,18 @@ jobs:
           location: ${{ env.basePath  }}/
       - name: Generate NuGet packages
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
+      - name: Commit if update
+        if: ${{ success() }}
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
+        with:
+          commit_message: Updating new vk file
+          add_options: "-u"
       - name: Publish NuGet
         if: ${{ success() }}
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
           dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
-      - name: Commit if update
-        if: ${{ success() }}
-        uses: stefanzweifel/git-auto-commit-action@v4.11.0
-        with:
-          commit_message: Updating new xr file
-          add_options: "-u"
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
@@ -84,9 +84,9 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          mail: mgomar@plainconcepts.com,jferrero@plainconcepts.com,jcanton@plainconcepts.com
+          mail: ${{ secrets.WAVE_EMAILREPORT_LIST }}
           # The email that will be shown as sender
-          from: waveengineteam@gmail.com
+          from: ${{ secrets.WAVE_EMAIL }}
           # The subject of the email
           subject: Vulkan Update NuGet has failed
           # Defines if it should be one email with multiple address or multiple emails with a single address
