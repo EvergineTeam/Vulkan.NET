@@ -30,5 +30,6 @@ namespace WaveEngine.Bindings.Vulkan
 		public const uint VK_MAX_DRIVER_INFO_SIZE_KHR = VK_MAX_DRIVER_INFO_SIZE;
 		public const uint VK_SHADER_UNUSED_KHR = (~0U);
 		public const uint VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR;
+		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = 16;
 	}
 }

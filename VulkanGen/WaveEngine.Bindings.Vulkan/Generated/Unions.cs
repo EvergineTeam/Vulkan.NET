@@ -96,5 +96,16 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkAccelerationStructureGeometryInstancesDataKHR instances;
 	}
 
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkAccelerationStructureMotionInstanceDataNV
+	{
+		[FieldOffset(0)]
+		public VkAccelerationStructureInstanceKHR staticInstance;
+		[FieldOffset(0)]
+		public VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
+		[FieldOffset(0)]
+		public VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
+	}
+
 }
 
