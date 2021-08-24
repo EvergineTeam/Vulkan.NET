@@ -9,11 +9,11 @@ namespace WaveEngine.Bindings.Vulkan
     {
         private const CallingConvention CallConv = CallingConvention.StdCall;
 
-        private static NativeLibrary nativeLib;
+        public static NativeLibrary NativeLib;
 
         static VulkanNative()
         {
-            nativeLib = LoadNativeLibrary();
+            NativeLib = LoadNativeLibrary();
             LoadFuncionPointers();
         }
 

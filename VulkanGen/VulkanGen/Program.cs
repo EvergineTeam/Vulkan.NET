@@ -281,13 +281,13 @@ namespace VulkanGen
                 file.WriteLine("\t\t{");
                 file.WriteLine("\t\t\tif (instance != default)");
                 file.WriteLine("\t\t\t{");
-                file.WriteLine("\t\t\t\tnativeLib.instance = instance;");
+                file.WriteLine("\t\t\t\tNativeLib.instance = instance;");
                 file.WriteLine("\t\t\t}");
                 file.WriteLine();
 
                 foreach (var command in vulkanVersion.Commands)
                 {
-                    file.WriteLine($"\t\t\tnativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                    file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }
 
                 file.WriteLine("\t\t}");
