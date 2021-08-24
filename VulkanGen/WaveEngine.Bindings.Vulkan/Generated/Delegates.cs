@@ -49,4 +49,8 @@ namespace WaveEngine.Bindings.Vulkan
 		VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 		void* pUserData);
 
+	public unsafe delegate void PFN_vkDeviceMemoryReportCallbackEXT(
+		VkDeviceMemoryReportCallbackDataEXT* pCallbackData,
+		void* pUserData);
+
 }

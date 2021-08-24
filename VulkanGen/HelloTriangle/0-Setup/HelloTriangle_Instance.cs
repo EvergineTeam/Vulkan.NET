@@ -20,12 +20,6 @@ namespace KHRRTXHelloTriangle
 
         private void CreateInstance()
         {
-#if DEBUG
-            if (!this.CheckValidationLayerSupport())
-            {
-                throw new Exception("Validation layers requested, but not available!");
-            }
-#endif
             VkApplicationInfo appInfo = new VkApplicationInfo()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -53,14 +47,22 @@ namespace KHRRTXHelloTriangle
 
             // Validation layers
 #if DEBUG
-            IntPtr* layersToBytesArray = stackalloc IntPtr[validationLayers.Length];
-            for (int i = 0; i < validationLayers.Length; i++)
+            if (this.CheckValidationLayerSupport())
             {
-                layersToBytesArray[i] = Marshal.StringToHGlobalAnsi(validationLayers[i]);
-            }
+                IntPtr* layersToBytesArray = stackalloc IntPtr[validationLayers.Length];
+                for (int i = 0; i < validationLayers.Length; i++)
+                {
+                    layersToBytesArray[i] = Marshal.StringToHGlobalAnsi(validationLayers[i]);
+                }
 
-            createInfo.enabledLayerCount = (uint)validationLayers.Length;
-            createInfo.ppEnabledLayerNames = (byte**)layersToBytesArray;
+                createInfo.enabledLayerCount = (uint)validationLayers.Length;
+                createInfo.ppEnabledLayerNames = (byte**)layersToBytesArray;
+            }
+            else
+            {
+                createInfo.enabledLayerCount = 0;
+                createInfo.pNext = null;
+            }
 #else
             createInfo.enabledLayerCount = 0;
             createInfo.pNext = null;

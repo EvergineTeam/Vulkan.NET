@@ -542,6 +542,36 @@ namespace WaveEngine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkCuModuleNVX : IEquatable<VkCuModuleNVX>
+{
+		public readonly ulong Handle;
+		public VkCuModuleNVX(ulong existingHandle) { Handle = existingHandle; }
+		public static VkCuModuleNVX Null => new VkCuModuleNVX(0);
+		public static implicit operator VkCuModuleNVX(ulong handle) => new VkCuModuleNVX(handle);
+		public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuModuleNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuModuleNVX left, ulong right) => left.Handle != right;
+		public bool Equals(VkCuModuleNVX h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkCuModuleNVX h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkCuFunctionNVX : IEquatable<VkCuFunctionNVX>
+{
+		public readonly ulong Handle;
+		public VkCuFunctionNVX(ulong existingHandle) { Handle = existingHandle; }
+		public static VkCuFunctionNVX Null => new VkCuFunctionNVX(0);
+		public static implicit operator VkCuFunctionNVX(ulong handle) => new VkCuFunctionNVX(handle);
+		public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuFunctionNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuFunctionNVX left, ulong right) => left.Handle != right;
+		public bool Equals(VkCuFunctionNVX h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkCuFunctionNVX h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 {
 		public readonly ulong Handle;
@@ -629,6 +659,36 @@ namespace WaveEngine.Bindings.Vulkan
 		public static bool operator !=(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle != right;
 		public bool Equals(VkDebugUtilsMessengerEXT h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is VkDebugUtilsMessengerEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkVideoSessionKHR : IEquatable<VkVideoSessionKHR>
+{
+		public readonly ulong Handle;
+		public VkVideoSessionKHR(ulong existingHandle) { Handle = existingHandle; }
+		public static VkVideoSessionKHR Null => new VkVideoSessionKHR(0);
+		public static implicit operator VkVideoSessionKHR(ulong handle) => new VkVideoSessionKHR(handle);
+		public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkVideoSessionKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkVideoSessionKHR left, ulong right) => left.Handle != right;
+		public bool Equals(VkVideoSessionKHR h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkVideoSessionKHR h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkVideoSessionParametersKHR : IEquatable<VkVideoSessionParametersKHR>
+{
+		public readonly ulong Handle;
+		public VkVideoSessionParametersKHR(ulong existingHandle) { Handle = existingHandle; }
+		public static VkVideoSessionParametersKHR Null => new VkVideoSessionParametersKHR(0);
+		public static implicit operator VkVideoSessionParametersKHR(ulong handle) => new VkVideoSessionParametersKHR(handle);
+		public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkVideoSessionParametersKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkVideoSessionParametersKHR left, ulong right) => left.Handle != right;
+		public bool Equals(VkVideoSessionParametersKHR h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkVideoSessionParametersKHR h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 

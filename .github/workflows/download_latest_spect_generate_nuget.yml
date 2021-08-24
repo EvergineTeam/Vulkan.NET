@@ -1,0 +1,95 @@
+name: Update_and_Commit
+on:
+  #[push]
+  schedule:
+    - cron: "0 0 1 * *"
+
+env:
+  filePath: ${{  'vk.xml'  }}
+  fileTmpPath: ${{  'vk.xml_tmp'  }}
+  basePath: ${{  'KhronosRegistry'  }}
+  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/registry/vk.xml'  }}
+  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
+  nugetOutputPath: ${{  'nupkgs'  }}
+
+jobs:
+  download:
+    runs-on: windows-latest
+    outputs:
+      output1: ${{ steps.fileHash.outputs.hash1 }}
+      output2: ${{ steps.fileHash.outputs.hash2 }}
+      output3: ${{ steps.fileHash.outputs.date }}
+    steps:
+      - name: download target file
+        uses: carlosperate/download-file-action@v1.0.3
+        with:
+          # URL of the file to download
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}
+      - name: download our file
+        uses: carlosperate/download-file-action@v1.0.3
+        with:
+          # URL of the file to download
+          file-url: ${{  env.selfUrl  }}
+          file-name: ${{  env.fileTmpPath  }}
+      - name: Get file hash
+        id: fileHash
+        run: |
+          echo "::set-output name=hash1::${{ hashFiles('vk.xml')  }}"
+          echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}" 
+          echo "::set-output name=date::$(date +'%Y.%m.%d')"
+
+  build:
+    needs: [download]
+    if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: "5.8.x"
+      - name: remove old file
+        run: |
+          cd ${{  env.basePath  }}
+          rm ${{  env.filePath  }}
+          ls
+      - name: download target file
+        uses: carlosperate/download-file-action@v1.0.3
+        with:
+          # URL of the file to download
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}
+          location: ${{ env.basePath  }}/
+      - name: Generate NuGet packages
+        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
+      - name: Commit if update
+        if: ${{ success() }}
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
+        with:
+          commit_message: Updating new vk file
+          add_options: "-u"
+      - name: Publish NuGet
+        if: ${{ success() }}
+        run: |
+          cd ${{  env.nugetOutputPath  }}
+          ls *.nupkg
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
+      - name: SendGrid Mail Action
+        if: ${{ failure() }}
+        uses: mmichailidis/sendgrid-mail-action@v1.1
+        with:
+          # The token for sendgrid
+          sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
+          # The emails ( can be only one ) that the email will go
+          mail: ${{ secrets.WAVE_EMAILREPORT_LIST }}
+          # The email that will be shown as sender
+          from: ${{ secrets.WAVE_EMAIL }}
+          # The subject of the email
+          subject: Vulkan Update NuGet has failed
+          # Defines if it should be one email with multiple address or multiple emails with a single address
+          individual: false
+          # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
+          text: something when wrong when updating new vk.xml file from KhronosRegistry

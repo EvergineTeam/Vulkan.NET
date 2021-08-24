@@ -66,6 +66,11 @@ namespace VulkanGen
 
             foreach (var extension in extensions)
             {
+                if (extension.Supported == "disabled")
+                {
+                    continue;
+                }
+
                 // Extend Enums
                 foreach (var enumType in extension.Enums)
                 {
@@ -96,7 +101,7 @@ namespace VulkanGen
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
 
-                    if(!version.Commands.Exists(c => c.Prototype.Name == name))
+                    if(!version.Commands.Exists(c => c?.Prototype.Name == name))
                         version.Commands.Add(commandDefinition);
                 }
             }
