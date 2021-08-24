@@ -25,7 +25,7 @@ namespace WaveEngine.Bindings.Vulkan
 
         protected abstract IntPtr LoadLibrary(string libraryName);
         protected abstract void FreeLibrary(IntPtr libraryHandle);
-        protected abstract IntPtr LoadFunction(string functionName);
+        public abstract IntPtr LoadFunction(string functionName);
 
         public unsafe void LoadFunction<T>(string name, out T field)
         {
@@ -87,7 +87,7 @@ namespace WaveEngine.Bindings.Vulkan
                 Kernel32.FreeLibrary(libraryHandle);
             }
 
-            protected override IntPtr LoadFunction(string functionName)
+            public override IntPtr LoadFunction(string functionName)
             {
                 Debug.WriteLine("Loading " + functionName);
                 return Kernel32.GetProcAddress(NativeHandle, functionName);
@@ -122,7 +122,7 @@ namespace WaveEngine.Bindings.Vulkan
                 Libdl.dlclose(libraryHandle);
             }
 
-            protected override IntPtr LoadFunction(string functionName)
+            public override IntPtr LoadFunction(string functionName)
             {
                 return Libdl.dlsym(NativeHandle, functionName);
             }
