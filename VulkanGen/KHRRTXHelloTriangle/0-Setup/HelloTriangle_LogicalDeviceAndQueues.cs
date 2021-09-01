@@ -42,18 +42,36 @@ namespace KHRRTXHelloTriangle
 
             VkPhysicalDeviceFeatures deviceFeatures = default;
 
-            // Raytracing extensions
-            VkPhysicalDeviceRayTracingFeaturesKHR deviceRayTracingFeatures = new VkPhysicalDeviceRayTracingFeaturesKHR()
+            // chain multiple features required for RT into deviceInfo.pNext
+
+            // require buffer device address feature
+            VkPhysicalDeviceBufferDeviceAddressFeatures deviceBufferDeviceAddressFeatures = new VkPhysicalDeviceBufferDeviceAddressFeatures()
             {
-                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_FEATURES_KHR,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES,
+                bufferDeviceAddress = true,
                 pNext = null,
-                rayTracing = true,
+            };
+
+            // require ray tracing pipeline feature
+            VkPhysicalDeviceRayTracingPipelineFeaturesKHR deviceRayTracingPipelineFeatures = new VkPhysicalDeviceRayTracingPipelineFeaturesKHR()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR,
+                pNext = &deviceBufferDeviceAddressFeatures,
+                rayTracingPipeline = true,
+            };
+
+            // require acceleration structure feature
+            VkPhysicalDeviceAccelerationStructureFeaturesKHR deviceAccelerationStructureFeatures = new VkPhysicalDeviceAccelerationStructureFeaturesKHR()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR,
+                accelerationStructure = true,
+                pNext = &deviceRayTracingPipelineFeatures,
             };
 
             VkPhysicalDeviceVulkan12Features deviceVulkan12Features = new VkPhysicalDeviceVulkan12Features()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES,
-                pNext = &deviceRayTracingFeatures,
+                pNext = &deviceAccelerationStructureFeatures,
                 bufferDeviceAddress = true,
             };
 
@@ -74,7 +92,6 @@ namespace KHRRTXHelloTriangle
             {
                 createInfo.queueCreateInfoCount = (uint)queueCreateInfos.Count;
                 createInfo.pQueueCreateInfos = queueCreateInfosArrayPtr;
-
             }
 
             createInfo.pEnabledFeatures = &deviceFeatures;

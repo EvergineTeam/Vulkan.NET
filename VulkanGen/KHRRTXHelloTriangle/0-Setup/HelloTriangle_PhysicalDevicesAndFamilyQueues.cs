@@ -23,6 +23,7 @@ namespace KHRRTXHelloTriangle
             for (int i = 0; i < deviceCount; i++)
             {
                 var device = devices[i];
+
                 if (this.IsPhysicalDeviceSuitable(device))
                 {
                     this.physicalDevice = device;
@@ -42,21 +43,21 @@ namespace KHRRTXHelloTriangle
 
             bool extensionsSupported = this.CheckPhysicalDeviceExtensionSupport(physicalDevice);
 
-            // acquire Raytracing features
-            VkPhysicalDeviceRayTracingFeaturesKHR rayTracingFeatures = new VkPhysicalDeviceRayTracingFeaturesKHR()
+            // acquire Raytracing features          
+            VkPhysicalDeviceAccelerationStructureFeaturesKHR rtAccelerationFeatures = new VkPhysicalDeviceAccelerationStructureFeaturesKHR()
             {
-                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_FEATURES_KHR,
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR,
                 pNext = null,
             };
 
             VkPhysicalDeviceFeatures2 deviceFeatures2 = new VkPhysicalDeviceFeatures2()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2,
-                pNext = &rayTracingFeatures,
+                pNext = &rtAccelerationFeatures,
             };
             VulkanNative.vkGetPhysicalDeviceFeatures2(physicalDevice, &deviceFeatures2);
 
-            extensionsSupported = extensionsSupported && rayTracingFeatures.rayTracing;
+            extensionsSupported = extensionsSupported && rtAccelerationFeatures.accelerationStructure;
 
             bool swapChainAdequate = false;
             if (extensionsSupported)
