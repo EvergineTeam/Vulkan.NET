@@ -95,7 +95,7 @@ namespace KHRRTXHelloTriangle
             return VulkanNative.vkGetBufferDeviceAddress(device, &bufferAddressInfo); // TODO vkGetBufferDeviceAddressKHR
         }
 
-        AccelerationMemory CreateMappedBuffer<T>(T[] srcData, uint bufferSize, VkBufferUsageFlags usageFlags)
+        AccelerationMemory CreateMappedBuffer<T>(T[] srcData, uint bufferSize, VkBufferUsageFlags usageFlags, int offset = 0)
         {
             AccelerationMemory outValue = default;
 
@@ -124,6 +124,7 @@ namespace KHRRTXHelloTriangle
 
             GCHandle gcHandle = GCHandle.Alloc(srcData, GCHandleType.Pinned);
             IntPtr srcDataPtr = gcHandle.AddrOfPinnedObject();
+            srcDataPtr += offset;
             IntPtr dstData;
             Helpers.CheckErrors(VulkanNative.vkMapMemory(device, outValue.memory, 0, bufferSize, 0, (void**)&dstData));
             if (srcDataPtr != IntPtr.Zero)
@@ -686,30 +687,27 @@ namespace KHRRTXHelloTriangle
 
             byte[] rgenShaderSrc = File.ReadAllBytes("Shaders/ray-generation.spv");
             byte[] rchitShaderSrc = File.ReadAllBytes("Shaders/ray-closest-hit.spv");
-            byte[] rmissShaderSrc = File.ReadAllBytes("Shaders/ray-miss.spv");
+            byte[] rmissShaderSrc = File.ReadAllBytes("Shaders/ray-miss.spv");            
 
             VkPipelineShaderStageCreateInfo rayGenShaderStageInfo = default;
             rayGenShaderStageInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-            rayGenShaderStageInfo.pNext = null;
-            rayGenShaderStageInfo.stage = VkShaderStageFlags.VK_SHADER_STAGE_RAYGEN_BIT_KHR;
+            rayGenShaderStageInfo.stage =  VkShaderStageFlags.VK_SHADER_STAGE_RAYGEN_BIT_KHR;
             rayGenShaderStageInfo.module = CreateShaderModule(rgenShaderSrc);
             rayGenShaderStageInfo.pName = "main".ToPointer();
 
             VkPipelineShaderStageCreateInfo rayChitShaderStageInfo = default;
             rayChitShaderStageInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-            rayChitShaderStageInfo.pNext = null;
             rayChitShaderStageInfo.stage = VkShaderStageFlags.VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR;
             rayChitShaderStageInfo.module = CreateShaderModule(rchitShaderSrc);
             rayChitShaderStageInfo.pName = "main".ToPointer();
 
             VkPipelineShaderStageCreateInfo rayMissShaderStageInfo = default;
             rayMissShaderStageInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-            rayMissShaderStageInfo.pNext = null;
             rayMissShaderStageInfo.stage = VkShaderStageFlags.VK_SHADER_STAGE_MISS_BIT_KHR;
             rayMissShaderStageInfo.module = CreateShaderModule(rmissShaderSrc);
             rayMissShaderStageInfo.pName = "main".ToPointer();
 
-            VkPipelineShaderStageCreateInfo* shaderStages = stackalloc VkPipelineShaderStageCreateInfo[] { rayGenShaderStageInfo, rayChitShaderStageInfo, rayMissShaderStageInfo };
+            VkPipelineShaderStageCreateInfo[] shaderStages = new[] {rayGenShaderStageInfo, rayMissShaderStageInfo, rayChitShaderStageInfo};
 
             VkRayTracingShaderGroupCreateInfoKHR rayGenGroup = default;
             rayGenGroup.sType = VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
@@ -719,32 +717,40 @@ namespace KHRRTXHelloTriangle
             rayGenGroup.anyHitShader = VulkanNative.VK_SHADER_UNUSED_KHR;
             rayGenGroup.intersectionShader = VulkanNative.VK_SHADER_UNUSED_KHR;
 
-            VkRayTracingShaderGroupCreateInfoKHR rayHitGroup = default;
-            rayHitGroup.sType = VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
-            rayHitGroup.type = VkRayTracingShaderGroupTypeKHR.VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR;
-            rayHitGroup.generalShader = VulkanNative.VK_SHADER_UNUSED_KHR;
-            rayHitGroup.closestHitShader = 1;
-            rayHitGroup.anyHitShader = VulkanNative.VK_SHADER_UNUSED_KHR;
-            rayHitGroup.intersectionShader = VulkanNative.VK_SHADER_UNUSED_KHR;
-
             VkRayTracingShaderGroupCreateInfoKHR rayMissGroup = default;
             rayMissGroup.sType = VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
             rayMissGroup.type = VkRayTracingShaderGroupTypeKHR.VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR;
-            rayMissGroup.generalShader = 2;
+            rayMissGroup.generalShader = 1;
             rayMissGroup.closestHitShader = VulkanNative.VK_SHADER_UNUSED_KHR;
             rayMissGroup.anyHitShader = VulkanNative.VK_SHADER_UNUSED_KHR;
             rayMissGroup.intersectionShader = VulkanNative.VK_SHADER_UNUSED_KHR;
 
-            VkRayTracingShaderGroupCreateInfoKHR* shaderGroups = stackalloc VkRayTracingShaderGroupCreateInfoKHR[] { rayGenGroup, rayHitGroup, rayMissGroup };
+            VkRayTracingShaderGroupCreateInfoKHR rayHitGroup = default;
+            rayHitGroup.sType = VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
+            rayHitGroup.type = VkRayTracingShaderGroupTypeKHR.VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR;
+            rayHitGroup.generalShader = VulkanNative.VK_SHADER_UNUSED_KHR;
+            rayHitGroup.closestHitShader = 2;
+            rayHitGroup.anyHitShader = VulkanNative.VK_SHADER_UNUSED_KHR;
+            rayHitGroup.intersectionShader = VulkanNative.VK_SHADER_UNUSED_KHR;
+
+            VkRayTracingShaderGroupCreateInfoKHR[] shaderGroups = new[] {rayGenGroup, rayMissGroup, rayHitGroup};
 
             VkRayTracingPipelineCreateInfoKHR pipelineInfo = default;
-            pipelineInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR;
-            pipelineInfo.stageCount = 3;
-            pipelineInfo.pStages = shaderStages;
-            pipelineInfo.groupCount = 3;
-            pipelineInfo.pGroups = shaderGroups;
-            pipelineInfo.maxPipelineRayRecursionDepth = 1;            
+            pipelineInfo.sType =  VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR;
+            pipelineInfo.stageCount = (uint)shaderStages.Length;
+            fixed (VkPipelineShaderStageCreateInfo* shaderStagesPtr = &shaderStages[0])
+            {
+                pipelineInfo.pStages = shaderStagesPtr;
+            }
+            pipelineInfo.groupCount = (uint)shaderGroups.Length;
+            fixed (VkRayTracingShaderGroupCreateInfoKHR* shaderGroupsPtr = &shaderGroups[0])
+            {
+                pipelineInfo.pGroups = shaderGroupsPtr;
+            }
+            pipelineInfo.maxPipelineRayRecursionDepth = 1;
             pipelineInfo.layout = pipelineLayout;
+
+            SBTGroupCount = (uint)shaderGroups.Length;
 
             fixed (VkPipeline* pipelinePtr = &pipeline)
             {
@@ -754,42 +760,6 @@ namespace KHRRTXHelloTriangle
 
         private void CreateShaderBindingTable()
         {
-            /*Debug.WriteLine("Creating Shader Binding Table..");
-
-            AccelerationMemory newShaderBindingTable = default;
-            shaderBindingTableSize = shaderBindingTableGroupCount * rayTracingPipelineProperties.shaderGroupHandleSize;
-
-            VkBufferCreateInfo bufferInfo = default;
-            bufferInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-            bufferInfo.pNext = null;
-            bufferInfo.size = shaderBindingTableSize;
-            bufferInfo.usage = VkBufferUsageFlags.VK_BUFFER_USAGE_TRANSFER_SRC_BIT;
-            bufferInfo.sharingMode = VkSharingMode.VK_SHARING_MODE_EXCLUSIVE;
-            bufferInfo.queueFamilyIndexCount = 0;
-            bufferInfo.pQueueFamilyIndices = null;
-            Helpers.CheckErrors(VulkanNative.vkCreateBuffer(device, &bufferInfo, null, &newShaderBindingTable.buffer));
-
-            VkMemoryRequirements memoryRequirements = default;
-            VulkanNative.vkGetBufferMemoryRequirements(device, newShaderBindingTable.buffer, &memoryRequirements);
-
-            VkMemoryAllocateInfo memAllocInfo = default;
-            memAllocInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-            memAllocInfo.pNext = null;
-            memAllocInfo.allocationSize = memoryRequirements.size;
-            memAllocInfo.memoryTypeIndex = this.FindMemoryType(memoryRequirements.memoryTypeBits, VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
-
-            Helpers.CheckErrors(VulkanNative.vkAllocateMemory(device, &memAllocInfo, null, &newShaderBindingTable.memory));
-
-            Helpers.CheckErrors(VulkanNative.vkBindBufferMemory(device, newShaderBindingTable.buffer, newShaderBindingTable.memory, 0));
-
-            IntPtr dstData;
-            Helpers.CheckErrors(VulkanNative.vkMapMemory(device, newShaderBindingTable.memory, 0, shaderBindingTableSize, 0, (void**)&dstData));
-
-            VulkanNative.vkGetRayTracingShaderGroupHandlesKHR(device, pipeline, 0, shaderBindingTableGroupCount, (UIntPtr)shaderBindingTableSize, (void*)dstData);
-            VulkanNative.vkUnmapMemory(device, newShaderBindingTable.memory);
-
-            this.shaderBindingTable = newShaderBindingTable;*/
-
             Debug.WriteLine("Creating Shader Binding Table..");
 
             SBTHandleSize = rayTracingPipelineProperties.shaderGroupHandleSize;
@@ -799,19 +769,22 @@ namespace KHRRTXHelloTriangle
 
             ushort[] sbtResults = new ushort[SBTSize];
 
-            Helpers.CheckErrors(VulkanNative.vkGetRayTracingShaderGroupHandlesKHR(device, pipeline, 0, SBTGroupCount, new UIntPtr(SBTSize), sbtResults));
+            fixed (ushort* sbtResultsPtr = &sbtResults[0])
+            {
+                Helpers.CheckErrors(VulkanNative.vkGetRayTracingShaderGroupHandlesKHR(device, pipeline, 0, SBTGroupCount, new UIntPtr(SBTSize), sbtResultsPtr));
+            }
 
             // create 3 separate buffers for each ray type
             SBTRayGenBuffer = this.CreateMappedBuffer(sbtResults, SBTHandleSize,
                                                   VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR |
                                                      VkBufferUsageFlags. VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT);
 
-            SBTRayMissBuffer = this.CreateMappedBuffer(sbtResults + SBTHandleSizeAligned, SBTHandleSize,
+            SBTRayMissBuffer = this.CreateMappedBuffer(sbtResults, SBTHandleSize,
                                     VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR |
-                                       VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT);
-            SBTRayHitBuffer = this.CreateMappedBuffer(sbtResults + SBTHandleSizeAligned * 2, SBTHandleSize,
+                                       VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT, (int)SBTHandleSizeAligned);
+            SBTRayHitBuffer = this.CreateMappedBuffer(sbtResults, SBTHandleSize,
                                    VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR |
-                                       VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT);
+                                       VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT, (int)SBTHandleSizeAligned * 2);
 
 
         }
@@ -840,40 +813,22 @@ namespace KHRRTXHelloTriangle
             subresourceRange.baseArrayLayer = 0;
             subresourceRange.layerCount = 1;
 
-            // clang-format off
-            VkStridedBufferRegionKHR rayGenSBT = new VkStridedBufferRegionKHR()
-            {
-                buffer = shaderBindingTable.buffer,
-                offset = 0,
-                stride = 0,
-                size = SBTHandleSize
-            };
+            VkStridedDeviceAddressRegionKHR rayGenSBT = default;
+            rayGenSBT.deviceAddress = SBTRayGenBuffer.deviceAddress;
+            rayGenSBT.stride = SBTHandleSizeAligned;
+            rayGenSBT.size = SBTHandleSizeAligned;
 
-            VkStridedBufferRegionKHR rayMissSBT = new VkStridedBufferRegionKHR
-            {
-                buffer = shaderBindingTable.buffer,
-                offset = 2 * rayTracingPipelineProperties.shaderGroupHandleSize,
-                stride = 0,
-                size = SBTHandleSize
-            }
-            ;
-            VkStridedBufferRegionKHR rayHitSBT = new VkStridedBufferRegionKHR()
-            {
-                buffer = shaderBindingTable.buffer,
-                offset = 1 * rayTracingPipelineProperties.shaderGroupHandleSize,
-                stride = 0,
-                size = SBTHandleSize
-            };
+            VkStridedDeviceAddressRegionKHR rayMissSBT = default;
+            rayMissSBT.deviceAddress = SBTRayMissBuffer.deviceAddress;
+            rayMissSBT.stride = SBTHandleSizeAligned;
+            rayMissSBT.size = SBTHandleSizeAligned;
 
-            VkStridedBufferRegionKHR rayCallSBT = new VkStridedBufferRegionKHR()
-            {
-                buffer = VK_NULL_HANDLE,
-                offset = 0,
-                stride = 0,
-                size = 0
-            };
+            VkStridedDeviceAddressRegionKHR rayHitSBT = default;
+            rayHitSBT.deviceAddress = SBTRayHitBuffer.deviceAddress;
+            rayHitSBT.stride = SBTHandleSizeAligned;
+            rayHitSBT.size = SBTHandleSizeAligned;
 
-            // clang-format on
+            VkStridedDeviceAddressRegionKHR rayCallableSBT = default;
 
             VkCommandBufferAllocateInfo commandBufferAllocateInfo = default;
             commandBufferAllocateInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -912,7 +867,7 @@ namespace KHRRTXHelloTriangle
                 {
                     VulkanNative.vkCmdBindDescriptorSets(commandBuffer, VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR, pipelineLayout, 0, 1, descriptorSetPtr, 0, null);
                 }
-                VulkanNative.vkCmdTraceRaysKHR(commandBuffer, &rayGenSBT, &rayMissSBT, &rayHitSBT, &rayCallSBT, this.swapChainExtent.width, this.swapChainExtent.height, 1);
+                VulkanNative.vkCmdTraceRaysKHR(commandBuffer, &rayGenSBT, &rayMissSBT, &rayHitSBT, &rayCallableSBT, this.swapChainExtent.width, this.swapChainExtent.height, 1);
 
                 // transition swapchain image into copy destination state
                 this.InsertCommandImageBarrier(commandBuffer, swapchainImage, 0, VkAccessFlags.VK_ACCESS_TRANSFER_WRITE_BIT,
