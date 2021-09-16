@@ -210,7 +210,7 @@ namespace KHRRTXHelloTriangle
             Debug.WriteLine("Creating Bottom-Level Acceleration Structure..");
 
             AccelerationMemory vertexBuffer = this.CreateMappedBuffer(vertices,
-                                                                      (uint)(vertices.Length * sizeof(float) * 3),
+                                                                      (uint)(vertices.Length * sizeof(float)),
                                                                       VkBufferUsageFlags.VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT |
                                                                       VkBufferUsageFlags.VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR);
 
@@ -233,7 +233,7 @@ namespace KHRRTXHelloTriangle
             asGeometryInfo.geometry.triangles.vertexData = vertexBufferDeviceAddress;
             asGeometryInfo.geometry.triangles.indexData = indexBufferDeviceAddress;
             asGeometryInfo.geometry.triangles.vertexFormat = VkFormat.VK_FORMAT_R32G32B32_SFLOAT;
-            asGeometryInfo.geometry.triangles.maxVertex = (uint)vertices.Length / 3;
+            asGeometryInfo.geometry.triangles.maxVertex = (uint)(vertices.Length / 3);
             asGeometryInfo.geometry.triangles.vertexStride = sizeof(float) * 3;
             asGeometryInfo.geometry.triangles.indexType = VkIndexType.VK_INDEX_TYPE_UINT32;
 
@@ -245,7 +245,7 @@ namespace KHRRTXHelloTriangle
             asBuildSizeGeometryInfo.pGeometries = &asGeometryInfo;
 
             // aquire size to build acceleration structure
-            uint primitiveCount = (uint)(vertices.Length / 3);
+            uint primitiveCount = 1;
             VkAccelerationStructureBuildSizesInfoKHR asBuildSizesInfo = default;
             asBuildSizesInfo.sType = VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR;
             VulkanNative.vkGetAccelerationStructureBuildSizesKHR(
