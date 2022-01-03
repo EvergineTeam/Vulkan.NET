@@ -1,4 +1,4 @@
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
 	public static partial class VulkanNative
 	{

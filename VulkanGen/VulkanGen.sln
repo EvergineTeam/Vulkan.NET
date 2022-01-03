@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30001.183
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VulkanGen", "VulkanGen\VulkanGen.csproj", "{B8952762-3695-4116-9597-E3F47537B0D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.Bindings.Vulkan", "WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj", "{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloTriangle", "HelloTriangle\HelloTriangle.csproj", "{97C4AA5A-75A2-4A7D-91D1-89104B6CE5E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KHRRTXHelloTriangle", "KHRRTXHelloTriangle\KHRRTXHelloTriangle.csproj", "{F615507F-CB30-4984-9111-347520AB0F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evergine.Bindings.Vulkan", "Evergine.Bindings.Vulkan\Evergine.Bindings.Vulkan.csproj", "{C07073E7-9288-422B-80E8-9520466714CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{B8952762-3695-4116-9597-E3F47537B0D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8952762-3695-4116-9597-E3F47537B0D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8952762-3695-4116-9597-E3F47537B0D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0A0BE1-9CFA-44E2-A79B-707CDF93A4BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97C4AA5A-75A2-4A7D-91D1-89104B6CE5E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97C4AA5A-75A2-4A7D-91D1-89104B6CE5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97C4AA5A-75A2-4A7D-91D1-89104B6CE5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{F615507F-CB30-4984-9111-347520AB0F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F615507F-CB30-4984-9111-347520AB0F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F615507F-CB30-4984-9111-347520AB0F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07073E7-9288-422B-80E8-9520466714CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07073E7-9288-422B-80E8-9520466714CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07073E7-9288-422B-80E8-9520466714CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07073E7-9288-422B-80E8-9520466714CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

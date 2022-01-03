@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
 	[StructLayout(LayoutKind.Explicit)]
 	public unsafe partial struct VkClearColorValue

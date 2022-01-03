@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj" />
+    <ProjectReference Include="..\Evergine.Bindings.Vulkan\Evergine.Bindings.Vulkan.csproj" />
   </ItemGroup>
 
   <ItemGroup>

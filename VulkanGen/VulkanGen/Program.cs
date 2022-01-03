@@ -10,7 +10,7 @@ namespace VulkanGen
         static void Main(string[] args)
         {
             string vkFile = "..\\..\\..\\..\\..\\KhronosRegistry\\vk.xml";
-            string outputPath = "..\\..\\..\\..\\WaveEngine.Bindings.Vulkan\\Generated";
+            string outputPath = "..\\..\\..\\..\\Evergine.Bindings.Vulkan\\Generated";
 
             var vulkanSpec = VulkanSpecification.FromFile(vkFile);
 
@@ -19,7 +19,7 @@ namespace VulkanGen
             // Write Constants
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Constants.cs")))
             {
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
                 file.WriteLine("\tpublic static partial class VulkanNative");
                 file.WriteLine("\t{");
@@ -45,7 +45,7 @@ namespace VulkanGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Delegates.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
 
                 foreach (var func in vulkanVersion.FuncPointers)
@@ -87,7 +87,7 @@ namespace VulkanGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Enums.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
 
                 foreach (var e in vulkanVersion.Enums)
@@ -119,7 +119,7 @@ namespace VulkanGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Unions.cs")))
             {
                 file.WriteLine("using System.Runtime.InteropServices;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
 
                 foreach (var union in vulkanVersion.Unions)
@@ -153,7 +153,7 @@ namespace VulkanGen
             {
                 file.WriteLine("using System;");
                 file.WriteLine("using System.Runtime.InteropServices;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
 
                 foreach (var structure in vulkanVersion.Structs)
@@ -222,7 +222,7 @@ namespace VulkanGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Handles.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
 
                 foreach (var handle in vulkanVersion.Handles)
@@ -255,7 +255,7 @@ namespace VulkanGen
             {
                 file.WriteLine("using System;");
                 file.WriteLine("using System.Runtime.InteropServices;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.Vulkan");
+                file.WriteLine("namespace Evergine.Bindings.Vulkan");
                 file.WriteLine("{");
                 file.WriteLine("\tpublic static unsafe partial class VulkanNative");
                 file.WriteLine("\t{");

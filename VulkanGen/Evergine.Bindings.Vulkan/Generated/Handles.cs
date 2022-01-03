@@ -1,6 +1,6 @@
 using System;
 
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
 	public partial struct VkInstance : IEquatable<VkInstance>
 {

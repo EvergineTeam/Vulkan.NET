@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
 	public static unsafe partial class VulkanNative
 	{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
     public partial struct VkClearColorValue
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace WaveEngine.Bindings.Vulkan
+namespace Evergine.Bindings.Vulkan
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBaseOutStructure
@@ -610,7 +610,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkShaderModuleCreateFlags flags;
+		public uint flags;
 		public UIntPtr codeSize;
 		public uint* pCode;
 	}
@@ -5385,6 +5385,15 @@ namespace WaveEngine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 primitiveTopologyListRestart;
+		public VkBool32 primitiveTopologyPatchListRestart;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkAttachmentDescriptionStencilLayout
 	{
 		public VkStructureType sType;
@@ -6636,7 +6645,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoCapabilitiesFlagsKHR capabilityFlags;
+		public VkVideoCapabilityFlagsKHR capabilityFlags;
 		public ulong minBitstreamBufferOffsetAlignment;
 		public ulong minBitstreamBufferSizeAlignment;
 		public VkExtent2D videoPictureExtentGranularity;
@@ -6709,7 +6718,7 @@ namespace WaveEngine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public IntPtr stdProfileIdc;
-		public VkVideoDecodeH264FieldLayoutFlagsEXT fieldLayout;
+		public VkVideoDecodeH264PictureLayoutFlagsEXT pictureLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6940,7 +6949,7 @@ namespace WaveEngine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH264CapabilitiesFlagsEXT flags;
+		public VkVideoEncodeH264CapabilityFlagsEXT flags;
 		public VkVideoEncodeH264InputModeFlagsEXT inputModeFlags;
 		public VkVideoEncodeH264OutputModeFlagsEXT outputModeFlags;
 		public VkExtent2D minPictureSizeInMbs;
@@ -7129,6 +7138,51 @@ namespace WaveEngine.Bindings.Vulkan
 		public void* pParams;
 		public UIntPtr extraCount;
 		public void* pExtras;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderIntegerDotProduct;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 integerDotProduct8BitUnsignedAccelerated;
+		public VkBool32 integerDotProduct8BitSignedAccelerated;
+		public VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
+		public VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
+		public VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
+		public VkBool32 integerDotProduct16BitUnsignedAccelerated;
+		public VkBool32 integerDotProduct16BitSignedAccelerated;
+		public VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProduct32BitUnsignedAccelerated;
+		public VkBool32 integerDotProduct32BitSignedAccelerated;
+		public VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProduct64BitUnsignedAccelerated;
+		public VkBool32 integerDotProduct64BitSignedAccelerated;
+		public VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
+		public VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

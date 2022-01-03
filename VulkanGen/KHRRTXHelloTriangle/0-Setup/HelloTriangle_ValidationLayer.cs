@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using WaveEngine.Bindings.Vulkan;
+using Evergine.Bindings.Vulkan;
 
 namespace KHRRTXHelloTriangle
 {
