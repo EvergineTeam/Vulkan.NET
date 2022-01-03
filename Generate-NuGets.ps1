@@ -1,13 +1,13 @@
 <#
 .SYNOPSIS
-	Wave Engine bindings NuGet Packages generator script, (c) 2020 Javier Cantón Ferrero
+	Evergine bindings NuGet Packages generator script, (c) 2022 Evergine Team
 .DESCRIPTION
-	This script generates NuGet packages for the low-level Vulkan bindings used in Wave Engine
+	This script generates NuGet packages for the low-level Vulkan bindings used in Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
 	<script> -version 3.4.22.288-local
 .LINK
-	https://waveengine.net
+	https://evergine.com/
 #>
 
 param (
@@ -15,7 +15,7 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$vulkanBindingsCsprojPath = "VulkanGen\WaveEngine.Bindings.Vulkan\WaveEngine.Bindings.Vulkan.csproj"
+	[string]$vulkanBindingsCsprojPath = "VulkanGen\Evergine.Bindings.Vulkan\Evergine.Bindings.Vulkan.csproj"
 )
 
 # Utility functions
