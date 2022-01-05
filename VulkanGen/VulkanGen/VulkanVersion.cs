@@ -71,6 +71,19 @@ namespace VulkanGen
                     continue;
                 }
 
+                // Add Constant
+                foreach (var constantType in extension.Constants)
+                {
+                    if (!version.Constants.Exists(c => c.Name == constantType.Name))
+                    {
+                        ConstantDefinition newConstant = new ConstantDefinition();
+                        newConstant.Name = constantType.Name;
+                        newConstant.Value = constantType.Value;
+                        newConstant.Type = ConstantDefinition.ParseType(constantType.Value);
+                        version.Constants.Add(newConstant);
+                    }
+                }
+
                 // Extend Enums
                 foreach (var enumType in extension.Enums)
                 {

@@ -9,6 +9,23 @@ namespace VulkanGen
 {
     public static class Helpers
     {
+        public static string ToCSharp(this ConstantType type)
+        {
+            switch (type)
+            {
+                case ConstantType.UInt32:
+                    return "uint";
+                case ConstantType.UInt64:
+                    return "ulong";
+                case ConstantType.Float32:
+                    return "float";
+                case ConstantType.String:
+                    return "string";
+                default:
+                    throw new InvalidOperationException("Invalid value");
+            }
+        }
+
         public static string ValidatedName(string name)
         {
             if (name == "object")
@@ -50,7 +67,14 @@ namespace VulkanGen
             string memberType = type;
 
             if (type.StartsWith("PFN") || IsIntPtr(memberType))
+            {
                 return "IntPtr";
+            }
+
+            if (type.StartsWith('"'))
+            {
+                return "string";
+            }
 
             string result = ConvertBasicTypes(memberType);
             if (result == string.Empty)

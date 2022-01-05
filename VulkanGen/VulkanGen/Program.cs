@@ -29,11 +29,11 @@ namespace VulkanGen
                     if (constant.Alias != null)
                     {
                         var refConstant = vulkanVersion.Constants.FirstOrDefault(c => c.Name == constant.Alias);
-                        file.WriteLine($"\t\tpublic const {Helpers.ConvertBasicTypes(refConstant.Type)} {constant.Name} = {refConstant.Name};");
+                        file.WriteLine($"\t\tpublic const {refConstant.Type.ToCSharp()} {constant.Name} = {refConstant.Name};");
                     }
                     else
                     {
-                        file.WriteLine($"\t\tpublic const {Helpers.ConvertBasicTypes(constant.Type)} {constant.Name} = {ConstantDefinition.NormalizeValue(constant.Value)};");
+                        file.WriteLine($"\t\tpublic const {constant.Type.ToCSharp()} {constant.Name} = {ConstantDefinition.NormalizeValue(constant.Value)};");
                     }
                 }
 
