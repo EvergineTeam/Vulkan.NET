@@ -9,7 +9,7 @@ env:
   fileTmpPath: ${{  'vk.xml_tmp'  }}
   basePath: ${{  'KhronosRegistry'  }}
   sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/registry/vk.xml'  }}
-  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
+  selfUrl: ${{  'https://raw.githubusercontent.com/EvergineTeam/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
         id: fileHash
         run: |
           echo "::set-output name=hash1::${{ hashFiles('vk.xml')  }}"
-          echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}" 
+          echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}"
           echo "::set-output name=date::$(date +'%Y.%m.%d')"
 
   build:
