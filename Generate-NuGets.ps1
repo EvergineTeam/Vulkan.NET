@@ -5,13 +5,13 @@
 	This script generates NuGet packages for the low-level Vulkan bindings used in Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
-	<script> -version 3.4.22.288-local
+	<script> -version 2021.11.17.1-local
 .LINK
 	https://evergine.com/
 #>
 
 param (
-    [Parameter(mandatory=$true)][string]$version,	
+	[Parameter(mandatory=$true)][string]$version,
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
@@ -19,7 +19,9 @@ param (
 )
 
 # Utility functions
-function LogDebug($line) { Write-Host "##[debug] $line" -Foreground Blue -Background Black }
+function LogDebug($line)
+{ Write-Host "##[debug] $line" -Foreground Blue -Background Black 
+}
 
 # Show variables
 LogDebug "############## VARIABLES ##############"

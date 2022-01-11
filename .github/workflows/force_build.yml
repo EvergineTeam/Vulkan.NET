@@ -1,8 +1,12 @@
-name: Update_and_Commit
+name: Force build
 on:
-  #[push]
-  schedule:
-    - cron: "0 0 1 * *"
+  workflow_dispatch:
+    inputs:
+      publishEnabled:
+        description: "Publish to Nuget.org"
+        type: boolean
+        required: false
+        default: "false"
 
 env:
   filePath: ${{  'vk.xml'  }}
@@ -39,9 +43,8 @@ jobs:
           echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}"
           echo "::set-output name=date::$(date +'%Y.%m.%d')"
 
-  build:
+  build_and_publish:
     needs: [download]
-    if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -66,13 +69,13 @@ jobs:
       - name: Generate NuGet packages
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
       - name: Commit if update
-        if: ${{ success() }}
+        if: ${{ success() && needs.download.outputs.output1 != needs.download.outputs.output2  }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new vk file
           add_options: "-u"
       - name: Publish NuGet
-        if: ${{ success() }}
+        if: ${{ success() && inputs.publishEnabled == 'true' }}
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
@@ -83,7 +86,7 @@ jobs:
         with:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
-          # The emails ( can be only one ) that the email will go
+          # List of emails separated by comma that the email will go
           mail: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
           # The email that will be shown as sender
           from: ${{ secrets.EVERGINE_EMAIL }}
