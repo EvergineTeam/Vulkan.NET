@@ -29,4 +29,3 @@ Test based on https://github.com/maierfelix/VK_KHR_ray_tracing
 ## Related Work
 
 - [vk](https://github.com/mellinoe/vk)
-

@@ -74,7 +74,7 @@ jobs:
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.EVERGINE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
@@ -82,9 +82,9 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          mail: ${{ secrets.WAVE_EMAILREPORT_LIST }}
+          mail: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
           # The email that will be shown as sender
-          from: ${{ secrets.WAVE_EMAIL }}
+          from: ${{ secrets.EVERGINE_EMAIL }}
           # The subject of the email
           subject: Vulkan Update NuGet has failed
           # Defines if it should be one email with multiple address or multiple emails with a single address
