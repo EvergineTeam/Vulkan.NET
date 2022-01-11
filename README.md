@@ -4,7 +4,7 @@ This binding is generated from vk.xml file included in the KhronosRegistry folde
 
 [![Build status](https://waveengineteam.visualstudio.com/Evergine/_apis/build/status/Bindings/Evergine.Bindings.Vulkan)](https://waveengineteam.visualstudio.com/Evergine/_build/latest?definitionId=58)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.Vulkan)
-[![Update_and_Generate_NuGet](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/download_latest_spect_generate_nuget.yml/badge.svg)](https://github.com/Evergine/Vulkan.NET/actions/workflows/download_latest_spect_generate_nuget.yml)
+[![Monthly update check](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml)
 
 ## Features
 
