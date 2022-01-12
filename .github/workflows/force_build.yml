@@ -76,7 +76,7 @@ jobs:
           commit_message: Updating new vk file
           add_options: "-u"
       - name: Publish NuGet
-        if: ${{ steps.build_nugets.outcome == 'success' && inputs.publishEnabled == 'true' }}
+        if: ${{ success() && github.event.inputs.publishEnabled == 'true' }}
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
