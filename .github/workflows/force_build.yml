@@ -67,6 +67,7 @@ jobs:
           file-name: ${{  env.filePath  }}
           location: ${{ env.basePath  }}/
       - name: Generate NuGet packages
+        id: build_nugets
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
       - name: Commit if update
         if: ${{ success() && needs.download.outputs.output1 != needs.download.outputs.output2  }}
@@ -75,7 +76,7 @@ jobs:
           commit_message: Updating new vk file
           add_options: "-u"
       - name: Publish NuGet
-        if: ${{ success() && inputs.publishEnabled == 'true' }}
+        if: ${{ steps.build_nugets.outcome == 'success' && inputs.publishEnabled == 'true' }}
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
