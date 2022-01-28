@@ -512,6 +512,21 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkBufferCollectionFUCHSIA : IEquatable<VkBufferCollectionFUCHSIA>
+{
+		public readonly ulong Handle;
+		public VkBufferCollectionFUCHSIA(ulong existingHandle) { Handle = existingHandle; }
+		public static VkBufferCollectionFUCHSIA Null => new VkBufferCollectionFUCHSIA(0);
+		public static implicit operator VkBufferCollectionFUCHSIA(ulong handle) => new VkBufferCollectionFUCHSIA(handle);
+		public static bool operator ==(VkBufferCollectionFUCHSIA left, VkBufferCollectionFUCHSIA right) => left.Handle == right.Handle;
+		public static bool operator !=(VkBufferCollectionFUCHSIA left, VkBufferCollectionFUCHSIA right) => left.Handle != right.Handle;
+		public static bool operator ==(VkBufferCollectionFUCHSIA left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkBufferCollectionFUCHSIA left, ulong right) => left.Handle != right;
+		public bool Equals(VkBufferCollectionFUCHSIA h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkBufferCollectionFUCHSIA h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
 {
 		public readonly ulong Handle;
@@ -524,6 +539,21 @@ namespace Evergine.Bindings.Vulkan
 		public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
 		public bool Equals(VkDeferredOperationKHR h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is VkDeferredOperationKHR h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkPrivateDataSlot : IEquatable<VkPrivateDataSlot>
+{
+		public readonly ulong Handle;
+		public VkPrivateDataSlot(ulong existingHandle) { Handle = existingHandle; }
+		public static VkPrivateDataSlot Null => new VkPrivateDataSlot(0);
+		public static implicit operator VkPrivateDataSlot(ulong handle) => new VkPrivateDataSlot(handle);
+		public static bool operator ==(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle == right.Handle;
+		public static bool operator !=(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle != right.Handle;
+		public static bool operator ==(VkPrivateDataSlot left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkPrivateDataSlot left, ulong right) => left.Handle != right;
+		public bool Equals(VkPrivateDataSlot h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkPrivateDataSlot h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
