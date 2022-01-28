@@ -255,6 +255,11 @@ namespace VulkanGen
                 case "StdVideoEncodeH264PictureInfo":
                 case "StdVideoEncodeH264SliceHeader":
                 case "StdVideoH265ProfileIdc":
+                case "StdVideoH265VideoParameterSet":
+                case "StdVideoEncodeH265PictureInfo":
+                case "StdVideoEncodeH265SliceHeader":
+                case "StdVideoEncodeH265ReferenceInfo":
+                case "StdVideoEncodeH265ReferenceModifications":
                     return true;
                 default:
                     return false;

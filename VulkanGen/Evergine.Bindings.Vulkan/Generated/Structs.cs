@@ -7318,7 +7318,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint vpsStdCount;
-		public StdVideoH265VideoParameterSet* pVpsStd;
+		public IntPtr pVpsStd;
 		public uint spsStdCount;
 		public IntPtr pSpsStd;
 		public uint ppsStdCount;
@@ -7344,7 +7344,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
 		public uint naluSliceEntryCount;
 		public VkVideoEncodeH265NaluSliceEXT* pNaluSliceEntries;
-		public StdVideoEncodeH265PictureInfo* pCurrentPictureInfo;
+		public IntPtr pCurrentPictureInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7367,7 +7367,7 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public uint ctbCount;
 		public VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
-		public StdVideoEncodeH265SliceHeader* pSliceHeaderStd;
+		public IntPtr pSliceHeaderStd;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7428,7 +7428,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public sbyte slotIndex;
-		public StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
+		public IntPtr pStdReferenceInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7440,7 +7440,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkVideoEncodeH265DpbSlotInfoEXT* pReferenceList0Entries;
 		public byte referenceList1EntryCount;
 		public VkVideoEncodeH265DpbSlotInfoEXT* pReferenceList1Entries;
-		public StdVideoEncodeH265ReferenceModifications* pReferenceModifications;
+		public IntPtr pReferenceModifications;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
