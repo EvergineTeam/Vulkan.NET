@@ -8,7 +8,7 @@ This binding is generated from vk.xml file included in the KhronosRegistry folde
 
 ## Features
 
-- Vulkan 1.0, 1.1, 1.2
+- Vulkan 1.0, 1.1, 1.2, 1.3
 - All Vulkan Extensions as Vulkan RayTracing
 - Raw low level binding using usafe c# code.
 
