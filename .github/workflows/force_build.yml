@@ -12,7 +12,7 @@ env:
   filePath: ${{  'vk.xml'  }}
   fileTmpPath: ${{  'vk.xml_tmp'  }}
   basePath: ${{  'KhronosRegistry'  }}
-  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/registry/vk.xml'  }}
+  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml'  }}
   selfUrl: ${{  'https://raw.githubusercontent.com/EvergineTeam/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
