@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
+using static Evergine.Bindings.Vulkan.OperatingSystemHelper;
 
 namespace Evergine.Bindings.Vulkan
 {
@@ -24,24 +23,19 @@ namespace Evergine.Bindings.Vulkan
 
         private static string GetVulkanName()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (IsOSPlatform(OS.Windows))
             {
                 return "vulkan-1.dll";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            else if (IsOSPlatform(OS.Android))
             {
-                if (RuntimeInformation.OSDescription.Contains("Unix"))
-                {
-                    // Android
-                    return "libvulkan.so";
-                }
-                else
-                {
-                    // Desktop Linux
-                    return "libvulkan.so.1";
-                }
+                return "libvulkan.so";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (IsOSPlatform(OS.Linux))
+            {
+                return "libvulkan.so.1";
+            }
+            else if (IsOSPlatform(OS.MacOS))
             {
                 return "libvulkan.dylib";
             }
