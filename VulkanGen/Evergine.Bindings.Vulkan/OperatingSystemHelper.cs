@@ -9,20 +9,20 @@ namespace Evergine.Bindings.Vulkan
 {
     internal static class OperatingSystemHelper
     {
-        public static bool IsOSPlatform(OS platform)
+        public static bool IsOSPlatform(PlatformType platform)
         {
 #if NET5_0_OR_GREATER
             switch (platform)
             {
-                case OS.Windows:
+                case PlatformType.Windows:
                     return OperatingSystem.IsWindows();
-                case OS.Linux:
+                case PlatformType.Linux:
                     return OperatingSystem.IsLinux();
-                case OS.Android:
+                case PlatformType.Android:
                     return OperatingSystem.IsAndroid();
-                case OS.MacOS:
+                case PlatformType.MacOS:
                     return OperatingSystem.IsMacOS();
-                case OS.iOS:
+                case PlatformType.iOS:
                     return OperatingSystem.IsIOS();
                 default:
                     return false;
@@ -31,25 +31,25 @@ namespace Evergine.Bindings.Vulkan
             OSPlatform osPlatform;
             switch (platform)
             {
-                case OS.Windows:
+                case PlatformType.Windows:
                     osPlatform = OSPlatform.Windows;
                     break;
-                case OS.Linux:
-                case OS.Android:
+                case PlatformType.Linux:
+                case PlatformType.Android:
                     osPlatform = OSPlatform.Linux;
                     break;
-                case OS.MacOS:
-                case OS.iOS:
+                case PlatformType.MacOS:
+                case PlatformType.iOS:
                     osPlatform = OSPlatform.OSX;
                     break;
             }
 
             bool matching = RuntimeInformation.IsOSPlatform(osPlatform);
-            if (matching && platform == OS.Android)
+            if (matching && platform == PlatformType.Android)
             {
                 matching = RuntimeInformation.OSDescription.Contains("Unix");
             }
-            else if (matching && platform == OS.iOS)
+            else if (matching && platform == PlatformType.iOS)
             {
                 matching = RuntimeInformation.OSDescription.Contains("Darwin");
             }
@@ -58,67 +58,76 @@ namespace Evergine.Bindings.Vulkan
 #endif
         }
 
-        public static OS GetCurrentPlatfom()
+        public static PlatformType GetCurrentPlatfom()
         {
-            if (IsOSPlatform(OS.Windows))
+            if (IsOSPlatform(PlatformType.Windows))
             {
-                return OS.Windows;
+                return PlatformType.Windows;
             }
-            else if (IsOSPlatform(OS.Android))
+            else if (IsOSPlatform(PlatformType.Android))
             {
-                return OS.Android;
+                return PlatformType.Android;
             }
-            else if (IsOSPlatform(OS.Linux))
+            else if (IsOSPlatform(PlatformType.Linux))
             {
-                return OS.Linux;
+                return PlatformType.Linux;
             }
-            else if (IsOSPlatform(OS.iOS))
+            else if (IsOSPlatform(PlatformType.iOS))
             {
-                return OS.iOS;
+                return PlatformType.iOS;
             }
-            else if (IsOSPlatform(OS.MacOS))
+            else if (IsOSPlatform(PlatformType.MacOS))
             {
-                return OS.MacOS;
+                return PlatformType.MacOS;
             }
 
-            return OS.Unknown;
+            return PlatformType.Undefined;
         }
 
-
         /// <summary>
-        /// Operating system enum.
+        /// Specifies the platform type.
         /// </summary>
-        internal enum OS
+        internal enum PlatformType
         {
             /// <summary>
-            /// unknown platform
+            /// Undefined platform.
             /// </summary>
-            Unknown,
+            Undefined,
 
             /// <summary>
-            /// Windows platform.
+            /// Microsoft Windows platform.
             /// </summary>
             Windows,
 
             /// <summary>
-            /// OSX platform.
-            /// </summary>
-            Linux,
-
-            /// <summary>
-            /// Android platform.
+            /// Google Android Platform.
             /// </summary>
             Android,
 
             /// <summary>
-            /// MacOS platform.
+            /// Apple iOS platform.
+            /// </summary>
+            iOS,
+
+            /// <summary>
+            /// Linux platform.
+            /// </summary>
+            Linux,
+
+            /// <summary>
+            /// Apple MacOS platform.
             /// </summary>
             MacOS,
 
             /// <summary>
-            /// iOS platform.
+            /// Universal Windows App
             /// </summary>
-            iOS,
+            UWP,
+
+            /// <summary>
+            /// Web platform.
+            /// </summary>
+            Web,
         }
     }
 }

@@ -23,19 +23,19 @@ namespace Evergine.Bindings.Vulkan
 
         private static string GetVulkanName()
         {
-            if (IsOSPlatform(OS.Windows))
+            if (IsOSPlatform(PlatformType.Windows))
             {
                 return "vulkan-1.dll";
             }
-            else if (IsOSPlatform(OS.Android))
+            else if (IsOSPlatform(PlatformType.Android))
             {
                 return "libvulkan.so";
             }
-            else if (IsOSPlatform(OS.Linux))
+            else if (IsOSPlatform(PlatformType.Linux))
             {
                 return "libvulkan.so.1";
             }
-            else if (IsOSPlatform(OS.MacOS))
+            else if (IsOSPlatform(PlatformType.MacOS))
             {
                 return "libvulkan.dylib";
             }

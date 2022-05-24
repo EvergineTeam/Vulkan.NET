@@ -57,11 +57,11 @@ namespace Evergine.Bindings.Vulkan
 
         public static NativeLibrary Load(string libraryName)
         {
-            if (IsOSPlatform(OS.Windows))
+            if (IsOSPlatform(PlatformType.Windows))
             {
                 return new WindowsNativeLibrary(libraryName);
             }
-            else if (IsOSPlatform(OS.Android) || IsOSPlatform(OS.Linux) || IsOSPlatform(OS.MacOS))
+            else if (IsOSPlatform(PlatformType.Android) || IsOSPlatform(PlatformType.Linux) || IsOSPlatform(PlatformType.MacOS))
             {
                 return new UnixNativeLibrary(libraryName);
             }
