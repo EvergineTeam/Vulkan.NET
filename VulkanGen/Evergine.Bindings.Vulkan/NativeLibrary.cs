@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using static Evergine.Bindings.Vulkan.OperatingSystemHelper;
 
 namespace Evergine.Bindings.Vulkan
 {
@@ -56,12 +57,11 @@ namespace Evergine.Bindings.Vulkan
 
         public static NativeLibrary Load(string libraryName)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (IsOSPlatform(PlatformType.Windows))
             {
                 return new WindowsNativeLibrary(libraryName);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (IsOSPlatform(PlatformType.Android) || IsOSPlatform(PlatformType.Linux) || IsOSPlatform(PlatformType.MacOS))
             {
                 return new UnixNativeLibrary(libraryName);
             }
