@@ -6,9 +6,9 @@ variables:
   - name: buildConfiguration
     value: Release
   - name: NetCoreSDKVersion
-    value: 5.0.x
+    value: 6.x
   - name: NuGetVersion
-    value: 5.8.x
+    value: 6.x
   - name: nugetOutputPath
     value: $(Build.StagingDirectory)/nupkgs
 
