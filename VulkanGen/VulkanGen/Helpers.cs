@@ -260,6 +260,9 @@ namespace VulkanGen
                 case "StdVideoEncodeH265SliceHeader":
                 case "StdVideoEncodeH265ReferenceInfo":
                 case "StdVideoEncodeH265ReferenceModifications":
+                case "StdVideoEncodeH265SliceSegmentHeader":
+                case "StdVideoEncodeH264RefMemMgmtCtrlOperations":
+                case "StdVideoEncodeH264ReferenceInfo":
                     return true;
                 default:
                     return false;

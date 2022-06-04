@@ -2735,6 +2735,18 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
 			=> vkSetDeviceMemoryPriorityEXT_ptr(device, memory, priority);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDescriptorSetLayoutHostMappingInfoVALVEDelegate(VkDevice device, VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
+		private static vkGetDescriptorSetLayoutHostMappingInfoVALVEDelegate vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr;
+		public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping)
+			=> vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr(device, pBindingReference, pHostMapping);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDescriptorSetHostMappingVALVEDelegate(VkDevice device, VkDescriptorSet descriptorSet, void** ppData);
+		private static vkGetDescriptorSetHostMappingVALVEDelegate vkGetDescriptorSetHostMappingVALVE_ptr;
+		public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData)
+			=> vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3197,6 +3209,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDrawMultiEXT",  out vkCmdDrawMultiEXT_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMultiIndexedEXT",  out vkCmdDrawMultiIndexedEXT_ptr);
 			NativeLib.LoadFunction("vkSetDeviceMemoryPriorityEXT",  out vkSetDeviceMemoryPriorityEXT_ptr);
+			NativeLib.LoadFunction("vkGetDescriptorSetLayoutHostMappingInfoVALVE",  out vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr);
+			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);
 		}
 	}
 }
