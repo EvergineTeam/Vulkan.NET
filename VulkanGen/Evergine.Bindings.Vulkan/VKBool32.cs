@@ -30,6 +30,9 @@ namespace Evergine.Bindings.Vulkan
         /// <param name="value"></param>
         public VkBool32(uint value)
         {
+            if (value != 0 && value != 1)
+                throw new System.InvalidOperationException("Invalid value for VkBool32");
+
             Value = value;
         }
 
