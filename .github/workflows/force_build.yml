@@ -6,7 +6,7 @@ on:
         description: "Publish to Nuget.org"
         type: boolean
         required: false
-        default: "false"
+        default: false
 
 env:
   filePath: ${{  'vk.xml'  }}
@@ -50,10 +50,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
+          dotnet-version: "6.x" # SDK Version to use; x will use the latest version of the 3.1 channel
       - uses: nuget/setup-nuget@v1
         with:
-          nuget-version: "5.8.x"
+          nuget-version: "6.x"
       - name: remove old file
         run: |
           cd ${{  env.basePath  }}
