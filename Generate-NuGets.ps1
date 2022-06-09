@@ -20,7 +20,7 @@ param (
 
 # Utility functions
 function LogDebug($line)
-{ Write-Host "##[debug] $line" -Foreground Blue -Background Black 
+{ Write-Host "##[debug] $line" -Foreground Blue -Background Black
 }
 
 # Show variables
@@ -38,6 +38,13 @@ $absoluteOutputFolder = Resolve-Path $outputFolder
 
 # Generate packages
 LogDebug "START packaging process"
-& dotnet pack "$vulkanBindingsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:PackageOutputPath="$absoluteOutputFolder" -p:IncludeSymbols=true -p:Version=$version
+dotnet pack "$vulkanBindingsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:PackageOutputPath="$absoluteOutputFolder" -p:IncludeSymbols=true -p:Version=$version
+if($?)
+{
+   LogDebug "END packaging process"
+}
+else
+{
+   exit -1
+}
 
-LogDebug "END packaging process"
