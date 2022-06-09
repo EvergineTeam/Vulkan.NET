@@ -2580,6 +2580,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetImageSubresourceLayout2EXTDelegate(VkDevice device, VkImage image, VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout);
+		private static vkGetImageSubresourceLayout2EXTDelegate vkGetImageSubresourceLayout2EXT_ptr;
+		public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout)
+			=> vkGetImageSubresourceLayout2EXT_ptr(device, image, pSubresource, pLayout);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkAcquireWinrtDisplayNVDelegate(VkPhysicalDevice physicalDevice, VkDisplayKHR display);
 		private static vkAcquireWinrtDisplayNVDelegate vkAcquireWinrtDisplayNV_ptr;
 		public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
@@ -2686,6 +2692,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetMemoryRemoteAddressNVDelegate vkGetMemoryRemoteAddressNV_ptr;
 		public static VkResult vkGetMemoryRemoteAddressNV(VkDevice device, VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, void* pAddress)
 			=> vkGetMemoryRemoteAddressNV_ptr(device, pMemoryGetRemoteAddressInfo, pAddress);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPipelinePropertiesEXTDelegate(VkDevice device, VkPipelineInfoKHR* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
+		private static vkGetPipelinePropertiesEXTDelegate vkGetPipelinePropertiesEXT_ptr;
+		public static VkResult vkGetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoKHR* pPipelineInfo, VkBaseOutStructure* pPipelineProperties)
+			=> vkGetPipelinePropertiesEXT_ptr(device, pPipelineInfo, pPipelineProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetPatchControlPointsEXTDelegate(VkCommandBuffer commandBuffer, uint patchControlPoints);
@@ -3183,6 +3195,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDrmDisplayEXT",  out vkGetDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetFragmentShadingRateEnumNV",  out vkCmdSetFragmentShadingRateEnumNV_ptr);
+			NativeLib.LoadFunction("vkGetImageSubresourceLayout2EXT",  out vkGetImageSubresourceLayout2EXT_ptr);
 			NativeLib.LoadFunction("vkAcquireWinrtDisplayNV",  out vkAcquireWinrtDisplayNV_ptr);
 			NativeLib.LoadFunction("vkGetWinrtDisplayNV",  out vkGetWinrtDisplayNV_ptr);
 			NativeLib.LoadFunction("vkCreateDirectFBSurfaceEXT",  out vkCreateDirectFBSurfaceEXT_ptr);
@@ -3201,6 +3214,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSubpassShadingHUAWEI",  out vkCmdSubpassShadingHUAWEI_ptr);
 			NativeLib.LoadFunction("vkCmdBindInvocationMaskHUAWEI",  out vkCmdBindInvocationMaskHUAWEI_ptr);
 			NativeLib.LoadFunction("vkGetMemoryRemoteAddressNV",  out vkGetMemoryRemoteAddressNV_ptr);
+			NativeLib.LoadFunction("vkGetPipelinePropertiesEXT",  out vkGetPipelinePropertiesEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetPatchControlPointsEXT",  out vkCmdSetPatchControlPointsEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetLogicOpEXT",  out vkCmdSetLogicOpEXT_ptr);
 			NativeLib.LoadFunction("vkCreateScreenSurfaceQNX",  out vkCreateScreenSurfaceQNX_ptr);

@@ -500,7 +500,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
 		public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 5;
 		public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
-		public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1;
+		public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 2;
 		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
 		public const uint VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2;
 		public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
@@ -508,6 +508,10 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
 		public const uint VK_EXT_GRAPHICS_PIPELINE_LIBRARY_SPEC_VERSION = 1;
 		public const string VK_EXT_GRAPHICS_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_EXT_graphics_pipeline_library";
+		public const uint VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION = 1;
+		public const string VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_EXTENSION_NAME = "VK_AMD_shader_early_and_late_fragment_tests";
+		public const uint VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1;
+		public const string VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_KHR_fragment_shader_barycentric";
 		public const uint VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION = 1;
 		public const string VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow";
 		public const uint VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1;
@@ -528,6 +532,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout";
 		public const uint VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1;
 		public const string VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2";
+		public const uint VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION = 1;
+		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME = "VK_EXT_image_compression_control";
 		public const uint VK_EXT_4444_FORMATS_SPEC_VERSION = 1;
 		public const string VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";
 		public const uint VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1;
@@ -562,6 +568,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
 		public const uint VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1;
 		public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
+		public const uint VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
+		public const string VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
 		public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
 		public const string VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
 		public const uint VK_QNX_SCREEN_SURFACE_SPEC_VERSION = 1;
@@ -570,6 +578,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
 		public const uint VK_EXT_PRIMITIVES_GENERATED_QUERY_SPEC_VERSION = 1;
 		public const string VK_EXT_PRIMITIVES_GENERATED_QUERY_EXTENSION_NAME = "VK_EXT_primitives_generated_query";
+		public const uint VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
+		public const string VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
 		public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 		public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
 		public const uint VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
@@ -596,5 +606,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";
 		public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 1;
 		public const string VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
+		public const uint VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION = 1;
+		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
+		public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
+		public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
 	}
 }

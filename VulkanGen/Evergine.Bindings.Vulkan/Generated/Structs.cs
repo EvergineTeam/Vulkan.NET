@@ -4396,14 +4396,6 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
-	{
-		public VkStructureType sType;
-		public void* pNext;
-		public VkBool32 fragmentShaderBarycentric;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 	{
 		public VkStructureType sType;
@@ -4787,6 +4779,34 @@ namespace Evergine.Bindings.Vulkan
 		public uint width;
 		public uint height;
 		public uint depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkTraceRaysIndirectCommand2KHR
+	{
+		public ulong raygenShaderRecordAddress;
+		public ulong raygenShaderRecordSize;
+		public ulong missShaderBindingTableAddress;
+		public ulong missShaderBindingTableSize;
+		public ulong missShaderBindingTableStride;
+		public ulong hitShaderBindingTableAddress;
+		public ulong hitShaderBindingTableSize;
+		public ulong hitShaderBindingTableStride;
+		public ulong callableShaderBindingTableAddress;
+		public ulong callableShaderBindingTableSize;
+		public ulong callableShaderBindingTableStride;
+		public uint width;
+		public uint height;
+		public uint depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 rayTracingMaintenance1;
+		public VkBool32 rayTracingPipelineTraceRaysIndirect2;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7608,6 +7628,22 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 fragmentShaderBarycentric;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV
 	{
 		public VkStructureType sType;
@@ -8051,6 +8087,127 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public UIntPtr descriptorOffset;
 		public uint descriptorSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageCompressionControlEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageCompressionFlagsEXT flags;
+		public uint compressionControlPlaneCount;
+		public VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 imageCompressionControl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageCompressionPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageCompressionFlagsEXT imageCompressionFlags;
+		public VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 imageCompressionControlSwapchain;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageSubresource2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageSubresource imageSubresource;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSubresourceLayout2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSubresourceLayout subresourceLayout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassCreationControlEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 disallowMerging;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassCreationFeedbackInfoEXT
+	{
+		public uint postMergeSubpassCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassCreationFeedbackCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassSubpassFeedbackInfoEXT
+	{
+		public VkSubpassMergeStatusEXT subpassMergeStatus;
+		public fixed byte description[(int)VulkanNative.VK_MAX_DESCRIPTION_SIZE];
+		public uint postMergeIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassSubpassFeedbackCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 subpassMergeFeedback;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelinePropertiesIdentifierEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public fixed byte pipelineIdentifier[(int)VulkanNative.VK_UUID_SIZE];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelinePropertiesIdentifier;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderEarlyAndLateFragmentTests;
 	}
 
 }
