@@ -47,7 +47,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "6.x" # SDK Version to use; x will use the latest version of the 3.1 channel
+          dotnet-version: |
+            3.1.x
+            6.x
       - uses: nuget/setup-nuget@v1
         with:
           nuget-version: "6.x"

@@ -5,10 +5,6 @@ name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-rolling
 variables:
   - name: buildConfiguration
     value: Release
-  - name: NetCoreSDKVersion
-    value: 6.x
-  - name: NuGetVersion
-    value: 6.x
   - name: nugetOutputPath
     value: $(Build.StagingDirectory)/nupkgs
 
@@ -40,12 +36,16 @@ jobs:
       - task: UseDotNet@2
         displayName: Check .NETCore SDK
         inputs:
-          version: $(NetCoreSDKVersion)
+          version: 3.1.x
+      - task: UseDotNet@2
+        displayName: "Check .NET SDK"
+        inputs:
+          version: 6.x
 
       - task: NuGetToolInstaller@1
         displayName: Check NuGet client
         inputs:
-          versionSpec: $(NuGetVersion)
+          versionSpec: 6.x
           checkLatest: true
 
       - task: PowerShell@2
