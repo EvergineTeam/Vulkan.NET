@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-	Evergine bindings NuGet Packages generator script, (c) 2022 Evergine Team
+	Evergine bindings generator script, (c) 2022 Evergine Team
 .DESCRIPTION
-	This script generates NuGet packages for the low-level Vulkan bindings used in Evergine
+	This script generates Vulkan bindings used in Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
-	<script> -version 2021.11.17.1-local
+	<script>
 .LINK
 	https://evergine.com/
 #>
