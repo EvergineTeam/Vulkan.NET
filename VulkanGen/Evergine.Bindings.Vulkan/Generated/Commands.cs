@@ -2574,6 +2574,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdEncodeVideoKHR_ptr(commandBuffer, pEncodeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkExportMetalObjectsEXTDelegate(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
+		private static vkExportMetalObjectsEXTDelegate vkExportMetalObjectsEXT_ptr;
+		public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo)
+			=> vkExportMetalObjectsEXT_ptr(device, pMetalObjectsInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetFragmentShadingRateEnumNVDelegate(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps);
 		private static vkCmdSetFragmentShadingRateEnumNVDelegate vkCmdSetFragmentShadingRateEnumNV_ptr;
 		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
@@ -3194,6 +3200,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkAcquireDrmDisplayEXT",  out vkAcquireDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkGetDrmDisplayEXT",  out vkGetDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
+			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetFragmentShadingRateEnumNV",  out vkCmdSetFragmentShadingRateEnumNV_ptr);
 			NativeLib.LoadFunction("vkGetImageSubresourceLayout2EXT",  out vkGetImageSubresourceLayout2EXT_ptr);
 			NativeLib.LoadFunction("vkAcquireWinrtDisplayNV",  out vkAcquireWinrtDisplayNV_ptr);

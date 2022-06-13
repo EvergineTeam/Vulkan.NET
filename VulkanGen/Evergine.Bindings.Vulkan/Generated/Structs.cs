@@ -8210,5 +8210,118 @@ namespace Evergine.Bindings.Vulkan
 		public VkBool32 shaderEarlyAndLateFragmentTests;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalObjectCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExportMetalObjectTypeFlagsEXT exportObjectType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalObjectsInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalDeviceInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public MTLDevice_id mtlDevice;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalCommandQueueInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkQueue queue;
+		public MTLCommandQueue_id mtlCommandQueue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalBufferInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDeviceMemory memory;
+		public MTLBuffer_id mtlBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMetalBufferInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public MTLBuffer_id mtlBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalTextureInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImage image;
+		public VkImageView imageView;
+		public VkBufferView bufferView;
+		public VkImageAspectFlags plane;
+		public MTLTexture_id mtlTexture;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMetalTextureInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageAspectFlags plane;
+		public MTLTexture_id mtlTexture;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalIOSurfaceInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImage image;
+		public IOSurfaceRef ioSurface;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMetalIOSurfaceInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IOSurfaceRef ioSurface;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExportMetalSharedEventInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSemaphore semaphore;
+		public VkEvent vkEvent;
+		public MTLSharedEvent_id mtlSharedEvent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMetalSharedEventInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public MTLSharedEvent_id mtlSharedEvent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 nonSeamlessCubeMap;
+	}
+
 }
 

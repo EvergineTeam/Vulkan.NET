@@ -504,6 +504,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
 		public const uint VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2;
 		public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
+		public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
+		public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
 		public const uint VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1;
 		public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
 		public const uint VK_EXT_GRAPHICS_PIPELINE_LIBRARY_SPEC_VERSION = 1;
@@ -600,6 +602,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
 		public const uint VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1;
 		public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
+		public const uint VK_EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION = 1;
+		public const string VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
 		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
 		public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
 		public const uint VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1;
