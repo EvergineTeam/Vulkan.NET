@@ -13,7 +13,7 @@
 param (
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$vulkanGenCsprojPath = "VulkanGen\VulkanGen\VulkanGen.csproj",
+	[string]$vulkanGenCsprojPath = "VulkanGen\VulkanGen\VulkanGen.csproj"
 )
 
 # Utility functions
