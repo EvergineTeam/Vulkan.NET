@@ -15,7 +15,6 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$vulkanGenCsprojPath = "VulkanGen\VulkanGen\VulkanGen.csproj",
 	[string]$vulkanBindingsCsprojPath = "VulkanGen\Evergine.Bindings.Vulkan\Evergine.Bindings.Vulkan.csproj"
 )
 
@@ -42,34 +41,6 @@ if($buildConfiguration -eq "Debug")
 {
 	$symbols = true
 }
-
-# Compile generator
-LogDebug "START generator build process"
-dotnet publish -v:$buildVerbosity -p:Configuration=$buildConfiguration $vulkanGenCsprojPath
-if($?)
-{
-   LogDebug "END generator build process"
-}
-else
-{
-	LogDebug "ERROR; Generator build failed"
-   	exit -1
-}
-
-# Run generator
-LogDebug "START binding generator process"
-pushd .\VulkanGen\VulkanGen\bin\Release\netcoreapp3.1\
-.\publish\VulkanGen.exe
-if($?)
-{
-   LogDebug "END binding generator process"
-}
-else
-{
-	LogDebug "ERROR; Binding Generation failed"
-   	exit -1
-}
-popd
 
 # Generate packages
 LogDebug "START packaging process"
