@@ -263,6 +263,13 @@ namespace VulkanGen
                 case "StdVideoEncodeH265SliceSegmentHeader":
                 case "StdVideoEncodeH264RefMemMgmtCtrlOperations":
                 case "StdVideoEncodeH264ReferenceInfo":
+                //Metal Layer
+                case "MTLDevice_id":
+                case "MTLCommandQueue_id":
+                case "MTLBuffer_id":
+                case "MTLTexture_id":
+                case "MTLSharedEvent_id":
+                case "IOSurfaceRef":
                     return true;
                 default:
                     return false;
