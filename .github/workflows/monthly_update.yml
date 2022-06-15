@@ -70,10 +70,9 @@ jobs:
         run: powershell ./Generate-Bindings.ps1
       - name: Commit if update
         if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2 }}
-        uses: stefanzweifel/git-auto-commit-action@v4.11.0
+        uses: EndBug/add-and-commit@v9
         with:
-          commit_message: Updating new Vulkan version
-          add_options: "-u"
+          message: Updating new Vulkan version
       - name: Generate NuGet packages
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
       - name: Publish NuGet
