@@ -81,10 +81,12 @@ jobs:
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
       - name: Publish NuGet
         if: ${{ success() && github.event.inputs.publishEnabled == 'true' }}
+        env:
+          token: ${{secrets.EVERGINE_NUGETORG_TOKEN}}
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols -k ${{secrets.EVERGINE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols -k "$env:token" -s https://api.nuget.org/v3/index.json
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
