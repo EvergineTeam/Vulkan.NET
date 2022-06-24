@@ -68,7 +68,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
 		public const uint VK_EXT_DEBUG_MARKER_SPEC_VERSION = 4;
 		public const string VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker";
-		public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 3;
+		public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 4;
 		public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
 		public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 4;
 		public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";

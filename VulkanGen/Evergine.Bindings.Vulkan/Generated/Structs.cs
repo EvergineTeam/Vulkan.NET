@@ -6821,7 +6821,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkBool32 supported;
+		public VkBool32 queryResultStatusSupport;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6839,7 +6839,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkImageUsageFlags imageUsage;
-		public VkVideoProfilesKHR* pVideoProfiles;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6848,6 +6847,11 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkFormat format;
+		public VkComponentMapping componentMapping;
+		public VkImageCreateFlags imageCreateFlags;
+		public VkImageType imageType;
+		public VkImageTiling imageTiling;
+		public VkImageUsageFlags imageUsageFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
