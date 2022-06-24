@@ -8230,7 +8230,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public MTLDevice_id mtlDevice;
+		public IntPtr mtlDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8239,7 +8239,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkQueue queue;
-		public MTLCommandQueue_id mtlCommandQueue;
+		public IntPtr mtlCommandQueue;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8248,7 +8248,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDeviceMemory memory;
-		public MTLBuffer_id mtlBuffer;
+		public IntPtr mtlBuffer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8256,7 +8256,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public MTLBuffer_id mtlBuffer;
+		public IntPtr mtlBuffer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8268,7 +8268,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkImageView imageView;
 		public VkBufferView bufferView;
 		public VkImageAspectFlags plane;
-		public MTLTexture_id mtlTexture;
+		public IntPtr mtlTexture;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8277,7 +8277,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkImageAspectFlags plane;
-		public MTLTexture_id mtlTexture;
+		public IntPtr mtlTexture;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8286,7 +8286,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkImage image;
-		public IOSurfaceRef ioSurface;
+		public IntPtr ioSurface;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8294,7 +8294,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public IOSurfaceRef ioSurface;
+		public IntPtr ioSurface;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8304,7 +8304,7 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public VkSemaphore semaphore;
 		public VkEvent vkEvent;
-		public MTLSharedEvent_id mtlSharedEvent;
+		public IntPtr mtlSharedEvent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8312,7 +8312,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public MTLSharedEvent_id mtlSharedEvent;
+		public IntPtr mtlSharedEvent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
