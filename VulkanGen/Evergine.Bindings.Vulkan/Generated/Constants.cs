@@ -32,6 +32,7 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR;
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16;
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
+		public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
 		public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
 		public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
 		public const uint VK_KHR_SWAPCHAIN_SPEC_VERSION = 70;
@@ -572,6 +573,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
 		public const uint VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
+		public const uint VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION = 1;
+		public const string VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_EXTENSION_NAME = "VK_EXT_multisampled_render_to_single_sampled";
 		public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
 		public const string VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
 		public const uint VK_QNX_SCREEN_SURFACE_SPEC_VERSION = 1;
@@ -614,5 +617,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
 		public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
 		public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
+		public const uint VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION = 1;
+		public const string VK_EXT_SHADER_MODULE_IDENTIFIER_EXTENSION_NAME = "VK_EXT_shader_module_identifier";
 	}
 }

@@ -2765,6 +2765,18 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData)
 			=> vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetShaderModuleIdentifierEXTDelegate(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier);
+		private static vkGetShaderModuleIdentifierEXTDelegate vkGetShaderModuleIdentifierEXT_ptr;
+		public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier)
+			=> vkGetShaderModuleIdentifierEXT_ptr(device, shaderModule, pIdentifier);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetShaderModuleCreateInfoIdentifierEXTDelegate(VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkShaderModuleIdentifierEXT* pIdentifier);
+		private static vkGetShaderModuleCreateInfoIdentifierEXTDelegate vkGetShaderModuleCreateInfoIdentifierEXT_ptr;
+		public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkShaderModuleIdentifierEXT* pIdentifier)
+			=> vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, pCreateInfo, pIdentifier);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3232,6 +3244,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkSetDeviceMemoryPriorityEXT",  out vkSetDeviceMemoryPriorityEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutHostMappingInfoVALVE",  out vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);
+			NativeLib.LoadFunction("vkGetShaderModuleIdentifierEXT",  out vkGetShaderModuleIdentifierEXT_ptr);
+			NativeLib.LoadFunction("vkGetShaderModuleCreateInfoIdentifierEXT",  out vkGetShaderModuleCreateInfoIdentifierEXT_ptr);
 		}
 	}
 }

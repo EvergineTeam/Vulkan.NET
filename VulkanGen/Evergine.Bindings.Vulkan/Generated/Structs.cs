@@ -6809,6 +6809,31 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 multisampledRenderToSingleSampled;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSubpassResolvePerformanceQueryEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 optimal;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMultisampledRenderToSingleSampledInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 multisampledRenderToSingleSampledEnable;
+		public VkSampleCountFlags rasterizationSamples;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoQueueFamilyProperties2KHR
 	{
 		public VkStructureType sType;
@@ -8091,6 +8116,40 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public UIntPtr descriptorOffset;
 		public uint descriptorSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderModuleIdentifier;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public fixed byte shaderModuleIdentifierAlgorithmUUID[(int)VulkanNative.VK_UUID_SIZE];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint identifierSize;
+		public byte* pIdentifier;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkShaderModuleIdentifierEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint identifierSize;
+		public fixed byte identifier[(int)VulkanNative.VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
