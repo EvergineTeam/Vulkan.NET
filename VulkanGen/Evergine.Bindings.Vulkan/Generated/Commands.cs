@@ -2777,6 +2777,18 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkShaderModuleIdentifierEXT* pIdentifier)
 			=> vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, pCreateInfo, pIdentifier);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetFramebufferTilePropertiesQCOMDelegate(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
+		private static vkGetFramebufferTilePropertiesQCOMDelegate vkGetFramebufferTilePropertiesQCOM_ptr;
+		public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties)
+			=> vkGetFramebufferTilePropertiesQCOM_ptr(device, framebuffer, pPropertiesCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDynamicRenderingTilePropertiesQCOMDelegate(VkDevice device, VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties);
+		private static vkGetDynamicRenderingTilePropertiesQCOMDelegate vkGetDynamicRenderingTilePropertiesQCOM_ptr;
+		public static VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties)
+			=> vkGetDynamicRenderingTilePropertiesQCOM_ptr(device, pRenderingInfo, pProperties);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3246,6 +3258,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleIdentifierEXT",  out vkGetShaderModuleIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleCreateInfoIdentifierEXT",  out vkGetShaderModuleCreateInfoIdentifierEXT_ptr);
+			NativeLib.LoadFunction("vkGetFramebufferTilePropertiesQCOM",  out vkGetFramebufferTilePropertiesQCOM_ptr);
+			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 		}
 	}
 }

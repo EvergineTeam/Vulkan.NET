@@ -139,6 +139,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr";
 		public const uint VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION = 1;
 		public const string VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";
+		public const uint VK_EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION = 1;
+		public const string VK_EXT_PIPELINE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_pipeline_robustness";
 		public const uint VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2;
 		public const string VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1";
 		public const uint VK_KHR_MAINTENANCE1_SPEC_VERSION = VK_KHR_MAINTENANCE_1_SPEC_VERSION;
@@ -477,7 +479,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product";
 		public const uint VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION = 1;
 		public const string VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
-		public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 2;
+		public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 3;
 		public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
 		public const uint VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2;
 		public const string VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report";
@@ -615,9 +617,13 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
 		public const uint VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION = 1;
 		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
+		public const uint VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
+		public const string VK_QCOM_IMAGE_PROCESSING_EXTENSION_NAME = "VK_QCOM_image_processing";
 		public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
 		public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
 		public const uint VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_MODULE_IDENTIFIER_EXTENSION_NAME = "VK_EXT_shader_module_identifier";
+		public const uint VK_QCOM_TILE_PROPERTIES_SPEC_VERSION = 1;
+		public const string VK_QCOM_TILE_PROPERTIES_EXTENSION_NAME = "VK_QCOM_tile_properties";
 	}
 }

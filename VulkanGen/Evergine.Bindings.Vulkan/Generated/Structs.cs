@@ -8386,5 +8386,84 @@ namespace Evergine.Bindings.Vulkan
 		public VkBool32 nonSeamlessCubeMap;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelineRobustness;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineRobustnessCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipelineRobustnessBufferBehaviorEXT storageBuffers;
+		public VkPipelineRobustnessBufferBehaviorEXT uniformBuffers;
+		public VkPipelineRobustnessBufferBehaviorEXT vertexInputs;
+		public VkPipelineRobustnessImageBehaviorEXT images;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineRobustnessPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessStorageBuffers;
+		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessUniformBuffers;
+		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessVertexInputs;
+		public VkPipelineRobustnessImageBehaviorEXT defaultRobustnessImages;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageViewSampleWeightCreateInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkOffset2D filterCenter;
+		public VkExtent2D filterSize;
+		public uint numPhases;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageProcessingFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 textureSampleWeighted;
+		public VkBool32 textureBoxFilter;
+		public VkBool32 textureBlockMatch;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxWeightFilterPhases;
+		public VkExtent2D maxWeightFilterDimension;
+		public VkExtent2D maxBlockMatchRegion;
+		public VkExtent2D maxBoxFilterBlockSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 tileProperties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkTilePropertiesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent3D tileSize;
+		public VkExtent2D apronSize;
+		public VkOffset2D origin;
+	}
+
 }
 
