@@ -1506,9 +1506,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdDebugMarkerInsertEXT_ptr(commandBuffer, pMarkerInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetPhysicalDeviceVideoCapabilitiesKHRDelegate(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities);
+		private delegate VkResult vkGetPhysicalDeviceVideoCapabilitiesKHRDelegate(VkPhysicalDevice physicalDevice, VkVideoProfileInfoKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities);
 		private static vkGetPhysicalDeviceVideoCapabilitiesKHRDelegate vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
-		public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities)
+		public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileInfoKHR* pVideoProfile, VkVideoCapabilitiesKHR* pCapabilities)
 			=> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr(physicalDevice, pVideoProfile, pCapabilities);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1530,16 +1530,16 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroyVideoSessionKHR_ptr(device, videoSession, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetVideoSessionMemoryRequirementsKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint* pVideoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* pVideoSessionMemoryRequirements);
+		private delegate VkResult vkGetVideoSessionMemoryRequirementsKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint* pMemoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR* pMemoryRequirements);
 		private static vkGetVideoSessionMemoryRequirementsKHRDelegate vkGetVideoSessionMemoryRequirementsKHR_ptr;
-		public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, uint* pVideoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* pVideoSessionMemoryRequirements)
-			=> vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, pVideoSessionMemoryRequirementsCount, pVideoSessionMemoryRequirements);
+		public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, uint* pMemoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR* pMemoryRequirements)
+			=> vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, pMemoryRequirementsCount, pMemoryRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkBindVideoSessionMemoryKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint videoSessionBindMemoryCount, VkVideoBindMemoryKHR* pVideoSessionBindMemories);
+		private delegate VkResult vkBindVideoSessionMemoryKHRDelegate(VkDevice device, VkVideoSessionKHR videoSession, uint bindSessionMemoryInfoCount, VkBindVideoSessionMemoryInfoKHR* pBindSessionMemoryInfos);
 		private static vkBindVideoSessionMemoryKHRDelegate vkBindVideoSessionMemoryKHR_ptr;
-		public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, uint videoSessionBindMemoryCount, VkVideoBindMemoryKHR* pVideoSessionBindMemories)
-			=> vkBindVideoSessionMemoryKHR_ptr(device, videoSession, videoSessionBindMemoryCount, pVideoSessionBindMemories);
+		public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, uint bindSessionMemoryInfoCount, VkBindVideoSessionMemoryInfoKHR* pBindSessionMemoryInfos)
+			=> vkBindVideoSessionMemoryKHR_ptr(device, videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateVideoSessionParametersKHRDelegate(VkDevice device, VkVideoSessionParametersCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkVideoSessionParametersKHR* pVideoSessionParameters);
