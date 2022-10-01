@@ -602,6 +602,36 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkOpticalFlowSessionNV : IEquatable<VkOpticalFlowSessionNV>
+{
+		public readonly ulong Handle;
+		public VkOpticalFlowSessionNV(ulong existingHandle) { Handle = existingHandle; }
+		public static VkOpticalFlowSessionNV Null => new VkOpticalFlowSessionNV(0);
+		public static implicit operator VkOpticalFlowSessionNV(ulong handle) => new VkOpticalFlowSessionNV(handle);
+		public static bool operator ==(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkOpticalFlowSessionNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkOpticalFlowSessionNV left, ulong right) => left.Handle != right;
+		public bool Equals(VkOpticalFlowSessionNV h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkOpticalFlowSessionNV h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkMicromapEXT : IEquatable<VkMicromapEXT>
+{
+		public readonly ulong Handle;
+		public VkMicromapEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static VkMicromapEXT Null => new VkMicromapEXT(0);
+		public static implicit operator VkMicromapEXT(ulong handle) => new VkMicromapEXT(handle);
+		public static bool operator ==(VkMicromapEXT left, VkMicromapEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(VkMicromapEXT left, VkMicromapEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(VkMicromapEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkMicromapEXT left, ulong right) => left.Handle != right;
+		public bool Equals(VkMicromapEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkMicromapEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 {
 		public readonly ulong Handle;
