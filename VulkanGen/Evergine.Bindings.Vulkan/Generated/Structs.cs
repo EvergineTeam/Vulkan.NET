@@ -8964,5 +8964,23 @@ namespace Evergine.Bindings.Vulkan
 		public uint engineNameOffset;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong shaderCoreMask;
+		public uint shaderCoreCount;
+		public uint shaderWarpsPerCore;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderCoreBuiltins;
+	}
+
 }
 

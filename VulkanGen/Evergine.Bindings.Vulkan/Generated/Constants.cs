@@ -653,5 +653,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling";
 		public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 		public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
+		public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
+		public const string VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins";
 	}
 }
