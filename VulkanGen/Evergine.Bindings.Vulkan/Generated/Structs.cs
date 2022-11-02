@@ -7161,7 +7161,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoH264LevelIdc maxLevelIdc;
+		public IntPtr maxLevelIdc;
 		public VkOffset2D fieldOffsetGranularity;
 	}
 
@@ -7217,7 +7217,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoH265LevelIdc maxLevelIdc;
+		public IntPtr maxLevelIdc;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

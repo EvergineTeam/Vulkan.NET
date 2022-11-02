@@ -263,6 +263,8 @@ namespace VulkanGen
                 case "StdVideoEncodeH265SliceSegmentHeader":
                 case "StdVideoEncodeH264RefMemMgmtCtrlOperations":
                 case "StdVideoEncodeH264ReferenceInfo":
+                case "StdVideoH264LevelIdc":
+                case "StdVideoH265LevelIdc":
                 //Metal Layer
                 case "MTLDevice_id":
                 case "MTLCommandQueue_id":
