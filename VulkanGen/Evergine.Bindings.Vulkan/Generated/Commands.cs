@@ -2580,6 +2580,66 @@ namespace Evergine.Bindings.Vulkan
 			=> vkExportMetalObjectsEXT_ptr(device, pMetalObjectsInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDescriptorSetLayoutSizeEXTDelegate(VkDevice device, VkDescriptorSetLayout layout, ulong* pLayoutSizeInBytes);
+		private static vkGetDescriptorSetLayoutSizeEXTDelegate vkGetDescriptorSetLayoutSizeEXT_ptr;
+		public static void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, VkDescriptorSetLayout layout, ulong* pLayoutSizeInBytes)
+			=> vkGetDescriptorSetLayoutSizeEXT_ptr(device, layout, pLayoutSizeInBytes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDescriptorSetLayoutBindingOffsetEXTDelegate(VkDevice device, VkDescriptorSetLayout layout, uint binding, ulong* pOffset);
+		private static vkGetDescriptorSetLayoutBindingOffsetEXTDelegate vkGetDescriptorSetLayoutBindingOffsetEXT_ptr;
+		public static void vkGetDescriptorSetLayoutBindingOffsetEXT(VkDevice device, VkDescriptorSetLayout layout, uint binding, ulong* pOffset)
+			=> vkGetDescriptorSetLayoutBindingOffsetEXT_ptr(device, layout, binding, pOffset);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDescriptorEXTDelegate(VkDevice device, VkDescriptorGetInfoEXT* pDescriptorInfo, UIntPtr dataSize, void* pDescriptor);
+		private static vkGetDescriptorEXTDelegate vkGetDescriptorEXT_ptr;
+		public static void vkGetDescriptorEXT(VkDevice device, VkDescriptorGetInfoEXT* pDescriptorInfo, UIntPtr dataSize, void* pDescriptor)
+			=> vkGetDescriptorEXT_ptr(device, pDescriptorInfo, dataSize, pDescriptor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindDescriptorBuffersEXTDelegate(VkCommandBuffer commandBuffer, uint bufferCount, VkDescriptorBufferBindingInfoEXT* pBindingInfos);
+		private static vkCmdBindDescriptorBuffersEXTDelegate vkCmdBindDescriptorBuffersEXT_ptr;
+		public static void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, uint bufferCount, VkDescriptorBufferBindingInfoEXT* pBindingInfos)
+			=> vkCmdBindDescriptorBuffersEXT_ptr(commandBuffer, bufferCount, pBindingInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDescriptorBufferOffsetsEXTDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint setCount, uint* pBufferIndices, ulong* pOffsets);
+		private static vkCmdSetDescriptorBufferOffsetsEXTDelegate vkCmdSetDescriptorBufferOffsetsEXT_ptr;
+		public static void vkCmdSetDescriptorBufferOffsetsEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint setCount, uint* pBufferIndices, ulong* pOffsets)
+			=> vkCmdSetDescriptorBufferOffsetsEXT_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, setCount, pBufferIndices, pOffsets);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindDescriptorBufferEmbeddedSamplersEXTDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set);
+		private static vkCmdBindDescriptorBufferEmbeddedSamplersEXTDelegate vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr;
+		public static void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set)
+			=> vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr(commandBuffer, pipelineBindPoint, layout, set);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetBufferOpaqueCaptureDescriptorDataEXTDelegate(VkDevice device, VkBufferCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+		private static vkGetBufferOpaqueCaptureDescriptorDataEXTDelegate vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr;
+		public static VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(VkDevice device, VkBufferCaptureDescriptorDataInfoEXT* pInfo, void* pData)
+			=> vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr(device, pInfo, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetImageOpaqueCaptureDescriptorDataEXTDelegate(VkDevice device, VkImageCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+		private static vkGetImageOpaqueCaptureDescriptorDataEXTDelegate vkGetImageOpaqueCaptureDescriptorDataEXT_ptr;
+		public static VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageCaptureDescriptorDataInfoEXT* pInfo, void* pData)
+			=> vkGetImageOpaqueCaptureDescriptorDataEXT_ptr(device, pInfo, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXTDelegate(VkDevice device, VkImageViewCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+		private static vkGetImageViewOpaqueCaptureDescriptorDataEXTDelegate vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr;
+		public static VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageViewCaptureDescriptorDataInfoEXT* pInfo, void* pData)
+			=> vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr(device, pInfo, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXTDelegate(VkDevice device, VkSamplerCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+		private static vkGetSamplerOpaqueCaptureDescriptorDataEXTDelegate vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr;
+		public static VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(VkDevice device, VkSamplerCaptureDescriptorDataInfoEXT* pInfo, void* pData)
+			=> vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr(device, pInfo, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetFragmentShadingRateEnumNVDelegate(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps);
 		private static vkCmdSetFragmentShadingRateEnumNVDelegate vkCmdSetFragmentShadingRateEnumNV_ptr;
 		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
@@ -2872,6 +2932,30 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetDescriptorSetHostMappingVALVEDelegate vkGetDescriptorSetHostMappingVALVE_ptr;
 		public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData)
 			=> vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyMemoryIndirectNVDelegate(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride);
+		private static vkCmdCopyMemoryIndirectNVDelegate vkCmdCopyMemoryIndirectNV_ptr;
+		public static void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride)
+			=> vkCmdCopyMemoryIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyMemoryToImageIndirectNVDelegate(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride, VkImage dstImage, VkImageLayout dstImageLayout, VkImageSubresourceLayers* pImageSubresources);
+		private static vkCmdCopyMemoryToImageIndirectNVDelegate vkCmdCopyMemoryToImageIndirectNV_ptr;
+		public static void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride, VkImage dstImage, VkImageLayout dstImageLayout, VkImageSubresourceLayers* pImageSubresources)
+			=> vkCmdCopyMemoryToImageIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDecompressMemoryNVDelegate(VkCommandBuffer commandBuffer, uint decompressRegionCount, VkDecompressMemoryRegionNV* pDecompressMemoryRegions);
+		private static vkCmdDecompressMemoryNVDelegate vkCmdDecompressMemoryNV_ptr;
+		public static void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, uint decompressRegionCount, VkDecompressMemoryRegionNV* pDecompressMemoryRegions)
+			=> vkCmdDecompressMemoryNV_ptr(commandBuffer, decompressRegionCount, pDecompressMemoryRegions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDecompressMemoryIndirectCountNVDelegate(VkCommandBuffer commandBuffer, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride);
+		private static vkCmdDecompressMemoryIndirectCountNVDelegate vkCmdDecompressMemoryIndirectCountNV_ptr;
+		public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride)
+			=> vkCmdDecompressMemoryIndirectCountNV_ptr(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetTessellationDomainOriginEXTDelegate(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
@@ -3549,6 +3633,16 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDrmDisplayEXT",  out vkGetDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
 			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);
+			NativeLib.LoadFunction("vkGetDescriptorSetLayoutSizeEXT",  out vkGetDescriptorSetLayoutSizeEXT_ptr);
+			NativeLib.LoadFunction("vkGetDescriptorSetLayoutBindingOffsetEXT",  out vkGetDescriptorSetLayoutBindingOffsetEXT_ptr);
+			NativeLib.LoadFunction("vkGetDescriptorEXT",  out vkGetDescriptorEXT_ptr);
+			NativeLib.LoadFunction("vkCmdBindDescriptorBuffersEXT",  out vkCmdBindDescriptorBuffersEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetDescriptorBufferOffsetsEXT",  out vkCmdSetDescriptorBufferOffsetsEXT_ptr);
+			NativeLib.LoadFunction("vkCmdBindDescriptorBufferEmbeddedSamplersEXT",  out vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr);
+			NativeLib.LoadFunction("vkGetBufferOpaqueCaptureDescriptorDataEXT",  out vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr);
+			NativeLib.LoadFunction("vkGetImageOpaqueCaptureDescriptorDataEXT",  out vkGetImageOpaqueCaptureDescriptorDataEXT_ptr);
+			NativeLib.LoadFunction("vkGetImageViewOpaqueCaptureDescriptorDataEXT",  out vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr);
+			NativeLib.LoadFunction("vkGetSamplerOpaqueCaptureDescriptorDataEXT",  out vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetFragmentShadingRateEnumNV",  out vkCmdSetFragmentShadingRateEnumNV_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksEXT",  out vkCmdDrawMeshTasksEXT_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectEXT",  out vkCmdDrawMeshTasksIndirectEXT_ptr);
@@ -3598,6 +3692,10 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkSetDeviceMemoryPriorityEXT",  out vkSetDeviceMemoryPriorityEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutHostMappingInfoVALVE",  out vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);
+			NativeLib.LoadFunction("vkCmdCopyMemoryIndirectNV",  out vkCmdCopyMemoryIndirectNV_ptr);
+			NativeLib.LoadFunction("vkCmdCopyMemoryToImageIndirectNV",  out vkCmdCopyMemoryToImageIndirectNV_ptr);
+			NativeLib.LoadFunction("vkCmdDecompressMemoryNV",  out vkCmdDecompressMemoryNV_ptr);
+			NativeLib.LoadFunction("vkCmdDecompressMemoryIndirectCountNV",  out vkCmdDecompressMemoryIndirectCountNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetTessellationDomainOriginEXT",  out vkCmdSetTessellationDomainOriginEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampEnableEXT",  out vkCmdSetDepthClampEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetPolygonModeEXT",  out vkCmdSetPolygonModeEXT_ptr);

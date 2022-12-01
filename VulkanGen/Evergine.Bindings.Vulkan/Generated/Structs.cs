@@ -596,6 +596,25 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCopyMemoryIndirectCommandNV
+	{
+		public ulong srcAddress;
+		public ulong dstAddress;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCopyMemoryToImageIndirectCommandNV
+	{
+		public ulong srcAddress;
+		public uint bufferRowLength;
+		public uint bufferImageHeight;
+		public VkImageSubresourceLayers imageSubresource;
+		public VkOffset3D imageOffset;
+		public VkExtent3D imageExtent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkImageResolve
 	{
 		public VkImageSubresourceLayers srcSubresource;
@@ -4412,6 +4431,39 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 indirectCopy;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkQueueFlags supportedQueues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 memoryDecompression;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong decompressionMethods;
+		public ulong maxDecompressionIndirectCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkShadingRatePaletteNV
 	{
 		public uint shadingRatePaletteEntryCount;
@@ -7779,6 +7831,150 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDescriptorBufferFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 descriptorBuffer;
+		public VkBool32 descriptorBufferCaptureReplay;
+		public VkBool32 descriptorBufferImageLayoutIgnored;
+		public VkBool32 descriptorBufferPushDescriptors;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 combinedImageSamplerDescriptorSingleArray;
+		public VkBool32 bufferlessPushDescriptors;
+		public VkBool32 allowSamplerImageViewPostSubmitCreation;
+		public ulong descriptorBufferOffsetAlignment;
+		public uint maxDescriptorBufferBindings;
+		public uint maxResourceDescriptorBufferBindings;
+		public uint maxSamplerDescriptorBufferBindings;
+		public uint maxEmbeddedImmutableSamplerBindings;
+		public uint maxEmbeddedImmutableSamplers;
+		public UIntPtr bufferCaptureReplayDescriptorDataSize;
+		public UIntPtr imageCaptureReplayDescriptorDataSize;
+		public UIntPtr imageViewCaptureReplayDescriptorDataSize;
+		public UIntPtr samplerCaptureReplayDescriptorDataSize;
+		public UIntPtr accelerationStructureCaptureReplayDescriptorDataSize;
+		public UIntPtr samplerDescriptorSize;
+		public UIntPtr combinedImageSamplerDescriptorSize;
+		public UIntPtr sampledImageDescriptorSize;
+		public UIntPtr storageImageDescriptorSize;
+		public UIntPtr uniformTexelBufferDescriptorSize;
+		public UIntPtr robustUniformTexelBufferDescriptorSize;
+		public UIntPtr storageTexelBufferDescriptorSize;
+		public UIntPtr robustStorageTexelBufferDescriptorSize;
+		public UIntPtr uniformBufferDescriptorSize;
+		public UIntPtr robustUniformBufferDescriptorSize;
+		public UIntPtr storageBufferDescriptorSize;
+		public UIntPtr robustStorageBufferDescriptorSize;
+		public UIntPtr inputAttachmentDescriptorSize;
+		public UIntPtr accelerationStructureDescriptorSize;
+		public ulong maxSamplerDescriptorBufferRange;
+		public ulong maxResourceDescriptorBufferRange;
+		public ulong samplerDescriptorBufferAddressSpaceSize;
+		public ulong resourceDescriptorBufferAddressSpaceSize;
+		public ulong descriptorBufferAddressSpaceSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr combinedImageSamplerDensityMapDescriptorSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDescriptorAddressInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong address;
+		public ulong range;
+		public VkFormat format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDescriptorBufferBindingInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong address;
+		public VkBufferUsageFlags usage;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBuffer buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDescriptorGetInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDescriptorType type;
+		public VkDescriptorDataEXT data;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBufferCaptureDescriptorDataInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBuffer buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageCaptureDescriptorDataInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImage image;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageViewCaptureDescriptorDataInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageView imageView;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSamplerCaptureDescriptorDataInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSampler sampler;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAccelerationStructureCaptureDescriptorDataInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkAccelerationStructureKHR accelerationStructure;
+		public VkAccelerationStructureNV accelerationStructureNV;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkOpaqueCaptureDescriptorDataCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public void* opaqueCaptureDescriptorData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures
 	{
 		public VkStructureType sType;
@@ -8965,6 +9161,16 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDecompressMemoryRegionNV
+	{
+		public ulong srcAddress;
+		public ulong dstAddress;
+		public ulong compressedSize;
+		public ulong decompressedSize;
+		public ulong decompressionMethod;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
 	{
 		public VkStructureType sType;
@@ -8980,6 +9186,22 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderCoreBuiltins;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 rayTracingInvocationReorder;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
 	}
 
 }

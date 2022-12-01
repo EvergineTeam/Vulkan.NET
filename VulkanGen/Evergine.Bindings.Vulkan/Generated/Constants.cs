@@ -513,6 +513,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
 		public const uint VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1;
 		public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
+		public const uint VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION = 1;
+		public const string VK_EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME = "VK_EXT_descriptor_buffer";
 		public const uint VK_EXT_GRAPHICS_PIPELINE_LIBRARY_SPEC_VERSION = 1;
 		public const string VK_EXT_GRAPHICS_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_EXT_graphics_pipeline_library";
 		public const uint VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION = 1;
@@ -625,6 +627,10 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
 		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
 		public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
+		public const uint VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
+		public const string VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
+		public const uint VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1;
+		public const string VK_NV_MEMORY_DECOMPRESSION_EXTENSION_NAME = "VK_NV_memory_decompression";
 		public const uint VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1;
 		public const string VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";
 		public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 2;
@@ -651,6 +657,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_QCOM_TILE_PROPERTIES_EXTENSION_NAME = "VK_QCOM_tile_properties";
 		public const uint VK_SEC_AMIGO_PROFILING_SPEC_VERSION = 1;
 		public const string VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling";
+		public const uint VK_NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION = 1;
+		public const string VK_NV_RAY_TRACING_INVOCATION_REORDER_EXTENSION_NAME = "VK_NV_ray_tracing_invocation_reorder";
 		public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 		public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
 		public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
