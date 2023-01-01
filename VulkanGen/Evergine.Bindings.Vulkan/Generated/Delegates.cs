@@ -53,4 +53,8 @@ namespace Evergine.Bindings.Vulkan
 		VkDeviceMemoryReportCallbackDataEXT* pCallbackData,
 		void* pUserData);
 
+	public unsafe delegate PFN_vkVoidFunction PFN_vkGetInstanceProcAddrLUNARG(
+		VkInstance instance,
+		byte* pName);
+
 }
