@@ -2922,6 +2922,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetMicromapBuildSizesEXT_ptr(device, buildType, pBuildInfo, pSizeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDrawClusterHUAWEIDelegate(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ);
+		private static vkCmdDrawClusterHUAWEIDelegate vkCmdDrawClusterHUAWEI_ptr;
+		public static void vkCmdDrawClusterHUAWEI(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
+			=> vkCmdDrawClusterHUAWEI_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDrawClusterIndirectHUAWEIDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset);
+		private static vkCmdDrawClusterIndirectHUAWEIDelegate vkCmdDrawClusterIndirectHUAWEI_ptr;
+		public static void vkCmdDrawClusterIndirectHUAWEI(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
+			=> vkCmdDrawClusterIndirectHUAWEI_ptr(commandBuffer, buffer, offset);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkSetDeviceMemoryPriorityEXTDelegate(VkDevice device, VkDeviceMemory memory, float priority);
 		private static vkSetDeviceMemoryPriorityEXTDelegate vkSetDeviceMemoryPriorityEXT_ptr;
 		public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
@@ -3696,6 +3708,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdWriteMicromapsPropertiesEXT",  out vkCmdWriteMicromapsPropertiesEXT_ptr);
 			NativeLib.LoadFunction("vkGetDeviceMicromapCompatibilityEXT",  out vkGetDeviceMicromapCompatibilityEXT_ptr);
 			NativeLib.LoadFunction("vkGetMicromapBuildSizesEXT",  out vkGetMicromapBuildSizesEXT_ptr);
+			NativeLib.LoadFunction("vkCmdDrawClusterHUAWEI",  out vkCmdDrawClusterHUAWEI_ptr);
+			NativeLib.LoadFunction("vkCmdDrawClusterIndirectHUAWEI",  out vkCmdDrawClusterIndirectHUAWEI_ptr);
 			NativeLib.LoadFunction("vkSetDeviceMemoryPriorityEXT",  out vkSetDeviceMemoryPriorityEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutHostMappingInfoVALVE",  out vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);

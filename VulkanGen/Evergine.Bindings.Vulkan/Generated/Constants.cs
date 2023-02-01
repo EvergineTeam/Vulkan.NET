@@ -617,6 +617,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_OPACITY_MICROMAP_EXTENSION_NAME = "VK_EXT_opacity_micromap";
 		public const uint VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
 		public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
+		public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1;
+		public const string VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader";
 		public const uint VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1;
 		public const string VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle";
 		public const uint VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
@@ -671,5 +673,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
 		public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
 		public const string VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins";
+		public const uint VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION = 1;
+		public const string VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles";
 	}
 }

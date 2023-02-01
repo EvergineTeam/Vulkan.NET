@@ -5759,6 +5759,20 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxWorkGroupCount_0;
+		public uint maxWorkGroupCount_1;
+		public uint maxWorkGroupCount_2;
+		public uint maxWorkGroupSize_0;
+		public uint maxWorkGroupSize_1;
+		public uint maxWorkGroupSize_2;
+		public uint maxOutputClusterCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
 	{
 		public VkStructureType sType;
@@ -6528,6 +6542,15 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 subpassShading;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 clustercullingShader;
+		public VkBool32 multiviewClusterCullingShader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9158,6 +9181,14 @@ namespace Evergine.Bindings.Vulkan
 		public uint applicationNameOffset;
 		public uint applicationVersion;
 		public uint engineNameOffset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelineLibraryGroupHandles;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
