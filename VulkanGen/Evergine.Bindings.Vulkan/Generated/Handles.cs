@@ -752,4 +752,19 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkSemaphoreSciSyncPoolNV : IEquatable<VkSemaphoreSciSyncPoolNV>
+{
+		public readonly ulong Handle;
+		public VkSemaphoreSciSyncPoolNV(ulong existingHandle) { Handle = existingHandle; }
+		public static VkSemaphoreSciSyncPoolNV Null => new VkSemaphoreSciSyncPoolNV(0);
+		public static implicit operator VkSemaphoreSciSyncPoolNV(ulong handle) => new VkSemaphoreSciSyncPoolNV(handle);
+		public static bool operator ==(VkSemaphoreSciSyncPoolNV left, VkSemaphoreSciSyncPoolNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkSemaphoreSciSyncPoolNV left, VkSemaphoreSciSyncPoolNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkSemaphoreSciSyncPoolNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkSemaphoreSciSyncPoolNV left, ulong right) => left.Handle != right;
+		public bool Equals(VkSemaphoreSciSyncPoolNV h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkSemaphoreSciSyncPoolNV h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 }

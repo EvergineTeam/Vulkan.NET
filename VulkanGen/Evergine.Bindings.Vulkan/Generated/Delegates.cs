@@ -49,6 +49,11 @@ namespace Evergine.Bindings.Vulkan
 		VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 		void* pUserData);
 
+	public unsafe delegate void PFN_vkFaultCallbackFunction(
+		VkBool32 unrecordedFaults,
+		uint faultCount,
+		VkFaultData* pFaults);
+
 	public unsafe delegate void PFN_vkDeviceMemoryReportCallbackEXT(
 		VkDeviceMemoryReportCallbackDataEXT* pCallbackData,
 		void* pUserData);

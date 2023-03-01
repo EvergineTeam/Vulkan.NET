@@ -1296,6 +1296,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetDeviceImageSparseMemoryRequirements_ptr(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetCommandPoolMemoryConsumptionDelegate(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer, VkCommandPoolMemoryConsumption* pConsumption);
+		private static vkGetCommandPoolMemoryConsumptionDelegate vkGetCommandPoolMemoryConsumption_ptr;
+		public static void vkGetCommandPoolMemoryConsumption(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer, VkCommandPoolMemoryConsumption* pConsumption)
+			=> vkGetCommandPoolMemoryConsumption_ptr(device, commandPool, commandBuffer, pConsumption);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetFaultDataDelegate(VkDevice device, VkFaultQueryBehavior faultQueryBehavior, VkBool32* pUnrecordedFaults, uint* pFaultCount, VkFaultData* pFaults);
+		private static vkGetFaultDataDelegate vkGetFaultData_ptr;
+		public static VkResult vkGetFaultData(VkDevice device, VkFaultQueryBehavior faultQueryBehavior, VkBool32* pUnrecordedFaults, uint* pFaultCount, VkFaultData* pFaults)
+			=> vkGetFaultData_ptr(device, faultQueryBehavior, pUnrecordedFaults, pFaultCount, pFaults);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkDestroySurfaceKHRDelegate(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator);
 		private static vkDestroySurfaceKHRDelegate vkDestroySurfaceKHR_ptr;
 		public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator)
@@ -1326,10 +1338,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr(physicalDevice, surface, pPresentModeCount, pPresentModes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSwapchainKHRDelegate(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
+		private delegate VkResult vkCreateSwapchainKHRDelegate(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
 		private static vkCreateSwapchainKHRDelegate vkCreateSwapchainKHR_ptr;
-		public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain)
-			=> vkCreateSwapchainKHR_ptr(device, pCreateInfo, pAllocator, pSwapchain);
+		public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain)
+			=> vkCreateSwapchainKHR_ptr(device, pCreateInfo, pCreateInfo, pAllocator, pSwapchain);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkDestroySwapchainKHRDelegate(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* pAllocator);
@@ -1398,10 +1410,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCreateDisplayPlaneSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSharedSwapchainsKHRDelegate(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
+		private delegate VkResult vkCreateSharedSwapchainsKHRDelegate(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
 		private static vkCreateSharedSwapchainsKHRDelegate vkCreateSharedSwapchainsKHR_ptr;
-		public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains)
-			=> vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
+		public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains)
+			=> vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, pCreateInfos, pCreateInfos, pAllocator, pSwapchains);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateXlibSurfaceKHRDelegate(VkInstance instance, VkXlibSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
@@ -1828,6 +1840,18 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdSetDiscardRectangleEXTDelegate vkCmdSetDiscardRectangleEXT_ptr;
 		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* pDiscardRectangles)
 			=> vkCmdSetDiscardRectangleEXT_ptr(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDiscardRectangleEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable);
+		private static vkCmdSetDiscardRectangleEnableEXTDelegate vkCmdSetDiscardRectangleEnableEXT_ptr;
+		public static void vkCmdSetDiscardRectangleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable)
+			=> vkCmdSetDiscardRectangleEnableEXT_ptr(commandBuffer, discardRectangleEnable);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDiscardRectangleModeEXTDelegate(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode);
+		private static vkCmdSetDiscardRectangleModeEXTDelegate vkCmdSetDiscardRectangleModeEXT_ptr;
+		public static void vkCmdSetDiscardRectangleModeEXT(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode)
+			=> vkCmdSetDiscardRectangleModeEXT_ptr(commandBuffer, discardRectangleMode);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkSetHdrMetadataEXTDelegate(VkDevice device, uint swapchainCount, VkSwapchainKHR* pSwapchains, VkHdrMetadataEXT* pMetadata);
@@ -2322,6 +2346,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdDrawMeshTasksIndirectCountNV_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetExclusiveScissorEnableNVDelegate(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkBool32* pExclusiveScissorEnables);
+		private static vkCmdSetExclusiveScissorEnableNVDelegate vkCmdSetExclusiveScissorEnableNV_ptr;
+		public static void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkBool32* pExclusiveScissorEnables)
+			=> vkCmdSetExclusiveScissorEnableNV_ptr(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetExclusiveScissorNVDelegate(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* pExclusiveScissors);
 		private static vkCmdSetExclusiveScissorNVDelegate vkCmdSetExclusiveScissorNV_ptr;
 		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* pExclusiveScissors)
@@ -2580,6 +2610,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdEncodeVideoKHR_ptr(commandBuffer, pEncodeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdRefreshObjectsKHRDelegate(VkCommandBuffer commandBuffer, VkRefreshObjectListKHR* pRefreshObjects);
+		private static vkCmdRefreshObjectsKHRDelegate vkCmdRefreshObjectsKHR_ptr;
+		public static void vkCmdRefreshObjectsKHR(VkCommandBuffer commandBuffer, VkRefreshObjectListKHR* pRefreshObjects)
+			=> vkCmdRefreshObjectsKHR_ptr(commandBuffer, pRefreshObjects);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceRefreshableObjectTypesKHRDelegate(VkPhysicalDevice physicalDevice, uint* pRefreshableObjectTypeCount, VkObjectType* pRefreshableObjectTypes);
+		private static vkGetPhysicalDeviceRefreshableObjectTypesKHRDelegate vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceRefreshableObjectTypesKHR(VkPhysicalDevice physicalDevice, uint* pRefreshableObjectTypeCount, VkObjectType* pRefreshableObjectTypes)
+			=> vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr(physicalDevice, pRefreshableObjectTypeCount, pRefreshableObjectTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkExportMetalObjectsEXTDelegate(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
 		private static vkExportMetalObjectsEXTDelegate vkExportMetalObjectsEXT_ptr;
 		public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo)
@@ -2794,6 +2836,66 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetPipelinePropertiesEXTDelegate vkGetPipelinePropertiesEXT_ptr;
 		public static VkResult vkGetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoKHR* pPipelineInfo, VkBaseOutStructure* pPipelineProperties)
 			=> vkGetPipelinePropertiesEXT_ptr(device, pPipelineInfo, pPipelineProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetFenceSciSyncFenceNVDelegate(VkDevice device, VkFenceGetSciSyncInfoNV* pGetSciSyncHandleInfo, void* pHandle);
+		private static vkGetFenceSciSyncFenceNVDelegate vkGetFenceSciSyncFenceNV_ptr;
+		public static VkResult vkGetFenceSciSyncFenceNV(VkDevice device, VkFenceGetSciSyncInfoNV* pGetSciSyncHandleInfo, void* pHandle)
+			=> vkGetFenceSciSyncFenceNV_ptr(device, pGetSciSyncHandleInfo, pHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetFenceSciSyncObjNVDelegate(VkDevice device, VkFenceGetSciSyncInfoNV* pGetSciSyncHandleInfo, void* pHandle);
+		private static vkGetFenceSciSyncObjNVDelegate vkGetFenceSciSyncObjNV_ptr;
+		public static VkResult vkGetFenceSciSyncObjNV(VkDevice device, VkFenceGetSciSyncInfoNV* pGetSciSyncHandleInfo, void* pHandle)
+			=> vkGetFenceSciSyncObjNV_ptr(device, pGetSciSyncHandleInfo, pHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkImportFenceSciSyncFenceNVDelegate(VkDevice device, VkImportFenceSciSyncInfoNV* pImportFenceSciSyncInfo);
+		private static vkImportFenceSciSyncFenceNVDelegate vkImportFenceSciSyncFenceNV_ptr;
+		public static VkResult vkImportFenceSciSyncFenceNV(VkDevice device, VkImportFenceSciSyncInfoNV* pImportFenceSciSyncInfo)
+			=> vkImportFenceSciSyncFenceNV_ptr(device, pImportFenceSciSyncInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkImportFenceSciSyncObjNVDelegate(VkDevice device, VkImportFenceSciSyncInfoNV* pImportFenceSciSyncInfo);
+		private static vkImportFenceSciSyncObjNVDelegate vkImportFenceSciSyncObjNV_ptr;
+		public static VkResult vkImportFenceSciSyncObjNV(VkDevice device, VkImportFenceSciSyncInfoNV* pImportFenceSciSyncInfo)
+			=> vkImportFenceSciSyncObjNV_ptr(device, pImportFenceSciSyncInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceSciSyncAttributesNVDelegate(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, NvSciSyncAttrList pAttributes);
+		private static vkGetPhysicalDeviceSciSyncAttributesNVDelegate vkGetPhysicalDeviceSciSyncAttributesNV_ptr;
+		public static VkResult vkGetPhysicalDeviceSciSyncAttributesNV(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, NvSciSyncAttrList pAttributes)
+			=> vkGetPhysicalDeviceSciSyncAttributesNV_ptr(physicalDevice, pSciSyncAttributesInfo, pAttributes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetSemaphoreSciSyncObjNVDelegate(VkDevice device, VkSemaphoreGetSciSyncInfoNV* pGetSciSyncInfo, void* pHandle);
+		private static vkGetSemaphoreSciSyncObjNVDelegate vkGetSemaphoreSciSyncObjNV_ptr;
+		public static VkResult vkGetSemaphoreSciSyncObjNV(VkDevice device, VkSemaphoreGetSciSyncInfoNV* pGetSciSyncInfo, void* pHandle)
+			=> vkGetSemaphoreSciSyncObjNV_ptr(device, pGetSciSyncInfo, pHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkImportSemaphoreSciSyncObjNVDelegate(VkDevice device, VkImportSemaphoreSciSyncInfoNV* pImportSemaphoreSciSyncInfo);
+		private static vkImportSemaphoreSciSyncObjNVDelegate vkImportSemaphoreSciSyncObjNV_ptr;
+		public static VkResult vkImportSemaphoreSciSyncObjNV(VkDevice device, VkImportSemaphoreSciSyncInfoNV* pImportSemaphoreSciSyncInfo)
+			=> vkImportSemaphoreSciSyncObjNV_ptr(device, pImportSemaphoreSciSyncInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemorySciBufNVDelegate(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, NvSciBufObj* pHandle);
+		private static vkGetMemorySciBufNVDelegate vkGetMemorySciBufNV_ptr;
+		public static VkResult vkGetMemorySciBufNV(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, NvSciBufObj* pHandle)
+			=> vkGetMemorySciBufNV_ptr(device, pGetSciBufInfo, pHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNVDelegate(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, NvSciBufObj handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties);
+		private static vkGetPhysicalDeviceExternalMemorySciBufPropertiesNVDelegate vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV_ptr;
+		public static VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, NvSciBufObj handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties)
+			=> vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV_ptr(physicalDevice, handleType, handle, pMemorySciBufProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceSciBufAttributesNVDelegate(VkPhysicalDevice physicalDevice, NvSciBufAttrList pAttributes);
+		private static vkGetPhysicalDeviceSciBufAttributesNVDelegate vkGetPhysicalDeviceSciBufAttributesNV_ptr;
+		public static VkResult vkGetPhysicalDeviceSciBufAttributesNV(VkPhysicalDevice physicalDevice, NvSciBufAttrList pAttributes)
+			=> vkGetPhysicalDeviceSciBufAttributesNV_ptr(physicalDevice, pAttributes);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetPatchControlPointsEXTDelegate(VkCommandBuffer commandBuffer, uint patchControlPoints);
@@ -3215,6 +3317,18 @@ namespace Evergine.Bindings.Vulkan
 		public static VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties)
 			=> vkGetDynamicRenderingTilePropertiesQCOM_ptr(device, pRenderingInfo, pProperties);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateSemaphoreSciSyncPoolNVDelegate(VkDevice device, VkSemaphoreSciSyncPoolCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSemaphoreSciSyncPoolNV* pSemaphorePool);
+		private static vkCreateSemaphoreSciSyncPoolNVDelegate vkCreateSemaphoreSciSyncPoolNV_ptr;
+		public static VkResult vkCreateSemaphoreSciSyncPoolNV(VkDevice device, VkSemaphoreSciSyncPoolCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSemaphoreSciSyncPoolNV* pSemaphorePool)
+			=> vkCreateSemaphoreSciSyncPoolNV_ptr(device, pCreateInfo, pAllocator, pSemaphorePool);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroySemaphoreSciSyncPoolNVDelegate(VkDevice device, VkSemaphoreSciSyncPoolNV semaphorePool, VkAllocationCallbacks* pAllocator);
+		private static vkDestroySemaphoreSciSyncPoolNVDelegate vkDestroySemaphoreSciSyncPoolNV_ptr;
+		public static void vkDestroySemaphoreSciSyncPoolNV(VkDevice device, VkSemaphoreSciSyncPoolNV semaphorePool, VkAllocationCallbacks* pAllocator)
+			=> vkDestroySemaphoreSciSyncPoolNV_ptr(device, semaphorePool, pAllocator);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3437,6 +3551,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDeviceBufferMemoryRequirements",  out vkGetDeviceBufferMemoryRequirements_ptr);
 			NativeLib.LoadFunction("vkGetDeviceImageMemoryRequirements",  out vkGetDeviceImageMemoryRequirements_ptr);
 			NativeLib.LoadFunction("vkGetDeviceImageSparseMemoryRequirements",  out vkGetDeviceImageSparseMemoryRequirements_ptr);
+			NativeLib.LoadFunction("vkGetCommandPoolMemoryConsumption",  out vkGetCommandPoolMemoryConsumption_ptr);
+			NativeLib.LoadFunction("vkGetFaultData",  out vkGetFaultData_ptr);
 			NativeLib.LoadFunction("vkDestroySurfaceKHR",  out vkDestroySurfaceKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceSurfaceSupportKHR",  out vkGetPhysicalDeviceSurfaceSupportKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceSurfaceCapabilitiesKHR",  out vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr);
@@ -3526,6 +3642,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetRefreshCycleDurationGOOGLE",  out vkGetRefreshCycleDurationGOOGLE_ptr);
 			NativeLib.LoadFunction("vkGetPastPresentationTimingGOOGLE",  out vkGetPastPresentationTimingGOOGLE_ptr);
 			NativeLib.LoadFunction("vkCmdSetDiscardRectangleEXT",  out vkCmdSetDiscardRectangleEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetDiscardRectangleEnableEXT",  out vkCmdSetDiscardRectangleEnableEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetDiscardRectangleModeEXT",  out vkCmdSetDiscardRectangleModeEXT_ptr);
 			NativeLib.LoadFunction("vkSetHdrMetadataEXT",  out vkSetHdrMetadataEXT_ptr);
 			NativeLib.LoadFunction("vkGetSwapchainStatusKHR",  out vkGetSwapchainStatusKHR_ptr);
 			NativeLib.LoadFunction("vkImportFenceWin32HandleKHR",  out vkImportFenceWin32HandleKHR_ptr);
@@ -3608,6 +3726,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksNV",  out vkCmdDrawMeshTasksNV_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectNV",  out vkCmdDrawMeshTasksIndirectNV_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectCountNV",  out vkCmdDrawMeshTasksIndirectCountNV_ptr);
+			NativeLib.LoadFunction("vkCmdSetExclusiveScissorEnableNV",  out vkCmdSetExclusiveScissorEnableNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetExclusiveScissorNV",  out vkCmdSetExclusiveScissorNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetCheckpointNV",  out vkCmdSetCheckpointNV_ptr);
 			NativeLib.LoadFunction("vkGetQueueCheckpointDataNV",  out vkGetQueueCheckpointDataNV_ptr);
@@ -3651,6 +3770,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkAcquireDrmDisplayEXT",  out vkAcquireDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkGetDrmDisplayEXT",  out vkGetDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
+			NativeLib.LoadFunction("vkCmdRefreshObjectsKHR",  out vkCmdRefreshObjectsKHR_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceRefreshableObjectTypesKHR",  out vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr);
 			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutSizeEXT",  out vkGetDescriptorSetLayoutSizeEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutBindingOffsetEXT",  out vkGetDescriptorSetLayoutBindingOffsetEXT_ptr);
@@ -3687,6 +3808,16 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdBindInvocationMaskHUAWEI",  out vkCmdBindInvocationMaskHUAWEI_ptr);
 			NativeLib.LoadFunction("vkGetMemoryRemoteAddressNV",  out vkGetMemoryRemoteAddressNV_ptr);
 			NativeLib.LoadFunction("vkGetPipelinePropertiesEXT",  out vkGetPipelinePropertiesEXT_ptr);
+			NativeLib.LoadFunction("vkGetFenceSciSyncFenceNV",  out vkGetFenceSciSyncFenceNV_ptr);
+			NativeLib.LoadFunction("vkGetFenceSciSyncObjNV",  out vkGetFenceSciSyncObjNV_ptr);
+			NativeLib.LoadFunction("vkImportFenceSciSyncFenceNV",  out vkImportFenceSciSyncFenceNV_ptr);
+			NativeLib.LoadFunction("vkImportFenceSciSyncObjNV",  out vkImportFenceSciSyncObjNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceSciSyncAttributesNV",  out vkGetPhysicalDeviceSciSyncAttributesNV_ptr);
+			NativeLib.LoadFunction("vkGetSemaphoreSciSyncObjNV",  out vkGetSemaphoreSciSyncObjNV_ptr);
+			NativeLib.LoadFunction("vkImportSemaphoreSciSyncObjNV",  out vkImportSemaphoreSciSyncObjNV_ptr);
+			NativeLib.LoadFunction("vkGetMemorySciBufNV",  out vkGetMemorySciBufNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV",  out vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceSciBufAttributesNV",  out vkGetPhysicalDeviceSciBufAttributesNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetPatchControlPointsEXT",  out vkCmdSetPatchControlPointsEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetLogicOpEXT",  out vkCmdSetLogicOpEXT_ptr);
 			NativeLib.LoadFunction("vkCreateScreenSurfaceQNX",  out vkCreateScreenSurfaceQNX_ptr);
@@ -3757,6 +3888,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdOpticalFlowExecuteNV",  out vkCmdOpticalFlowExecuteNV_ptr);
 			NativeLib.LoadFunction("vkGetFramebufferTilePropertiesQCOM",  out vkGetFramebufferTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
+			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
+			NativeLib.LoadFunction("vkDestroySemaphoreSciSyncPoolNV",  out vkDestroySemaphoreSciSyncPoolNV_ptr);
 		}
 	}
 }
