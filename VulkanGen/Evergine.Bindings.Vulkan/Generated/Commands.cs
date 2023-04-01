@@ -2550,6 +2550,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkMapMemory2KHRDelegate(VkDevice device, VkMemoryMapInfoKHR* pMemoryMapInfo, void** ppData);
+		private static vkMapMemory2KHRDelegate vkMapMemory2KHR_ptr;
+		public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* pMemoryMapInfo, void** ppData)
+			=> vkMapMemory2KHR_ptr(device, pMemoryMapInfo, ppData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkUnmapMemory2KHRDelegate(VkDevice device, VkMemoryUnmapInfoKHR* pMemoryUnmapInfo);
+		private static vkUnmapMemory2KHRDelegate vkUnmapMemory2KHR_ptr;
+		public static VkResult vkUnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfoKHR* pMemoryUnmapInfo)
+			=> vkUnmapMemory2KHR_ptr(device, pMemoryUnmapInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkReleaseSwapchainImagesEXTDelegate(VkDevice device, VkReleaseSwapchainImagesInfoEXT* pReleaseInfo);
 		private static vkReleaseSwapchainImagesEXTDelegate vkReleaseSwapchainImagesEXT_ptr;
 		public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* pReleaseInfo)
@@ -3306,6 +3318,30 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, pExecuteInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateShadersEXTDelegate(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders);
+		private static vkCreateShadersEXTDelegate vkCreateShadersEXT_ptr;
+		public static VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders)
+			=> vkCreateShadersEXT_ptr(device, createInfoCount, pCreateInfos, pAllocator, pShaders);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyShaderEXTDelegate(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyShaderEXTDelegate vkDestroyShaderEXT_ptr;
+		public static void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyShaderEXT_ptr(device, shader, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetShaderBinaryDataEXTDelegate(VkDevice device, VkShaderEXT shader, UIntPtr* pDataSize, void* pData);
+		private static vkGetShaderBinaryDataEXTDelegate vkGetShaderBinaryDataEXT_ptr;
+		public static VkResult vkGetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, UIntPtr* pDataSize, void* pData)
+			=> vkGetShaderBinaryDataEXT_ptr(device, shader, pDataSize, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindShadersEXTDelegate(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* pStages, VkShaderEXT* pShaders);
+		private static vkCmdBindShadersEXTDelegate vkCmdBindShadersEXT_ptr;
+		public static void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* pStages, VkShaderEXT* pShaders)
+			=> vkCmdBindShadersEXT_ptr(commandBuffer, stageCount, pStages, pShaders);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetFramebufferTilePropertiesQCOMDelegate(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
 		private static vkGetFramebufferTilePropertiesQCOMDelegate vkGetFramebufferTilePropertiesQCOM_ptr;
 		public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties)
@@ -3760,6 +3796,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPipelineExecutablePropertiesKHR",  out vkGetPipelineExecutablePropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableStatisticsKHR",  out vkGetPipelineExecutableStatisticsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableInternalRepresentationsKHR",  out vkGetPipelineExecutableInternalRepresentationsKHR_ptr);
+			NativeLib.LoadFunction("vkMapMemory2KHR",  out vkMapMemory2KHR_ptr);
+			NativeLib.LoadFunction("vkUnmapMemory2KHR",  out vkUnmapMemory2KHR_ptr);
 			NativeLib.LoadFunction("vkReleaseSwapchainImagesEXT",  out vkReleaseSwapchainImagesEXT_ptr);
 			NativeLib.LoadFunction("vkGetGeneratedCommandsMemoryRequirementsNV",  out vkGetGeneratedCommandsMemoryRequirementsNV_ptr);
 			NativeLib.LoadFunction("vkCmdPreprocessGeneratedCommandsNV",  out vkCmdPreprocessGeneratedCommandsNV_ptr);
@@ -3886,6 +3924,10 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkDestroyOpticalFlowSessionNV",  out vkDestroyOpticalFlowSessionNV_ptr);
 			NativeLib.LoadFunction("vkBindOpticalFlowSessionImageNV",  out vkBindOpticalFlowSessionImageNV_ptr);
 			NativeLib.LoadFunction("vkCmdOpticalFlowExecuteNV",  out vkCmdOpticalFlowExecuteNV_ptr);
+			NativeLib.LoadFunction("vkCreateShadersEXT",  out vkCreateShadersEXT_ptr);
+			NativeLib.LoadFunction("vkDestroyShaderEXT",  out vkDestroyShaderEXT_ptr);
+			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
+			NativeLib.LoadFunction("vkCmdBindShadersEXT",  out vkCmdBindShadersEXT_ptr);
 			NativeLib.LoadFunction("vkGetFramebufferTilePropertiesQCOM",  out vkGetFramebufferTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
