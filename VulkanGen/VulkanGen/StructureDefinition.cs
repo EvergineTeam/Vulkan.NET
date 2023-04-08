@@ -51,6 +51,7 @@ namespace VulkanGen
     {
         public string Name;
         public string Type;
+        public string Api;
         public int PointerLevel;
         public bool IsOptional;
         public bool IsNoautovalidity;
@@ -65,6 +66,7 @@ namespace VulkanGen
             Member m = new Member();
             m.Name = elem.Element("name").Value;
             m.Type = elem.Element("type").Value;
+            m.Api = elem.Attribute("api")?.Value;
             m.Comment = elem.Element("comment")?.Value;
             m.IsOptional = elem.Attribute("optional")?.Value == "true";
             m.IsNoautovalidity = elem.Attribute("noautovalidity")?.Value == "true";

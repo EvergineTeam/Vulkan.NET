@@ -9,6 +9,8 @@ namespace VulkanGen
 {
     public static class Helpers
     {
+        public const string VK_SC = "vulkansc";
+
         public static string ToCSharp(this ConstantType type)
         {
             switch (type)
@@ -265,6 +267,13 @@ namespace VulkanGen
                 case "StdVideoEncodeH264ReferenceInfo":
                 case "StdVideoH264LevelIdc":
                 case "StdVideoH265LevelIdc":
+                case "NvSciSyncFence":
+                case "NvSciSyncObj":
+                case "StdVideoEncodeH264ReferenceListsInfo":
+                case "StdVideoEncodeH265ReferenceListsInfo":
+                case "NvSciSyncAttrList":
+                case "NvSciBufAttrList":
+                case "NvSciBufObj":
                 //Metal Layer
                 case "MTLDevice_id":
                 case "MTLCommandQueue_id":
@@ -276,6 +285,12 @@ namespace VulkanGen
                 default:
                     return false;
             }
+        }
+
+        public static bool IsVKSC(string api)
+        {
+            // Check Vulkan Safety Critical
+            return !string.IsNullOrEmpty(api) && api.Equals(VK_SC);
         }
     }
 }

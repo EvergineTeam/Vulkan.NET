@@ -174,6 +174,12 @@ namespace VulkanGen
 
                     foreach (var member in structure.Members)
                     {
+                        // Avoid duplicate members from Vulkan Safety Critical
+                        if (Helpers.IsVKSC(member.Api))
+                        { 
+                            continue;
+                        }
+
                         if (useExplicitLayout)
                         {
                             file.WriteLine($"\t\t[FieldOffset({layoutValue})]");

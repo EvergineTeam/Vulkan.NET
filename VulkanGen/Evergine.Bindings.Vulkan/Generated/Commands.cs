@@ -1338,10 +1338,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr(physicalDevice, surface, pPresentModeCount, pPresentModes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSwapchainKHRDelegate(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
+		private delegate VkResult vkCreateSwapchainKHRDelegate(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
 		private static vkCreateSwapchainKHRDelegate vkCreateSwapchainKHR_ptr;
-		public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain)
-			=> vkCreateSwapchainKHR_ptr(device, pCreateInfo, pCreateInfo, pAllocator, pSwapchain);
+		public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain)
+			=> vkCreateSwapchainKHR_ptr(device, pCreateInfo, pAllocator, pSwapchain);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkDestroySwapchainKHRDelegate(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* pAllocator);
@@ -1410,10 +1410,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCreateDisplayPlaneSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSharedSwapchainsKHRDelegate(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
+		private delegate VkResult vkCreateSharedSwapchainsKHRDelegate(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
 		private static vkCreateSharedSwapchainsKHRDelegate vkCreateSharedSwapchainsKHR_ptr;
-		public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains)
-			=> vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, pCreateInfos, pCreateInfos, pAllocator, pSwapchains);
+		public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains)
+			=> vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateXlibSurfaceKHRDelegate(VkInstance instance, VkXlibSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
@@ -2874,9 +2874,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkImportFenceSciSyncObjNV_ptr(device, pImportFenceSciSyncInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetPhysicalDeviceSciSyncAttributesNVDelegate(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, NvSciSyncAttrList pAttributes);
+		private delegate VkResult vkGetPhysicalDeviceSciSyncAttributesNVDelegate(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, IntPtr pAttributes);
 		private static vkGetPhysicalDeviceSciSyncAttributesNVDelegate vkGetPhysicalDeviceSciSyncAttributesNV_ptr;
-		public static VkResult vkGetPhysicalDeviceSciSyncAttributesNV(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, NvSciSyncAttrList pAttributes)
+		public static VkResult vkGetPhysicalDeviceSciSyncAttributesNV(VkPhysicalDevice physicalDevice, VkSciSyncAttributesInfoNV* pSciSyncAttributesInfo, IntPtr pAttributes)
 			=> vkGetPhysicalDeviceSciSyncAttributesNV_ptr(physicalDevice, pSciSyncAttributesInfo, pAttributes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2892,21 +2892,21 @@ namespace Evergine.Bindings.Vulkan
 			=> vkImportSemaphoreSciSyncObjNV_ptr(device, pImportSemaphoreSciSyncInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetMemorySciBufNVDelegate(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, NvSciBufObj* pHandle);
+		private delegate VkResult vkGetMemorySciBufNVDelegate(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, IntPtr pHandle);
 		private static vkGetMemorySciBufNVDelegate vkGetMemorySciBufNV_ptr;
-		public static VkResult vkGetMemorySciBufNV(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, NvSciBufObj* pHandle)
+		public static VkResult vkGetMemorySciBufNV(VkDevice device, VkMemoryGetSciBufInfoNV* pGetSciBufInfo, IntPtr pHandle)
 			=> vkGetMemorySciBufNV_ptr(device, pGetSciBufInfo, pHandle);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNVDelegate(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, NvSciBufObj handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties);
+		private delegate VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNVDelegate(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, IntPtr handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties);
 		private static vkGetPhysicalDeviceExternalMemorySciBufPropertiesNVDelegate vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV_ptr;
-		public static VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, NvSciBufObj handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties)
+		public static VkResult vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV(VkPhysicalDevice physicalDevice, VkExternalMemoryHandleTypeFlags handleType, IntPtr handle, VkMemorySciBufPropertiesNV* pMemorySciBufProperties)
 			=> vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV_ptr(physicalDevice, handleType, handle, pMemorySciBufProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetPhysicalDeviceSciBufAttributesNVDelegate(VkPhysicalDevice physicalDevice, NvSciBufAttrList pAttributes);
+		private delegate VkResult vkGetPhysicalDeviceSciBufAttributesNVDelegate(VkPhysicalDevice physicalDevice, IntPtr pAttributes);
 		private static vkGetPhysicalDeviceSciBufAttributesNVDelegate vkGetPhysicalDeviceSciBufAttributesNV_ptr;
-		public static VkResult vkGetPhysicalDeviceSciBufAttributesNV(VkPhysicalDevice physicalDevice, NvSciBufAttrList pAttributes)
+		public static VkResult vkGetPhysicalDeviceSciBufAttributesNV(VkPhysicalDevice physicalDevice, IntPtr pAttributes)
 			=> vkGetPhysicalDeviceSciBufAttributesNV_ptr(physicalDevice, pAttributes);
 
 		[UnmanagedFunctionPointer(CallConv)]

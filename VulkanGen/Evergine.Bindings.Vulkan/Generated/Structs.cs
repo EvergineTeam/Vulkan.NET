@@ -708,7 +708,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkShaderStageFlags stage;
 		public VkShaderModule module;
 		public byte* pName;
-		public byte* pName;
 		public VkSpecializationInfo* pSpecializationInfo;
 	}
 
@@ -892,7 +891,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkPipelineCreateFlags flags;
 		public uint stageCount;
 		public VkPipelineShaderStageCreateInfo* pStages;
-		public VkPipelineShaderStageCreateInfo* pStages;
 		public VkPipelineVertexInputStateCreateInfo* pVertexInputState;
 		public VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState;
 		public VkPipelineTessellationStateCreateInfo* pTessellationState;
@@ -915,7 +913,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkPipelineCacheCreateFlags flags;
-		public UIntPtr initialDataSize;
 		public UIntPtr initialDataSize;
 		public void* pInitialData;
 	}
@@ -1647,7 +1644,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkPresentModeKHR presentMode;
 		public VkBool32 clipped;
 		public VkSwapchainKHR oldSwapchain;
-		public VkSwapchainKHR oldSwapchain;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1819,7 +1815,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public NvSciBufAttrList pAttributes;
+		public IntPtr pAttributes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1828,7 +1824,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleType;
-		public NvSciBufObj handle;
+		public IntPtr handle;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2560,7 +2556,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public NvSciSyncAttrList pAttributes;
+		public IntPtr pAttributes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2587,7 +2583,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public NvSciSyncAttrList pAttributes;
+		public IntPtr pAttributes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2645,7 +2641,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public NvSciSyncObj handle;
+		public IntPtr handle;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2654,7 +2650,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkSemaphoreSciSyncPoolNV semaphorePool;
-		public NvSciSyncFence* pFence;
+		public IntPtr pFence;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7900,7 +7896,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoEncodeH264ReferenceListsInfo* pStdReferenceFinalLists;
+		public IntPtr pStdReferenceFinalLists;
 		public uint naluSliceEntryCount;
 		public VkVideoEncodeH264NaluSliceInfoEXT* pNaluSliceEntries;
 		public IntPtr pStdPictureInfo;
@@ -7920,7 +7916,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint mbCount;
-		public StdVideoEncodeH264ReferenceListsInfo* pStdReferenceFinalLists;
+		public IntPtr pStdReferenceFinalLists;
 		public IntPtr pStdSliceHeader;
 	}
 
@@ -8022,7 +8018,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoEncodeH265ReferenceListsInfo* pStdReferenceFinalLists;
+		public IntPtr pStdReferenceFinalLists;
 		public uint naluSliceSegmentEntryCount;
 		public VkVideoEncodeH265NaluSliceSegmentInfoEXT* pNaluSliceSegmentEntries;
 		public IntPtr pStdPictureInfo;
@@ -8034,7 +8030,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint ctbCount;
-		public StdVideoEncodeH265ReferenceListsInfo* pStdReferenceFinalLists;
+		public IntPtr pStdReferenceFinalLists;
 		public IntPtr pStdSliceSegmentHeader;
 	}
 
@@ -8740,7 +8736,6 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public VkRenderingFlags flags;
 		public uint viewMask;
-		public uint colorAttachmentCount;
 		public uint colorAttachmentCount;
 		public VkFormat* pColorAttachmentFormats;
 		public VkFormat depthAttachmentFormat;
