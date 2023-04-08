@@ -42,7 +42,7 @@ else
 
 # Run generator
 LogDebug "START binding generator process"
-pushd .\VulkanGen\VulkanGen\bin\Release\netcoreapp3.1\
+pushd .\VulkanGen\VulkanGen\bin\Release\net6.0\
 .\publish\VulkanGen.exe
 if($?)
 {
