@@ -9550,6 +9550,8 @@ namespace Evergine.Bindings.Vulkan
 		public uint applicationNameOffset;
 		public uint applicationVersion;
 		public uint engineNameOffset;
+		public uint engineVersion;
+		public uint apiVersion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9713,6 +9715,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 multiviewPerViewViewports;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 rayTracingPositionFetch;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

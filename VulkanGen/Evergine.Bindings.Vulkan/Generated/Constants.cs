@@ -562,7 +562,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_layout";
 		public const uint VK_EXT_4444_FORMATS_SPEC_VERSION = 1;
 		public const string VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";
-		public const uint VK_EXT_DEVICE_FAULT_SPEC_VERSION = 1;
+		public const uint VK_EXT_DEVICE_FAULT_SPEC_VERSION = 2;
 		public const string VK_EXT_DEVICE_FAULT_EXTENSION_NAME = "VK_EXT_device_fault";
 		public const uint VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1;
 		public const string VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access";
@@ -634,7 +634,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME = "VK_NV_displacement_micromap";
 		public const uint VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
 		public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
-		public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1;
+		public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 2;
 		public const string VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader";
 		public const uint VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1;
 		public const string VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle";
@@ -684,6 +684,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
 		public const uint VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
 		public const string VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";
+		public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
+		public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
 		public const uint VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_OBJECT_EXTENSION_NAME = "VK_EXT_shader_object";
 		public const uint VK_QCOM_TILE_PROPERTIES_SPEC_VERSION = 1;
