@@ -3365,6 +3365,12 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkDestroySemaphoreSciSyncPoolNV(VkDevice device, VkSemaphoreSciSyncPoolNV semaphorePool, VkAllocationCallbacks* pAllocator)
 			=> vkDestroySemaphoreSciSyncPoolNV_ptr(device, semaphorePool, pAllocator);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
+		private static vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
+		public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
+			=> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr(commandBuffer, aspectMask);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3932,6 +3938,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
 			NativeLib.LoadFunction("vkDestroySemaphoreSciSyncPoolNV",  out vkDestroySemaphoreSciSyncPoolNV_ptr);
+			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 		}
 	}
 }
