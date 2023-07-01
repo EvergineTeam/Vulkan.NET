@@ -2604,6 +2604,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDepthBias2EXTDelegate(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* pDepthBiasInfo);
+		private static vkCmdSetDepthBias2EXTDelegate vkCmdSetDepthBias2EXT_ptr;
+		public static void vkCmdSetDepthBias2EXT(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* pDepthBiasInfo)
+			=> vkCmdSetDepthBias2EXT_ptr(commandBuffer, pDepthBiasInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkAcquireDrmDisplayEXTDelegate(VkPhysicalDevice physicalDevice, int drmFd, VkDisplayKHR display);
 		private static vkAcquireDrmDisplayEXTDelegate vkAcquireDrmDisplayEXT_ptr;
 		public static VkResult vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, VkDisplayKHR display)
@@ -2614,6 +2620,18 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetDrmDisplayEXTDelegate vkGetDrmDisplayEXT_ptr;
 		public static VkResult vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, uint connectorId, VkDisplayKHR* display)
 			=> vkGetDrmDisplayEXT_ptr(physicalDevice, drmFd, connectorId, display);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHRDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties);
+		private static vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHRDelegate vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties)
+			=> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr(physicalDevice, pQualityLevelInfo, pQualityLevelProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetEncodedVideoSessionParametersKHRDelegate(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, UIntPtr* pDataSize, void* pData);
+		private static vkGetEncodedVideoSessionParametersKHRDelegate vkGetEncodedVideoSessionParametersKHR_ptr;
+		public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, UIntPtr* pDataSize, void* pData)
+			=> vkGetEncodedVideoSessionParametersKHR_ptr(device, pVideoSessionParametersInfo, pFeedbackInfo, pDataSize, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdEncodeVideoKHRDelegate(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* pEncodeInfo);
@@ -3366,10 +3384,22 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroySemaphoreSciSyncPoolNV_ptr(device, semaphorePool, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties);
+		private static vkGetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties)
+			=> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, pPropertyCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
 		private static vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 		public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
 			=> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr(commandBuffer, aspectMask);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetScreenBufferPropertiesQNXDelegate(VkDevice device, _screen_buffer* buffer, VkScreenBufferPropertiesQNX* pProperties);
+		private static vkGetScreenBufferPropertiesQNXDelegate vkGetScreenBufferPropertiesQNX_ptr;
+		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, _screen_buffer* buffer, VkScreenBufferPropertiesQNX* pProperties)
+			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
 
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
@@ -3811,8 +3841,11 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdBindPipelineShaderGroupNV",  out vkCmdBindPipelineShaderGroupNV_ptr);
 			NativeLib.LoadFunction("vkCreateIndirectCommandsLayoutNV",  out vkCreateIndirectCommandsLayoutNV_ptr);
 			NativeLib.LoadFunction("vkDestroyIndirectCommandsLayoutNV",  out vkDestroyIndirectCommandsLayoutNV_ptr);
+			NativeLib.LoadFunction("vkCmdSetDepthBias2EXT",  out vkCmdSetDepthBias2EXT_ptr);
 			NativeLib.LoadFunction("vkAcquireDrmDisplayEXT",  out vkAcquireDrmDisplayEXT_ptr);
 			NativeLib.LoadFunction("vkGetDrmDisplayEXT",  out vkGetDrmDisplayEXT_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR",  out vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr);
+			NativeLib.LoadFunction("vkGetEncodedVideoSessionParametersKHR",  out vkGetEncodedVideoSessionParametersKHR_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
 			NativeLib.LoadFunction("vkCmdRefreshObjectsKHR",  out vkCmdRefreshObjectsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceRefreshableObjectTypesKHR",  out vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr);
@@ -3938,7 +3971,9 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
 			NativeLib.LoadFunction("vkDestroySemaphoreSciSyncPoolNV",  out vkDestroySemaphoreSciSyncPoolNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
+			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
 		}
 	}
 }

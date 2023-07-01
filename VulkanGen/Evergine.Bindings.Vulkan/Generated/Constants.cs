@@ -92,9 +92,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
 		public const uint VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1;
 		public const string VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
-		public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 10;
+		public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 11;
 		public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
-		public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 10;
+		public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 11;
 		public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 		public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 8;
 		public const string VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_KHR_video_decode_h264";
@@ -490,6 +490,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
 		public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 3;
 		public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
+		public const uint VK_EXT_DEPTH_BIAS_CONTROL_SPEC_VERSION = 1;
+		public const string VK_EXT_DEPTH_BIAS_CONTROL_EXTENSION_NAME = "VK_EXT_depth_bias_control";
 		public const uint VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2;
 		public const string VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report";
 		public const uint VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
@@ -512,7 +514,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
 		public const uint VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
 		public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
-		public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 8;
+		public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 9;
 		public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 		public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 2;
 		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
@@ -592,7 +594,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_FUCHSIA_external_semaphore";
 		public const uint VK_FUCHSIA_BUFFER_COLLECTION_SPEC_VERSION = 2;
 		public const string VK_FUCHSIA_BUFFER_COLLECTION_EXTENSION_NAME = "VK_FUCHSIA_buffer_collection";
-		public const uint VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2;
+		public const uint VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 3;
 		public const string VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
 		public const uint VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1;
 		public const string VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
@@ -668,6 +670,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
 		public const uint VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
 		public const string VK_QCOM_IMAGE_PROCESSING_EXTENSION_NAME = "VK_QCOM_image_processing";
+		public const uint VK_EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_SPEC_VERSION = 1;
+		public const string VK_EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXTENSION_NAME = "VK_EXT_external_memory_acquire_unmodified";
 		public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_3_SPEC_VERSION = 2;
 		public const string VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME = "VK_EXT_extended_dynamic_state3";
 		public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
@@ -706,9 +710,13 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles";
 		public const uint VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_SPEC_VERSION = 1;
 		public const string VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_EXTENSION_NAME = "VK_EXT_dynamic_rendering_unused_attachments";
+		public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
+		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 		public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
 		public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
 		public const uint VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1;
 		public const string VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
+		public const uint VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
+		public const string VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_EXTENSION_NAME = "VK_QNX_external_memory_screen_buffer";
 	}
 }
