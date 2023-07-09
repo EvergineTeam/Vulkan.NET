@@ -5478,11 +5478,11 @@ namespace Evergine.Bindings.Vulkan
 		public uint MSize;
 		public uint NSize;
 		public uint KSize;
-		public VkComponentTypeNV AType;
-		public VkComponentTypeNV BType;
-		public VkComponentTypeNV CType;
-		public VkComponentTypeNV DType;
-		public VkScopeNV scope;
+		public VkComponentTypeKHR AType;
+		public VkComponentTypeKHR BType;
+		public VkComponentTypeKHR CType;
+		public VkComponentTypeKHR DType;
+		public VkScopeKHR scope;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
