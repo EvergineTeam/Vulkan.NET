@@ -10044,7 +10044,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public _screen_buffer* buffer;
+		public IntPtr buffer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

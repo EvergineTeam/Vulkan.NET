@@ -3396,9 +3396,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr(commandBuffer, aspectMask);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetScreenBufferPropertiesQNXDelegate(VkDevice device, _screen_buffer* buffer, VkScreenBufferPropertiesQNX* pProperties);
+		private delegate VkResult vkGetScreenBufferPropertiesQNXDelegate(VkDevice device, IntPtr buffer, VkScreenBufferPropertiesQNX* pProperties);
 		private static vkGetScreenBufferPropertiesQNXDelegate vkGetScreenBufferPropertiesQNX_ptr;
-		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, _screen_buffer* buffer, VkScreenBufferPropertiesQNX* pProperties)
+		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, IntPtr buffer, VkScreenBufferPropertiesQNX* pProperties)
 			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
 
 		public static void LoadFuncionPointers(VkInstance instance = default)

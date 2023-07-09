@@ -274,6 +274,7 @@ namespace VulkanGen
                 case "NvSciSyncAttrList":
                 case "NvSciBufAttrList":
                 case "NvSciBufObj":
+                case "_screen_buffer":
                 //Metal Layer
                 case "MTLDevice_id":
                 case "MTLCommandQueue_id":
