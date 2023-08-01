@@ -34,6 +34,7 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16;
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
 		public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
+		public const uint VK_SHADER_INDEX_UNUSED_AMDX = (~0U);
 		public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
 		public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
 		public const uint VK_KHR_SWAPCHAIN_SPEC_VERSION = 70;
@@ -260,6 +261,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class";
 		public const uint VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2;
 		public const string VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
+		public const uint VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 1;
+		public const string VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME = "VK_AMDX_shader_enqueue";
 		public const uint VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION = 1;
 		public const string VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples";
 		public const uint VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION = 1;
@@ -470,6 +473,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
 		public const uint VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties";
+		public const uint VK_EXT_HOST_IMAGE_COPY_SPEC_VERSION = 1;
+		public const string VK_EXT_HOST_IMAGE_COPY_EXTENSION_NAME = "VK_EXT_host_image_copy";
 		public const uint VK_KHR_MAP_MEMORY_2_SPEC_VERSION = 1;
 		public const string VK_KHR_MAP_MEMORY_2_EXTENSION_NAME = "VK_KHR_map_memory2";
 		public const uint VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1;
@@ -632,7 +637,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_SHADER_TILE_IMAGE_EXTENSION_NAME = "VK_EXT_shader_tile_image";
 		public const uint VK_EXT_OPACITY_MICROMAP_SPEC_VERSION = 2;
 		public const string VK_EXT_OPACITY_MICROMAP_EXTENSION_NAME = "VK_EXT_opacity_micromap";
-		public const uint VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 1;
+		public const uint VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 2;
 		public const string VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME = "VK_NV_displacement_micromap";
 		public const uint VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
 		public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
@@ -660,6 +665,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
 		public const uint VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1;
 		public const string VK_NV_MEMORY_DECOMPRESSION_EXTENSION_NAME = "VK_NV_memory_decompression";
+		public const uint VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION = 2;
+		public const string VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_EXTENSION_NAME = "VK_NV_device_generated_commands_compute";
 		public const uint VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1;
 		public const string VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";
 		public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 2;
@@ -688,6 +695,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
 		public const uint VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
 		public const string VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";
+		public const uint VK_KHR_MAINTENANCE_5_SPEC_VERSION = 1;
+		public const string VK_KHR_MAINTENANCE_5_EXTENSION_NAME = "VK_KHR_maintenance5";
 		public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
 		public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
 		public const uint VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1;

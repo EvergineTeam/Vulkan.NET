@@ -2040,6 +2040,48 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, pInfo, pBuffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateExecutionGraphPipelinesAMDXDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+		private static vkCreateExecutionGraphPipelinesAMDXDelegate vkCreateExecutionGraphPipelinesAMDX_ptr;
+		public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines)
+			=> vkCreateExecutionGraphPipelinesAMDX_ptr(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetExecutionGraphPipelineScratchSizeAMDXDelegate(VkDevice device, VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo);
+		private static vkGetExecutionGraphPipelineScratchSizeAMDXDelegate vkGetExecutionGraphPipelineScratchSizeAMDX_ptr;
+		public static VkResult vkGetExecutionGraphPipelineScratchSizeAMDX(VkDevice device, VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo)
+			=> vkGetExecutionGraphPipelineScratchSizeAMDX_ptr(device, executionGraph, pSizeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetExecutionGraphPipelineNodeIndexAMDXDelegate(VkDevice device, VkPipeline executionGraph, VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint* pNodeIndex);
+		private static vkGetExecutionGraphPipelineNodeIndexAMDXDelegate vkGetExecutionGraphPipelineNodeIndexAMDX_ptr;
+		public static VkResult vkGetExecutionGraphPipelineNodeIndexAMDX(VkDevice device, VkPipeline executionGraph, VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint* pNodeIndex)
+			=> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr(device, executionGraph, pNodeInfo, pNodeIndex);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdInitializeGraphScratchMemoryAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch);
+		private static vkCmdInitializeGraphScratchMemoryAMDXDelegate vkCmdInitializeGraphScratchMemoryAMDX_ptr;
+		public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, ulong scratch)
+			=> vkCmdInitializeGraphScratchMemoryAMDX_ptr(commandBuffer, scratch);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchGraphAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo);
+		private static vkCmdDispatchGraphAMDXDelegate vkCmdDispatchGraphAMDX_ptr;
+		public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo)
+			=> vkCmdDispatchGraphAMDX_ptr(commandBuffer, scratch, pCountInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchGraphIndirectAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo);
+		private static vkCmdDispatchGraphIndirectAMDXDelegate vkCmdDispatchGraphIndirectAMDX_ptr;
+		public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo)
+			=> vkCmdDispatchGraphIndirectAMDX_ptr(commandBuffer, scratch, pCountInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchGraphIndirectCountAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo);
+		private static vkCmdDispatchGraphIndirectCountAMDXDelegate vkCmdDispatchGraphIndirectCountAMDX_ptr;
+		public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo)
+			=> vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, countInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetSampleLocationsEXTDelegate(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* pSampleLocationsInfo);
 		private static vkCmdSetSampleLocationsEXTDelegate vkCmdSetSampleLocationsEXT_ptr;
 		public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* pSampleLocationsInfo)
@@ -2550,6 +2592,36 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyMemoryToImageEXTDelegate(VkDevice device, VkCopyMemoryToImageInfoEXT* pCopyMemoryToImageInfo);
+		private static vkCopyMemoryToImageEXTDelegate vkCopyMemoryToImageEXT_ptr;
+		public static VkResult vkCopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfoEXT* pCopyMemoryToImageInfo)
+			=> vkCopyMemoryToImageEXT_ptr(device, pCopyMemoryToImageInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyImageToMemoryEXTDelegate(VkDevice device, VkCopyImageToMemoryInfoEXT* pCopyImageToMemoryInfo);
+		private static vkCopyImageToMemoryEXTDelegate vkCopyImageToMemoryEXT_ptr;
+		public static VkResult vkCopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfoEXT* pCopyImageToMemoryInfo)
+			=> vkCopyImageToMemoryEXT_ptr(device, pCopyImageToMemoryInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyImageToImageEXTDelegate(VkDevice device, VkCopyImageToImageInfoEXT* pCopyImageToImageInfo);
+		private static vkCopyImageToImageEXTDelegate vkCopyImageToImageEXT_ptr;
+		public static VkResult vkCopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfoEXT* pCopyImageToImageInfo)
+			=> vkCopyImageToImageEXT_ptr(device, pCopyImageToImageInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkTransitionImageLayoutEXTDelegate(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT* pTransitions);
+		private static vkTransitionImageLayoutEXTDelegate vkTransitionImageLayoutEXT_ptr;
+		public static VkResult vkTransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT* pTransitions)
+			=> vkTransitionImageLayoutEXT_ptr(device, transitionCount, pTransitions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetImageSubresourceLayout2KHRDelegate(VkDevice device, VkImage image, VkImageSubresource2KHR* pSubresource, VkSubresourceLayout2KHR* pLayout);
+		private static vkGetImageSubresourceLayout2KHRDelegate vkGetImageSubresourceLayout2KHR_ptr;
+		public static void vkGetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2KHR* pSubresource, VkSubresourceLayout2KHR* pLayout)
+			=> vkGetImageSubresourceLayout2KHR_ptr(device, image, pSubresource, pLayout);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkMapMemory2KHRDelegate(VkDevice device, VkMemoryMapInfoKHR* pMemoryMapInfo, void** ppData);
 		private static vkMapMemory2KHRDelegate vkMapMemory2KHR_ptr;
 		public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* pMemoryMapInfo, void** ppData)
@@ -2740,12 +2812,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdDrawMeshTasksIndirectCountEXTDelegate vkCmdDrawMeshTasksIndirectCountEXT_ptr;
 		public static void vkCmdDrawMeshTasksIndirectCountEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 			=> vkCmdDrawMeshTasksIndirectCountEXT_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetImageSubresourceLayout2EXTDelegate(VkDevice device, VkImage image, VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout);
-		private static vkGetImageSubresourceLayout2EXTDelegate vkGetImageSubresourceLayout2EXT_ptr;
-		public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout)
-			=> vkGetImageSubresourceLayout2EXT_ptr(device, image, pSubresource, pLayout);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetDeviceFaultInfoEXTDelegate(VkDevice device, VkDeviceFaultCountsEXT* pFaultCounts, VkDeviceFaultInfoEXT* pFaultInfo);
@@ -3108,6 +3174,24 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdDecompressMemoryIndirectCountNV_ptr(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPipelineIndirectMemoryRequirementsNVDelegate(VkDevice device, VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetPipelineIndirectMemoryRequirementsNVDelegate vkGetPipelineIndirectMemoryRequirementsNV_ptr;
+		public static void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetPipelineIndirectMemoryRequirementsNV_ptr(device, pCreateInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdUpdatePipelineIndirectBufferNVDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
+		private static vkCmdUpdatePipelineIndirectBufferNVDelegate vkCmdUpdatePipelineIndirectBufferNV_ptr;
+		public static void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
+			=> vkCmdUpdatePipelineIndirectBufferNV_ptr(commandBuffer, pipelineBindPoint, pipeline);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate ulong vkGetPipelineIndirectDeviceAddressNVDelegate(VkDevice device, VkPipelineIndirectDeviceAddressInfoNV* pInfo);
+		private static vkGetPipelineIndirectDeviceAddressNVDelegate vkGetPipelineIndirectDeviceAddressNV_ptr;
+		public static ulong vkGetPipelineIndirectDeviceAddressNV(VkDevice device, VkPipelineIndirectDeviceAddressInfoNV* pInfo)
+			=> vkGetPipelineIndirectDeviceAddressNV_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetTessellationDomainOriginEXTDelegate(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
 		private static vkCmdSetTessellationDomainOriginEXTDelegate vkCmdSetTessellationDomainOriginEXT_ptr;
 		public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
@@ -3234,66 +3318,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetDepthClipNegativeOneToOneEXT_ptr(commandBuffer, negativeOneToOne);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetViewportWScalingEnableNVDelegate(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable);
-		private static vkCmdSetViewportWScalingEnableNVDelegate vkCmdSetViewportWScalingEnableNV_ptr;
-		public static void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable)
-			=> vkCmdSetViewportWScalingEnableNV_ptr(commandBuffer, viewportWScalingEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetViewportSwizzleNVDelegate(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportSwizzleNV* pViewportSwizzles);
-		private static vkCmdSetViewportSwizzleNVDelegate vkCmdSetViewportSwizzleNV_ptr;
-		public static void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportSwizzleNV* pViewportSwizzles)
-			=> vkCmdSetViewportSwizzleNV_ptr(commandBuffer, firstViewport, viewportCount, pViewportSwizzles);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageToColorEnableNVDelegate(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable);
-		private static vkCmdSetCoverageToColorEnableNVDelegate vkCmdSetCoverageToColorEnableNV_ptr;
-		public static void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable)
-			=> vkCmdSetCoverageToColorEnableNV_ptr(commandBuffer, coverageToColorEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageToColorLocationNVDelegate(VkCommandBuffer commandBuffer, uint coverageToColorLocation);
-		private static vkCmdSetCoverageToColorLocationNVDelegate vkCmdSetCoverageToColorLocationNV_ptr;
-		public static void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, uint coverageToColorLocation)
-			=> vkCmdSetCoverageToColorLocationNV_ptr(commandBuffer, coverageToColorLocation);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageModulationModeNVDelegate(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode);
-		private static vkCmdSetCoverageModulationModeNVDelegate vkCmdSetCoverageModulationModeNV_ptr;
-		public static void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode)
-			=> vkCmdSetCoverageModulationModeNV_ptr(commandBuffer, coverageModulationMode);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageModulationTableEnableNVDelegate(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable);
-		private static vkCmdSetCoverageModulationTableEnableNVDelegate vkCmdSetCoverageModulationTableEnableNV_ptr;
-		public static void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable)
-			=> vkCmdSetCoverageModulationTableEnableNV_ptr(commandBuffer, coverageModulationTableEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageModulationTableNVDelegate(VkCommandBuffer commandBuffer, uint coverageModulationTableCount, float* pCoverageModulationTable);
-		private static vkCmdSetCoverageModulationTableNVDelegate vkCmdSetCoverageModulationTableNV_ptr;
-		public static void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, uint coverageModulationTableCount, float* pCoverageModulationTable)
-			=> vkCmdSetCoverageModulationTableNV_ptr(commandBuffer, coverageModulationTableCount, pCoverageModulationTable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetShadingRateImageEnableNVDelegate(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable);
-		private static vkCmdSetShadingRateImageEnableNVDelegate vkCmdSetShadingRateImageEnableNV_ptr;
-		public static void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable)
-			=> vkCmdSetShadingRateImageEnableNV_ptr(commandBuffer, shadingRateImageEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetRepresentativeFragmentTestEnableNVDelegate(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable);
-		private static vkCmdSetRepresentativeFragmentTestEnableNVDelegate vkCmdSetRepresentativeFragmentTestEnableNV_ptr;
-		public static void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable)
-			=> vkCmdSetRepresentativeFragmentTestEnableNV_ptr(commandBuffer, representativeFragmentTestEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetCoverageReductionModeNVDelegate(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode);
-		private static vkCmdSetCoverageReductionModeNVDelegate vkCmdSetCoverageReductionModeNV_ptr;
-		public static void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode)
-			=> vkCmdSetCoverageReductionModeNV_ptr(commandBuffer, coverageReductionMode);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetShaderModuleIdentifierEXTDelegate(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier);
 		private static vkGetShaderModuleIdentifierEXTDelegate vkGetShaderModuleIdentifierEXT_ptr;
 		public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier)
@@ -3334,6 +3358,24 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdOpticalFlowExecuteNVDelegate vkCmdOpticalFlowExecuteNV_ptr;
 		public static void vkCmdOpticalFlowExecuteNV(VkCommandBuffer commandBuffer, VkOpticalFlowSessionNV session, VkOpticalFlowExecuteInfoNV* pExecuteInfo)
 			=> vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, pExecuteInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindIndexBuffer2KHRDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType);
+		private static vkCmdBindIndexBuffer2KHRDelegate vkCmdBindIndexBuffer2KHR_ptr;
+		public static void vkCmdBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
+			=> vkCmdBindIndexBuffer2KHR_ptr(commandBuffer, buffer, offset, size, indexType);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetRenderingAreaGranularityKHRDelegate(VkDevice device, VkRenderingAreaInfoKHR* pRenderingAreaInfo, VkExtent2D* pGranularity);
+		private static vkGetRenderingAreaGranularityKHRDelegate vkGetRenderingAreaGranularityKHR_ptr;
+		public static void vkGetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfoKHR* pRenderingAreaInfo, VkExtent2D* pGranularity)
+			=> vkGetRenderingAreaGranularityKHR_ptr(device, pRenderingAreaInfo, pGranularity);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDeviceImageSubresourceLayoutKHRDelegate(VkDevice device, VkDeviceImageSubresourceInfoKHR* pInfo, VkSubresourceLayout2KHR* pLayout);
+		private static vkGetDeviceImageSubresourceLayoutKHRDelegate vkGetDeviceImageSubresourceLayoutKHR_ptr;
+		public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfoKHR* pInfo, VkSubresourceLayout2KHR* pLayout)
+			=> vkGetDeviceImageSubresourceLayoutKHR_ptr(device, pInfo, pLayout);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateShadersEXTDelegate(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders);
@@ -3747,6 +3789,13 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkSubmitDebugUtilsMessageEXT",  out vkSubmitDebugUtilsMessageEXT_ptr);
 			NativeLib.LoadFunction("vkGetAndroidHardwareBufferPropertiesANDROID",  out vkGetAndroidHardwareBufferPropertiesANDROID_ptr);
 			NativeLib.LoadFunction("vkGetMemoryAndroidHardwareBufferANDROID",  out vkGetMemoryAndroidHardwareBufferANDROID_ptr);
+			NativeLib.LoadFunction("vkCreateExecutionGraphPipelinesAMDX",  out vkCreateExecutionGraphPipelinesAMDX_ptr);
+			NativeLib.LoadFunction("vkGetExecutionGraphPipelineScratchSizeAMDX",  out vkGetExecutionGraphPipelineScratchSizeAMDX_ptr);
+			NativeLib.LoadFunction("vkGetExecutionGraphPipelineNodeIndexAMDX",  out vkGetExecutionGraphPipelineNodeIndexAMDX_ptr);
+			NativeLib.LoadFunction("vkCmdInitializeGraphScratchMemoryAMDX",  out vkCmdInitializeGraphScratchMemoryAMDX_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchGraphAMDX",  out vkCmdDispatchGraphAMDX_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchGraphIndirectAMDX",  out vkCmdDispatchGraphIndirectAMDX_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchGraphIndirectCountAMDX",  out vkCmdDispatchGraphIndirectCountAMDX_ptr);
 			NativeLib.LoadFunction("vkCmdSetSampleLocationsEXT",  out vkCmdSetSampleLocationsEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceMultisamplePropertiesEXT",  out vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr);
 			NativeLib.LoadFunction("vkCreateAccelerationStructureKHR",  out vkCreateAccelerationStructureKHR_ptr);
@@ -3832,6 +3881,11 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPipelineExecutablePropertiesKHR",  out vkGetPipelineExecutablePropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableStatisticsKHR",  out vkGetPipelineExecutableStatisticsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableInternalRepresentationsKHR",  out vkGetPipelineExecutableInternalRepresentationsKHR_ptr);
+			NativeLib.LoadFunction("vkCopyMemoryToImageEXT",  out vkCopyMemoryToImageEXT_ptr);
+			NativeLib.LoadFunction("vkCopyImageToMemoryEXT",  out vkCopyImageToMemoryEXT_ptr);
+			NativeLib.LoadFunction("vkCopyImageToImageEXT",  out vkCopyImageToImageEXT_ptr);
+			NativeLib.LoadFunction("vkTransitionImageLayoutEXT",  out vkTransitionImageLayoutEXT_ptr);
+			NativeLib.LoadFunction("vkGetImageSubresourceLayout2KHR",  out vkGetImageSubresourceLayout2KHR_ptr);
 			NativeLib.LoadFunction("vkMapMemory2KHR",  out vkMapMemory2KHR_ptr);
 			NativeLib.LoadFunction("vkUnmapMemory2KHR",  out vkUnmapMemory2KHR_ptr);
 			NativeLib.LoadFunction("vkReleaseSwapchainImagesEXT",  out vkReleaseSwapchainImagesEXT_ptr);
@@ -3864,7 +3918,6 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksEXT",  out vkCmdDrawMeshTasksEXT_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectEXT",  out vkCmdDrawMeshTasksIndirectEXT_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectCountEXT",  out vkCmdDrawMeshTasksIndirectCountEXT_ptr);
-			NativeLib.LoadFunction("vkGetImageSubresourceLayout2EXT",  out vkGetImageSubresourceLayout2EXT_ptr);
 			NativeLib.LoadFunction("vkGetDeviceFaultInfoEXT",  out vkGetDeviceFaultInfoEXT_ptr);
 			NativeLib.LoadFunction("vkAcquireWinrtDisplayNV",  out vkAcquireWinrtDisplayNV_ptr);
 			NativeLib.LoadFunction("vkGetWinrtDisplayNV",  out vkGetWinrtDisplayNV_ptr);
@@ -3925,6 +3978,9 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdCopyMemoryToImageIndirectNV",  out vkCmdCopyMemoryToImageIndirectNV_ptr);
 			NativeLib.LoadFunction("vkCmdDecompressMemoryNV",  out vkCmdDecompressMemoryNV_ptr);
 			NativeLib.LoadFunction("vkCmdDecompressMemoryIndirectCountNV",  out vkCmdDecompressMemoryIndirectCountNV_ptr);
+			NativeLib.LoadFunction("vkGetPipelineIndirectMemoryRequirementsNV",  out vkGetPipelineIndirectMemoryRequirementsNV_ptr);
+			NativeLib.LoadFunction("vkCmdUpdatePipelineIndirectBufferNV",  out vkCmdUpdatePipelineIndirectBufferNV_ptr);
+			NativeLib.LoadFunction("vkGetPipelineIndirectDeviceAddressNV",  out vkGetPipelineIndirectDeviceAddressNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetTessellationDomainOriginEXT",  out vkCmdSetTessellationDomainOriginEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampEnableEXT",  out vkCmdSetDepthClampEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetPolygonModeEXT",  out vkCmdSetPolygonModeEXT_ptr);
@@ -3946,16 +4002,6 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetLineRasterizationModeEXT",  out vkCmdSetLineRasterizationModeEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetLineStippleEnableEXT",  out vkCmdSetLineStippleEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClipNegativeOneToOneEXT",  out vkCmdSetDepthClipNegativeOneToOneEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetViewportWScalingEnableNV",  out vkCmdSetViewportWScalingEnableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetViewportSwizzleNV",  out vkCmdSetViewportSwizzleNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageToColorEnableNV",  out vkCmdSetCoverageToColorEnableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageToColorLocationNV",  out vkCmdSetCoverageToColorLocationNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageModulationModeNV",  out vkCmdSetCoverageModulationModeNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageModulationTableEnableNV",  out vkCmdSetCoverageModulationTableEnableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageModulationTableNV",  out vkCmdSetCoverageModulationTableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetShadingRateImageEnableNV",  out vkCmdSetShadingRateImageEnableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetRepresentativeFragmentTestEnableNV",  out vkCmdSetRepresentativeFragmentTestEnableNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetCoverageReductionModeNV",  out vkCmdSetCoverageReductionModeNV_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleIdentifierEXT",  out vkGetShaderModuleIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleCreateInfoIdentifierEXT",  out vkGetShaderModuleCreateInfoIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceOpticalFlowImageFormatsNV",  out vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr);
@@ -3963,6 +4009,9 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkDestroyOpticalFlowSessionNV",  out vkDestroyOpticalFlowSessionNV_ptr);
 			NativeLib.LoadFunction("vkBindOpticalFlowSessionImageNV",  out vkBindOpticalFlowSessionImageNV_ptr);
 			NativeLib.LoadFunction("vkCmdOpticalFlowExecuteNV",  out vkCmdOpticalFlowExecuteNV_ptr);
+			NativeLib.LoadFunction("vkCmdBindIndexBuffer2KHR",  out vkCmdBindIndexBuffer2KHR_ptr);
+			NativeLib.LoadFunction("vkGetRenderingAreaGranularityKHR",  out vkGetRenderingAreaGranularityKHR_ptr);
+			NativeLib.LoadFunction("vkGetDeviceImageSubresourceLayoutKHR",  out vkGetDeviceImageSubresourceLayoutKHR_ptr);
 			NativeLib.LoadFunction("vkCreateShadersEXT",  out vkCreateShadersEXT_ptr);
 			NativeLib.LoadFunction("vkDestroyShaderEXT",  out vkDestroyShaderEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
