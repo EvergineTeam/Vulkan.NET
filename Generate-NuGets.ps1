@@ -32,7 +32,7 @@ LogDebug "Output folder.......: $outputFolderBase"
 LogDebug "#######################################"
 
 # Create output folder
-$outputFolder = Join-Path $outputFolderBase $versionWithSuffix
+$outputFolder = Join-Path $outputFolderBase $version
 New-Item -ItemType Directory -Force -Path $outputFolder
 $absoluteOutputFolder = Resolve-Path $outputFolder
 
