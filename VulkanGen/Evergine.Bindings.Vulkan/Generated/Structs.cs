@@ -10395,5 +10395,79 @@ namespace Evergine.Bindings.Vulkan
 		public ulong stride;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cubicRangeClamp;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 ycbcrDegamma;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 enableYDegamma;
+		public VkBool32 enableCbCrDegamma;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCubicWeightsFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 selectableCubicWeights;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSamplerCubicWeightsCreateInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCubicFilterWeightsQCOM cubicWeights;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBlitImageCubicWeightsInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCubicFilterWeightsQCOM cubicWeights;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageProcessing2FeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 textureBlockMatch2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageProcessing2PropertiesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D maxBlockMatchWindow;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSamplerBlockMatchWindowCreateInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D windowExtent;
+		public VkBlockMatchWindowCompareModeQCOM windowCompareMode;
+	}
+
 }
 

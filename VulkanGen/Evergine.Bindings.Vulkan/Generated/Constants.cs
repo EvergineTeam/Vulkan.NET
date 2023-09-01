@@ -723,6 +723,14 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 		public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
 		public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
+		public const uint VK_QCOM_IMAGE_PROCESSING_2_SPEC_VERSION = 1;
+		public const string VK_QCOM_IMAGE_PROCESSING_2_EXTENSION_NAME = "VK_QCOM_image_processing2";
+		public const uint VK_QCOM_FILTER_CUBIC_WEIGHTS_SPEC_VERSION = 1;
+		public const string VK_QCOM_FILTER_CUBIC_WEIGHTS_EXTENSION_NAME = "VK_QCOM_filter_cubic_weights";
+		public const uint VK_QCOM_YCBCR_DEGAMMA_SPEC_VERSION = 1;
+		public const string VK_QCOM_YCBCR_DEGAMMA_EXTENSION_NAME = "VK_QCOM_ycbcr_degamma";
+		public const uint VK_QCOM_FILTER_CUBIC_CLAMP_SPEC_VERSION = 1;
+		public const string VK_QCOM_FILTER_CUBIC_CLAMP_EXTENSION_NAME = "VK_QCOM_filter_cubic_clamp";
 		public const uint VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1;
 		public const string VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
 		public const uint VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
