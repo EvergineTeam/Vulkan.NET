@@ -93,9 +93,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
 		public const uint VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1;
 		public const string VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
-		public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 11;
+		public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 12;
 		public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
-		public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 11;
+		public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 12;
 		public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 		public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 8;
 		public const string VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_KHR_video_decode_h264";
@@ -519,7 +519,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
 		public const uint VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
 		public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
-		public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 9;
+		public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 10;
 		public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 		public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 2;
 		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
@@ -611,6 +611,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_EXTERNAL_SCI_SYNC_EXTENSION_NAME = "VK_NV_external_sci_sync";
 		public const uint VK_NV_EXTERNAL_MEMORY_SCI_BUF_SPEC_VERSION = 2;
 		public const string VK_NV_EXTERNAL_MEMORY_SCI_BUF_EXTENSION_NAME = "VK_NV_external_memory_sci_buf";
+		public const uint VK_EXT_FRAME_BOUNDARY_SPEC_VERSION = 1;
+		public const string VK_EXT_FRAME_BOUNDARY_EXTENSION_NAME = "VK_EXT_frame_boundary";
 		public const uint VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION = 1;
 		public const string VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_EXTENSION_NAME = "VK_EXT_multisampled_render_to_single_sampled";
 		public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
@@ -695,6 +697,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
 		public const uint VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
 		public const string VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";
+		public const uint VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_SPEC_VERSION = 1;
+		public const string VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_EXTENSION_NAME = "VK_ANDROID_external_format_resolve";
 		public const uint VK_KHR_MAINTENANCE_5_SPEC_VERSION = 1;
 		public const string VK_KHR_MAINTENANCE_5_EXTENSION_NAME = "VK_KHR_maintenance5";
 		public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
@@ -719,6 +723,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles";
 		public const uint VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_SPEC_VERSION = 1;
 		public const string VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_EXTENSION_NAME = "VK_EXT_dynamic_rendering_unused_attachments";
+		public const uint VK_NV_LOW_LATENCY_2_SPEC_VERSION = 1;
+		public const string VK_NV_LOW_LATENCY_2_EXTENSION_NAME = "VK_NV_low_latency2";
 		public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 		public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
@@ -735,5 +741,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
 		public const uint VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
 		public const string VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_EXTENSION_NAME = "VK_QNX_external_memory_screen_buffer";
+		public const uint VK_MSFT_LAYERED_DRIVER_SPEC_VERSION = 1;
+		public const string VK_MSFT_LAYERED_DRIVER_EXTENSION_NAME = "VK_MSFT_layered_driver";
+		public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
+		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
 	}
 }

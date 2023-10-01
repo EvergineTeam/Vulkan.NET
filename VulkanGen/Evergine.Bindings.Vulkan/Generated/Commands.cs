@@ -3426,6 +3426,36 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroySemaphoreSciSyncPoolNV_ptr(device, semaphorePool, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkSetLatencySleepModeNVDelegate(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* pSleepModeInfo);
+		private static vkSetLatencySleepModeNVDelegate vkSetLatencySleepModeNV_ptr;
+		public static VkResult vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* pSleepModeInfo)
+			=> vkSetLatencySleepModeNV_ptr(device, swapchain, pSleepModeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkLatencySleepNVDelegate(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepInfoNV* pSleepInfo);
+		private static vkLatencySleepNVDelegate vkLatencySleepNV_ptr;
+		public static VkResult vkLatencySleepNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepInfoNV* pSleepInfo)
+			=> vkLatencySleepNV_ptr(device, swapchain, pSleepInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkSetLatencyMarkerNVDelegate(VkDevice device, VkSwapchainKHR swapchain, VkSetLatencyMarkerInfoNV* pLatencyMarkerInfo);
+		private static vkSetLatencyMarkerNVDelegate vkSetLatencyMarkerNV_ptr;
+		public static void vkSetLatencyMarkerNV(VkDevice device, VkSwapchainKHR swapchain, VkSetLatencyMarkerInfoNV* pLatencyMarkerInfo)
+			=> vkSetLatencyMarkerNV_ptr(device, swapchain, pLatencyMarkerInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetLatencyTimingsNVDelegate(VkDevice device, VkSwapchainKHR swapchain, uint* pTimingCount, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
+		private static vkGetLatencyTimingsNVDelegate vkGetLatencyTimingsNV_ptr;
+		public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, uint* pTimingCount, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo)
+			=> vkGetLatencyTimingsNV_ptr(device, swapchain, pTimingCount, pLatencyMarkerInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkQueueNotifyOutOfBandNVDelegate(VkQueue queue, VkOutOfBandQueueTypeInfoNV pQueueTypeInfo);
+		private static vkQueueNotifyOutOfBandNVDelegate vkQueueNotifyOutOfBandNV_ptr;
+		public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV pQueueTypeInfo)
+			=> vkQueueNotifyOutOfBandNV_ptr(queue, pQueueTypeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties);
 		private static vkGetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
 		public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties)
@@ -4020,6 +4050,11 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
 			NativeLib.LoadFunction("vkDestroySemaphoreSciSyncPoolNV",  out vkDestroySemaphoreSciSyncPoolNV_ptr);
+			NativeLib.LoadFunction("vkSetLatencySleepModeNV",  out vkSetLatencySleepModeNV_ptr);
+			NativeLib.LoadFunction("vkLatencySleepNV",  out vkLatencySleepNV_ptr);
+			NativeLib.LoadFunction("vkSetLatencyMarkerNV",  out vkSetLatencyMarkerNV_ptr);
+			NativeLib.LoadFunction("vkGetLatencyTimingsNV",  out vkGetLatencyTimingsNV_ptr);
+			NativeLib.LoadFunction("vkQueueNotifyOutOfBandNV",  out vkQueueNotifyOutOfBandNV_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);

@@ -9972,6 +9972,30 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkFrameBoundaryEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFrameBoundaryFlagsEXT flags;
+		public ulong frameID;
+		public uint imageCount;
+		public VkImage* pImages;
+		public uint bufferCount;
+		public VkBuffer* pBuffers;
+		public ulong tagName;
+		public UIntPtr tagSize;
+		public void* pTag;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceFrameBoundaryFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 frameBoundary;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -10467,6 +10491,138 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public VkExtent2D windowExtent;
 		public VkBlockMatchWindowCompareModeQCOM windowCompareMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 descriptorPoolOverallocation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLayeredDriverPropertiesMSFT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROID
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 externalFormatResolve;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDROID
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 nullColorAttachmentWithExternalFormatResolve;
+		public VkChromaLocation externalFormatResolveChromaOffsetX;
+		public VkChromaLocation externalFormatResolveChromaOffsetY;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFormat colorAttachmentFormat;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLatencySleepModeInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 lowLatencyMode;
+		public VkBool32 lowLatencyBoost;
+		public uint minimumIntervalUs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLatencySleepInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkSemaphore signalSemaphore;
+		public ulong value;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSetLatencyMarkerInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong presentID;
+		public VkLatencyMarkerNV marker;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkGetLatencyMarkerInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkLatencyTimingsFrameReportNV* pTimings;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLatencyTimingsFrameReportNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong presentID;
+		public ulong inputSampleTimeUs;
+		public ulong simStartTimeUs;
+		public ulong simEndTimeUs;
+		public ulong renderSubmitStartTimeUs;
+		public ulong renderSubmitEndTimeUs;
+		public ulong presentStartTimeUs;
+		public ulong presentEndTimeUs;
+		public ulong driverStartTimeUs;
+		public ulong driverEndTimeUs;
+		public ulong osRenderQueueStartTimeUs;
+		public ulong osRenderQueueEndTimeUs;
+		public ulong gpuRenderStartTimeUs;
+		public ulong gpuRenderEndTimeUs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkOutOfBandQueueTypeInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkOutOfBandQueueTypeNV queueType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLatencySubmissionPresentIdNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong presentID;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSwapchainLatencyCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 latencyModeEnable;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLatencySurfaceCapabilitiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint presentModeCount;
+		public VkPresentModeKHR* pPresentModes;
 	}
 
 }
