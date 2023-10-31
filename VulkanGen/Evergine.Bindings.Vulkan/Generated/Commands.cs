@@ -3473,7 +3473,7 @@ namespace Evergine.Bindings.Vulkan
 		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, IntPtr buffer, VkScreenBufferPropertiesQNX* pProperties)
 			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
 
-		public static void LoadFuncionPointers(VkInstance instance = default)
+		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
 			{
