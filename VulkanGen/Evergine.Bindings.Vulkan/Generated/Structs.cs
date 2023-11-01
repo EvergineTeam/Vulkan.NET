@@ -8965,6 +8965,43 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCudaModuleCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr dataSize;
+		public void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCudaFunctionCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCudaModuleNV module;
+		public byte* pName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCudaLaunchInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkCudaFunctionNV function;
+		public uint gridDimX;
+		public uint gridDimY;
+		public uint gridDimZ;
+		public uint blockDimX;
+		public uint blockDimY;
+		public uint blockDimZ;
+		public uint sharedMemBytes;
+		public UIntPtr paramCount;
+		public void* pParams;
+		public UIntPtr extraCount;
+		public void* pExtras;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -9199,6 +9236,24 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public UIntPtr descriptorOffset;
 		public uint descriptorSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 nestedCommandBuffer;
+		public VkBool32 nestedCommandBufferRendering;
+		public VkBool32 nestedCommandBufferSimultaneousUse;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxCommandBufferNestingLevel;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10115,6 +10170,24 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 extendedSparseAddressSpace;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong extendedSparseAddressSpaceSize;
+		public VkImageUsageFlags extendedSparseImageUsageFlags;
+		public VkBufferUsageFlags extendedSparseBufferUsageFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDirectDriverLoadingInfoLUNARG
 	{
 		public VkStructureType sType;
@@ -10623,6 +10696,47 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public uint presentModeCount;
 		public VkPresentModeKHR* pPresentModes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cudaKernelLaunchFeatures;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint computeCapabilityMinor;
+		public uint computeCapabilityMajor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDeviceQueueShaderCoreControlCreateInfoARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint shaderCoreCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceSchedulingControlsFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 schedulingControls;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceSchedulingControlsPropertiesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong schedulingControlsFlags;
 	}
 
 }

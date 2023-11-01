@@ -175,11 +175,11 @@ branch of the member gitlab server.
 #define <name>VKSC_API_VERSION_1_0</name> <type>VK_MAKE_API_VERSION</type>(VKSC_API_VARIANT, 1, 0, 0)// Patch version should always be set to 0</type>
 
         <type api="vulkan" category="define">// Version of this file
-#define <name>VK_HEADER_VERSION</name> 266</type>
+#define <name>VK_HEADER_VERSION</name> 269</type>
         <type api="vulkan" category="define" requires="VK_HEADER_VERSION">// Complete version of this file
 #define <name>VK_HEADER_VERSION_COMPLETE</name> <type>VK_MAKE_API_VERSION</type>(0, 1, 3, VK_HEADER_VERSION)</type>
         <type api="vulkansc" category="define">// Version of this file
-#define <name>VK_HEADER_VERSION</name> 12</type>
+#define <name>VK_HEADER_VERSION</name> 13</type>
         <type api="vulkansc" category="define" requires="VKSC_API_VARIANT">// Complete version of this file
 #define <name>VK_HEADER_VERSION_COMPLETE</name> <type>VK_MAKE_API_VERSION</type>(VKSC_API_VARIANT, 1, 0, VK_HEADER_VERSION)</type>
 
@@ -482,6 +482,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type requires="VkPresentScalingFlagBitsEXT" category="bitmask">typedef <type>VkFlags</type> <name>VkPresentScalingFlagsEXT</name>;</type>
         <type requires="VkPresentGravityFlagBitsEXT" category="bitmask">typedef <type>VkFlags</type> <name>VkPresentGravityFlagsEXT</name>;</type>
         <type requires="VkShaderCreateFlagBitsEXT"        category="bitmask">typedef <type>VkFlags</type> <name>VkShaderCreateFlagsEXT</name>;</type>
+        <type bitvalues="VkPhysicalDeviceSchedulingControlsFlagBitsARM" category="bitmask">typedef <type>VkFlags64</type> <name>VkPhysicalDeviceSchedulingControlsFlagsARM</name>;</type>
 
             <comment>Video Core extension</comment>
         <type requires="VkVideoCodecOperationFlagBitsKHR"           category="bitmask">typedef <type>VkFlags</type> <name>VkVideoCodecOperationFlagsKHR</name>;</type>
@@ -867,6 +868,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type name="VkPresentGravityFlagBitsEXT" category="enum"/>
         <type name="VkLatencyMarkerNV" category="enum"/>
         <type name="VkOutOfBandQueueTypeNV" category="enum"/>
+        <type name="VkPhysicalDeviceSchedulingControlsFlagBitsARM" category="enum"/>
 
             <comment>Enumerated types in the header, but not used by the API</comment>
         <type name="VkVendorId" category="enum"/>
@@ -7599,6 +7601,36 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>uint32_t</type>                        <name>minBufferCountForDedicatedSlack</name></member>
             <member><type>uint32_t</type>                        <name>minBufferCountForSharedSlack</name></member>
         </type>
+        <type category="handle" parent="VkDevice" objtypeenum="VK_OBJECT_TYPE_CUDA_MODULE_NV"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkCudaModuleNV</name>)</type>
+        <type category="handle" parent="VkDevice" objtypeenum="VK_OBJECT_TYPE_CUDA_FUNCTION_NV"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkCudaFunctionNV</name>)</type>
+        <type category="struct" name="VkCudaModuleCreateInfoNV">
+            <member values="VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true">const <type>void</type>*            <name>pNext</name></member>
+            <member><type>size_t</type>                 <name>dataSize</name></member>
+            <member len="dataSize">const <type>void</type>*            <name>pData</name></member>
+        </type>
+        <type category="struct" name="VkCudaFunctionCreateInfoNV">
+            <member values="VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true">const <type>void</type>* <name>pNext</name></member>
+            <member><type>VkCudaModuleNV</type>         <name>module</name></member>
+            <member len="null-terminated">const <type>char</type>*            <name>pName</name></member>
+        </type>
+        <type category="struct" name="VkCudaLaunchInfoNV">
+            <member values="VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true">const <type>void</type>*            <name>pNext</name></member>
+            <member><type>VkCudaFunctionNV</type>       <name>function</name></member>
+            <member><type>uint32_t</type>               <name>gridDimX</name></member>
+            <member><type>uint32_t</type>               <name>gridDimY</name></member>
+            <member><type>uint32_t</type>               <name>gridDimZ</name></member>
+            <member><type>uint32_t</type>               <name>blockDimX</name></member>
+            <member><type>uint32_t</type>               <name>blockDimY</name></member>
+            <member><type>uint32_t</type>               <name>blockDimZ</name></member>
+            <member><type>uint32_t</type>               <name>sharedMemBytes</name></member>
+            <member optional="true"><type>size_t</type>                 <name>paramCount</name></member>
+            <member optional="true" len="paramCount">const <type>void</type>* const *    <name>pParams</name></member>
+            <member optional="true"><type>size_t</type>                 <name>extraCount</name></member>
+            <member optional="true" len="extraCount">const <type>void</type>* const *    <name>pExtras</name></member>
+        </type>
         <type category="struct" name="VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true" noautovalidity="true"><type>void</type>*        <name>pNext</name></member>
@@ -7772,6 +7804,18 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true"><type>void</type>*                                                                    <name>pNext</name></member>
             <member><type>size_t</type>                                                                                   <name>descriptorOffset</name></member>
             <member><type>uint32_t</type>                                                                                 <name>descriptorSize</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceNestedCommandBufferFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true" noautovalidity="true"><type>void</type>*     <name>pNext</name></member>
+            <member><type>VkBool32</type>                                        <name>nestedCommandBuffer</name></member>
+            <member><type>VkBool32</type>                                        <name>nestedCommandBufferRendering</name></member>
+            <member><type>VkBool32</type>                                        <name>nestedCommandBufferSimultaneousUse</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceNestedCommandBufferPropertiesEXT" structextends="VkPhysicalDeviceProperties2">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                           <name>pNext</name></member>
+            <member limittype="max"><type>uint32_t</type>                        <name>maxCommandBufferNestingLevel</name></member>
         </type>
         <type category="struct" name="VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
@@ -8319,7 +8363,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true" len="bufferCount">const <type>VkBuffer</type>*  <name>pBuffers</name></member>
             <member optional="true"><type>uint64_t</type>                           <name>tagName</name></member>
             <member optional="true"><type>size_t</type>                             <name>tagSize</name></member>
-            <member optional="true">const <type>void</type>*                        <name>pTag</name></member>
+            <member optional="true" len="tagSize">const <type>void</type>*          <name>pTag</name></member>
         </type>
         <type category="struct" name="VkPhysicalDeviceFrameBoundaryFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
@@ -8405,6 +8449,18 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true" noautovalidity="true"><type>void</type>* <name>pNext</name></member>
             <member limittype="noauto"><type>VkRayTracingInvocationReorderModeNV</type>                                    <name>rayTracingInvocationReorderReorderingHint</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true" noautovalidity="true"><type>void</type>*  <name>pNext</name></member>
+            <member><type>VkBool32</type>                                     <name>extendedSparseAddressSpace</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV" returnedonly="true" structextends="VkPhysicalDeviceProperties2">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                        <name>pNext</name></member>
+            <member limittype="max"><type>VkDeviceSize</type>                 <name>extendedSparseAddressSpaceSize</name><comment>Total address space available for extended sparse allocations (bytes)</comment></member>
+            <member limittype="bitmask"><type>VkImageUsageFlags</type>        <name>extendedSparseImageUsageFlags</name><comment>Bitfield of which image usages are supported for extended sparse allocations</comment></member>
+            <member limittype="bitmask"><type>VkBufferUsageFlags</type>       <name>extendedSparseBufferUsageFlags</name><comment>Bitfield of which buffer usages are supported for extended sparse allocations</comment></member>
         </type>
         <type category="struct" name="VkDirectDriverLoadingInfoLUNARG">
             <member values="VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG"><type>VkStructureType</type> <name>sType</name></member>
@@ -8752,8 +8808,34 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type category="struct" name="VkLatencySurfaceCapabilitiesNV" structextends="VkSurfaceCapabilities2KHR">
             <member values="VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true">const <type>void</type>*                              <name>pNext</name></member>
-            <member optional="false,true"><type>uint32_t</type>                           <name>presentModeCount</name></member>
+            <member optional="true"><type>uint32_t</type>                                 <name>presentModeCount</name></member>
             <member optional="true" len="presentModeCount"><type>VkPresentModeKHR</type>* <name>pPresentModes</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceCudaKernelLaunchFeaturesNV" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*    <name>pNext</name></member>
+            <member><type>VkBool32</type>                       <name>cudaKernelLaunchFeatures</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceCudaKernelLaunchPropertiesNV" structextends="VkPhysicalDeviceProperties2" returnedonly="true">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*    <name>pNext</name></member>
+            <member limittype="max"><type>uint32_t</type>         <name>computeCapabilityMinor</name></member>
+            <member limittype="min"><type>uint32_t</type>         <name>computeCapabilityMajor</name></member>
+        </type>
+        <type category="struct" name="VkDeviceQueueShaderCoreControlCreateInfoARM" structextends="VkDeviceQueueCreateInfo,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*            <name>pNext</name></member>
+            <member><type>uint32_t</type>                         <name>shaderCoreCount</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceSchedulingControlsFeaturesARM" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*            <name>pNext</name></member>
+            <member><type>VkBool32</type>                         <name>schedulingControls</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceSchedulingControlsPropertiesARM" structextends="VkPhysicalDeviceProperties2">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                       <name>pNext</name></member>
+            <member><type>VkPhysicalDeviceSchedulingControlsFlagsARM</type>  <name>schedulingControlsFlags</name></member>
         </type>
     </types>
 
@@ -10412,6 +10494,9 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <enum bitpos="1"    name="VK_PRESENT_GRAVITY_MAX_BIT_EXT"/>
         <enum bitpos="2"    name="VK_PRESENT_GRAVITY_CENTERED_BIT_EXT"/>
     </enums>
+    <enums name="VkPhysicalDeviceSchedulingControlsFlagBitsARM" type="bitmask">
+        <enum bitpos="0"    name="VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM"/>
+    </enums>
 
     <enums name="VkVideoCodecOperationFlagBitsKHR" type="bitmask">
         <enum value="0"     name="VK_VIDEO_CODEC_OPERATION_NONE_KHR"/>
@@ -11957,7 +12042,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <proto><type>void</type> <name>vkCmdEndRenderPass</name></proto>
             <param externsync="true"><type>VkCommandBuffer</type> <name>commandBuffer</name></param>
         </command>
-        <command queues="transfer,graphics,compute" renderpass="both" cmdbufferlevel="primary" tasks="indirection">
+        <command queues="transfer,graphics,compute" renderpass="both" cmdbufferlevel="primary,secondary" tasks="indirection">
             <proto><type>void</type> <name>vkCmdExecuteCommands</name></proto>
             <param externsync="true"><type>VkCommandBuffer</type> <name>commandBuffer</name></param>
             <param><type>uint32_t</type> <name>commandBufferCount</name></param>
@@ -13724,7 +13809,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <param><type>VkDevice</type> <name>device</name></param>
             <param><type>VkFaultQueryBehavior</type> <name>faultQueryBehavior</name></param>
             <param><type>VkBool32</type>* <name>pUnrecordedFaults</name></param>
-            <param><type>uint32_t</type>* <name>pFaultCount</name></param>
+            <param optional="false,true"><type>uint32_t</type>* <name>pFaultCount</name></param>
             <param optional="true" len="pFaultCount"><type>VkFaultData</type>* <name>pFaults</name></param>
         </command>
         <command successcodes="VK_SUCCESS,VK_INCOMPLETE" errorcodes="VK_ERROR_OUT_OF_HOST_MEMORY">
@@ -14572,6 +14657,44 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <param><type>VkBufferCollectionFUCHSIA</type> <name>collection</name></param>
             <param><type>VkBufferCollectionPropertiesFUCHSIA</type>* <name>pProperties</name></param>
         </command>
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INITIALIZATION_FAILED,VK_ERROR_OUT_OF_HOST_MEMORY">
+            <proto><type>VkResult</type> <name>vkCreateCudaModuleNV</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param>const <type>VkCudaModuleCreateInfoNV</type>* <name>pCreateInfo</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
+            <param><type>VkCudaModuleNV</type>* <name>pModule</name></param>
+        </command>
+        <command successcodes="VK_SUCCESS,VK_INCOMPLETE" errorcodes="VK_ERROR_INITIALIZATION_FAILED">
+            <proto><type>VkResult</type> <name>vkGetCudaModuleCacheNV</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param><type>VkCudaModuleNV</type> <name>module</name></param>
+            <param optional="false,true"><type>size_t</type>* <name>pCacheSize</name></param>
+            <param optional="true" len="pCacheSize"><type>void</type>* <name>pCacheData</name></param>
+        </command>
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INITIALIZATION_FAILED,VK_ERROR_OUT_OF_HOST_MEMORY">
+            <proto><type>VkResult</type> <name>vkCreateCudaFunctionNV</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param>const <type>VkCudaFunctionCreateInfoNV</type>* <name>pCreateInfo</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
+            <param><type>VkCudaFunctionNV</type>* <name>pFunction</name></param>
+        </command>
+        <command>
+            <proto><type>void</type> <name>vkDestroyCudaModuleNV</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param><type>VkCudaModuleNV</type> <name>module</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
+        </command>
+        <command>
+            <proto><type>void</type> <name>vkDestroyCudaFunctionNV</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param><type>VkCudaFunctionNV</type> <name>function</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
+        </command>
+        <command queues="graphics,compute" renderpass="both" cmdbufferlevel="primary,secondary" tasks="action">
+            <proto><type>void</type> <name>vkCmdCudaLaunchKernelNV</name></proto>
+            <param><type>VkCommandBuffer</type> <name>commandBuffer</name></param>
+            <param>const <type>VkCudaLaunchInfoNV</type>* <name>pLaunchInfo</name></param>
+        </command>
         <command queues="graphics" renderpass="outside" cmdbufferlevel="primary,secondary" tasks="action,state">
             <proto><type>void</type> <name>vkCmdBeginRendering</name></proto>
             <param externsync="true"><type>VkCommandBuffer</type>                   <name>commandBuffer</name></param>
@@ -14887,19 +15010,19 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <proto><type>VkResult</type> <name>vkSetLatencySleepModeNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param><type>VkSwapchainKHR</type> <name>swapchain</name></param>
-            <param><type>VkLatencySleepModeInfoNV</type>* <name>pSleepModeInfo</name></param>
+            <param>const <type>VkLatencySleepModeInfoNV</type>* <name>pSleepModeInfo</name></param>
         </command>
         <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_UNKNOWN">
             <proto><type>VkResult</type> <name>vkLatencySleepNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param><type>VkSwapchainKHR</type> <name>swapchain</name></param>
-            <param><type>VkLatencySleepInfoNV</type>* <name>pSleepInfo</name></param>
+            <param>const <type>VkLatencySleepInfoNV</type>* <name>pSleepInfo</name></param>
         </command>
         <command>
             <proto><type>void</type> <name>vkSetLatencyMarkerNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param><type>VkSwapchainKHR</type> <name>swapchain</name></param>
-            <param><type>VkSetLatencyMarkerInfoNV</type>* <name>pLatencyMarkerInfo</name></param>
+            <param>const <type>VkSetLatencyMarkerInfoNV</type>* <name>pLatencyMarkerInfo</name></param>
         </command>
         <command>
             <proto><type>void</type> <name>vkGetLatencyTimingsNV</name></proto>
@@ -14911,7 +15034,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <command>
             <proto><type>void</type> <name>vkQueueNotifyOutOfBandNV</name></proto>
             <param><type>VkQueue</type> <name>queue</name></param>
-            <param><type>VkOutOfBandQueueTypeInfoNV</type> <name>pQueueTypeInfo</name></param>
+            <param>const <type>VkOutOfBandQueueTypeInfoNV</type>* <name>pQueueTypeInfo</name></param>
         </command>
     </commands>
 
@@ -19054,16 +19177,10 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum bitpos="3" extends="VkSubpassDescriptionFlagBits"         name="VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM"/>
             </require>
         </extension>
-        <extension name="VK_QCOM_extension_173" number="173" author="QCOM" contact="Bill Licea-Kane @wwlk" supported="disabled">
+        <extension name="VK_QCOM_extension_173" number="173" author="QCOM" contact="Jeff Leger @jackohound" supported="disabled">
             <require>
                 <enum value="0"                                             name="VK_QCOM_EXTENSION_173_SPEC_VERSION"/>
                 <enum value="&quot;VK_QCOM_extension_173&quot;"             name="VK_QCOM_EXTENSION_173_EXTENSION_NAME"/>
-                <enum bitpos="18" extends="VkBufferUsageFlagBits"           name="VK_BUFFER_USAGE_RESERVED_18_BIT_QCOM"/>
-                <enum bitpos="16" extends="VkImageUsageFlagBits"            name="VK_IMAGE_USAGE_RESERVED_16_BIT_QCOM"/>
-                <enum bitpos="17" extends="VkImageUsageFlagBits"            name="VK_IMAGE_USAGE_RESERVED_17_BIT_QCOM"/>
-            </require>
-            <require depends="VK_KHR_maintenance5">
-                <enum bitpos="18" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_RESERVED_18_BIT_QCOM"/>
             </require>
         </extension>
         <extension name="VK_QCOM_extension_174" number="174" author="QCOM" contact="Bill Licea-Kane @wwlk" supported="disabled">
@@ -20650,13 +20767,13 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum extends="VkAttachmentStoreOp"                         name="VK_ATTACHMENT_STORE_OP_NONE_QCOM" alias="VK_ATTACHMENT_STORE_OP_NONE"/>
             </require>
         </extension>
-        <extension name="VK_QCOM_extension_303" number="303" author="QCOM" contact="Bill Licea-Kane @wwlk" supported="disabled">
+        <extension name="VK_QCOM_extension_303" number="303" author="QCOM" contact="Jeff Leger @jackohound" supported="disabled">
             <require>
                 <enum value="0"                                             name="VK_QCOM_EXTENSION_303_SPEC_VERSION"/>
                 <enum value="&quot;VK_QCOM_extension_303&quot;"             name="VK_QCOM_EXTENSION_303_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_QCOM_extension_304" number="304" author="QCOM" contact="Bill Licea-Kane @wwlk" supported="disabled">
+        <extension name="VK_QCOM_extension_304" number="304" author="QCOM" contact="Jeff Leger @jackohound" supported="disabled">
             <require>
                 <enum value="0"                                             name="VK_QCOM_EXTENSION_304_SPEC_VERSION"/>
                 <enum value="&quot;VK_QCOM_extension_304&quot;"             name="VK_QCOM_EXTENSION_304_EXTENSION_NAME"/>
@@ -20680,10 +20797,32 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_QCOM_extension_307&quot;"             name="VK_QCOM_EXTENSION_307_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_NV_extension_308" number="308" type="device" author="NV" contact="Tristan Lorach @tlorach" supported="disabled">
+        <extension name="VK_NV_cuda_kernel_launch" number="308" type="device" author="NV" contact="Tristan Lorach @tlorach" supported="vulkan" provisional="true">
             <require>
-                <enum value="0"                                             name="VK_NV_EXTENSION_308_SPEC_VERSION"/>
-                <enum value="&quot;VK_NV_extension_308&quot;"               name="VK_NV_EXTENSION_308_EXTENSION_NAME"/>
+                <enum value="2"                                             name="VK_NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_cuda_kernel_launch&quot;"          name="VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV"/>
+                <enum offset="1" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV"/>
+                <enum offset="2" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV"/>
+                <enum offset="3" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV"/>
+                <enum offset="4" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV"/>
+                <enum offset="0" extends="VkObjectType"                     name="VK_OBJECT_TYPE_CUDA_MODULE_NV"/>
+                <enum offset="1" extends="VkObjectType"                     name="VK_OBJECT_TYPE_CUDA_FUNCTION_NV"/>
+                <enum offset="0" extends="VkDebugReportObjectTypeEXT"       name="VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV"/>
+                <enum offset="1" extends="VkDebugReportObjectTypeEXT"       name="VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV"/>
+                <type name="VkCudaModuleNV"/>
+                <type name="VkCudaFunctionNV"/>
+                <type name="VkCudaModuleCreateInfoNV"/>
+                <type name="VkCudaFunctionCreateInfoNV"/>
+                <type name="VkCudaLaunchInfoNV"/>
+                <type name="VkPhysicalDeviceCudaKernelLaunchFeaturesNV"/>
+                <type name="VkPhysicalDeviceCudaKernelLaunchPropertiesNV"/>
+                <command name="vkCreateCudaModuleNV"/>
+                <command name="vkGetCudaModuleCacheNV"/>
+                <command name="vkCreateCudaFunctionNV"/>
+                <command name="vkDestroyCudaModuleNV"/>
+                <command name="vkDestroyCudaFunctionNV"/>
+                <command name="vkCmdCudaLaunchKernelNV"/>
             </require>
         </extension>
         <extension name="VK_KHR_object_refresh" number="309" type="device" author="KHR" contact="Aidan Fabius @afabius" supported="vulkansc" ratified="vulkansc">
@@ -20704,6 +20843,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="0"                                             name="VK_QCOM_EXTENSION_310_SPEC_VERSION"/>
                 <enum value="&quot;VK_QCOM_extension_310&quot;"             name="VK_QCOM_EXTENSION_310_EXTENSION_NAME"/>
                 <enum bitpos="27" extends="VkBufferUsageFlagBits"           name="VK_BUFFER_USAGE_RESERVED_27_BIT_QCOM"/>
+                <enum bitpos="27" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_RESERVED_27_BIT_QCOM"/>
                 <enum bitpos="51" extends="VkAccessFlagBits2"               name="VK_ACCESS_2_RESERVED_51_BIT_QCOM"/>
                 <enum bitpos="52" extends="VkAccessFlagBits2"               name="VK_ACCESS_2_RESERVED_52_BIT_QCOM"/>
                 <enum bitpos="53" extends="VkAccessFlagBits2"               name="VK_ACCESS_2_RESERVED_53_BIT_QCOM"/>
@@ -22048,10 +22188,18 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_KHR_extension_417&quot;"          name="VK_KHR_EXTENSION_417_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_ARM_extension_418" number="418" author="ARM" contact="Kevin Petit @kpet" supported="disabled">
+        <extension name="VK_ARM_scheduling_controls" number="418" author="ARM" contact="Kevin Petit @kpet" type="device" depends="VK_ARM_shader_core_builtins" supported="vulkan">
             <require>
-                <enum value="0"                                         name="VK_ARM_EXTENSION_418_SPEC_VERSION"/>
-                <enum value="&quot;VK_ARM_extension_418&quot;"          name="VK_ARM_EXTENSION_418_EXTENSION_NAME"/>
+                <enum value="1"                                         name="VK_ARM_SCHEDULING_CONTROLS_SPEC_VERSION"/>
+                <enum value="&quot;VK_ARM_scheduling_controls&quot;"    name="VK_ARM_SCHEDULING_CONTROLS_EXTENSION_NAME"/>
+                <enum extends="VkStructureType" offset="0"              name="VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM"/>
+                <enum extends="VkStructureType" offset="1"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM"/>
+                <enum extends="VkStructureType" offset="2"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM"/>
+                <type name="VkDeviceQueueShaderCoreControlCreateInfoARM"/>
+                <type name="VkPhysicalDeviceSchedulingControlsFeaturesARM"/>
+                <type name="VkPhysicalDeviceSchedulingControlsPropertiesARM"/>
+                <type name="VkPhysicalDeviceSchedulingControlsFlagsARM"/>
+                <type name="VkPhysicalDeviceSchedulingControlsFlagBitsARM"/>
             </require>
         </extension>
         <extension name="VK_EXT_image_sliced_view_of_3d" number="419" depends="VK_KHR_maintenance1+VK_KHR_get_physical_device_properties2" author="EXT" contact="Mike Blumenkrantz @zmike" specialuse="d3demulation" type="device" supported="vulkan">
@@ -22338,10 +22486,16 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_SEC_extension_451&quot;"          name="VK_SEC_EXTENSION_451_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_NV_extension_452" number="452" author="NV" contact="Piers Daniell @pdaniell-nv" supported="disabled">
+        <extension name="VK_EXT_nested_command_buffer" number="452" type="device" depends="VK_KHR_get_physical_device_properties2" author="EXT" contact="Piers Daniell @pdaniell-nv" supported="vulkan">
             <require>
-                <enum value="0"                                         name="VK_NV_EXTENSION_452_SPEC_VERSION"/>
-                <enum value="&quot;VK_NV_extension_452&quot;"           name="VK_NV_EXTENSION_452_EXTENSION_NAME"/>
+                <enum value="1"                                         name="VK_EXT_NESTED_COMMAND_BUFFER_SPEC_VERSION"/>
+                <enum value="&quot;VK_EXT_nested_command_buffer&quot;"  name="VK_EXT_NESTED_COMMAND_BUFFER_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT"/>
+                <enum offset="1" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT"/>
+                <enum offset="0" extends="VkSubpassContents"            name="VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT"/>
+                <enum bitpos="4" extends="VkRenderingFlagBits"          name="VK_RENDERING_CONTENTS_INLINE_BIT_EXT"/>
+                <type                                                   name="VkPhysicalDeviceNestedCommandBufferFeaturesEXT"/>
+                <type                                                   name="VkPhysicalDeviceNestedCommandBufferPropertiesEXT"/>
             </require>
         </extension>
         <extension name="VK_ARM_extension_453" number="453" author="Arm" contact="Kevin Petit @kpet" supported="disabled">
@@ -22658,8 +22812,8 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <command name="vkCmdBindIndexBuffer2KHR"/>
                 <command name="vkGetRenderingAreaGranularityKHR"/>
                 <type name="VkRenderingAreaInfoKHR"/>
-                <command name ="vkGetDeviceImageSubresourceLayoutKHR"/>
-                <command name ="vkGetImageSubresourceLayout2KHR"/>
+                <command name="vkGetDeviceImageSubresourceLayoutKHR"/>
+                <command name="vkGetImageSubresourceLayout2KHR"/>
                 <type name="VkDeviceImageSubresourceInfoKHR"/>
                 <type name="VkImageSubresource2KHR"/>
                 <type name="VkSubresourceLayout2KHR"/>
@@ -23060,10 +23214,14 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_NV_extension_492&quot;"           name="VK_NV_EXTENSION_492_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_NV_extension_493" number="493" author="NV" contact="Daniel Koch @dgkoch" supported="disabled">
+        <extension name="VK_NV_extended_sparse_address_space" number="493" type="device" author="NV" contact="Russell Chou @russellcnv" supported="vulkan">
             <require>
-                <enum value="0"                                         name="VK_NV_EXTENSION_493_SPEC_VERSION"/>
-                <enum value="&quot;VK_NV_extension_493&quot;"           name="VK_NV_EXTENSION_493_EXTENSION_NAME"/>
+                <enum value="1"                                               name="VK_NV_EXTENDED_SPARSE_ADDRESS_SPACE_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extended_sparse_address_space&quot;" name="VK_NV_EXTENDED_SPARSE_ADDRESS_SPACE_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"                    name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV"/>
+                <enum offset="1" extends="VkStructureType"                    name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV"/>
+                <type name="VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV"/>
+                <type name="VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV"/>
             </require>
         </extension>
         <extension name="VK_NV_extension_494" number="494" author="NV" contact="Daniel Koch @dgkoch" supported="disabled">
@@ -23505,7 +23663,19 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <extension name="VK_NV_extension_549" number="549" author="NV" contact="Piers Daniell @pdaniell-nv" supported="disabled">
             <require>
                 <enum value="0"                                         name="VK_NV_EXTENSION_549_SPEC_VERSION"/>
-                <enum value="&quot;VK_NV_extension_549&quot;"          name="VK_NV_EXTENSION_549_EXTENSION_NAME"/>
+                <enum value="&quot;VK_NV_extension_549&quot;"           name="VK_NV_EXTENSION_549_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_550" number="550" author="NV" contact="Daniel Koch @dgkoch" supported="disabled">
+            <require>
+                <enum value="0"                                         name="VK_NV_EXTENSION_550_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_550&quot;"           name="VK_NV_EXTENSION_550_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_551" number="551" author="NV" contact="Daniel Koch @dgkoch" supported="disabled">
+            <require>
+                <enum value="0"                                         name="VK_NV_EXTENSION_551_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_551&quot;"           name="VK_NV_EXTENSION_551_EXTENSION_NAME"/>
             </require>
         </extension>
     </extensions>

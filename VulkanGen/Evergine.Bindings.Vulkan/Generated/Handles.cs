@@ -782,4 +782,34 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkCudaModuleNV : IEquatable<VkCudaModuleNV>
+{
+		public readonly ulong Handle;
+		public VkCudaModuleNV(ulong existingHandle) { Handle = existingHandle; }
+		public static VkCudaModuleNV Null => new VkCudaModuleNV(0);
+		public static implicit operator VkCudaModuleNV(ulong handle) => new VkCudaModuleNV(handle);
+		public static bool operator ==(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCudaModuleNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCudaModuleNV left, ulong right) => left.Handle != right;
+		public bool Equals(VkCudaModuleNV h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkCudaModuleNV h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkCudaFunctionNV : IEquatable<VkCudaFunctionNV>
+{
+		public readonly ulong Handle;
+		public VkCudaFunctionNV(ulong existingHandle) { Handle = existingHandle; }
+		public static VkCudaFunctionNV Null => new VkCudaFunctionNV(0);
+		public static implicit operator VkCudaFunctionNV(ulong handle) => new VkCudaFunctionNV(handle);
+		public static bool operator ==(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCudaFunctionNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCudaFunctionNV left, ulong right) => left.Handle != right;
+		public bool Equals(VkCudaFunctionNV h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkCudaFunctionNV h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 }

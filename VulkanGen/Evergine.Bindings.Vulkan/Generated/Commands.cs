@@ -2712,6 +2712,42 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdEncodeVideoKHR_ptr(commandBuffer, pEncodeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateCudaModuleNVDelegate(VkDevice device, VkCudaModuleCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule);
+		private static vkCreateCudaModuleNVDelegate vkCreateCudaModuleNV_ptr;
+		public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule)
+			=> vkCreateCudaModuleNV_ptr(device, pCreateInfo, pAllocator, pModule);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetCudaModuleCacheNVDelegate(VkDevice device, VkCudaModuleNV module, UIntPtr* pCacheSize, void* pCacheData);
+		private static vkGetCudaModuleCacheNVDelegate vkGetCudaModuleCacheNV_ptr;
+		public static VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, UIntPtr* pCacheSize, void* pCacheData)
+			=> vkGetCudaModuleCacheNV_ptr(device, module, pCacheSize, pCacheData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateCudaFunctionNVDelegate(VkDevice device, VkCudaFunctionCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaFunctionNV* pFunction);
+		private static vkCreateCudaFunctionNVDelegate vkCreateCudaFunctionNV_ptr;
+		public static VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaFunctionNV* pFunction)
+			=> vkCreateCudaFunctionNV_ptr(device, pCreateInfo, pAllocator, pFunction);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyCudaModuleNVDelegate(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyCudaModuleNVDelegate vkDestroyCudaModuleNV_ptr;
+		public static void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyCudaModuleNV_ptr(device, module, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyCudaFunctionNVDelegate(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyCudaFunctionNVDelegate vkDestroyCudaFunctionNV_ptr;
+		public static void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyCudaFunctionNV_ptr(device, function, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCudaLaunchKernelNVDelegate(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* pLaunchInfo);
+		private static vkCmdCudaLaunchKernelNVDelegate vkCmdCudaLaunchKernelNV_ptr;
+		public static void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* pLaunchInfo)
+			=> vkCmdCudaLaunchKernelNV_ptr(commandBuffer, pLaunchInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdRefreshObjectsKHRDelegate(VkCommandBuffer commandBuffer, VkRefreshObjectListKHR* pRefreshObjects);
 		private static vkCmdRefreshObjectsKHRDelegate vkCmdRefreshObjectsKHR_ptr;
 		public static void vkCmdRefreshObjectsKHR(VkCommandBuffer commandBuffer, VkRefreshObjectListKHR* pRefreshObjects)
@@ -3450,9 +3486,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetLatencyTimingsNV_ptr(device, swapchain, pTimingCount, pLatencyMarkerInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkQueueNotifyOutOfBandNVDelegate(VkQueue queue, VkOutOfBandQueueTypeInfoNV pQueueTypeInfo);
+		private delegate void vkQueueNotifyOutOfBandNVDelegate(VkQueue queue, VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);
 		private static vkQueueNotifyOutOfBandNVDelegate vkQueueNotifyOutOfBandNV_ptr;
-		public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV pQueueTypeInfo)
+		public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo)
 			=> vkQueueNotifyOutOfBandNV_ptr(queue, pQueueTypeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -3931,6 +3967,12 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR",  out vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkGetEncodedVideoSessionParametersKHR",  out vkGetEncodedVideoSessionParametersKHR_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
+			NativeLib.LoadFunction("vkCreateCudaModuleNV",  out vkCreateCudaModuleNV_ptr);
+			NativeLib.LoadFunction("vkGetCudaModuleCacheNV",  out vkGetCudaModuleCacheNV_ptr);
+			NativeLib.LoadFunction("vkCreateCudaFunctionNV",  out vkCreateCudaFunctionNV_ptr);
+			NativeLib.LoadFunction("vkDestroyCudaModuleNV",  out vkDestroyCudaModuleNV_ptr);
+			NativeLib.LoadFunction("vkDestroyCudaFunctionNV",  out vkDestroyCudaFunctionNV_ptr);
+			NativeLib.LoadFunction("vkCmdCudaLaunchKernelNV",  out vkCmdCudaLaunchKernelNV_ptr);
 			NativeLib.LoadFunction("vkCmdRefreshObjectsKHR",  out vkCmdRefreshObjectsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceRefreshableObjectTypesKHR",  out vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr);
 			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);

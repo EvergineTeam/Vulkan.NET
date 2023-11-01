@@ -525,6 +525,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
 		public const uint VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2;
 		public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
+		public const uint VK_NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION = 2;
+		public const string VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME = "VK_NV_cuda_kernel_launch";
 		public const uint VK_KHR_OBJECT_REFRESH_SPEC_VERSION = 1;
 		public const string VK_KHR_OBJECT_REFRESH_EXTENSION_NAME = "VK_KHR_object_refresh";
 		public const uint VK_NV_LOW_LATENCY_SPEC_VERSION = 1;
@@ -653,6 +655,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
 		public const uint VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_ARM_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_ARM_shader_core_properties";
+		public const uint VK_ARM_SCHEDULING_CONTROLS_SPEC_VERSION = 1;
+		public const string VK_ARM_SCHEDULING_CONTROLS_EXTENSION_NAME = "VK_ARM_scheduling_controls";
 		public const uint VK_EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION = 1;
 		public const string VK_EXT_IMAGE_SLICED_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_sliced_view_of_3d";
 		public const uint VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1;
@@ -679,6 +683,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
 		public const uint VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
 		public const string VK_QCOM_IMAGE_PROCESSING_EXTENSION_NAME = "VK_QCOM_image_processing";
+		public const uint VK_EXT_NESTED_COMMAND_BUFFER_SPEC_VERSION = 1;
+		public const string VK_EXT_NESTED_COMMAND_BUFFER_EXTENSION_NAME = "VK_EXT_nested_command_buffer";
 		public const uint VK_EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_SPEC_VERSION = 1;
 		public const string VK_EXT_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXTENSION_NAME = "VK_EXT_external_memory_acquire_unmodified";
 		public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_3_SPEC_VERSION = 2;
@@ -715,6 +721,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_EXTERNAL_SCI_SYNC_2_EXTENSION_NAME = "VK_NV_external_sci_sync2";
 		public const uint VK_NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION = 1;
 		public const string VK_NV_RAY_TRACING_INVOCATION_REORDER_EXTENSION_NAME = "VK_NV_ray_tracing_invocation_reorder";
+		public const uint VK_NV_EXTENDED_SPARSE_ADDRESS_SPACE_SPEC_VERSION = 1;
+		public const string VK_NV_EXTENDED_SPARSE_ADDRESS_SPACE_EXTENSION_NAME = "VK_NV_extended_sparse_address_space";
 		public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 		public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
 		public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
