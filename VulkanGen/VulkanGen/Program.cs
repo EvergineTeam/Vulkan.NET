@@ -294,7 +294,7 @@ namespace VulkanGen
                     file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignature(vulkanSpec, useTypes: false)});\n");
                 }
 
-                file.WriteLine($"\t\tpublic static void LoadFuncionPointers(VkInstance instance = default)");
+                file.WriteLine($"\t\tpublic static void LoadFunctionPointers(VkInstance instance = default)");
                 file.WriteLine("\t\t{");
                 file.WriteLine("\t\t\tif (instance != default)");
                 file.WriteLine("\t\t\t{");

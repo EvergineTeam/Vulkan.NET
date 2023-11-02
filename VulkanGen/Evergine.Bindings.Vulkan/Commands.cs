@@ -13,7 +13,7 @@ namespace Evergine.Bindings.Vulkan
         static VulkanNative()
         {
             NativeLib = LoadNativeLibrary();
-            LoadFuncionPointers();
+            LoadFunctionPointers();
         }
 
         private static NativeLibrary LoadNativeLibrary()
