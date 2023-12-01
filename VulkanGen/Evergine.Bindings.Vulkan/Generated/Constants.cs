@@ -219,6 +219,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
 		public const uint VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1;
 		public const string VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2";
+		public const uint VK_IMG_RELAXED_LINE_RASTERIZATION_SPEC_VERSION = 1;
+		public const string VK_IMG_RELAXED_LINE_RASTERIZATION_EXTENSION_NAME = "VK_IMG_relaxed_line_rasterization";
 		public const uint VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION = 1;
 		public const string VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image";
 		public const uint VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION = 1;
@@ -731,7 +733,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles";
 		public const uint VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_SPEC_VERSION = 1;
 		public const string VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_EXTENSION_NAME = "VK_EXT_dynamic_rendering_unused_attachments";
-		public const uint VK_NV_LOW_LATENCY_2_SPEC_VERSION = 1;
+		public const uint VK_NV_LOW_LATENCY_2_SPEC_VERSION = 2;
 		public const string VK_NV_LOW_LATENCY_2_EXTENSION_NAME = "VK_NV_low_latency2";
 		public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";

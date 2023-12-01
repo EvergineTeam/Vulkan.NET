@@ -3480,10 +3480,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkSetLatencyMarkerNV_ptr(device, swapchain, pLatencyMarkerInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetLatencyTimingsNVDelegate(VkDevice device, VkSwapchainKHR swapchain, uint* pTimingCount, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
+		private delegate void vkGetLatencyTimingsNVDelegate(VkDevice device, VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
 		private static vkGetLatencyTimingsNVDelegate vkGetLatencyTimingsNV_ptr;
-		public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, uint* pTimingCount, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo)
-			=> vkGetLatencyTimingsNV_ptr(device, swapchain, pTimingCount, pLatencyMarkerInfo);
+		public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo)
+			=> vkGetLatencyTimingsNV_ptr(device, swapchain, pLatencyMarkerInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkQueueNotifyOutOfBandNVDelegate(VkQueue queue, VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);

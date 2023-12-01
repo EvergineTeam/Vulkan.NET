@@ -10641,6 +10641,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
+		public uint timingCount;
 		public VkLatencyTimingsFrameReportNV* pTimings;
 	}
 
@@ -10737,6 +10738,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public ulong schedulingControlsFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 relaxedLineRasterization;
 	}
 
 }
