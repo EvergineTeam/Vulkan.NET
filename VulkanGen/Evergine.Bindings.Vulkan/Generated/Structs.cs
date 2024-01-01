@@ -1716,6 +1716,25 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLayerSettingsCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint settingCount;
+		public VkLayerSettingEXT* pSettings;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkLayerSettingEXT
+	{
+		public byte* pLayerName;
+		public byte* pSettingName;
+		public VkLayerSettingTypeEXT type;
+		public uint valueCount;
+		public void* pValues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkApplicationParametersEXT
 	{
 		public VkStructureType sType;
@@ -3798,6 +3817,24 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance6FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 maintenance6;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance6PropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 blockTexelViewCompatibleMultipleLayers;
+		public uint maxCombinedImageSamplerDescriptorCount;
+		public VkBool32 fragmentShadingRateClampCombinerInputs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkRenderingAreaInfoKHR
 	{
 		public VkStructureType sType;
@@ -4102,11 +4139,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCalibratedTimestampInfoEXT
+	public unsafe partial struct VkCalibratedTimestampInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkTimeDomainEXT timeDomain;
+		public VkTimeDomainKHR timeDomain;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4379,19 +4416,19 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVertexInputBindingDivisorDescriptionEXT
+	public unsafe partial struct VkVertexInputBindingDivisorDescriptionKHR
 	{
 		public uint binding;
 		public uint divisor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
+	public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint vertexBindingDivisorCount;
-		public VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors;
+		public VkVertexInputBindingDivisorDescriptionKHR* pVertexBindingDivisors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4400,6 +4437,15 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint maxVertexAttribDivisor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxVertexAttribDivisor;
+		public VkBool32 supportsNonZeroFirstInstance;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4554,7 +4600,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
+	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6896,6 +6942,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 clusterShadingRate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBufferCopy2
 	{
 		public VkStructureType sType;
@@ -7803,6 +7857,24 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoMaintenance1FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 videoMaintenance1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoInlineQueryInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkQueryPool queryPool;
+		public uint firstQuery;
+		public uint queryCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoDecodeH264ProfileInfoKHR
 	{
 		public VkStructureType sType;
@@ -8094,11 +8166,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264CapabilitiesEXT
+	public unsafe partial struct VkVideoEncodeH264CapabilitiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH264CapabilityFlagsEXT flags;
+		public VkVideoEncodeH264CapabilityFlagsKHR flags;
 		public IntPtr maxLevelIdc;
 		public uint maxSliceCount;
 		public uint maxPPictureL0ReferenceCount;
@@ -8110,27 +8182,27 @@ namespace Evergine.Bindings.Vulkan
 		public int maxQp;
 		public VkBool32 prefersGopRemainingFrames;
 		public VkBool32 requiresGopRemainingFrames;
-		public VkVideoEncodeH264StdFlagsEXT stdSyntaxFlags;
+		public VkVideoEncodeH264StdFlagsKHR stdSyntaxFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264QualityLevelPropertiesEXT
+	public unsafe partial struct VkVideoEncodeH264QualityLevelPropertiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH264RateControlFlagsEXT preferredRateControlFlags;
+		public VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags;
 		public uint preferredGopFrameCount;
 		public uint preferredIdrPeriod;
 		public uint preferredConsecutiveBFrameCount;
 		public uint preferredTemporalLayerCount;
-		public VkVideoEncodeH264QpEXT preferredConstantQp;
+		public VkVideoEncodeH264QpKHR preferredConstantQp;
 		public uint preferredMaxL0ReferenceCount;
 		public uint preferredMaxL1ReferenceCount;
 		public VkBool32 preferredStdEntropyCodingModeFlag;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264SessionCreateInfoEXT
+	public unsafe partial struct VkVideoEncodeH264SessionCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8139,7 +8211,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
+	public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8150,17 +8222,17 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
+	public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint maxStdSPSCount;
 		public uint maxStdPPSCount;
-		public VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
+		public VkVideoEncodeH264SessionParametersAddInfoKHR* pParametersAddInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264SessionParametersGetInfoEXT
+	public unsafe partial struct VkVideoEncodeH264SessionParametersGetInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8171,7 +8243,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264SessionParametersFeedbackInfoEXT
+	public unsafe partial struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8180,7 +8252,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264DpbSlotInfoEXT
+	public unsafe partial struct VkVideoEncodeH264DpbSlotInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8188,18 +8260,18 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264PictureInfoEXT
+	public unsafe partial struct VkVideoEncodeH264PictureInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint naluSliceEntryCount;
-		public VkVideoEncodeH264NaluSliceInfoEXT* pNaluSliceEntries;
+		public VkVideoEncodeH264NaluSliceInfoKHR* pNaluSliceEntries;
 		public IntPtr pStdPictureInfo;
 		public VkBool32 generatePrefixNalu;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264ProfileInfoEXT
+	public unsafe partial struct VkVideoEncodeH264ProfileInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8207,7 +8279,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264NaluSliceInfoEXT
+	public unsafe partial struct VkVideoEncodeH264NaluSliceInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8216,11 +8288,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264RateControlInfoEXT
+	public unsafe partial struct VkVideoEncodeH264RateControlInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH264RateControlFlagsEXT flags;
+		public VkVideoEncodeH264RateControlFlagsKHR flags;
 		public uint gopFrameCount;
 		public uint idrPeriod;
 		public uint consecutiveBFrameCount;
@@ -8228,7 +8300,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264QpEXT
+	public unsafe partial struct VkVideoEncodeH264QpKHR
 	{
 		public int qpI;
 		public int qpP;
@@ -8236,7 +8308,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264FrameSizeEXT
+	public unsafe partial struct VkVideoEncodeH264FrameSizeKHR
 	{
 		public uint frameISize;
 		public uint framePSize;
@@ -8244,7 +8316,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264GopRemainingFrameInfoEXT
+	public unsafe partial struct VkVideoEncodeH264GopRemainingFrameInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8255,29 +8327,29 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH264RateControlLayerInfoEXT
+	public unsafe partial struct VkVideoEncodeH264RateControlLayerInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 useMinQp;
-		public VkVideoEncodeH264QpEXT minQp;
+		public VkVideoEncodeH264QpKHR minQp;
 		public VkBool32 useMaxQp;
-		public VkVideoEncodeH264QpEXT maxQp;
+		public VkVideoEncodeH264QpKHR maxQp;
 		public VkBool32 useMaxFrameSize;
-		public VkVideoEncodeH264FrameSizeEXT maxFrameSize;
+		public VkVideoEncodeH264FrameSizeKHR maxFrameSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265CapabilitiesEXT
+	public unsafe partial struct VkVideoEncodeH265CapabilitiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH265CapabilityFlagsEXT flags;
+		public VkVideoEncodeH265CapabilityFlagsKHR flags;
 		public IntPtr maxLevelIdc;
 		public uint maxSliceSegmentCount;
 		public VkExtent2D maxTiles;
-		public VkVideoEncodeH265CtbSizeFlagsEXT ctbSizes;
-		public VkVideoEncodeH265TransformBlockSizeFlagsEXT transformBlockSizes;
+		public VkVideoEncodeH265CtbSizeFlagsKHR ctbSizes;
+		public VkVideoEncodeH265TransformBlockSizeFlagsKHR transformBlockSizes;
 		public uint maxPPictureL0ReferenceCount;
 		public uint maxBPictureL0ReferenceCount;
 		public uint maxL1ReferenceCount;
@@ -8287,26 +8359,26 @@ namespace Evergine.Bindings.Vulkan
 		public int maxQp;
 		public VkBool32 prefersGopRemainingFrames;
 		public VkBool32 requiresGopRemainingFrames;
-		public VkVideoEncodeH265StdFlagsEXT stdSyntaxFlags;
+		public VkVideoEncodeH265StdFlagsKHR stdSyntaxFlags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265QualityLevelPropertiesEXT
+	public unsafe partial struct VkVideoEncodeH265QualityLevelPropertiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH265RateControlFlagsEXT preferredRateControlFlags;
+		public VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags;
 		public uint preferredGopFrameCount;
 		public uint preferredIdrPeriod;
 		public uint preferredConsecutiveBFrameCount;
 		public uint preferredSubLayerCount;
-		public VkVideoEncodeH265QpEXT preferredConstantQp;
+		public VkVideoEncodeH265QpKHR preferredConstantQp;
 		public uint preferredMaxL0ReferenceCount;
 		public uint preferredMaxL1ReferenceCount;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265SessionCreateInfoEXT
+	public unsafe partial struct VkVideoEncodeH265SessionCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8315,7 +8387,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
+	public unsafe partial struct VkVideoEncodeH265SessionParametersAddInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8328,18 +8400,18 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
+	public unsafe partial struct VkVideoEncodeH265SessionParametersCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint maxStdVPSCount;
 		public uint maxStdSPSCount;
 		public uint maxStdPPSCount;
-		public VkVideoEncodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
+		public VkVideoEncodeH265SessionParametersAddInfoKHR* pParametersAddInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265SessionParametersGetInfoEXT
+	public unsafe partial struct VkVideoEncodeH265SessionParametersGetInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8352,7 +8424,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265SessionParametersFeedbackInfoEXT
+	public unsafe partial struct VkVideoEncodeH265SessionParametersFeedbackInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8362,17 +8434,17 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265PictureInfoEXT
+	public unsafe partial struct VkVideoEncodeH265PictureInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint naluSliceSegmentEntryCount;
-		public VkVideoEncodeH265NaluSliceSegmentInfoEXT* pNaluSliceSegmentEntries;
+		public VkVideoEncodeH265NaluSliceSegmentInfoKHR* pNaluSliceSegmentEntries;
 		public IntPtr pStdPictureInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT
+	public unsafe partial struct VkVideoEncodeH265NaluSliceSegmentInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8381,11 +8453,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265RateControlInfoEXT
+	public unsafe partial struct VkVideoEncodeH265RateControlInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeH265RateControlFlagsEXT flags;
+		public VkVideoEncodeH265RateControlFlagsKHR flags;
 		public uint gopFrameCount;
 		public uint idrPeriod;
 		public uint consecutiveBFrameCount;
@@ -8393,7 +8465,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265QpEXT
+	public unsafe partial struct VkVideoEncodeH265QpKHR
 	{
 		public int qpI;
 		public int qpP;
@@ -8401,7 +8473,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265FrameSizeEXT
+	public unsafe partial struct VkVideoEncodeH265FrameSizeKHR
 	{
 		public uint frameISize;
 		public uint framePSize;
@@ -8409,7 +8481,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT
+	public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8420,20 +8492,20 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265RateControlLayerInfoEXT
+	public unsafe partial struct VkVideoEncodeH265RateControlLayerInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 useMinQp;
-		public VkVideoEncodeH265QpEXT minQp;
+		public VkVideoEncodeH265QpKHR minQp;
 		public VkBool32 useMaxQp;
-		public VkVideoEncodeH265QpEXT maxQp;
+		public VkVideoEncodeH265QpKHR maxQp;
 		public VkBool32 useMaxFrameSize;
-		public VkVideoEncodeH265FrameSizeEXT maxFrameSize;
+		public VkVideoEncodeH265FrameSizeKHR maxFrameSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265ProfileInfoEXT
+	public unsafe partial struct VkVideoEncodeH265ProfileInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8441,7 +8513,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVideoEncodeH265DpbSlotInfoEXT
+	public unsafe partial struct VkVideoEncodeH265DpbSlotInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10493,6 +10565,86 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBindMemoryStatusKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkResult* pResult;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBindDescriptorSetsInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags stageFlags;
+		public VkPipelineLayout layout;
+		public uint firstSet;
+		public uint descriptorSetCount;
+		public VkDescriptorSet* pDescriptorSets;
+		public uint dynamicOffsetCount;
+		public uint* pDynamicOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPushConstantsInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipelineLayout layout;
+		public VkShaderStageFlags stageFlags;
+		public uint offset;
+		public uint size;
+		public void* pValues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPushDescriptorSetInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags stageFlags;
+		public VkPipelineLayout layout;
+		public uint set;
+		public uint descriptorWriteCount;
+		public VkWriteDescriptorSet* pDescriptorWrites;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPushDescriptorSetWithTemplateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+		public VkPipelineLayout layout;
+		public uint set;
+		public void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSetDescriptorBufferOffsetsInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags stageFlags;
+		public VkPipelineLayout layout;
+		public uint firstSet;
+		public uint setCount;
+		public uint* pBufferIndices;
+		public ulong* pOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags stageFlags;
+		public VkPipelineLayout layout;
+		public uint set;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM
 	{
 		public VkStructureType sType;
@@ -10580,6 +10732,15 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 perStageDescriptorSet;
+		public VkBool32 dynamicPipelineLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10746,6 +10907,49 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 relaxedLineRasterization;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRenderPassStripedFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 renderPassStriped;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRenderPassStripedPropertiesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D renderPassStripeGranularity;
+		public uint maxRenderPassStripes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassStripeInfoARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkRect2D stripeArea;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassStripeBeginInfoARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint stripeInfoCount;
+		public VkRenderPassStripeInfoARM* pStripeInfos;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassStripeSubmitInfoARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint stripeSemaphoreInfoCount;
+		public VkSemaphoreSubmitInfo* pStripeSemaphoreInfos;
 	}
 
 }

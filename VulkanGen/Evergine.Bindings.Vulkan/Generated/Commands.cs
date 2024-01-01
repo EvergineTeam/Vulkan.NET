@@ -2358,16 +2358,16 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdWriteBufferMarkerAMD_ptr(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate(VkPhysicalDevice physicalDevice, uint* pTimeDomainCount, VkTimeDomainEXT* pTimeDomains);
-		private static vkGetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
-		public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* pTimeDomainCount, VkTimeDomainEXT* pTimeDomains)
-			=> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr(physicalDevice, pTimeDomainCount, pTimeDomains);
+		private delegate VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHRDelegate(VkPhysicalDevice physicalDevice, uint* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains);
+		private static vkGetPhysicalDeviceCalibrateableTimeDomainsKHRDelegate vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
+		public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(VkPhysicalDevice physicalDevice, uint* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains)
+			=> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr(physicalDevice, pTimeDomainCount, pTimeDomains);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetCalibratedTimestampsEXTDelegate(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT* pTimestampInfos, ulong* pTimestamps, ulong* pMaxDeviation);
-		private static vkGetCalibratedTimestampsEXTDelegate vkGetCalibratedTimestampsEXT_ptr;
-		public static VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT* pTimestampInfos, ulong* pTimestamps, ulong* pMaxDeviation)
-			=> vkGetCalibratedTimestampsEXT_ptr(device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation);
+		private delegate VkResult vkGetCalibratedTimestampsKHRDelegate(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* pTimestampInfos, ulong* pTimestamps, ulong* pMaxDeviation);
+		private static vkGetCalibratedTimestampsKHRDelegate vkGetCalibratedTimestampsKHR_ptr;
+		public static VkResult vkGetCalibratedTimestampsKHR(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* pTimestampInfos, ulong* pTimestamps, ulong* pMaxDeviation)
+			=> vkGetCalibratedTimestampsKHR_ptr(device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdDrawMeshTasksNVDelegate(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask);
@@ -3509,6 +3509,18 @@ namespace Evergine.Bindings.Vulkan
 		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, IntPtr buffer, VkScreenBufferPropertiesQNX* pProperties)
 			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindDescriptorSets2KHRDelegate(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfoKHR* pBindDescriptorSetsInfo);
+		private static vkCmdBindDescriptorSets2KHRDelegate vkCmdBindDescriptorSets2KHR_ptr;
+		public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfoKHR* pBindDescriptorSetsInfo)
+			=> vkCmdBindDescriptorSets2KHR_ptr(commandBuffer, pBindDescriptorSetsInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPushConstants2KHRDelegate(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pPushConstantsInfo);
+		private static vkCmdPushConstants2KHRDelegate vkCmdPushConstants2KHR_ptr;
+		public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pPushConstantsInfo)
+			=> vkCmdPushConstants2KHR_ptr(commandBuffer, pPushConstantsInfo);
+
 		public static void LoadFuncionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -3908,8 +3920,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCompileDeferredNV",  out vkCompileDeferredNV_ptr);
 			NativeLib.LoadFunction("vkGetMemoryHostPointerPropertiesEXT",  out vkGetMemoryHostPointerPropertiesEXT_ptr);
 			NativeLib.LoadFunction("vkCmdWriteBufferMarkerAMD",  out vkCmdWriteBufferMarkerAMD_ptr);
-			NativeLib.LoadFunction("vkGetPhysicalDeviceCalibrateableTimeDomainsEXT",  out vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr);
-			NativeLib.LoadFunction("vkGetCalibratedTimestampsEXT",  out vkGetCalibratedTimestampsEXT_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceCalibrateableTimeDomainsKHR",  out vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr);
+			NativeLib.LoadFunction("vkGetCalibratedTimestampsKHR",  out vkGetCalibratedTimestampsKHR_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksNV",  out vkCmdDrawMeshTasksNV_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectNV",  out vkCmdDrawMeshTasksIndirectNV_ptr);
 			NativeLib.LoadFunction("vkCmdDrawMeshTasksIndirectCountNV",  out vkCmdDrawMeshTasksIndirectCountNV_ptr);
@@ -4100,6 +4112,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
+			NativeLib.LoadFunction("vkCmdBindDescriptorSets2KHR",  out vkCmdBindDescriptorSets2KHR_ptr);
+			NativeLib.LoadFunction("vkCmdPushConstants2KHR",  out vkCmdPushConstants2KHR_ptr);
 		}
 	}
 }
