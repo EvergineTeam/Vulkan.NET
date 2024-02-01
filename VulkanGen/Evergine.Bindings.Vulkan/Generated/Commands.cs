@@ -2496,6 +2496,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, pFragmentSize, combinerOps);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetRenderingAttachmentLocationsKHRDelegate(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfoKHR* pLocationInfo);
+		private static vkCmdSetRenderingAttachmentLocationsKHRDelegate vkCmdSetRenderingAttachmentLocationsKHR_ptr;
+		public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfoKHR* pLocationInfo)
+			=> vkCmdSetRenderingAttachmentLocationsKHR_ptr(commandBuffer, pLocationInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetRenderingInputAttachmentIndicesKHRDelegate(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pLocationInfo);
+		private static vkCmdSetRenderingInputAttachmentIndicesKHRDelegate vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
+		public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pLocationInfo)
+			=> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, pLocationInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkWaitForPresentKHRDelegate(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout);
 		private static vkWaitForPresentKHRDelegate vkWaitForPresentKHR_ptr;
 		public static VkResult vkWaitForPresentKHR(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout)
@@ -2538,10 +2550,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCreateHeadlessSurfaceEXT_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetLineStippleEXTDelegate(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
-		private static vkCmdSetLineStippleEXTDelegate vkCmdSetLineStippleEXT_ptr;
-		public static void vkCmdSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
-			=> vkCmdSetLineStippleEXT_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
+		private delegate void vkCmdSetLineStippleKHRDelegate(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
+		private static vkCmdSetLineStippleKHRDelegate vkCmdSetLineStippleKHR_ptr;
+		public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
+			=> vkCmdSetLineStippleKHR_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateDeferredOperationKHRDelegate(VkDevice device, VkAllocationCallbacks* pAllocator, VkDeferredOperationKHR* pDeferredOperation);
@@ -3228,12 +3240,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPipelineIndirectDeviceAddressNV_ptr(device, pInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetTessellationDomainOriginEXTDelegate(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
-		private static vkCmdSetTessellationDomainOriginEXTDelegate vkCmdSetTessellationDomainOriginEXT_ptr;
-		public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
-			=> vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetDepthClampEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable);
 		private static vkCmdSetDepthClampEnableEXTDelegate vkCmdSetDepthClampEnableEXT_ptr;
 		public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable)
@@ -3292,66 +3298,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdSetColorWriteMaskEXTDelegate vkCmdSetColorWriteMaskEXT_ptr;
 		public static void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorComponentFlags* pColorWriteMasks)
 			=> vkCmdSetColorWriteMaskEXT_ptr(commandBuffer, firstAttachment, attachmentCount, pColorWriteMasks);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetRasterizationStreamEXTDelegate(VkCommandBuffer commandBuffer, uint rasterizationStream);
-		private static vkCmdSetRasterizationStreamEXTDelegate vkCmdSetRasterizationStreamEXT_ptr;
-		public static void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint rasterizationStream)
-			=> vkCmdSetRasterizationStreamEXT_ptr(commandBuffer, rasterizationStream);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetConservativeRasterizationModeEXTDelegate(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode);
-		private static vkCmdSetConservativeRasterizationModeEXTDelegate vkCmdSetConservativeRasterizationModeEXT_ptr;
-		public static void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode)
-			=> vkCmdSetConservativeRasterizationModeEXT_ptr(commandBuffer, conservativeRasterizationMode);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetExtraPrimitiveOverestimationSizeEXTDelegate(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize);
-		private static vkCmdSetExtraPrimitiveOverestimationSizeEXTDelegate vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr;
-		public static void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize)
-			=> vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr(commandBuffer, extraPrimitiveOverestimationSize);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetDepthClipEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable);
-		private static vkCmdSetDepthClipEnableEXTDelegate vkCmdSetDepthClipEnableEXT_ptr;
-		public static void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable)
-			=> vkCmdSetDepthClipEnableEXT_ptr(commandBuffer, depthClipEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetSampleLocationsEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable);
-		private static vkCmdSetSampleLocationsEnableEXTDelegate vkCmdSetSampleLocationsEnableEXT_ptr;
-		public static void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable)
-			=> vkCmdSetSampleLocationsEnableEXT_ptr(commandBuffer, sampleLocationsEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetColorBlendAdvancedEXTDelegate(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorBlendAdvancedEXT* pColorBlendAdvanced);
-		private static vkCmdSetColorBlendAdvancedEXTDelegate vkCmdSetColorBlendAdvancedEXT_ptr;
-		public static void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorBlendAdvancedEXT* pColorBlendAdvanced)
-			=> vkCmdSetColorBlendAdvancedEXT_ptr(commandBuffer, firstAttachment, attachmentCount, pColorBlendAdvanced);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetProvokingVertexModeEXTDelegate(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode);
-		private static vkCmdSetProvokingVertexModeEXTDelegate vkCmdSetProvokingVertexModeEXT_ptr;
-		public static void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode)
-			=> vkCmdSetProvokingVertexModeEXT_ptr(commandBuffer, provokingVertexMode);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetLineRasterizationModeEXTDelegate(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode);
-		private static vkCmdSetLineRasterizationModeEXTDelegate vkCmdSetLineRasterizationModeEXT_ptr;
-		public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode)
-			=> vkCmdSetLineRasterizationModeEXT_ptr(commandBuffer, lineRasterizationMode);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetLineStippleEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable);
-		private static vkCmdSetLineStippleEnableEXTDelegate vkCmdSetLineStippleEnableEXT_ptr;
-		public static void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable)
-			=> vkCmdSetLineStippleEnableEXT_ptr(commandBuffer, stippledLineEnable);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetDepthClipNegativeOneToOneEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne);
-		private static vkCmdSetDepthClipNegativeOneToOneEXTDelegate vkCmdSetDepthClipNegativeOneToOneEXT_ptr;
-		public static void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne)
-			=> vkCmdSetDepthClipNegativeOneToOneEXT_ptr(commandBuffer, negativeOneToOne);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetShaderModuleIdentifierEXTDelegate(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier);
@@ -3436,6 +3382,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdBindShadersEXTDelegate vkCmdBindShadersEXT_ptr;
 		public static void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* pStages, VkShaderEXT* pShaders)
 			=> vkCmdBindShadersEXT_ptr(commandBuffer, stageCount, pStages, pShaders);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetTessellationDomainOriginEXTDelegate(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
+		private static vkCmdSetTessellationDomainOriginEXTDelegate vkCmdSetTessellationDomainOriginEXT_ptr;
+		public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
+			=> vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetFramebufferTilePropertiesQCOMDelegate(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
@@ -3943,6 +3895,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCreateMetalSurfaceEXT",  out vkCreateMetalSurfaceEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceFragmentShadingRatesKHR",  out vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetFragmentShadingRateKHR",  out vkCmdSetFragmentShadingRateKHR_ptr);
+			NativeLib.LoadFunction("vkCmdSetRenderingAttachmentLocationsKHR",  out vkCmdSetRenderingAttachmentLocationsKHR_ptr);
+			NativeLib.LoadFunction("vkCmdSetRenderingInputAttachmentIndicesKHR",  out vkCmdSetRenderingInputAttachmentIndicesKHR_ptr);
 			NativeLib.LoadFunction("vkWaitForPresentKHR",  out vkWaitForPresentKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV",  out vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr);
@@ -3950,7 +3904,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkAcquireFullScreenExclusiveModeEXT",  out vkAcquireFullScreenExclusiveModeEXT_ptr);
 			NativeLib.LoadFunction("vkReleaseFullScreenExclusiveModeEXT",  out vkReleaseFullScreenExclusiveModeEXT_ptr);
 			NativeLib.LoadFunction("vkCreateHeadlessSurfaceEXT",  out vkCreateHeadlessSurfaceEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetLineStippleEXT",  out vkCmdSetLineStippleEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetLineStippleKHR",  out vkCmdSetLineStippleKHR_ptr);
 			NativeLib.LoadFunction("vkCreateDeferredOperationKHR",  out vkCreateDeferredOperationKHR_ptr);
 			NativeLib.LoadFunction("vkDestroyDeferredOperationKHR",  out vkDestroyDeferredOperationKHR_ptr);
 			NativeLib.LoadFunction("vkGetDeferredOperationMaxConcurrencyKHR",  out vkGetDeferredOperationMaxConcurrencyKHR_ptr);
@@ -4065,7 +4019,6 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPipelineIndirectMemoryRequirementsNV",  out vkGetPipelineIndirectMemoryRequirementsNV_ptr);
 			NativeLib.LoadFunction("vkCmdUpdatePipelineIndirectBufferNV",  out vkCmdUpdatePipelineIndirectBufferNV_ptr);
 			NativeLib.LoadFunction("vkGetPipelineIndirectDeviceAddressNV",  out vkGetPipelineIndirectDeviceAddressNV_ptr);
-			NativeLib.LoadFunction("vkCmdSetTessellationDomainOriginEXT",  out vkCmdSetTessellationDomainOriginEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampEnableEXT",  out vkCmdSetDepthClampEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetPolygonModeEXT",  out vkCmdSetPolygonModeEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetRasterizationSamplesEXT",  out vkCmdSetRasterizationSamplesEXT_ptr);
@@ -4076,16 +4029,6 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetColorBlendEnableEXT",  out vkCmdSetColorBlendEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetColorBlendEquationEXT",  out vkCmdSetColorBlendEquationEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetColorWriteMaskEXT",  out vkCmdSetColorWriteMaskEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetRasterizationStreamEXT",  out vkCmdSetRasterizationStreamEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetConservativeRasterizationModeEXT",  out vkCmdSetConservativeRasterizationModeEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetExtraPrimitiveOverestimationSizeEXT",  out vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetDepthClipEnableEXT",  out vkCmdSetDepthClipEnableEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetSampleLocationsEnableEXT",  out vkCmdSetSampleLocationsEnableEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetColorBlendAdvancedEXT",  out vkCmdSetColorBlendAdvancedEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetProvokingVertexModeEXT",  out vkCmdSetProvokingVertexModeEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetLineRasterizationModeEXT",  out vkCmdSetLineRasterizationModeEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetLineStippleEnableEXT",  out vkCmdSetLineStippleEnableEXT_ptr);
-			NativeLib.LoadFunction("vkCmdSetDepthClipNegativeOneToOneEXT",  out vkCmdSetDepthClipNegativeOneToOneEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleIdentifierEXT",  out vkGetShaderModuleIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleCreateInfoIdentifierEXT",  out vkGetShaderModuleCreateInfoIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceOpticalFlowImageFormatsNV",  out vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr);
@@ -4100,6 +4043,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkDestroyShaderEXT",  out vkDestroyShaderEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
 			NativeLib.LoadFunction("vkCmdBindShadersEXT",  out vkCmdBindShadersEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetTessellationDomainOriginEXT",  out vkCmdSetTessellationDomainOriginEXT_ptr);
 			NativeLib.LoadFunction("vkGetFramebufferTilePropertiesQCOM",  out vkGetFramebufferTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);

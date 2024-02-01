@@ -5900,7 +5900,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
+	public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6131,7 +6131,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
+	public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6144,7 +6144,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
+	public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6152,11 +6152,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoEXT
+	public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkLineRasterizationModeEXT lineRasterizationMode;
+		public VkLineRasterizationModeKHR lineRasterizationMode;
 		public VkBool32 stippledLineEnable;
 		public uint lineStippleFactor;
 		public ushort lineStipplePattern;
@@ -10950,6 +10950,75 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public uint stripeSemaphoreInfoCount;
 		public VkSemaphoreSubmitInfo* pStripeSemaphoreInfos;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderMaximalReconvergence;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderSubgroupRotate;
+		public VkBool32 shaderSubgroupRotateClustered;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderExpectAssume;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderFloatControls2FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderFloatControls2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 dynamicRenderingLocalRead;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderingAttachmentLocationInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint colorAttachmentCount;
+		public uint* pColorAttachmentLocations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderingInputAttachmentIndexInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint colorAttachmentCount;
+		public uint* pColorAttachmentInputIndices;
+		public uint* pDepthInputAttachmentIndex;
+		public uint* pStencilInputAttachmentIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderQuadControlFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderQuadControl;
 	}
 
 }
