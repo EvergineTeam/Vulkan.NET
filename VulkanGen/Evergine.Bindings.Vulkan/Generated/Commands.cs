@@ -144,9 +144,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkFreeMemory_ptr(device, memory, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkMapMemoryDelegate(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, uint flags, void** ppData);
+		private delegate VkResult vkMapMemoryDelegate(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void** ppData);
 		private static vkMapMemoryDelegate vkMapMemory_ptr;
-		public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, uint flags, void** ppData)
+		public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void** ppData)
 			=> vkMapMemory_ptr(device, memory, offset, size, flags, ppData);
 
 		[UnmanagedFunctionPointer(CallConv)]

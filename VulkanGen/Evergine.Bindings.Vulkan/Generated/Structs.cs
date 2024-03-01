@@ -7990,6 +7990,52 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1ProfileInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoAV1Profile stdProfile;
+		public VkBool32 filmGrainSupport;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1CapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoAV1Level maxLevel;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoAV1SequenceHeader* pStdSequenceHeader;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1PictureInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
+		public fixed int referenceNameSlotIndices[(int)VulkanNative.VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR];
+		public uint frameHeaderOffset;
+		public uint tileCount;
+		public uint* pTileOffsets;
+		public uint* pTileSizes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1DpbSlotInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoDecodeAV1ReferenceInfo* pStdReferenceInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoSessionCreateInfoKHR
 	{
 		public VkStructureType sType;
@@ -8082,7 +8128,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkVideoEncodeFlagsKHR flags;
 		public VkBuffer dstBuffer;
 		public ulong dstBufferOffset;
 		public ulong dstBufferRange;
@@ -10343,7 +10389,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkMemoryMapFlags flags;
 		public VkDeviceMemory memory;
 		public ulong offset;
 		public ulong size;
@@ -10354,7 +10400,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkMemoryUnmapFlagsKHR flags;
 		public VkDeviceMemory memory;
 	}
 
@@ -11019,6 +11065,40 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderQuadControl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderFloat16VectorAtomics;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 memoryMapPlaced;
+		public VkBool32 memoryMapRangePlaced;
+		public VkBool32 memoryUnmapReserve;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong minPlacedMemoryMapAlignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryMapPlacedInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public void* pPlacedAddress;
 	}
 
 }

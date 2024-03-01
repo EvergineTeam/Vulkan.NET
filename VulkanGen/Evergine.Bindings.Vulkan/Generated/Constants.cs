@@ -34,6 +34,7 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16;
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
 		public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
+		public const uint VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
 		public const uint VK_SHADER_INDEX_UNUSED_AMDX = (~0U);
 		public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
 		public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
@@ -483,6 +484,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_HOST_IMAGE_COPY_EXTENSION_NAME = "VK_EXT_host_image_copy";
 		public const uint VK_KHR_MAP_MEMORY_2_SPEC_VERSION = 1;
 		public const string VK_KHR_MAP_MEMORY_2_EXTENSION_NAME = "VK_KHR_map_memory2";
+		public const uint VK_EXT_MAP_MEMORY_PLACED_SPEC_VERSION = 1;
+		public const string VK_EXT_MAP_MEMORY_PLACED_EXTENSION_NAME = "VK_EXT_map_memory_placed";
 		public const uint VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2";
 		public const uint VK_EXT_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1;
@@ -661,7 +664,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
 		public const uint VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_ARM_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_ARM_shader_core_properties";
-		public const uint VK_KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION = 1;
+		public const uint VK_KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION = 2;
 		public const string VK_KHR_SHADER_SUBGROUP_ROTATE_EXTENSION_NAME = "VK_KHR_shader_subgroup_rotate";
 		public const uint VK_ARM_SCHEDULING_CONTROLS_SPEC_VERSION = 1;
 		public const string VK_ARM_SCHEDULING_CONTROLS_EXTENSION_NAME = "VK_ARM_scheduling_controls";
@@ -751,6 +754,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 		public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
 		public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
+		public const uint VK_KHR_VIDEO_DECODE_AV1_SPEC_VERSION = 1;
+		public const string VK_KHR_VIDEO_DECODE_AV1_EXTENSION_NAME = "VK_KHR_video_decode_av1";
 		public const uint VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION = 1;
 		public const string VK_KHR_VIDEO_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_video_maintenance1";
 		public const uint VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION = 1;
@@ -787,5 +792,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_6_EXTENSION_NAME = "VK_KHR_maintenance6";
 		public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
 		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
+		public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
+		public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
 	}
 }
