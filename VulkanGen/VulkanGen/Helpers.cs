@@ -267,6 +267,11 @@ namespace VulkanGen
                 case "StdVideoEncodeH264ReferenceInfo":
                 case "StdVideoH264LevelIdc":
                 case "StdVideoH265LevelIdc":
+                case "StdVideoAV1Profile":
+                case "StdVideoAV1Level":
+                case "StdVideoAV1SequenceHeader":
+                case "StdVideoDecodeAV1PictureInfo":
+                case "StdVideoDecodeAV1ReferenceInfo":
                 case "NvSciSyncFence":
                 case "NvSciSyncObj":
                 case "StdVideoEncodeH264ReferenceListsInfo":

@@ -7994,7 +7994,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoAV1Profile stdProfile;
+		public IntPtr stdProfile;
 		public VkBool32 filmGrainSupport;
 	}
 
@@ -8003,7 +8003,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoAV1Level maxLevel;
+		public IntPtr maxLevel;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8011,7 +8011,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoAV1SequenceHeader* pStdSequenceHeader;
+		public IntPtr pStdSequenceHeader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8019,7 +8019,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
+		public IntPtr pStdPictureInfo;
 		public fixed int referenceNameSlotIndices[(int)VulkanNative.VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR];
 		public uint frameHeaderOffset;
 		public uint tileCount;
@@ -8032,7 +8032,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoDecodeAV1ReferenceInfo* pStdReferenceInfo;
+		public IntPtr pStdReferenceInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8880,6 +8880,14 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public VkBool32 rayTracingMotionBlur;
 		public VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 rayTracingValidation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11099,6 +11107,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public void* pPlacedAddress;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderRawAccessChains;
 	}
 
 }
