@@ -540,7 +540,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_OBJECT_REFRESH_EXTENSION_NAME = "VK_KHR_object_refresh";
 		public const uint VK_NV_LOW_LATENCY_SPEC_VERSION = 1;
 		public const string VK_NV_LOW_LATENCY_EXTENSION_NAME = "VK_NV_low_latency";
-		public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
+		public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 2;
 		public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
 		public const uint VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1;
 		public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
@@ -714,7 +714,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_EXT_rasterization_order_attachment_access";
 		public const uint VK_NV_OPTICAL_FLOW_SPEC_VERSION = 1;
 		public const string VK_NV_OPTICAL_FLOW_EXTENSION_NAME = "VK_NV_optical_flow";
-		public const uint VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 1;
+		public const uint VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 2;
 		public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
 		public const uint VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
 		public const string VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";
