@@ -740,6 +740,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_EXTENDED_SPARSE_ADDRESS_SPACE_EXTENSION_NAME = "VK_NV_extended_sparse_address_space";
 		public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 		public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
+		public const uint VK_EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION = 1;
+		public const string VK_EXT_LEGACY_VERTEX_ATTRIBUTES_EXTENSION_NAME = "VK_EXT_legacy_vertex_attributes";
 		public const uint VK_EXT_LAYER_SETTINGS_SPEC_VERSION = 2;
 		public const string VK_EXT_LAYER_SETTINGS_EXTENSION_NAME = "VK_EXT_layer_settings";
 		public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
@@ -798,5 +800,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
 		public const uint VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION = 1;
 		public const string VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME = "VK_NV_ray_tracing_validation";
+		public const uint VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
+		public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
 	}
 }

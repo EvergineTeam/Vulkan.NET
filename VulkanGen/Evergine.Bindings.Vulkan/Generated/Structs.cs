@@ -7228,6 +7228,22 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 legacyVertexAttributes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 nativeUnalignedPerformance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -11115,6 +11131,30 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderRawAccessChains;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 imageAlignmentControl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceImageAlignmentControlPropertiesMESA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint supportedImageAlignmentMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImageAlignmentControlCreateInfoMESA
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maximumRequestedAlignment;
 	}
 
 }
