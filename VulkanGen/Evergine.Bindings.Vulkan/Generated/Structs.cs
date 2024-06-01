@@ -11157,5 +11157,13 @@ namespace Evergine.Bindings.Vulkan
 		public uint maximumRequestedAlignment;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderReplicatedComposites;
+	}
+
 }
 
