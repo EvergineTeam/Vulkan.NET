@@ -2502,10 +2502,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetRenderingAttachmentLocationsKHR_ptr(commandBuffer, pLocationInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetRenderingInputAttachmentIndicesKHRDelegate(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pLocationInfo);
+		private delegate void vkCmdSetRenderingInputAttachmentIndicesKHRDelegate(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pInputAttachmentIndexInfo);
 		private static vkCmdSetRenderingInputAttachmentIndicesKHRDelegate vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
-		public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pLocationInfo)
-			=> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, pLocationInfo);
+		public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* pInputAttachmentIndexInfo)
+			=> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, pInputAttachmentIndexInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkWaitForPresentKHRDelegate(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout);

@@ -678,7 +678,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
 		public const uint VK_ARM_RENDER_PASS_STRIPED_SPEC_VERSION = 1;
 		public const string VK_ARM_RENDER_PASS_STRIPED_EXTENSION_NAME = "VK_ARM_render_pass_striped";
-		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
+		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 2;
 		public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
 		public const uint VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
 		public const string VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
@@ -796,6 +796,10 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
 		public const uint VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
 		public const string VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
+		public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
+		public const string VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME = "VK_KHR_shader_relaxed_extended_instruction";
+		public const uint VK_KHR_MAINTENANCE_7_SPEC_VERSION = 1;
+		public const string VK_KHR_MAINTENANCE_7_EXTENSION_NAME = "VK_KHR_maintenance7";
 		public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
 		public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
 		public const uint VK_EXT_SHADER_REPLICATED_COMPOSITES_SPEC_VERSION = 1;

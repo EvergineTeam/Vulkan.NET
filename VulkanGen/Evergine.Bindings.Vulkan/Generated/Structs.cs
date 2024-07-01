@@ -3835,6 +3835,57 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance7FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 maintenance7;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance7PropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 robustFragmentShadingRateAttachmentAccess;
+		public VkBool32 separateDepthStencilAttachmentAccess;
+		public uint maxDescriptorSetTotalUniformBuffersDynamic;
+		public uint maxDescriptorSetTotalStorageBuffersDynamic;
+		public uint maxDescriptorSetTotalBuffersDynamic;
+		public uint maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic;
+		public uint maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic;
+		public uint maxDescriptorSetUpdateAfterBindTotalBuffersDynamic;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesListKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint layeredApiCount;
+		public VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint vendorID;
+		public uint deviceID;
+		public VkPhysicalDeviceLayeredApiKHR layeredAPI;
+		public fixed byte deviceName[(int)VulkanNative.VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPhysicalDeviceProperties2 properties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkRenderingAreaInfoKHR
 	{
 		public VkStructureType sType;
@@ -7297,6 +7348,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 externalMemoryRDMA;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderRelaxedExtendedInstruction;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

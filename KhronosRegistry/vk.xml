@@ -175,11 +175,11 @@ branch of the member gitlab server.
 #define <name>VKSC_API_VERSION_1_0</name> <type>VK_MAKE_API_VERSION</type>(VKSC_API_VARIANT, 1, 0, 0)// Patch version should always be set to 0</type>
 
         <type api="vulkan" category="define">// Version of this file
-#define <name>VK_HEADER_VERSION</name> 286</type>
+#define <name>VK_HEADER_VERSION</name> 289</type>
         <type api="vulkan" category="define" requires="VK_HEADER_VERSION">// Complete version of this file
 #define <name>VK_HEADER_VERSION_COMPLETE</name> <type>VK_MAKE_API_VERSION</type>(0, 1, 3, VK_HEADER_VERSION)</type>
         <type api="vulkansc" category="define">// Version of this file
-#define <name>VK_HEADER_VERSION</name> 14</type>
+#define <name>VK_HEADER_VERSION</name> 15</type>
         <type api="vulkansc" category="define" requires="VKSC_API_VARIANT">// Complete version of this file
 #define <name>VK_HEADER_VERSION_COMPLETE</name> <type>VK_MAKE_API_VERSION</type>(VKSC_API_VARIANT, 1, 0, VK_HEADER_VERSION)</type>
 
@@ -796,6 +796,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type name="VkCubicFilterWeightsQCOM" category="enum"/>
         <type name="VkBlockMatchWindowCompareModeQCOM" category="enum"/>
         <type name="VkLayeredDriverUnderlyingApiMSFT" category="enum"/>
+        <type name="VkPhysicalDeviceLayeredApiKHR" category="enum"/>
 
             <comment>WSI extensions</comment>
         <type name="VkColorSpaceKHR" category="enum"/>
@@ -1731,7 +1732,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true"><type>uint32_t</type>               <name>clearValueCount</name></member>
             <member len="clearValueCount" noautovalidity="true">const <type>VkClearValue</type>*    <name>pClearValues</name></member>
         </type>
-        <type category="union" name="VkClearColorValue" comment="// Union allowing specification of floating point, integer, or unsigned integer color data. Actual value selected is based on image/attachment being cleared.">
+        <type category="union" name="VkClearColorValue" comment="// Union allowing specification of floating-point, integer, or unsigned integer color data. Actual value selected is based on image/attachment being cleared.">
             <member><type>float</type>                  <name>float32</name>[4]</member>
             <member><type>int32_t</type>                <name>int32</name>[4]</member>
             <member><type>uint32_t</type>               <name>uint32</name>[4]</member>
@@ -1835,7 +1836,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>VkBool32</type>               <name>vertexPipelineStoresAndAtomics</name><comment>stores and atomic ops on storage buffers and images are supported in vertex, tessellation, and geometry stages</comment></member>
             <member><type>VkBool32</type>               <name>fragmentStoresAndAtomics</name><comment>stores and atomic ops on storage buffers and images are supported in the fragment stage</comment></member>
             <member><type>VkBool32</type>               <name>shaderTessellationAndGeometryPointSize</name><comment>tessellation and geometry stages can export point size</comment></member>
-            <member><type>VkBool32</type>               <name>shaderImageGatherExtended</name><comment>image gather with run-time values and independent offsets</comment></member>
+            <member><type>VkBool32</type>               <name>shaderImageGatherExtended</name><comment>image gather with runtime values and independent offsets</comment></member>
             <member><type>VkBool32</type>               <name>shaderStorageImageExtendedFormats</name><comment>the extended set of formats can be used for storage images</comment></member>
             <member><type>VkBool32</type>               <name>shaderStorageImageMultisample</name><comment>multisample images can be used for storage images</comment></member>
             <member><type>VkBool32</type>               <name>shaderStorageImageReadWithoutFormat</name><comment>read from storage image does not require format qualifier</comment></member>
@@ -2225,7 +2226,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true">const <type>void</type>*                      <name>pNext</name></member>
             <member optional="true"><type>VkDebugReportFlagsEXT</type>            <name>flags</name><comment>Indicates which events call this callback</comment></member>
             <member><type>PFN_vkDebugReportCallbackEXT</type>     <name>pfnCallback</name><comment>Function pointer of a callback function</comment></member>
-            <member optional="true"><type>void</type>*            <name>pUserData</name><comment>User data provided to callback function</comment></member>
+            <member optional="true"><type>void</type>*            <name>pUserData</name><comment>Data provided to callback function</comment></member>
         </type>
         <type category="struct" name="VkValidationFlagsEXT" structextends="VkInstanceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT"><type>VkStructureType</type>                  <name>sType</name><comment>Must be VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT</comment></member>
@@ -2233,7 +2234,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>uint32_t</type>                         <name>disabledValidationCheckCount</name><comment>Number of validation checks to disable</comment></member>
             <member len="disabledValidationCheckCount">const <type>VkValidationCheckEXT</type>* <name>pDisabledValidationChecks</name><comment>Validation checks to disable</comment></member>
         </type>
-        <type category="struct" name="VkValidationFeaturesEXT" structextends="VkInstanceCreateInfo">
+        <type category="struct" name="VkValidationFeaturesEXT" structextends="VkInstanceCreateInfo,VkShaderModuleCreateInfo,VkShaderCreateInfoEXT">
             <member values="VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT"><type>VkStructureType</type>  <name>sType</name><comment>Must be VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT</comment></member>
             <member optional="true">const <type>void</type>*                      <name>pNext</name></member>
             <member optional="true"><type>uint32_t</type>                         <name>enabledValidationFeatureCount</name><comment>Number of validation features to enable</comment></member>
@@ -3733,6 +3734,42 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>VkBool32</type>                                         <name>blockTexelViewCompatibleMultipleLayers</name></member>
             <member><type>uint32_t</type>                                         <name>maxCombinedImageSamplerDescriptorCount</name></member>
             <member limittype="bitmask"><type>VkBool32</type>                     <name>fragmentShadingRateClampCombinerInputs</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceMaintenance7FeaturesKHR" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member><type>VkBool32</type>                                         <name>maintenance7</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceMaintenance7PropertiesKHR" returnedonly="true" structextends="VkPhysicalDeviceProperties2">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member><type>VkBool32</type>                                         <name>robustFragmentShadingRateAttachmentAccess</name></member>
+            <member><type>VkBool32</type>                                         <name>separateDepthStencilAttachmentAccess</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetTotalUniformBuffersDynamic</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetTotalStorageBuffersDynamic</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetTotalBuffersDynamic</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxDescriptorSetUpdateAfterBindTotalBuffersDynamic</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceLayeredApiPropertiesListKHR" structextends="VkPhysicalDeviceProperties2">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member optional="true"><type>uint32_t</type>                         <name>layeredApiCount</name></member>
+            <member optional="true" len="layeredApiCount"><type>VkPhysicalDeviceLayeredApiPropertiesKHR</type>* <name>pLayeredApis</name><comment>Output list of layered implementations underneath the physical device</comment></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceLayeredApiPropertiesKHR" returnedonly="true">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member limittype="noauto"><type>uint32_t</type>                      <name>vendorID</name></member>
+            <member limittype="noauto"><type>uint32_t</type>                      <name>deviceID</name></member>
+            <member limittype="noauto"><type>VkPhysicalDeviceLayeredApiKHR</type> <name>layeredAPI</name></member>
+            <member limittype="noauto"><type>char</type>                          <name>deviceName</name>[<enum>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</enum>]</member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceLayeredApiVulkanPropertiesKHR" returnedonly="true" structextends="VkPhysicalDeviceLayeredApiPropertiesKHR">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member limittype="noauto"><type>VkPhysicalDeviceProperties2</type>   <name>properties</name></member>
         </type>
         <type category="struct" name="VkRenderingAreaInfoKHR">
             <member values="VK_STRUCTURE_TYPE_RENDERING_AREA_INFO_KHR"><type>VkStructureType</type> <name>sType</name></member>
@@ -6305,6 +6342,11 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true" noautovalidity="true"><type>void</type>*        <name>pNext</name></member>
             <member><type>VkBool32</type>                           <name>externalMemoryRDMA</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true" noautovalidity="true"><type>void</type>*        <name>pNext</name></member>
+            <member><type>VkBool32</type>                           <name>shaderRelaxedExtendedInstruction</name></member>
         </type>
         <type category="struct" name="VkVertexInputBindingDescription2EXT">
             <member values="VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT"><type>VkStructureType</type> <name>sType</name></member>
@@ -10370,7 +10412,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <enum value="23"      name="VK_DRIVER_ID_MESA_DOZEN"                    comment="Mesa open source project"/>
         <enum value="24"      name="VK_DRIVER_ID_MESA_NVK"                      comment="Mesa open source project"/>
         <enum value="25"      name="VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA"  comment="Imagination Technologies"/>
-        <enum value="26"      name="VK_DRIVER_ID_MESA_AGXV"                     comment="Mesa open source project"/>
+        <enum value="26"      name="VK_DRIVER_ID_MESA_HONEYKRISP"               comment="Mesa open source project"/>
         <enum value="27"      name="VK_DRIVER_ID_RESERVED_27"                   comment="Reserved for undisclosed driver project"/>
     </enums>
     <enums name="VkConditionalRenderingFlagBitsEXT" type="bitmask">
@@ -11259,6 +11301,13 @@ typedef void* <name>MTLSharedEvent_id</name>;
     <enums name="VkBlockMatchWindowCompareModeQCOM" type="enum">
         <enum value="0" name="VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM"/>
         <enum value="1" name="VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM"/>
+    </enums>
+    <enums name="VkPhysicalDeviceLayeredApiKHR" type="enum">
+        <enum value="0"     name="VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR"/>
+        <enum value="1"     name="VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR"/>
+        <enum value="2"     name="VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR"/>
+        <enum value="3"     name="VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR"/>
+        <enum value="4"     name="VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR"/>
     </enums>
     <enums name="VkLayeredDriverUnderlyingApiMSFT" type="enum">
         <enum value="0" name="VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT"/>
@@ -12914,35 +12963,35 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkImportFenceFdInfoKHR</type>* <name>pImportFenceFdInfo</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR">
             <proto><type>VkResult</type> <name>vkGetFenceSciSyncFenceNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkFenceGetSciSyncInfoNV</type>* <name>pGetSciSyncHandleInfo</name></param>
             <param><type>void</type>* <name>pHandle</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR">
             <proto><type>VkResult</type> <name>vkGetFenceSciSyncObjNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkFenceGetSciSyncInfoNV</type>* <name>pGetSciSyncHandleInfo</name></param>
             <param><type>void</type>* <name>pHandle</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR">
             <proto><type>VkResult</type> <name>vkImportFenceSciSyncFenceNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkImportFenceSciSyncInfoNV</type>* <name>pImportFenceSciSyncInfo</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR">
             <proto><type>VkResult</type> <name>vkImportFenceSciSyncObjNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkImportFenceSciSyncInfoNV</type>* <name>pImportFenceSciSyncInfo</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR">
             <proto><type>VkResult</type> <name>vkGetSemaphoreSciSyncObjNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkSemaphoreGetSciSyncInfoNV</type>* <name>pGetSciSyncInfo</name></param>
             <param><type>void</type>* <name>pHandle</name></param>
         </command>
-        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_EXT,VK_ERROR_OUT_OF_HOST_MEMORY">
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_INVALID_EXTERNAL_HANDLE,VK_ERROR_NOT_PERMITTED_KHR,VK_ERROR_OUT_OF_HOST_MEMORY">
             <proto><type>VkResult</type> <name>vkImportSemaphoreSciSyncObjNV</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkImportSemaphoreSciSyncInfoNV</type>* <name>pImportSemaphoreSciSyncInfo</name></param>
@@ -15405,7 +15454,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <command queues="graphics" renderpass="inside" cmdbufferlevel="primary,secondary" tasks="state">
             <proto><type>void</type> <name>vkCmdSetRenderingInputAttachmentIndicesKHR</name></proto>
             <param externsync="true"><type>VkCommandBuffer</type> <name>commandBuffer</name></param>
-            <param>const <type>VkRenderingInputAttachmentIndexInfoKHR</type>* <name>pLocationInfo</name></param>
+            <param>const <type>VkRenderingInputAttachmentIndexInfoKHR</type>* <name>pInputAttachmentIndexInfo</name></param>
         </command>
     </commands>
 
@@ -17074,7 +17123,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum offset="0" extends="VkResult" dir="-"                     name="VK_ERROR_INVALID_SHADER_NV"/>
             </require>
         </extension>
-        <extension name="VK_EXT_depth_range_unrestricted" type="device" number="14" author="NV" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_depth_range_unrestricted" type="device" number="14" author="NV" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                                 name="VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_depth_range_unrestricted&quot;"       name="VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME"/>
@@ -17856,7 +17905,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_EXT_shader_subgroup_vote&quot;"           name="VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_texture_compression_astc_hdr" number="67" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="ARM" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_texture_compression_astc_hdr" number="67" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="ARM" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                                 name="VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_texture_compression_astc_hdr&quot;"   name="VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME"/>
@@ -18297,7 +18346,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPipelineViewportSwizzleStateCreateFlagsNV"/>
             </require>
         </extension>
-        <extension name="VK_EXT_discard_rectangles" number="100" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="NV" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_discard_rectangles" number="100" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="NV" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="2"                                             name="VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_discard_rectangles&quot;"         name="VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME"/>
@@ -18333,7 +18382,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkConservativeRasterizationModeEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_depth_clip_enable" number="103" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" specialuse="d3demulation" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_depth_clip_enable" number="103" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" specialuse="d3demulation" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_depth_clip_enable&quot;"          name="VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME"/>
@@ -18372,7 +18421,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum api="vulkan" extends="VkColorSpaceKHR"                name="VK_COLOR_SPACE_DCI_P3_LINEAR_EXT" alias="VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT" deprecated="aliased"/>
             </require>
         </extension>
-        <extension name="VK_EXT_hdr_metadata" number="106" type="device" depends="VK_KHR_swapchain" author="GOOGLE" contact="Courtney Goeltzenleuchter @courtney-g" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_hdr_metadata" number="106" type="device" depends="VK_KHR_swapchain" author="GOOGLE" contact="Courtney Goeltzenleuchter @courtney-g" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="2"                                             name="VK_EXT_HDR_METADATA_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_hdr_metadata&quot;"               name="VK_EXT_HDR_METADATA_EXTENSION_NAME"/>
@@ -18654,14 +18703,14 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_MVK_moltenvk&quot;"                   name="VK_MVK_MOLTENVK_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_external_memory_dma_buf" number="126" type="device" depends="VK_KHR_external_memory_fd" author="EXT" contact="Lina Versace @versalinyaa" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_external_memory_dma_buf" number="126" type="device" depends="VK_KHR_external_memory_fd" author="EXT" contact="Lina Versace @versalinyaa" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_external_memory_dma_buf&quot;"    name="VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME"/>
                 <enum bitpos="9" extends="VkExternalMemoryHandleTypeFlagBits" name="VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_queue_family_foreign" number="127" type="device" author="EXT" depends="VK_KHR_external_memory,VK_VERSION_1_1" contact="Lina Versace @versalinyaa" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_queue_family_foreign" number="127" type="device" author="EXT" depends="VK_KHR_external_memory,VK_VERSION_1_1" contact="Lina Versace @versalinyaa" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_queue_family_foreign&quot;"       name="VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME"/>
@@ -18805,18 +18854,19 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum bitpos="25" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX"/>
             </require>
         </extension>
-        <extension name="VK_KHR_extension_136" number="136" type="device" author="KHR" contact="Tobias Hector @tobski" supported="disabled">
+        <extension name="VK_KHR_extension_136" number="136" type="device" depends="VK_KHR_maintenance5" author="KHR" contact="Tobias Hector @tobski" supported="disabled">
             <require>
                 <enum value="0"                                             name="VK_KHR_EXTENSION_136_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_extension_136&quot;"              name="VK_KHR_EXTENSION_136_EXTENSION_NAME"/>
                 <enum bitpos="28" extends="VkBufferUsageFlagBits"           name="VK_BUFFER_USAGE_RESERVED_28_BIT_KHR"/>
-                <enum bitpos="29" extends="VkBufferUsageFlagBits"           name="VK_BUFFER_USAGE_RESERVED_29_BIT_KHR"/>
-                <enum bitpos="30" extends="VkBufferUsageFlagBits"           name="VK_BUFFER_USAGE_RESERVED_30_BIT_KHR"/>
-            </require>
-            <require depends="VK_KHR_maintenance5">
                 <enum bitpos="28" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_RESERVED_28_BIT_KHR"/>
-                <enum bitpos="29" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_RESERVED_29_BIT_KHR"/>
-                <enum bitpos="30" extends="VkBufferUsageFlagBits2KHR"       name="VK_BUFFER_USAGE_2_RESERVED_30_BIT_KHR"/>
+                <enum bitpos="36" extends="VkPipelineCreateFlagBits2KHR"    name="VK_PIPELINE_CREATE_RESERVED_36_BIT_KHR"/>
+                <enum bitpos="57"  extends="VkAccessFlagBits2"              name="VK_ACCESS_2_RESERVED_57_BIT_KHR"/>
+                <enum bitpos="58"  extends="VkAccessFlagBits2"              name="VK_ACCESS_2_RESERVED_58_BIT_KHR"/>
+                <enum bitpos="59"  extends="VkAccessFlagBits2"              name="VK_ACCESS_2_RESERVED_59_BIT_KHR"/>
+            </require>
+            <require depends="VK_EXT_shader_object">
+                <enum bitpos="10"  extends="VkShaderCreateFlagBitsEXT"       name="VK_SHADER_CREATE_RESERVED_10_BIT_KHR"/>
             </require>
         </extension>
         <extension name="VK_AMD_mixed_attachment_samples" number="137" type="device" author="AMD" contact="Matthaeus G. Chajdas @anteru" supported="vulkan">
@@ -18852,7 +18902,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_AMD_extension_140&quot;"              name="VK_AMD_EXTENSION_140_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_shader_stencil_export" number="141" type="device" author="EXT" contact="Dominik Witczak @dominikwitczakamd" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_shader_stencil_export" number="141" type="device" author="EXT" contact="Dominik Witczak @dominikwitczakamd" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_shader_stencil_export&quot;"      name="VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME"/>
@@ -18870,7 +18920,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_AMD_extension_143&quot;"              name="VK_AMD_EXTENSION_143_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_sample_locations" number="144" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="AMD" contact="Daniel Rakos @drakos-amd" supported="vulkan,vulkansc">
+        <extension name="VK_EXT_sample_locations" number="144" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="AMD" contact="Daniel Rakos @drakos-amd" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_sample_locations&quot;"           name="VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME"/>
@@ -19571,7 +19621,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_QCOM_extension_174&quot;"             name="VK_QCOM_EXTENSION_174_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_global_priority" number="175" type="device" author="EXT" contact="Andres Rodriguez @lostgoat" supported="vulkan,vulkansc" promotedto="VK_KHR_global_priority">
+        <extension name="VK_EXT_global_priority" number="175" type="device" author="EXT" contact="Andres Rodriguez @lostgoat" supported="vulkan" promotedto="VK_KHR_global_priority">
             <require>
                 <enum value="2"                                             name="VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_global_priority&quot;"            name="VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME"/>
@@ -19603,7 +19653,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDevice8BitStorageFeaturesKHR"/>
             </require>
         </extension>
-        <extension name="VK_EXT_external_memory_host" number="179" type="device" author="EXT" depends="VK_KHR_external_memory,VK_VERSION_1_1" contact="Daniel Rakos @drakos-amd" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_external_memory_host" number="179" type="device" author="EXT" depends="VK_KHR_external_memory,VK_VERSION_1_1" contact="Daniel Rakos @drakos-amd" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_external_memory_host&quot;"       name="VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME"/>
@@ -19657,7 +19707,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPipelineCompilerControlCreateInfoAMD"/>
             </require>
         </extension>
-        <extension name="VK_EXT_calibrated_timestamps" number="185" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Daniel Rakos @drakos-amd" promotedto="VK_KHR_calibrated_timestamps" supported="vulkan,vulkansc">
+        <extension name="VK_EXT_calibrated_timestamps" number="185" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Daniel Rakos @drakos-amd" promotedto="VK_KHR_calibrated_timestamps" supported="vulkan">
             <require>
                 <enum value="2"                                             name="VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_calibrated_timestamps&quot;"      name="VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME"/>
@@ -19707,7 +19757,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkVideoDecodeH265DpbSlotInfoKHR"/>
             </require>
         </extension>
-        <extension name="VK_KHR_global_priority" number="189" type="device" author="KHR" contact="Tobias Hector @tobski" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" supported="vulkan" ratified="vulkan">
+        <extension name="VK_KHR_global_priority" number="189" type="device" author="KHR" contact="Tobias Hector @tobski" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_global_priority&quot;"            name="VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME"/>
@@ -19731,7 +19781,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkDeviceMemoryOverallocationCreateInfoAMD"/>
             </require>
         </extension>
-        <extension name="VK_EXT_vertex_attribute_divisor" number="191" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="NV" contact="Vikram Kushwaha @vkushwaha" supported="vulkan,vulkansc" promotedto="VK_KHR_vertex_attribute_divisor">
+        <extension name="VK_EXT_vertex_attribute_divisor" number="191" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="NV" contact="Vikram Kushwaha @vkushwaha" supported="vulkan" promotedto="VK_KHR_vertex_attribute_divisor">
             <require>
                 <enum value="3"                                           name="VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_vertex_attribute_divisor&quot;" name="VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME"/>
@@ -20004,7 +20054,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceVulkanMemoryModelFeaturesKHR"/>
             </require>
         </extension>
-        <extension name="VK_EXT_pci_bus_info" number="213" type="device" author="EXT" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Matthaeus G. Chajdas @anteru" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_pci_bus_info" number="213" type="device" author="EXT" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Matthaeus G. Chajdas @anteru" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="2"                                         name="VK_EXT_PCI_BUS_INFO_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_pci_bus_info&quot;"           name="VK_EXT_PCI_BUS_INFO_EXTENSION_NAME"/>
@@ -20124,7 +20174,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_GOOGLE_decorate_string&quot;"         name="VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_subgroup_size_control" number="226" type="device" depends="VK_VERSION_1_1" author="EXT" contact="Neil Henning @sheredom" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_subgroup_size_control" number="226" type="device" depends="VK_VERSION_1_1" author="EXT" contact="Neil Henning @sheredom" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="2"                                             name="VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_subgroup_size_control&quot;"      name="VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME"/>
@@ -20255,7 +20305,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceMemoryBudgetPropertiesEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_memory_priority" number="239" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1"  author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan">
+        <extension name="VK_EXT_memory_priority" number="239" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1"  author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan" ratified="vulkan">
             <require>
                 <enum value="1"                                             name="VK_EXT_MEMORY_PRIORITY_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_memory_priority&quot;"            name="VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME"/>
@@ -20429,7 +20479,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_ycbcr_image_arrays" number="253" type="device" depends="VK_KHR_sampler_ycbcr_conversion,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_ycbcr_image_arrays" number="253" type="device" depends="VK_KHR_sampler_ycbcr_conversion,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_ycbcr_image_arrays&quot;"         name="VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME"/>
@@ -20542,7 +20592,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <command name="vkCmdSetLineStippleEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_shader_atomic_float" number="261" type="device" author="NV" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Vikram Kushwaha @vkushwaha-nv" supported="vulkan,vulkansc">
+        <extension name="VK_EXT_shader_atomic_float" number="261" type="device" author="NV" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Vikram Kushwaha @vkushwaha-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_shader_atomic_float&quot;"        name="VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME"/>
@@ -20592,7 +20642,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_EXT_extension_267&quot;"              name="VK_EXT_EXTENSION_267_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_extended_dynamic_state" number="268" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_extended_dynamic_state" number="268" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_extended_dynamic_state&quot;"     name="VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME"/>
@@ -20776,7 +20826,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <command name="vkReleaseSwapchainImagesEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_shader_demote_to_helper_invocation" number="277" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_shader_demote_to_helper_invocation" number="277" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_shader_demote_to_helper_invocation&quot;" name="VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME"/>
@@ -20858,7 +20908,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceShaderIntegerDotProductPropertiesKHR"/>
             </require>
         </extension>
-        <extension name="VK_EXT_texel_buffer_alignment" number="282" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_texel_buffer_alignment" number="282" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Jeff Bolz @jeffbolznv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_texel_buffer_alignment&quot;"     name="VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME"/>
@@ -20916,7 +20966,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <command name="vkGetDrmDisplayEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_robustness2" number="287"  type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Liam Middlebrook @liam-middlebrook" supported="vulkan,vulkansc">
+        <extension name="VK_EXT_robustness2" number="287"  type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Liam Middlebrook @liam-middlebrook" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                                 name="VK_EXT_ROBUSTNESS_2_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_robustness2&quot;"                    name="VK_EXT_ROBUSTNESS_2_EXTENSION_NAME"/>
@@ -20926,7 +20976,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceRobustness2PropertiesEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_custom_border_color" number="288" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Liam Middlebrook @liam-middlebrook" specialuse="glemulation,d3demulation" supported="vulkan,vulkansc" ratified="vulkan">
+        <extension name="VK_EXT_custom_border_color" number="288" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Liam Middlebrook @liam-middlebrook" specialuse="glemulation,d3demulation" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="12"                                            name="VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_custom_border_color&quot;"        name="VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME"/>
@@ -21629,7 +21679,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_NV_extension_330&quot;"               name="VK_NV_EXTENSION_330_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_ycbcr_2plane_444_formats" number="331" type="device" depends="VK_KHR_sampler_ycbcr_conversion,VK_VERSION_1_1" author="EXT" contact="Tony Zlatinski @tzlatinski" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_ycbcr_2plane_444_formats" number="331" type="device" depends="VK_KHR_sampler_ycbcr_conversion,VK_VERSION_1_1" author="EXT" contact="Tony Zlatinski @tzlatinski" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <comment>
                     VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT and
@@ -21677,7 +21727,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_KHR_extension_335&quot;"              name="VK_KHR_EXTENSION_335_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_image_robustness" number="336" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Graeme Leese @gnl21" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_image_robustness" number="336" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Graeme Leese @gnl21" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_image_robustness&quot;"           name="VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME"/>
@@ -21762,7 +21812,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_4444_formats" number="341" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Joshua Ashton @Joshua-Ashton" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_4444_formats" number="341" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Joshua Ashton @Joshua-Ashton" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <comment>
                     VkPhysicalDevice4444FormatsFeaturesEXT and
@@ -21823,7 +21873,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                     <type name="VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT"/>
             </require>
         </extension>
-        <extension name="VK_NV_acquire_winrt_display" number="346" type="device" depends="VK_EXT_direct_mode_display" author="NV" contact="Jeff Juliano @jjuliano" platform="win32" supported="vulkan">
+        <extension name="VK_NV_acquire_winrt_display" number="346" type="device" depends="VK_EXT_direct_mode_display" author="NV" contact="Jeff Juliano @jjuliano" platform="win32" supported="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION"/>
                 <enum value="&quot;VK_NV_acquire_winrt_display&quot;"       name="VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME"/>
@@ -22188,7 +22238,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkMultisampledRenderToSingleSampledInfoEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_extended_dynamic_state2" number="378" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Vikram Kushwaha @vkushwaha-nv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3">
+        <extension name="VK_EXT_extended_dynamic_state2" number="378" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Vikram Kushwaha @vkushwaha-nv" supported="vulkan,vulkansc" promotedto="VK_VERSION_1_3" ratified="vulkansc">
             <require>
                 <enum value="1"                                             name="VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_extended_dynamic_state2&quot;"    name="VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME"/>
@@ -22229,7 +22279,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_KHR_extension_381&quot;"          name="VK_KHR_EXTENSION_381_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_color_write_enable" number="382" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Sharif Elcott @selcott" supported="vulkan,vulkansc">
+        <extension name="VK_EXT_color_write_enable" number="382" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="EXT" contact="Sharif Elcott @selcott" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                         name="VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_color_write_enable&quot;"     name="VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME"/>
@@ -22689,7 +22739,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         </extension>
         <extension name="VK_QCOM_fragment_density_map_offset" number="426" type="device" depends="(VK_KHR_get_physical_device_properties2,VK_VERSION_1_1)+VK_EXT_fragment_density_map" author="QCOM" contact="Matthew Netsch @mnetsch" supported="vulkan">
             <require>
-                <enum value="1"                                               name="VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION"/>
+                <enum value="2"                                               name="VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION"/>
                 <enum value="&quot;VK_QCOM_fragment_density_map_offset&quot;" name="VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME"/>
                 <enum offset="0"  extends="VkStructureType"                   name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM"/>
                 <enum offset="1"  extends="VkStructureType"                   name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM"/>
@@ -22920,8 +22970,8 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_EXT_nested_command_buffer&quot;"  name="VK_EXT_NESTED_COMMAND_BUFFER_EXTENSION_NAME"/>
                 <enum offset="0" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT"/>
                 <enum offset="1" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT"/>
-                <enum offset="0" extends="VkSubpassContents"            name="VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT"/>
-                <enum bitpos="4" extends="VkRenderingFlagBits"          name="VK_RENDERING_CONTENTS_INLINE_BIT_EXT"/>
+                <enum extends="VkSubpassContents"    name="VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT" alias="VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR"/>
+                <enum extends="VkRenderingFlagBits"  name="VK_RENDERING_CONTENTS_INLINE_BIT_EXT" alias="VK_RENDERING_CONTENTS_INLINE_BIT_KHR"/>
                 <type                                                   name="VkPhysicalDeviceNestedCommandBufferFeaturesEXT"/>
                 <type                                                   name="VkPhysicalDeviceNestedCommandBufferPropertiesEXT"/>
             </require>
@@ -23708,7 +23758,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkMutableDescriptorTypeCreateInfoEXT"/>
             </require>
         </extension>
-        <extension name="VK_EXT_legacy_vertex_attributes" number="496" author="EXT" contact="Mike Blumenkrantz @zmike" type="device" supported="vulkan" depends="VK_EXT_vertex_input_dynamic_state" specialuse="glemulation">
+        <extension name="VK_EXT_legacy_vertex_attributes" number="496" author="EXT" contact="Mike Blumenkrantz @zmike" type="device" supported="vulkan" ratified="vulkan" depends="VK_EXT_vertex_input_dynamic_state" specialuse="glemulation">
             <require>
                 <enum value="1"                                                   name="VK_EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_legacy_vertex_attributes&quot;"   name="VK_EXT_LEGACY_VERTEX_ATTRIBUTES_EXTENSION_NAME"/>
@@ -23782,6 +23832,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <require>
                 <enum value="0"                                             name="VK_EXT_EXTENSION_505_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_extension_505&quot;"              name="VK_EXT_EXTENSION_505_EXTENSION_NAME"/>
+                <enum bitpos="5"  extends="VkRenderingFlagBits"             name="VK_RENDERING_EXTENSION_505_BIT_EXT"/>
             </require>
         </extension>
         <extension name="VK_NV_low_latency2" number="506" author="NV" depends="VK_VERSION_1_2,VK_KHR_timeline_semaphore" contact="Charles Hansen @cshansen" type="device" supported="vulkan">
@@ -23994,7 +24045,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <command name="vkCmdSetAttachmentFeedbackLoopEnableEXT"/>
             </require>
         </extension>
-        <extension name="VK_KHR_vertex_attribute_divisor" number="526" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="KHR" contact="Shahbaz Youssefi @syoussefi" supported="vulkan" ratified="vulkan">
+        <extension name="VK_KHR_vertex_attribute_divisor" number="526" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="KHR" contact="Shahbaz Youssefi @syoussefi" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                            name="VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_vertex_attribute_divisor&quot;"  name="VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME"/>
@@ -24068,7 +24119,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_EXT_extension_533&quot;"          name="VK_EXT_EXTENSION_533_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_KHR_index_type_uint8" number="534" type="device" author="KHR" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Piers Daniell @pdaniell-nv" supported="vulkan" ratified="vulkan">
+        <extension name="VK_KHR_index_type_uint8" number="534" type="device" author="KHR" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_KHR_INDEX_TYPE_UINT8_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_index_type_uint8&quot;"           name="VK_KHR_INDEX_TYPE_UINT8_EXTENSION_NAME"/>
@@ -24077,7 +24128,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <type name="VkPhysicalDeviceIndexTypeUint8FeaturesKHR"/>
             </require>
         </extension>
-        <extension name="VK_KHR_line_rasterization" number="535" type="device" author="KHR" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Piers Daniell @pdaniell-nv" supported="vulkan" ratified="vulkan">
+        <extension name="VK_KHR_line_rasterization" number="535" type="device" author="KHR" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" contact="Piers Daniell @pdaniell-nv" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                             name="VK_KHR_LINE_RASTERIZATION_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_line_rasterization&quot;"         name="VK_KHR_LINE_RASTERIZATION_EXTENSION_NAME"/>
@@ -24140,7 +24191,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_EXT_extension_543&quot;"          name="VK_EXT_EXTENSION_543_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_KHR_calibrated_timestamps" number="544" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="KHR" contact="Daniel Rakos @aqnuep" supported="vulkan" ratified="vulkan">
+        <extension name="VK_KHR_calibrated_timestamps" number="544" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="KHR" contact="Daniel Rakos @aqnuep" supported="vulkan,vulkansc" ratified="vulkan,vulkansc">
             <require>
                 <enum value="1"                                         name="VK_KHR_CALIBRATED_TIMESTAMPS_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_calibrated_timestamps&quot;"  name="VK_KHR_CALIBRATED_TIMESTAMPS_EXTENSION_NAME"/>
@@ -24286,10 +24337,12 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_KHR_extension_558&quot;"              name="VK_KHR_EXTENSION_558_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_KHR_extension_559" number="559" type="device" author="KHR" contact="Nathan Gauër @Keenuts1" supported="disabled">
+        <extension name="VK_KHR_shader_relaxed_extended_instruction" number="559" type="device" author="KHR" contact="Nathan Gauër @Keenuts" supported="vulkan" ratified="vulkan">
             <require>
-                <enum value="0"                                             name="VK_KHR_EXTENSION_559_SPEC_VERSION"/>
-                <enum value="&quot;VK_KHR_extension_559&quot;"              name="VK_KHR_EXTENSION_559_EXTENSION_NAME"/>
+                <enum value="1"                                                       name="VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION"/>
+                <enum value="&quot;VK_KHR_shader_relaxed_extended_instruction&quot;"  name="VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"                            name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR"/>
+                <type name="VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR"/>
             </require>
         </extension>
         <extension name="VK_NV_extension_560" number="560" author="NV" contact="Lujin Wang @lwnv" supported="disabled">
@@ -24310,10 +24363,23 @@ typedef void* <name>MTLSharedEvent_id</name>;
                 <enum value="&quot;VK_KHR_extension_562&quot;"              name="VK_KHR_EXTENSION_562_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_KHR_extension_563" number="563" author="KHR" contact="Jon Leech @oddhack" supported="disabled">
+        <extension name="VK_KHR_maintenance7" number="563" type="device" depends="VK_VERSION_1_1" author="KHR" contact="Mike Blumenkrantz @zmike" supported="vulkan" ratified="vulkan">
             <require>
-                <enum value="0"                                             name="VK_KHR_EXTENSION_563_SPEC_VERSION"/>
-                <enum value="&quot;VK_KHR_extension_563&quot;"              name="VK_KHR_EXTENSION_563_EXTENSION_NAME"/>
+                <enum value="1"                                         name="VK_KHR_MAINTENANCE_7_SPEC_VERSION"/>
+                <enum value="&quot;VK_KHR_maintenance7&quot;"           name="VK_KHR_MAINTENANCE_7_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR"/>
+                <enum offset="1" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR"/>
+                <enum offset="2" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR"/>
+                <enum offset="3" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR"/>
+                <enum offset="4" extends="VkStructureType"              name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR"/>
+                <enum offset="0" extends="VkSubpassContents" extnumber="452" name="VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR"/>
+                <enum bitpos="4" extends="VkRenderingFlagBits"          name="VK_RENDERING_CONTENTS_INLINE_BIT_KHR" comment="Promoted from extension 452"/>
+                <type name="VkPhysicalDeviceMaintenance7FeaturesKHR"/>
+                <type name="VkPhysicalDeviceMaintenance7PropertiesKHR"/>
+                <type name="VkPhysicalDeviceLayeredApiPropertiesListKHR"/>
+                <type name="VkPhysicalDeviceLayeredApiPropertiesKHR"/>
+                <type name="VkPhysicalDeviceLayeredApiKHR"/>
+                <type name="VkPhysicalDeviceLayeredApiVulkanPropertiesKHR"/>
             </require>
         </extension>
         <extension name="VK_NV_shader_atomic_float16_vector" number="564" type="device" author="NV" contact="Jeff Bolz @jeffbolznv" supported="vulkan">
@@ -24501,6 +24567,55 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <require>
                 <enum value="0"                                             name="VK_EXT_EXTENSION_591_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_extension_591&quot;"              name="VK_EXT_EXTENSION_591_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_592" number="592" author="NV" contact="Jeff Juliano @jjuliano" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_NV_EXTENSION_592_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_592&quot;"               name="VK_NV_EXTENSION_592_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_593" number="593" author="NV" contact="Jeff Juliano @jjuliano" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_NV_EXTENSION_593_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_593&quot;"               name="VK_NV_EXTENSION_593_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_594" number="594" author="NV" contact="Jeff Bolz @jeffbolznv" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_NV_EXTENSION_594_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_594&quot;"               name="VK_NV_EXTENSION_594_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_595" number="595" author="NV" contact="Jeff Bolz @jeffbolznv" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_NV_EXTENSION_595_SPEC_VERSION"/>
+                <enum value="&quot;VK_NV_extension_595&quot;"               name="VK_NV_EXTENSION_595_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_KHR_extension_596" number="596" author="KHR" contact="Simon Zeni @simonz" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_KHR_EXTENSION_596_SPEC_VERSION"/>
+                <enum value="&quot;VK_KHR_extension_596&quot;"              name="VK_KHR_EXTENSION_596_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_ARM_extension_597" number="597" author="ARM" contact="Mathieu Robart @mathieurobart" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_ARM_EXTENSION_597_SPEC_VERSION"/>
+                <enum value="&quot;VK_ARM_extension_597&quot;"              name="VK_ARM_EXTENSION_597_EXTENSION_NAME"/>
+                <enum bitpos="37" extends="VkPipelineCreateFlagBits2KHR"    name="VK_PIPELINE_CREATE_2_RESERVED_37_BIT_ARM"/>
+            </require>
+        </extension>
+        <extension name="VK_KHR_extension_598" number="598" type="device" author="KHR" contact="Ahmed Abdelkhalek @aabdelkh" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_KHR_EXTENSION_598_SPEC_VERSION"/>
+                <enum value="&quot;VK_KHR_extension_598&quot;"              name="VK_KHR_EXTENSION_598_EXTENSION_NAME"/>
+            </require>
+        </extension>
+        <extension name="VK_KHR_extension_599" number="599" type="device" author="KHR" contact="Ahmed Abdelkhalek @aabdelkh" supported="disabled">
+            <require>
+                <enum value="0"                                             name="VK_KHR_EXTENSION_599_SPEC_VERSION"/>
+                <enum value="&quot;VK_KHR_extension_599&quot;"              name="VK_KHR_EXTENSION_599_EXTENSION_NAME"/>
             </require>
         </extension>
     </extensions>
@@ -26154,6 +26269,9 @@ typedef void* <name>MTLSharedEvent_id</name>;
         </spirvextension>
         <spirvextension name="SPV_EXT_replicated_composites">
             <enable extension="VK_EXT_shader_replicated_composites"/>
+        </spirvextension>
+        <spirvextension name="SPV_KHR_relaxed_extended_instruction">
+            <enable extension="VK_KHR_shader_relaxed_extended_instruction"/>
         </spirvextension>
     </spirvextensions>
     <spirvcapabilities comment="SPIR-V Capabilities allowed in Vulkan and what is required to use it">
