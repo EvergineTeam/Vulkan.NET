@@ -212,9 +212,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization";
 		public const uint VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION = 1;
 		public const string VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable";
-		public const uint VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 4;
+		public const uint VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 5;
 		public const string VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
-		public const uint VK_EXT_HDR_METADATA_SPEC_VERSION = 2;
+		public const uint VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
 		public const string VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
 		public const uint VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1;
 		public const string VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
@@ -722,6 +722,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_EXTENSION_NAME = "VK_ANDROID_external_format_resolve";
 		public const uint VK_KHR_MAINTENANCE_5_SPEC_VERSION = 1;
 		public const string VK_KHR_MAINTENANCE_5_EXTENSION_NAME = "VK_KHR_maintenance5";
+		public const uint VK_AMD_ANTI_LAG_SPEC_VERSION = 1;
+		public const string VK_AMD_ANTI_LAG_EXTENSION_NAME = "VK_AMD_anti_lag";
 		public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
 		public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
 		public const uint VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1;

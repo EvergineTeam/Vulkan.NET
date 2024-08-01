@@ -8203,7 +8203,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkVideoEncodeFlagsKHR flags;
+		public uint flags;
 		public VkBuffer dstBuffer;
 		public ulong dstBufferOffset;
 		public ulong dstBufferRange;
@@ -10691,6 +10691,33 @@ namespace Evergine.Bindings.Vulkan
 		public uint count;
 		public VkDeviceOrHostAddressConstAMDX infos;
 		public ulong stride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceAntiLagFeaturesAMD
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 antiLag;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAntiLagDataAMD
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkAntiLagModeAMD mode;
+		public uint maxFPS;
+		public VkAntiLagPresentationInfoAMD* pPresentationInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAntiLagPresentationInfoAMD
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkAntiLagStageAMD stage;
+		public ulong frameIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

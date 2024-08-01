@@ -3360,6 +3360,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetDeviceImageSubresourceLayoutKHR_ptr(device, pInfo, pLayout);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkAntiLagUpdateAMDDelegate(VkDevice device, VkAntiLagDataAMD* pData);
+		private static vkAntiLagUpdateAMDDelegate vkAntiLagUpdateAMD_ptr;
+		public static void vkAntiLagUpdateAMD(VkDevice device, VkAntiLagDataAMD* pData)
+			=> vkAntiLagUpdateAMD_ptr(device, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateShadersEXTDelegate(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders);
 		private static vkCreateShadersEXTDelegate vkCreateShadersEXT_ptr;
 		public static VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders)
@@ -4039,6 +4045,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdBindIndexBuffer2KHR",  out vkCmdBindIndexBuffer2KHR_ptr);
 			NativeLib.LoadFunction("vkGetRenderingAreaGranularityKHR",  out vkGetRenderingAreaGranularityKHR_ptr);
 			NativeLib.LoadFunction("vkGetDeviceImageSubresourceLayoutKHR",  out vkGetDeviceImageSubresourceLayoutKHR_ptr);
+			NativeLib.LoadFunction("vkAntiLagUpdateAMD",  out vkAntiLagUpdateAMD_ptr);
 			NativeLib.LoadFunction("vkCreateShadersEXT",  out vkCreateShadersEXT_ptr);
 			NativeLib.LoadFunction("vkDestroyShaderEXT",  out vkDestroyShaderEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
