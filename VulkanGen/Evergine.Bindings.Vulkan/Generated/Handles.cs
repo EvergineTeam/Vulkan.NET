@@ -377,6 +377,21 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkPipelineBinaryKHR : IEquatable<VkPipelineBinaryKHR>
+{
+		public readonly ulong Handle;
+		public VkPipelineBinaryKHR(ulong existingHandle) { Handle = existingHandle; }
+		public static VkPipelineBinaryKHR Null => new VkPipelineBinaryKHR(0);
+		public static implicit operator VkPipelineBinaryKHR(ulong handle) => new VkPipelineBinaryKHR(handle);
+		public static bool operator ==(VkPipelineBinaryKHR left, VkPipelineBinaryKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkPipelineBinaryKHR left, VkPipelineBinaryKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkPipelineBinaryKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkPipelineBinaryKHR left, ulong right) => left.Handle != right;
+		public bool Equals(VkPipelineBinaryKHR h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkPipelineBinaryKHR h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirectCommandsLayoutNV>
 {
 		public readonly ulong Handle;

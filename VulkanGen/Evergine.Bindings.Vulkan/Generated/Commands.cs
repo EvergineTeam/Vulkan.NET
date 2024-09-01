@@ -3396,6 +3396,36 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreatePipelineBinariesKHRDelegate(VkDevice device, VkPipelineBinaryCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineBinaryHandlesInfoKHR* pBinaries);
+		private static vkCreatePipelineBinariesKHRDelegate vkCreatePipelineBinariesKHR_ptr;
+		public static VkResult vkCreatePipelineBinariesKHR(VkDevice device, VkPipelineBinaryCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineBinaryHandlesInfoKHR* pBinaries)
+			=> vkCreatePipelineBinariesKHR_ptr(device, pCreateInfo, pAllocator, pBinaries);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyPipelineBinaryKHRDelegate(VkDevice device, VkPipelineBinaryKHR pipelineBinary, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyPipelineBinaryKHRDelegate vkDestroyPipelineBinaryKHR_ptr;
+		public static void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyPipelineBinaryKHR_ptr(device, pipelineBinary, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPipelineKeyKHRDelegate(VkDevice device, VkPipelineCreateInfoKHR* pPipelineCreateInfo, VkPipelineBinaryKeyKHR* pPipelineKey);
+		private static vkGetPipelineKeyKHRDelegate vkGetPipelineKeyKHR_ptr;
+		public static VkResult vkGetPipelineKeyKHR(VkDevice device, VkPipelineCreateInfoKHR* pPipelineCreateInfo, VkPipelineBinaryKeyKHR* pPipelineKey)
+			=> vkGetPipelineKeyKHR_ptr(device, pPipelineCreateInfo, pPipelineKey);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPipelineBinaryDataKHRDelegate(VkDevice device, VkPipelineBinaryDataInfoKHR* pInfo, VkPipelineBinaryKeyKHR* pPipelineBinaryKey, UIntPtr* pPipelineBinaryDataSize, void* pPipelineBinaryData);
+		private static vkGetPipelineBinaryDataKHRDelegate vkGetPipelineBinaryDataKHR_ptr;
+		public static VkResult vkGetPipelineBinaryDataKHR(VkDevice device, VkPipelineBinaryDataInfoKHR* pInfo, VkPipelineBinaryKeyKHR* pPipelineBinaryKey, UIntPtr* pPipelineBinaryDataSize, void* pPipelineBinaryData)
+			=> vkGetPipelineBinaryDataKHR_ptr(device, pInfo, pPipelineBinaryKey, pPipelineBinaryDataSize, pPipelineBinaryData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkReleaseCapturedPipelineDataKHRDelegate(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* pInfo, VkAllocationCallbacks* pAllocator);
+		private static vkReleaseCapturedPipelineDataKHRDelegate vkReleaseCapturedPipelineDataKHR_ptr;
+		public static VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* pInfo, VkAllocationCallbacks* pAllocator)
+			=> vkReleaseCapturedPipelineDataKHR_ptr(device, pInfo, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetFramebufferTilePropertiesQCOMDelegate(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
 		private static vkGetFramebufferTilePropertiesQCOMDelegate vkGetFramebufferTilePropertiesQCOM_ptr;
 		public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* pPropertiesCount, VkTilePropertiesQCOM* pProperties)
@@ -4051,6 +4081,11 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
 			NativeLib.LoadFunction("vkCmdBindShadersEXT",  out vkCmdBindShadersEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetTessellationDomainOriginEXT",  out vkCmdSetTessellationDomainOriginEXT_ptr);
+			NativeLib.LoadFunction("vkCreatePipelineBinariesKHR",  out vkCreatePipelineBinariesKHR_ptr);
+			NativeLib.LoadFunction("vkDestroyPipelineBinaryKHR",  out vkDestroyPipelineBinaryKHR_ptr);
+			NativeLib.LoadFunction("vkGetPipelineKeyKHR",  out vkGetPipelineKeyKHR_ptr);
+			NativeLib.LoadFunction("vkGetPipelineBinaryDataKHR",  out vkGetPipelineBinaryDataKHR_ptr);
+			NativeLib.LoadFunction("vkReleaseCapturedPipelineDataKHR",  out vkReleaseCapturedPipelineDataKHR_ptr);
 			NativeLib.LoadFunction("vkGetFramebufferTilePropertiesQCOM",  out vkGetFramebufferTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);

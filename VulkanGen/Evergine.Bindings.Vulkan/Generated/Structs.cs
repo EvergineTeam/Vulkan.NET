@@ -992,6 +992,81 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipelineBinaryKeysAndDataKHR* pKeysAndDataInfo;
+		public VkPipeline pipeline;
+		public VkPipelineCreateInfoKHR* pPipelineCreateInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryHandlesInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint pipelineBinaryCount;
+		public VkPipelineBinaryKHR* pPipelineBinaries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryDataKHR
+	{
+		public UIntPtr dataSize;
+		public void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryKeysAndDataKHR
+	{
+		public uint binaryCount;
+		public VkPipelineBinaryKeyKHR* pPipelineBinaryKeys;
+		public VkPipelineBinaryDataKHR* pPipelineBinaryData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryKeyKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint keySize;
+		public fixed byte key[(int)VulkanNative.VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint binaryCount;
+		public VkPipelineBinaryKHR* pPipelineBinaries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkReleaseCapturedPipelineDataInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipeline pipeline;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineBinaryDataInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipelineBinaryKHR pipelineBinary;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPipelineLayoutCreateInfo
 	{
 		public VkStructureType sType;
@@ -4790,12 +4865,20 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
+	public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 computeDerivativeGroupQuads;
 		public VkBool32 computeDerivativeGroupLinear;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 meshAndTaskShaderDerivatives;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9397,6 +9480,34 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineBinaryFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelineBinaries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDevicePipelineBinaryInternalCacheControlKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 disableInternalCache;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineBinaryPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelineBinaryInternalCache;
+		public VkBool32 pipelineBinaryInternalCacheControl;
+		public VkBool32 pipelineBinaryPrefersInternalCache;
+		public VkBool32 pipelineBinaryPrecompiledInternalCache;
+		public VkBool32 pipelineBinaryCompressedData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT
 	{
 		public VkStructureType sType;
@@ -11217,6 +11328,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderRawAccessChains;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 commandBufferInheritance;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

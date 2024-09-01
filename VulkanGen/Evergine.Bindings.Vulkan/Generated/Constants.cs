@@ -34,6 +34,7 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16;
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
 		public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
+		public const uint VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR = 32;
 		public const uint VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
 		public const uint VK_SHADER_INDEX_UNUSED_AMDX = (~0U);
 		public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
@@ -728,6 +729,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
 		public const uint VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_OBJECT_EXTENSION_NAME = "VK_EXT_shader_object";
+		public const uint VK_KHR_PIPELINE_BINARY_SPEC_VERSION = 1;
+		public const string VK_KHR_PIPELINE_BINARY_EXTENSION_NAME = "VK_KHR_pipeline_binary";
 		public const uint VK_QCOM_TILE_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_QCOM_TILE_PROPERTIES_EXTENSION_NAME = "VK_QCOM_tile_properties";
 		public const uint VK_SEC_AMIGO_PROFILING_SPEC_VERSION = 1;
@@ -758,6 +761,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 		public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
 		public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
+		public const uint VK_KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1;
+		public const string VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_KHR_compute_shader_derivatives";
 		public const uint VK_KHR_VIDEO_DECODE_AV1_SPEC_VERSION = 1;
 		public const string VK_KHR_VIDEO_DECODE_AV1_EXTENSION_NAME = "VK_KHR_video_decode_av1";
 		public const uint VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION = 1;
@@ -800,6 +805,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
 		public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
 		public const string VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME = "VK_KHR_shader_relaxed_extended_instruction";
+		public const uint VK_NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION = 1;
+		public const string VK_NV_COMMAND_BUFFER_INHERITANCE_EXTENSION_NAME = "VK_NV_command_buffer_inheritance";
 		public const uint VK_KHR_MAINTENANCE_7_SPEC_VERSION = 1;
 		public const string VK_KHR_MAINTENANCE_7_EXTENSION_NAME = "VK_KHR_maintenance7";
 		public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
