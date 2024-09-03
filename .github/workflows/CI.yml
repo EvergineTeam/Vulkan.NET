@@ -28,10 +28,14 @@ jobs:
           nuget-version: "6.x"
       - name: Generate Bindings
         id: build_bindings
-        run: powershell ./Generate-Bindings.ps1
+        shell: pwsh
+        run: |
+          ./Generate-Bindings.ps1
       - name: Generate NuGet packages
         id: build_nugets
-        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
+        shell: pwsh
+        run: |
+          ./Generate-NuGets.ps1 -revision ${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }} -debugSymbols false
       - name: Publish NuGet
         if: ${{ success() && github.event.inputs.publishEnabled == 'true' }}
         env:
