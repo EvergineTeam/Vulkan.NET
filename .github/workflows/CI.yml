@@ -4,13 +4,6 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-  workflow_dispatch:
-    inputs:
-      publishEnabled:
-        description: "Publish to Nuget.org"
-        type: boolean
-        required: false
-        default: false
 
 env:
   nugetOutputPath: ${{  'nupkgs'  }}
