@@ -1,10 +1,10 @@
 # Vulkan.NET
-This repository contains low-level bindings for Vulkan used in Evergine for .NET Core and .NET 6.0.
+This repository contains low-level bindings for Vulkan used in Evergine for .NET Core and .NET 8.0.
 This binding is generated from vk.xml file included in the KhronosRegistry folder.
 
 [![CI](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml)
-[![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.Vulkan)
 [![Monthly update check](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml)
+[![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.Vulkan)
 
 ## Features
 
