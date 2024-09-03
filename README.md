@@ -2,7 +2,7 @@
 This repository contains low-level bindings for Vulkan used in Evergine for .NET Core and .NET 6.0.
 This binding is generated from vk.xml file included in the KhronosRegistry folder.
 
-[![Build Status](https://waveengineteam.visualstudio.com/Evergine/_apis/build/status/Bindings/Vulkan.NET%20CI?branchName=master)](https://waveengineteam.visualstudio.com/Evergine/_build/latest?definitionId=116&branchName=master)
+[![CI](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.Vulkan)
 [![Monthly update check](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml)
 
