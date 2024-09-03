@@ -53,7 +53,7 @@ jobs:
           dotnet-version: 8.x
       - uses: nuget/setup-nuget@v1
         with:
-          nuget-version: "8.x"
+          nuget-version: "6.x"
       - name: remove old file
         run: |
           cd ${{  env.basePath  }}
