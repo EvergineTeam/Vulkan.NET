@@ -1,5 +1,9 @@
-name: Force build
+name: CI
 on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
   workflow_dispatch:
     inputs:
       publishEnabled:
@@ -9,42 +13,10 @@ on:
         default: false
 
 env:
-  filePath: ${{  'vk.xml'  }}
-  fileTmpPath: ${{  'vk.xml_tmp'  }}
-  basePath: ${{  'KhronosRegistry'  }}
-  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml'  }}
-  selfUrl: ${{  'https://raw.githubusercontent.com/EvergineTeam/Vulkan.NET/master/KhronosRegistry/vk.xml'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
 jobs:
-  download:
-    runs-on: windows-latest
-    outputs:
-      output1: ${{ steps.fileHash.outputs.hash1 }}
-      output2: ${{ steps.fileHash.outputs.hash2 }}
-      output3: ${{ steps.fileHash.outputs.date }}
-    steps:
-      - name: download target file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.sourceUrl  }}
-          file-name: ${{  env.filePath  }}
-      - name: download our file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.selfUrl  }}
-          file-name: ${{  env.fileTmpPath  }}
-      - name: Get file hash
-        id: fileHash
-        run: |
-          echo "::set-output name=hash1::${{ hashFiles('vk.xml')  }}"
-          echo "::set-output name=hash2::${{ hashFiles('vk.xml_tmp')  }}"
-          echo "::set-output name=date::$(date +'%Y.%m.%d')"
-
-  build_and_publish:
-    needs: [download]
+   build_and_publish:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,26 +26,9 @@ jobs:
       - uses: nuget/setup-nuget@v2
         with:
           nuget-version: "6.x"
-      - name: remove old file
-        run: |
-          cd ${{  env.basePath  }}
-          rm ${{  env.filePath  }}
-          ls
-      - name: download target file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.sourceUrl  }}
-          file-name: ${{  env.filePath  }}
-          location: ${{ env.basePath  }}/
       - name: Generate Bindings
         id: build_bindings
         run: powershell ./Generate-Bindings.ps1
-      - name: Commit if update
-        if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: Updating new Vulkan version
       - name: Generate NuGet packages
         id: build_nugets
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
