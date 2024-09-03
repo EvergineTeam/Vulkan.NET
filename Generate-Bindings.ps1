@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	Evergine bindings generator script, (c) 2022 Evergine Team
+	Evergine bindings generator script, (c) 2024 Evergine Team
 .DESCRIPTION
 	This script generates Vulkan bindings used in Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
@@ -42,7 +42,7 @@ else
 
 # Run generator
 LogDebug "START binding generator process"
-pushd .\VulkanGen\VulkanGen\bin\Release\net6.0\
+pushd .\VulkanGen\VulkanGen\bin\Release\net8.0\
 .\publish\VulkanGen.exe
 if($?)
 {
