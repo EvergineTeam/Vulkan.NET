@@ -5,7 +5,7 @@
 		<Copyright>Copyright (c) Evergine 2024</Copyright>
 		<Authors>Evergine Team</Authors>
 		<Company>Plain Concepts</Company>
-		<Description>Low-level bindings for WebGPU used in Evergine</Description>
+		<Description>Low-level bindings for Vulkan used in Evergine</Description>
 		<RepositoryUrl>https://github.com/EvergineTeam/Vulkan.NET</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
