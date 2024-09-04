@@ -16,12 +16,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ItemGroup>
-			<None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
-		</ItemGroup>
-		<ItemGroup>
-			<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-		</ItemGroup>
+		<None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 </Project>
