@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<Copyright>Copyright (c) Evergine 2024</Copyright>
+		<Authors>Evergine Team</Authors>
+		<Company>Plain Concepts</Company>
+		<Description>Low-level bindings for WebGPU used in Evergine</Description>
 		<RepositoryUrl>https://github.com/EvergineTeam/Vulkan.NET</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,10 +20,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+		<None Include="..\..\icon.png" Pack="true" PackagePath="\" Visible="false" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
 	</ItemGroup>
 
 </Project>
