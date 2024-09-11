@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using static Evergine.Bindings.Vulkan.OperatingSystemHelper;
+using SysNativeLibrary = System.Runtime.InteropServices.NativeLibrary;
 
 namespace Evergine.Bindings.Vulkan
 {
-    public abstract class NativeLibrary : IDisposable
+    public class NativeLibrary : IDisposable
     {
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
@@ -14,7 +14,7 @@ namespace Evergine.Bindings.Vulkan
 
         public IntPtr NativeHandle => libraryHandle;
 
-        public NativeLibrary(string libraryName)
+        protected NativeLibrary(string libraryName)
         {
             this.libraryName = libraryName;
             libraryHandle = LoadLibrary(this.libraryName);
@@ -24,19 +24,31 @@ namespace Evergine.Bindings.Vulkan
             }
         }
 
-        protected abstract IntPtr LoadLibrary(string libraryName);
-        protected abstract void FreeLibrary(IntPtr libraryHandle);
-        public abstract IntPtr LoadFunction(string functionName);
+        protected IntPtr LoadLibrary(string libraryName)
+        {
+            if (SysNativeLibrary.TryLoad(libraryName, typeof(NativeLibrary).Assembly, null, out var lib))
+            {
+                return lib;
+            }
+
+            Debug.WriteLine($" ===> Error loading native library {libraryName}");
+            return IntPtr.Zero;
+        }
+
+        protected void FreeLibrary(IntPtr libraryHandle)
+        {
+            if (libraryHandle != IntPtr.Zero)
+            {
+                SysNativeLibrary.Free(libraryHandle);
+            }
+        }
 
         public unsafe void LoadFunction<T>(string name, out T field)
         {
-            IntPtr funcPtr = LoadFunction(name);
+            SysNativeLibrary.TryGetExport(libraryHandle, name, out IntPtr funcPtr);
             if (funcPtr == IntPtr.Zero)
             {
-                if (instance != IntPtr.Zero)
-                {
-                    funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
-                }
+                funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
             }
 
             if (funcPtr != IntPtr.Zero)
@@ -57,75 +69,7 @@ namespace Evergine.Bindings.Vulkan
 
         public static NativeLibrary Load(string libraryName)
         {
-            if (IsOSPlatform(PlatformType.Windows))
-            {
-                return new WindowsNativeLibrary(libraryName);
-            }
-            else if (IsOSPlatform(PlatformType.Android) || IsOSPlatform(PlatformType.Linux) || IsOSPlatform(PlatformType.MacOS))
-            {
-                return new UnixNativeLibrary(libraryName);
-            }
-            else
-            {
-                throw new PlatformNotSupportedException("Cannot load native libraries on this platform: " + RuntimeInformation.OSDescription);
-            }
-        }
-
-        private class WindowsNativeLibrary : NativeLibrary
-        {
-            public WindowsNativeLibrary(string libraryName) : base(libraryName)
-            {
-            }
-
-            protected override IntPtr LoadLibrary(string libraryName)
-            {
-                return Kernel32.LoadLibrary(libraryName);
-            }
-
-            protected override void FreeLibrary(IntPtr libraryHandle)
-            {
-                Kernel32.FreeLibrary(libraryHandle);
-            }
-
-            public override IntPtr LoadFunction(string functionName)
-            {
-                Debug.WriteLine("Loading " + functionName);
-                return Kernel32.GetProcAddress(NativeHandle, functionName);
-            }
-        }
-
-        private class UnixNativeLibrary : NativeLibrary
-        {
-            public UnixNativeLibrary(string libraryName) : base(libraryName)
-            {
-            }
-
-            protected override IntPtr LoadLibrary(string libraryName)
-            {
-                Libdl.dlerror();
-                IntPtr handle = Libdl.dlopen(libraryName, Libdl.RTLD_NOW);
-                if (handle == IntPtr.Zero && !Path.IsPathRooted(libraryName))
-                {
-                    string baseDir = AppContext.BaseDirectory;
-                    if (!string.IsNullOrWhiteSpace(baseDir))
-                    {
-                        string localPath = Path.Combine(baseDir, libraryName);
-                        handle = Libdl.dlopen(localPath, Libdl.RTLD_NOW);
-                    }
-                }
-
-                return handle;
-            }
-
-            protected override void FreeLibrary(IntPtr libraryHandle)
-            {
-                Libdl.dlclose(libraryHandle);
-            }
-
-            public override IntPtr LoadFunction(string functionName)
-            {
-                return Libdl.dlsym(NativeHandle, functionName);
-            }
+            return new NativeLibrary(libraryName);
         }
     }
 }
