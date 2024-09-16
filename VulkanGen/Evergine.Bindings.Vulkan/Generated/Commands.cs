@@ -3509,7 +3509,7 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pPushConstantsInfo)
 			=> vkCmdPushConstants2KHR_ptr(commandBuffer, pPushConstantsInfo);
 
-		public static void LoadFuncionPointers(VkInstance instance = default)
+		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
 			{
