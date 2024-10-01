@@ -7410,11 +7410,231 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 deviceGeneratedCommands;
+		public VkBool32 dynamicGeneratedPipelineLayout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxIndirectPipelineCount;
+		public uint maxIndirectShaderObjectCount;
+		public uint maxIndirectSequenceCount;
+		public uint maxIndirectCommandsTokenCount;
+		public uint maxIndirectCommandsTokenOffset;
+		public uint maxIndirectCommandsIndirectStride;
+		public VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
+		public VkShaderStageFlags supportedIndirectCommandsShaderStages;
+		public VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
+		public VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
+		public VkBool32 deviceGeneratedCommandsTransformFeedback;
+		public VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkGeneratedCommandsPipelineInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipeline pipeline;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkGeneratedCommandsShaderInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint shaderCount;
+		public VkShaderEXT* pShaders;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkIndirectExecutionSetEXT indirectExecutionSet;
+		public VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+		public uint maxSequenceCount;
+		public uint maxDrawCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectExecutionSetPipelineInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPipeline initialPipeline;
+		public uint maxPipelineCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectExecutionSetShaderLayoutInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint setLayoutCount;
+		public VkDescriptorSetLayout* pSetLayouts;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectExecutionSetShaderInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint shaderCount;
+		public VkShaderEXT* pInitialShaders;
+		public VkIndirectExecutionSetShaderLayoutInfoEXT* pSetLayoutInfos;
+		public uint maxShaderCount;
+		public uint pushConstantRangeCount;
+		public VkPushConstantRange* pPushConstantRanges;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectExecutionSetCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkIndirectExecutionSetInfoTypeEXT type;
+		public VkIndirectExecutionSetInfoEXT info;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkGeneratedCommandsInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags shaderStages;
+		public VkIndirectExecutionSetEXT indirectExecutionSet;
+		public VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+		public ulong indirectAddress;
+		public ulong indirectAddressSize;
+		public ulong preprocessAddress;
+		public ulong preprocessSize;
+		public uint maxSequenceCount;
+		public ulong sequenceCountAddress;
+		public uint maxDrawCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkWriteIndirectExecutionSetPipelineEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint index;
+		public VkPipeline pipeline;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkWriteIndirectExecutionSetShaderEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint index;
+		public VkShaderEXT shader;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsLayoutCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkIndirectCommandsLayoutUsageFlagsEXT flags;
+		public VkShaderStageFlags shaderStages;
+		public uint indirectStride;
+		public VkPipelineLayout pipelineLayout;
+		public uint tokenCount;
+		public VkIndirectCommandsLayoutTokenEXT* pTokens;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsLayoutTokenEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkIndirectCommandsTokenTypeEXT type;
+		public VkIndirectCommandsTokenDataEXT data;
+		public uint offset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDrawIndirectCountIndirectCommandEXT
+	{
+		public ulong bufferAddress;
+		public uint stride;
+		public uint commandCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsVertexBufferTokenEXT
+	{
+		public uint vertexBindingUnit;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBindVertexBufferIndirectCommandEXT
+	{
+		public ulong bufferAddress;
+		public uint size;
+		public uint stride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsIndexBufferTokenEXT
+	{
+		public VkIndirectCommandsInputModeFlagsEXT mode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBindIndexBufferIndirectCommandEXT
+	{
+		public ulong bufferAddress;
+		public uint size;
+		public VkIndexType indexType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsPushConstantTokenEXT
+	{
+		public VkPushConstantRange updateRange;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkIndirectCommandsExecutionSetTokenEXT
+	{
+		public VkIndirectExecutionSetInfoTypeEXT type;
+		public VkShaderStageFlags shaderStages;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPipelineViewportDepthClipControlCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 negativeOneToOne;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 depthClampControl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPipelineViewportDepthClampControlCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDepthClampModeEXT depthClampMode;
+		public VkDepthClampRangeEXT* pDepthClampRange;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11368,6 +11588,13 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderReplicatedComposites;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDepthClampRangeEXT
+	{
+		public float minDepthClamp;
+		public float maxDepthClamp;
 	}
 
 }

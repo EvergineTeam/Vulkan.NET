@@ -106,6 +106,28 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkIndirectExecutionSetInfoEXT
+	{
+		[FieldOffset(0)]
+		public VkIndirectExecutionSetPipelineInfoEXT* pPipelineInfo;
+		[FieldOffset(0)]
+		public VkIndirectExecutionSetShaderInfoEXT* pShaderInfo;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkIndirectCommandsTokenDataEXT
+	{
+		[FieldOffset(0)]
+		public VkIndirectCommandsPushConstantTokenEXT* pPushConstant;
+		[FieldOffset(0)]
+		public VkIndirectCommandsVertexBufferTokenEXT* pVertexBuffer;
+		[FieldOffset(0)]
+		public VkIndirectCommandsIndexBufferTokenEXT* pIndexBuffer;
+		[FieldOffset(0)]
+		public VkIndirectCommandsExecutionSetTokenEXT* pExecutionSet;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
 	public unsafe partial struct VkDescriptorDataEXT
 	{
 		[FieldOffset(0)]

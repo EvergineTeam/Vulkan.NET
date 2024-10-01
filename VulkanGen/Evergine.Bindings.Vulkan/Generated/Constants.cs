@@ -815,7 +815,11 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_SHADER_REPLICATED_COMPOSITES_EXTENSION_NAME = "VK_EXT_shader_replicated_composites";
 		public const uint VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION = 1;
 		public const string VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME = "VK_NV_ray_tracing_validation";
+		public const uint VK_EXT_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 1;
+		public const string VK_EXT_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_EXT_device_generated_commands";
 		public const uint VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
 		public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
+		public const uint VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION = 1;
+		public const string VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clamp_control";
 	}
 }

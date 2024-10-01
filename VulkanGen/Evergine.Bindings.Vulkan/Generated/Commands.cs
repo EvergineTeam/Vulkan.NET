@@ -3509,6 +3509,66 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pPushConstantsInfo)
 			=> vkCmdPushConstants2KHR_ptr(commandBuffer, pPushConstantsInfo);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetGeneratedCommandsMemoryRequirementsEXTDelegate(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoEXT* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetGeneratedCommandsMemoryRequirementsEXTDelegate vkGetGeneratedCommandsMemoryRequirementsEXT_ptr;
+		public static void vkGetGeneratedCommandsMemoryRequirementsEXT(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoEXT* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetGeneratedCommandsMemoryRequirementsEXT_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPreprocessGeneratedCommandsEXTDelegate(VkCommandBuffer commandBuffer, VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo, VkCommandBuffer stateCommandBuffer);
+		private static vkCmdPreprocessGeneratedCommandsEXTDelegate vkCmdPreprocessGeneratedCommandsEXT_ptr;
+		public static void vkCmdPreprocessGeneratedCommandsEXT(VkCommandBuffer commandBuffer, VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo, VkCommandBuffer stateCommandBuffer)
+			=> vkCmdPreprocessGeneratedCommandsEXT_ptr(commandBuffer, pGeneratedCommandsInfo, stateCommandBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdExecuteGeneratedCommandsEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo);
+		private static vkCmdExecuteGeneratedCommandsEXTDelegate vkCmdExecuteGeneratedCommandsEXT_ptr;
+		public static void vkCmdExecuteGeneratedCommandsEXT(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoEXT* pGeneratedCommandsInfo)
+			=> vkCmdExecuteGeneratedCommandsEXT_ptr(commandBuffer, isPreprocessed, pGeneratedCommandsInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateIndirectCommandsLayoutEXTDelegate(VkDevice device, VkIndirectCommandsLayoutCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutEXT* pIndirectCommandsLayout);
+		private static vkCreateIndirectCommandsLayoutEXTDelegate vkCreateIndirectCommandsLayoutEXT_ptr;
+		public static VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutEXT* pIndirectCommandsLayout)
+			=> vkCreateIndirectCommandsLayoutEXT_ptr(device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyIndirectCommandsLayoutEXTDelegate(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyIndirectCommandsLayoutEXTDelegate vkDestroyIndirectCommandsLayoutEXT_ptr;
+		public static void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyIndirectCommandsLayoutEXT_ptr(device, indirectCommandsLayout, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateIndirectExecutionSetEXTDelegate(VkDevice device, VkIndirectExecutionSetCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkIndirectExecutionSetEXT* pIndirectExecutionSet);
+		private static vkCreateIndirectExecutionSetEXTDelegate vkCreateIndirectExecutionSetEXT_ptr;
+		public static VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkIndirectExecutionSetEXT* pIndirectExecutionSet)
+			=> vkCreateIndirectExecutionSetEXT_ptr(device, pCreateInfo, pAllocator, pIndirectExecutionSet);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyIndirectExecutionSetEXTDelegate(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyIndirectExecutionSetEXTDelegate vkDestroyIndirectExecutionSetEXT_ptr;
+		public static void vkDestroyIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyIndirectExecutionSetEXT_ptr(device, indirectExecutionSet, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkUpdateIndirectExecutionSetPipelineEXTDelegate(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetPipelineEXT* pExecutionSetWrites);
+		private static vkUpdateIndirectExecutionSetPipelineEXTDelegate vkUpdateIndirectExecutionSetPipelineEXT_ptr;
+		public static void vkUpdateIndirectExecutionSetPipelineEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetPipelineEXT* pExecutionSetWrites)
+			=> vkUpdateIndirectExecutionSetPipelineEXT_ptr(device, indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkUpdateIndirectExecutionSetShaderEXTDelegate(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetShaderEXT* pExecutionSetWrites);
+		private static vkUpdateIndirectExecutionSetShaderEXTDelegate vkUpdateIndirectExecutionSetShaderEXT_ptr;
+		public static void vkUpdateIndirectExecutionSetShaderEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetShaderEXT* pExecutionSetWrites)
+			=> vkUpdateIndirectExecutionSetShaderEXT_ptr(device, indirectExecutionSet, executionSetWriteCount, pExecutionSetWrites);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDepthClampRangeEXTDelegate(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, VkDepthClampRangeEXT* pDepthClampRange);
+		private static vkCmdSetDepthClampRangeEXTDelegate vkCmdSetDepthClampRangeEXT_ptr;
+		public static void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, VkDepthClampRangeEXT* pDepthClampRange)
+			=> vkCmdSetDepthClampRangeEXT_ptr(commandBuffer, depthClampMode, pDepthClampRange);
+
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -4100,6 +4160,16 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
 			NativeLib.LoadFunction("vkCmdBindDescriptorSets2KHR",  out vkCmdBindDescriptorSets2KHR_ptr);
 			NativeLib.LoadFunction("vkCmdPushConstants2KHR",  out vkCmdPushConstants2KHR_ptr);
+			NativeLib.LoadFunction("vkGetGeneratedCommandsMemoryRequirementsEXT",  out vkGetGeneratedCommandsMemoryRequirementsEXT_ptr);
+			NativeLib.LoadFunction("vkCmdPreprocessGeneratedCommandsEXT",  out vkCmdPreprocessGeneratedCommandsEXT_ptr);
+			NativeLib.LoadFunction("vkCmdExecuteGeneratedCommandsEXT",  out vkCmdExecuteGeneratedCommandsEXT_ptr);
+			NativeLib.LoadFunction("vkCreateIndirectCommandsLayoutEXT",  out vkCreateIndirectCommandsLayoutEXT_ptr);
+			NativeLib.LoadFunction("vkDestroyIndirectCommandsLayoutEXT",  out vkDestroyIndirectCommandsLayoutEXT_ptr);
+			NativeLib.LoadFunction("vkCreateIndirectExecutionSetEXT",  out vkCreateIndirectExecutionSetEXT_ptr);
+			NativeLib.LoadFunction("vkDestroyIndirectExecutionSetEXT",  out vkDestroyIndirectExecutionSetEXT_ptr);
+			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetPipelineEXT",  out vkUpdateIndirectExecutionSetPipelineEXT_ptr);
+			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetShaderEXT",  out vkUpdateIndirectExecutionSetShaderEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetDepthClampRangeEXT",  out vkCmdSetDepthClampRangeEXT_ptr);
 		}
 	}
 }

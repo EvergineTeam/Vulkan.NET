@@ -407,6 +407,36 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkIndirectCommandsLayoutEXT : IEquatable<VkIndirectCommandsLayoutEXT>
+{
+		public readonly ulong Handle;
+		public VkIndirectCommandsLayoutEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static VkIndirectCommandsLayoutEXT Null => new VkIndirectCommandsLayoutEXT(0);
+		public static implicit operator VkIndirectCommandsLayoutEXT(ulong handle) => new VkIndirectCommandsLayoutEXT(handle);
+		public static bool operator ==(VkIndirectCommandsLayoutEXT left, VkIndirectCommandsLayoutEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(VkIndirectCommandsLayoutEXT left, VkIndirectCommandsLayoutEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(VkIndirectCommandsLayoutEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkIndirectCommandsLayoutEXT left, ulong right) => left.Handle != right;
+		public bool Equals(VkIndirectCommandsLayoutEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkIndirectCommandsLayoutEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkIndirectExecutionSetEXT : IEquatable<VkIndirectExecutionSetEXT>
+{
+		public readonly ulong Handle;
+		public VkIndirectExecutionSetEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static VkIndirectExecutionSetEXT Null => new VkIndirectExecutionSetEXT(0);
+		public static implicit operator VkIndirectExecutionSetEXT(ulong handle) => new VkIndirectExecutionSetEXT(handle);
+		public static bool operator ==(VkIndirectExecutionSetEXT left, VkIndirectExecutionSetEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(VkIndirectExecutionSetEXT left, VkIndirectExecutionSetEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(VkIndirectExecutionSetEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkIndirectExecutionSetEXT left, ulong right) => left.Handle != right;
+		public bool Equals(VkIndirectExecutionSetEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkIndirectExecutionSetEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescriptorUpdateTemplate>
 {
 		public readonly ulong Handle;
