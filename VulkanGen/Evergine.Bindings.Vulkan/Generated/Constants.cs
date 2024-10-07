@@ -605,6 +605,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart";
 		public const uint VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 2;
 		public const string VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
+		public const uint VK_EXT_PRESENT_MODE_FIFO_LATEST_READY_SPEC_VERSION = 1;
+		public const string VK_EXT_PRESENT_MODE_FIFO_LATEST_READY_EXTENSION_NAME = "VK_EXT_present_mode_fifo_latest_ready";
 		public const uint VK_FUCHSIA_EXTERNAL_MEMORY_SPEC_VERSION = 1;
 		public const string VK_FUCHSIA_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_FUCHSIA_external_memory";
 		public const uint VK_FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;

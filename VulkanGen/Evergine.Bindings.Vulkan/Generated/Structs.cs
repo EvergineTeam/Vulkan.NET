@@ -11591,6 +11591,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 presentModeFifoLatestReady;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDepthClampRangeEXT
 	{
 		public float minDepthClamp;
