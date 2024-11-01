@@ -2058,28 +2058,28 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr(device, executionGraph, pNodeInfo, pNodeIndex);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdInitializeGraphScratchMemoryAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch);
+		private delegate void vkCmdInitializeGraphScratchMemoryAMDXDelegate(VkCommandBuffer commandBuffer, VkPipeline executionGraph, ulong scratch, ulong scratchSize);
 		private static vkCmdInitializeGraphScratchMemoryAMDXDelegate vkCmdInitializeGraphScratchMemoryAMDX_ptr;
-		public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, ulong scratch)
-			=> vkCmdInitializeGraphScratchMemoryAMDX_ptr(commandBuffer, scratch);
+		public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, VkPipeline executionGraph, ulong scratch, ulong scratchSize)
+			=> vkCmdInitializeGraphScratchMemoryAMDX_ptr(commandBuffer, executionGraph, scratch, scratchSize);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchGraphAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo);
+		private delegate void vkCmdDispatchGraphAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, VkDispatchGraphCountInfoAMDX* pCountInfo);
 		private static vkCmdDispatchGraphAMDXDelegate vkCmdDispatchGraphAMDX_ptr;
-		public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo)
-			=> vkCmdDispatchGraphAMDX_ptr(commandBuffer, scratch, pCountInfo);
+		public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, VkDispatchGraphCountInfoAMDX* pCountInfo)
+			=> vkCmdDispatchGraphAMDX_ptr(commandBuffer, scratch, scratchSize, pCountInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchGraphIndirectAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo);
+		private delegate void vkCmdDispatchGraphIndirectAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, VkDispatchGraphCountInfoAMDX* pCountInfo);
 		private static vkCmdDispatchGraphIndirectAMDXDelegate vkCmdDispatchGraphIndirectAMDX_ptr;
-		public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* pCountInfo)
-			=> vkCmdDispatchGraphIndirectAMDX_ptr(commandBuffer, scratch, pCountInfo);
+		public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, VkDispatchGraphCountInfoAMDX* pCountInfo)
+			=> vkCmdDispatchGraphIndirectAMDX_ptr(commandBuffer, scratch, scratchSize, pCountInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchGraphIndirectCountAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo);
+		private delegate void vkCmdDispatchGraphIndirectCountAMDXDelegate(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, ulong countInfo);
 		private static vkCmdDispatchGraphIndirectCountAMDXDelegate vkCmdDispatchGraphIndirectCountAMDX_ptr;
-		public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo)
-			=> vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, countInfo);
+		public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong scratchSize, ulong countInfo)
+			=> vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, scratchSize, countInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetSampleLocationsEXTDelegate(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* pSampleLocationsInfo);
@@ -3569,6 +3569,12 @@ namespace Evergine.Bindings.Vulkan
 		public static void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, VkDepthClampRangeEXT* pDepthClampRange)
 			=> vkCmdSetDepthClampRangeEXT_ptr(commandBuffer, depthClampMode, pDepthClampRange);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNVDelegate(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
+		private static vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNVDelegate vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr;
+		public static VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties)
+			=> vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr(physicalDevice, pPropertyCount, pProperties);
+
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -4170,6 +4176,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetPipelineEXT",  out vkUpdateIndirectExecutionSetPipelineEXT_ptr);
 			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetShaderEXT",  out vkUpdateIndirectExecutionSetShaderEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampRangeEXT",  out vkCmdSetDepthClampRangeEXT_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr);
 		}
 	}
 }

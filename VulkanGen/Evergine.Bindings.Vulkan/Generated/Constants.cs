@@ -265,7 +265,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class";
 		public const uint VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2;
 		public const string VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
-		public const uint VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 1;
+		public const uint VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 2;
 		public const string VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME = "VK_AMDX_shader_enqueue";
 		public const uint VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION = 1;
 		public const string VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples";
@@ -823,5 +823,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
 		public const uint VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION = 1;
 		public const string VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clamp_control";
+		public const uint VK_NV_COOPERATIVE_MATRIX_2_SPEC_VERSION = 1;
+		public const string VK_NV_COOPERATIVE_MATRIX_2_EXTENSION_NAME = "VK_NV_cooperative_matrix2";
 	}
 }

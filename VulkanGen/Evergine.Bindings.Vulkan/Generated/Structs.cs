@@ -10966,6 +10966,10 @@ namespace Evergine.Bindings.Vulkan
 		public uint maxExecutionGraphShaderPayloadSize;
 		public uint maxExecutionGraphShaderPayloadCount;
 		public uint executionGraphDispatchAddressAlignment;
+		public uint maxExecutionGraphWorkgroupCount_0;
+		public uint maxExecutionGraphWorkgroupCount_1;
+		public uint maxExecutionGraphWorkgroupCount_2;
+		public uint maxExecutionGraphWorkgroups;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10974,6 +10978,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderEnqueue;
+		public VkBool32 shaderMeshEnqueue;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11004,7 +11009,9 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public ulong size;
+		public ulong minSize;
+		public ulong maxSize;
+		public ulong sizeGranularity;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11603,6 +11610,47 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public float minDepthClamp;
 		public float maxDepthClamp;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cooperativeMatrixWorkgroupScope;
+		public VkBool32 cooperativeMatrixFlexibleDimensions;
+		public VkBool32 cooperativeMatrixReductions;
+		public VkBool32 cooperativeMatrixConversions;
+		public VkBool32 cooperativeMatrixPerElementOperations;
+		public VkBool32 cooperativeMatrixTensorAddressing;
+		public VkBool32 cooperativeMatrixBlockLoads;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+		public uint cooperativeMatrixFlexibleDimensionsMaxDimension;
+		public uint cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint MGranularity;
+		public uint NGranularity;
+		public uint KGranularity;
+		public VkComponentTypeKHR AType;
+		public VkComponentTypeKHR BType;
+		public VkComponentTypeKHR CType;
+		public VkComponentTypeKHR ResultType;
+		public VkBool32 saturatingAccumulation;
+		public VkScopeKHR scope;
+		public uint workgroupInvocations;
 	}
 
 }
