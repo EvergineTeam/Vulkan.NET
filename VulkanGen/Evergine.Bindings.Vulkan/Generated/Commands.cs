@@ -1668,6 +1668,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetImageViewHandleNVX_ptr(device, pInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate ulong vkGetImageViewHandle64NVXDelegate(VkDevice device, VkImageViewHandleInfoNVX* pInfo);
+		private static vkGetImageViewHandle64NVXDelegate vkGetImageViewHandle64NVX_ptr;
+		public static ulong vkGetImageViewHandle64NVX(VkDevice device, VkImageViewHandleInfoNVX* pInfo)
+			=> vkGetImageViewHandle64NVX_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetImageViewAddressNVXDelegate(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties);
 		private static vkGetImageViewAddressNVXDelegate vkGetImageViewAddressNVX_ptr;
 		public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties)
@@ -3859,6 +3865,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkDestroyCuFunctionNVX",  out vkDestroyCuFunctionNVX_ptr);
 			NativeLib.LoadFunction("vkCmdCuLaunchKernelNVX",  out vkCmdCuLaunchKernelNVX_ptr);
 			NativeLib.LoadFunction("vkGetImageViewHandleNVX",  out vkGetImageViewHandleNVX_ptr);
+			NativeLib.LoadFunction("vkGetImageViewHandle64NVX",  out vkGetImageViewHandle64NVX_ptr);
 			NativeLib.LoadFunction("vkGetImageViewAddressNVX",  out vkGetImageViewAddressNVX_ptr);
 			NativeLib.LoadFunction("vkGetShaderInfoAMD",  out vkGetShaderInfoAMD_ptr);
 			NativeLib.LoadFunction("vkCreateStreamDescriptorSurfaceGGP",  out vkCreateStreamDescriptorSurfaceGGP_ptr);

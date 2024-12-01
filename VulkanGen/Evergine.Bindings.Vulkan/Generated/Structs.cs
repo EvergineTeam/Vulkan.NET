@@ -1597,6 +1597,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDisplaySurfaceStereoTypeNV stereoType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDisplayPresentInfoKHR
 	{
 		public VkStructureType sType;
@@ -3157,6 +3165,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkHdrVividDynamicMetadataHUAWEI
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr dynamicMetadataSize;
+		public void* pDynamicMetadata;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	{
 		public VkStructureType sType;
@@ -3357,6 +3374,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkDisplayModePropertiesKHR displayModeProperties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDisplayModeStereoPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 hdmi3DSupported;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8137,6 +8162,65 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeQuantizationMapCapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D maxQuantizationMapExtent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH264QuantizationMapCapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public int minQpDelta;
+		public int maxQpDelta;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public int minQpDelta;
+		public int maxQpDelta;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public int minQIndexDelta;
+		public int maxQIndexDelta;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoFormatQuantizationMapPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D quantizationMapTexelSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoFormatH265QuantizationMapPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoFormatAV1QuantizationMapPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoProfileInfoKHR
 	{
 		public VkStructureType sType;
@@ -8434,7 +8518,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkVideoSessionParametersCreateFlagsKHR flags;
 		public VkVideoSessionParametersKHR videoSessionParametersTemplate;
 		public VkVideoSessionKHR videoSession;
 	}
@@ -8506,7 +8590,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkVideoEncodeFlagsKHR flags;
 		public VkBuffer dstBuffer;
 		public ulong dstBufferOffset;
 		public ulong dstBufferRange;
@@ -8515,6 +8599,31 @@ namespace Evergine.Bindings.Vulkan
 		public uint referenceSlotCount;
 		public VkVideoReferenceSlotInfoKHR* pReferenceSlots;
 		public uint precedingExternallyEncodedBytes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeQuantizationMapInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkImageView quantizationMap;
+		public VkExtent2D quantizationMapExtent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExtent2D quantizationMapTexelSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 videoEncodeQuantizationMap;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8945,6 +9054,169 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1CapabilitiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeAV1CapabilityFlagsKHR flags;
+		public IntPtr maxLevel;
+		public VkExtent2D codedPictureAlignment;
+		public VkExtent2D maxTiles;
+		public VkExtent2D minTileSize;
+		public VkExtent2D maxTileSize;
+		public VkVideoEncodeAV1SuperblockSizeFlagsKHR superblockSizes;
+		public uint maxSingleReferenceCount;
+		public uint singleReferenceNameMask;
+		public uint maxUnidirectionalCompoundReferenceCount;
+		public uint maxUnidirectionalCompoundGroup1ReferenceCount;
+		public uint unidirectionalCompoundReferenceNameMask;
+		public uint maxBidirectionalCompoundReferenceCount;
+		public uint maxBidirectionalCompoundGroup1ReferenceCount;
+		public uint maxBidirectionalCompoundGroup2ReferenceCount;
+		public uint bidirectionalCompoundReferenceNameMask;
+		public uint maxTemporalLayerCount;
+		public uint maxSpatialLayerCount;
+		public uint maxOperatingPoints;
+		public uint minQIndex;
+		public uint maxQIndex;
+		public VkBool32 prefersGopRemainingFrames;
+		public VkBool32 requiresGopRemainingFrames;
+		public VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1QualityLevelPropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
+		public uint preferredGopFrameCount;
+		public uint preferredKeyFramePeriod;
+		public uint preferredConsecutiveBipredictiveFrameCount;
+		public uint preferredTemporalLayerCount;
+		public VkVideoEncodeAV1QIndexKHR preferredConstantQIndex;
+		public uint preferredMaxSingleReferenceCount;
+		public uint preferredSingleReferenceNameMask;
+		public uint preferredMaxUnidirectionalCompoundReferenceCount;
+		public uint preferredMaxUnidirectionalCompoundGroup1ReferenceCount;
+		public uint preferredUnidirectionalCompoundReferenceNameMask;
+		public uint preferredMaxBidirectionalCompoundReferenceCount;
+		public uint preferredMaxBidirectionalCompoundGroup1ReferenceCount;
+		public uint preferredMaxBidirectionalCompoundGroup2ReferenceCount;
+		public uint preferredBidirectionalCompoundReferenceNameMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 videoEncodeAV1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1SessionCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 useMaxLevel;
+		public IntPtr maxLevel;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1SessionParametersCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdSequenceHeader;
+		public StdVideoEncodeAV1DecoderModelInfo* pStdDecoderModelInfo;
+		public uint stdOperatingPointCount;
+		public StdVideoEncodeAV1OperatingPointInfo* pStdOperatingPoints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1DpbSlotInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public StdVideoEncodeAV1ReferenceInfo* pStdReferenceInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1PictureInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeAV1PredictionModeKHR predictionMode;
+		public VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
+		public uint constantQIndex;
+		public StdVideoEncodeAV1PictureInfo* pStdPictureInfo;
+		public fixed int referenceNameSlotIndices[(int)VulkanNative.VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR];
+		public VkBool32 primaryReferenceCdfOnly;
+		public VkBool32 generateObuExtensionHeader;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1ProfileInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr stdProfile;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1RateControlInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeAV1RateControlFlagsKHR flags;
+		public uint gopFrameCount;
+		public uint keyFramePeriod;
+		public uint consecutiveBipredictiveFrameCount;
+		public uint temporalLayerCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1QIndexKHR
+	{
+		public uint intraQIndex;
+		public uint predictiveQIndex;
+		public uint bipredictiveQIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1FrameSizeKHR
+	{
+		public uint intraFrameSize;
+		public uint predictiveFrameSize;
+		public uint bipredictiveFrameSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1GopRemainingFrameInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 useGopRemainingFrames;
+		public uint gopRemainingIntra;
+		public uint gopRemainingPredictive;
+		public uint gopRemainingBipredictive;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeAV1RateControlLayerInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 useMinQIndex;
+		public VkVideoEncodeAV1QIndexKHR minQIndex;
+		public VkBool32 useMaxQIndex;
+		public VkVideoEncodeAV1QIndexKHR maxQIndex;
+		public VkBool32 useMaxFrameSize;
+		public VkVideoEncodeAV1FrameSizeKHR maxFrameSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV
 	{
 		public VkStructureType sType;
@@ -9003,6 +9275,14 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public UIntPtr dataSize;
 		public void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCuModuleTexturingModeCreateInfoNVX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 use64bitTexturing;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11651,6 +11931,22 @@ namespace Evergine.Bindings.Vulkan
 		public VkBool32 saturatingAccumulation;
 		public VkScopeKHR scope;
 		public uint workgroupInvocations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceHdrVividFeaturesHUAWEI
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 hdrVivid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 vertexAttributeRobustness;
 	}
 
 }

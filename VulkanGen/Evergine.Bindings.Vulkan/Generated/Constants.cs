@@ -83,9 +83,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";
 		public const uint VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION = 1;
 		public const string VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback";
-		public const uint VK_NVX_BINARY_IMPORT_SPEC_VERSION = 1;
+		public const uint VK_NVX_BINARY_IMPORT_SPEC_VERSION = 2;
 		public const string VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import";
-		public const uint VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 2;
+		public const uint VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 3;
 		public const string VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
 		public const uint VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2;
 		public const string VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
@@ -767,6 +767,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_KHR_compute_shader_derivatives";
 		public const uint VK_KHR_VIDEO_DECODE_AV1_SPEC_VERSION = 1;
 		public const string VK_KHR_VIDEO_DECODE_AV1_EXTENSION_NAME = "VK_KHR_video_decode_av1";
+		public const uint VK_KHR_VIDEO_ENCODE_AV1_SPEC_VERSION = 1;
+		public const string VK_KHR_VIDEO_ENCODE_AV1_EXTENSION_NAME = "VK_KHR_video_encode_av1";
 		public const uint VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION = 1;
 		public const string VK_KHR_VIDEO_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_video_maintenance1";
 		public const uint VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION = 1;
@@ -803,6 +805,10 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_6_EXTENSION_NAME = "VK_KHR_maintenance6";
 		public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
 		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
+		public const uint VK_NV_DISPLAY_STEREO_SPEC_VERSION = 1;
+		public const string VK_NV_DISPLAY_STEREO_EXTENSION_NAME = "VK_NV_display_stereo";
+		public const uint VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION = 2;
+		public const string VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_EXTENSION_NAME = "VK_KHR_video_encode_quantization_map";
 		public const uint VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
 		public const string VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
 		public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
@@ -823,7 +829,11 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
 		public const uint VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION = 1;
 		public const string VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clamp_control";
+		public const uint VK_HUAWEI_HDR_VIVID_SPEC_VERSION = 1;
+		public const string VK_HUAWEI_HDR_VIVID_EXTENSION_NAME = "VK_HUAWEI_hdr_vivid";
 		public const uint VK_NV_COOPERATIVE_MATRIX_2_SPEC_VERSION = 1;
 		public const string VK_NV_COOPERATIVE_MATRIX_2_EXTENSION_NAME = "VK_NV_cooperative_matrix2";
+		public const uint VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_SPEC_VERSION = 1;
+		public const string VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_vertex_attribute_robustness";
 	}
 }
