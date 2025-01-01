@@ -5,7 +5,6 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256;
 		public const uint VK_UUID_SIZE = 16;
 		public const uint VK_LUID_SIZE = 8;
-		public const uint VK_LUID_SIZE_KHR = VK_LUID_SIZE;
 		public const uint VK_MAX_EXTENSION_NAME_SIZE = 256;
 		public const uint VK_MAX_DESCRIPTION_SIZE = 256;
 		public const uint VK_MAX_MEMORY_TYPES = 32;
@@ -20,19 +19,13 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_FALSE = 0;
 		public const uint VK_QUEUE_FAMILY_IGNORED = (~0U);
 		public const uint VK_QUEUE_FAMILY_EXTERNAL = (~1U);
-		public const uint VK_QUEUE_FAMILY_EXTERNAL_KHR = VK_QUEUE_FAMILY_EXTERNAL;
 		public const uint VK_QUEUE_FAMILY_FOREIGN_EXT = (~2U);
 		public const uint VK_SUBPASS_EXTERNAL = (~0U);
 		public const uint VK_MAX_DEVICE_GROUP_SIZE = 32;
-		public const uint VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE;
 		public const uint VK_MAX_DRIVER_NAME_SIZE = 256;
-		public const uint VK_MAX_DRIVER_NAME_SIZE_KHR = VK_MAX_DRIVER_NAME_SIZE;
 		public const uint VK_MAX_DRIVER_INFO_SIZE = 256;
-		public const uint VK_MAX_DRIVER_INFO_SIZE_KHR = VK_MAX_DRIVER_INFO_SIZE;
 		public const uint VK_SHADER_UNUSED_KHR = (~0U);
-		public const uint VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR;
-		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16;
-		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
+		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE = 16;
 		public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
 		public const uint VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR = 32;
 		public const uint VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
@@ -153,10 +146,13 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE1_EXTENSION_NAME = VK_KHR_MAINTENANCE_1_EXTENSION_NAME;
 		public const uint VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1;
 		public const string VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
+		public const uint VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE;
 		public const uint VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
 		public const string VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
+		public const uint VK_LUID_SIZE_KHR = VK_LUID_SIZE;
 		public const uint VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION = 1;
 		public const string VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory";
+		public const uint VK_QUEUE_FAMILY_EXTERNAL_KHR = VK_QUEUE_FAMILY_EXTERNAL;
 		public const uint VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
 		public const string VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME = "VK_KHR_external_memory_win32";
 		public const uint VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1;
@@ -319,6 +315,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
 		public const uint VK_NV_RAY_TRACING_SPEC_VERSION = 3;
 		public const string VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing";
+		public const uint VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR;
 		public const uint VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION = 2;
 		public const string VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test";
 		public const uint VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1;
@@ -355,6 +352,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_KHR_video_decode_h265";
 		public const uint VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION = 1;
 		public const string VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority";
+		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = VK_MAX_GLOBAL_PRIORITY_SIZE;
 		public const uint VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION = 1;
 		public const string VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
 		public const uint VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 3;
@@ -365,6 +363,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
 		public const uint VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1;
 		public const string VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";
+		public const uint VK_MAX_DRIVER_NAME_SIZE_KHR = VK_MAX_DRIVER_NAME_SIZE;
+		public const uint VK_MAX_DRIVER_INFO_SIZE_KHR = VK_MAX_DRIVER_INFO_SIZE;
 		public const uint VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4;
 		public const string VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls";
 		public const uint VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1;
@@ -641,6 +641,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
 		public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 		public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
+		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE;
 		public const uint VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
 		public const string VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";
 		public const uint VK_EXT_MULTI_DRAW_SPEC_VERSION = 1;

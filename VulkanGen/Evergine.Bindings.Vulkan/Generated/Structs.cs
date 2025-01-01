@@ -361,7 +361,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkBufferUsageFlags2CreateInfoKHR
+	public unsafe partial struct VkBufferUsageFlags2CreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -742,7 +742,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineCreateFlags2CreateInfoKHR
+	public unsafe partial struct VkPipelineCreateFlags2CreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -2278,7 +2278,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
+	public unsafe partial struct VkPhysicalDevicePushDescriptorProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -3896,7 +3896,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceMaintenance5FeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceMaintenance5Features
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -3904,7 +3904,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceMaintenance5PropertiesKHR
+	public unsafe partial struct VkPhysicalDeviceMaintenance5Properties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -3917,7 +3917,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceMaintenance6FeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceMaintenance6Features
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -3925,7 +3925,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceMaintenance6PropertiesKHR
+	public unsafe partial struct VkPhysicalDeviceMaintenance6Properties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -3986,7 +3986,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkRenderingAreaInfoKHR
+	public unsafe partial struct VkRenderingAreaInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -4114,15 +4114,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfoKHR
+	public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkQueueGlobalPriorityKHR globalPriority;
+		public VkQueueGlobalPriority globalPriority;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceGlobalPriorityQueryFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -4130,27 +4130,27 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkQueueFamilyGlobalPriorityPropertiesKHR
+	public unsafe partial struct VkQueueFamilyGlobalPriorityProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint priorityCount;
-		public VkQueueGlobalPriorityKHR priorities_0;
-		public VkQueueGlobalPriorityKHR priorities_1;
-		public VkQueueGlobalPriorityKHR priorities_2;
-		public VkQueueGlobalPriorityKHR priorities_3;
-		public VkQueueGlobalPriorityKHR priorities_4;
-		public VkQueueGlobalPriorityKHR priorities_5;
-		public VkQueueGlobalPriorityKHR priorities_6;
-		public VkQueueGlobalPriorityKHR priorities_7;
-		public VkQueueGlobalPriorityKHR priorities_8;
-		public VkQueueGlobalPriorityKHR priorities_9;
-		public VkQueueGlobalPriorityKHR priorities_10;
-		public VkQueueGlobalPriorityKHR priorities_11;
-		public VkQueueGlobalPriorityKHR priorities_12;
-		public VkQueueGlobalPriorityKHR priorities_13;
-		public VkQueueGlobalPriorityKHR priorities_14;
-		public VkQueueGlobalPriorityKHR priorities_15;
+		public VkQueueGlobalPriority priorities_0;
+		public VkQueueGlobalPriority priorities_1;
+		public VkQueueGlobalPriority priorities_2;
+		public VkQueueGlobalPriority priorities_3;
+		public VkQueueGlobalPriority priorities_4;
+		public VkQueueGlobalPriority priorities_5;
+		public VkQueueGlobalPriority priorities_6;
+		public VkQueueGlobalPriority priorities_7;
+		public VkQueueGlobalPriority priorities_8;
+		public VkQueueGlobalPriority priorities_9;
+		public VkQueueGlobalPriority priorities_10;
+		public VkQueueGlobalPriority priorities_11;
+		public VkQueueGlobalPriority priorities_12;
+		public VkQueueGlobalPriority priorities_13;
+		public VkQueueGlobalPriority priorities_14;
+		public VkQueueGlobalPriority priorities_15;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4567,19 +4567,19 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkVertexInputBindingDivisorDescriptionKHR
+	public unsafe partial struct VkVertexInputBindingDivisorDescription
 	{
 		public uint binding;
 		public uint divisor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfoKHR
+	public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public uint vertexBindingDivisorCount;
-		public VkVertexInputBindingDivisorDescriptionKHR* pVertexBindingDivisors;
+		public VkVertexInputBindingDivisorDescription* pVertexBindingDivisors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4591,7 +4591,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR
+	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -4751,7 +4751,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6059,7 +6059,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceIndexTypeUint8Features
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6290,7 +6290,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6303,7 +6303,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesKHR
+	public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -6311,11 +6311,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoKHR
+	public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkLineRasterizationModeKHR lineRasterizationMode;
+		public VkLineRasterizationMode lineRasterizationMode;
 		public VkBool32 stippledLineEnable;
 		public uint lineStippleFactor;
 		public ushort lineStipplePattern;
@@ -6555,6 +6555,66 @@ namespace Evergine.Bindings.Vulkan
 		public ulong uniformTexelBufferOffsetAlignmentBytes;
 		public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 		public ulong maxBufferSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVulkan14Features
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 globalPriorityQuery;
+		public VkBool32 shaderSubgroupRotate;
+		public VkBool32 shaderSubgroupRotateClustered;
+		public VkBool32 shaderFloatControls2;
+		public VkBool32 shaderExpectAssume;
+		public VkBool32 rectangularLines;
+		public VkBool32 bresenhamLines;
+		public VkBool32 smoothLines;
+		public VkBool32 stippledRectangularLines;
+		public VkBool32 stippledBresenhamLines;
+		public VkBool32 stippledSmoothLines;
+		public VkBool32 vertexAttributeInstanceRateDivisor;
+		public VkBool32 vertexAttributeInstanceRateZeroDivisor;
+		public VkBool32 indexTypeUint8;
+		public VkBool32 dynamicRenderingLocalRead;
+		public VkBool32 maintenance5;
+		public VkBool32 maintenance6;
+		public VkBool32 pipelineProtectedAccess;
+		public VkBool32 pipelineRobustness;
+		public VkBool32 hostImageCopy;
+		public VkBool32 pushDescriptor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVulkan14Properties
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint lineSubPixelPrecisionBits;
+		public uint maxVertexAttribDivisor;
+		public VkBool32 supportsNonZeroFirstInstance;
+		public uint maxPushDescriptors;
+		public VkBool32 dynamicRenderingLocalReadDepthStencilAttachments;
+		public VkBool32 dynamicRenderingLocalReadMultisampledAttachments;
+		public VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+		public VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+		public VkBool32 depthStencilSwizzleOneSupport;
+		public VkBool32 polygonModePointSize;
+		public VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+		public VkBool32 nonStrictWideLinesUseParallelogram;
+		public VkBool32 blockTexelViewCompatibleMultipleLayers;
+		public uint maxCombinedImageSamplerDescriptorCount;
+		public VkBool32 fragmentShadingRateClampCombinerInputs;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+		public VkPipelineRobustnessImageBehavior defaultRobustnessImages;
+		public uint copySrcLayoutCount;
+		public VkImageLayout* pCopySrcLayouts;
+		public uint copyDstLayoutCount;
+		public VkImageLayout* pCopyDstLayouts;
+		public fixed byte optimalTilingLayoutUUID[(int)VulkanNative.VK_UUID_SIZE];
+		public VkBool32 identicalMemoryTypeRequirements;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7843,7 +7903,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceHostImageCopyFeaturesEXT
+	public unsafe partial struct VkPhysicalDeviceHostImageCopyFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7851,7 +7911,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceHostImageCopyPropertiesEXT
+	public unsafe partial struct VkPhysicalDeviceHostImageCopyProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7864,7 +7924,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkMemoryToImageCopyEXT
+	public unsafe partial struct VkMemoryToImageCopy
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7877,7 +7937,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkImageToMemoryCopyEXT
+	public unsafe partial struct VkImageToMemoryCopy
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7890,35 +7950,35 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCopyMemoryToImageInfoEXT
+	public unsafe partial struct VkCopyMemoryToImageInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkHostImageCopyFlagsEXT flags;
+		public VkHostImageCopyFlags flags;
 		public VkImage dstImage;
 		public VkImageLayout dstImageLayout;
 		public uint regionCount;
-		public VkMemoryToImageCopyEXT* pRegions;
+		public VkMemoryToImageCopy* pRegions;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCopyImageToMemoryInfoEXT
+	public unsafe partial struct VkCopyImageToMemoryInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkHostImageCopyFlagsEXT flags;
+		public VkHostImageCopyFlags flags;
 		public VkImage srcImage;
 		public VkImageLayout srcImageLayout;
 		public uint regionCount;
-		public VkImageToMemoryCopyEXT* pRegions;
+		public VkImageToMemoryCopy* pRegions;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCopyImageToImageInfoEXT
+	public unsafe partial struct VkCopyImageToImageInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkHostImageCopyFlagsEXT flags;
+		public VkHostImageCopyFlags flags;
 		public VkImage srcImage;
 		public VkImageLayout srcImageLayout;
 		public VkImage dstImage;
@@ -7928,7 +7988,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkHostImageLayoutTransitionInfoEXT
+	public unsafe partial struct VkHostImageLayoutTransitionInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7939,7 +7999,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkSubresourceHostMemcpySizeEXT
+	public unsafe partial struct VkSubresourceHostMemcpySize
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7947,7 +8007,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkHostImageCopyDevicePerformanceQueryEXT
+	public unsafe partial struct VkHostImageCopyDevicePerformanceQuery
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -8108,7 +8168,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeaturesEXT
+	public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10138,7 +10198,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkImageSubresource2KHR
+	public unsafe partial struct VkImageSubresource2
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10146,7 +10206,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkSubresourceLayout2KHR
+	public unsafe partial struct VkSubresourceLayout2
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10513,7 +10573,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeaturesEXT
+	public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10521,25 +10581,25 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPipelineRobustnessCreateInfoEXT
+	public unsafe partial struct VkPipelineRobustnessCreateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRobustnessBufferBehaviorEXT storageBuffers;
-		public VkPipelineRobustnessBufferBehaviorEXT uniformBuffers;
-		public VkPipelineRobustnessBufferBehaviorEXT vertexInputs;
-		public VkPipelineRobustnessImageBehaviorEXT images;
+		public VkPipelineRobustnessBufferBehavior storageBuffers;
+		public VkPipelineRobustnessBufferBehavior uniformBuffers;
+		public VkPipelineRobustnessBufferBehavior vertexInputs;
+		public VkPipelineRobustnessImageBehavior images;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDevicePipelineRobustnessPropertiesEXT
+	public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessStorageBuffers;
-		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessUniformBuffers;
-		public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessVertexInputs;
-		public VkPipelineRobustnessImageBehaviorEXT defaultRobustnessImages;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+		public VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+		public VkPipelineRobustnessImageBehavior defaultRobustnessImages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11035,12 +11095,12 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkDeviceImageSubresourceInfoKHR
+	public unsafe partial struct VkDeviceImageSubresourceInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
 		public VkImageCreateInfo* pCreateInfo;
-		public VkImageSubresource2KHR* pSubresource;
+		public VkImageSubresource2* pSubresource;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11079,7 +11139,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkMemoryMapInfoKHR
+	public unsafe partial struct VkMemoryMapInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11090,11 +11150,11 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkMemoryUnmapInfoKHR
+	public unsafe partial struct VkMemoryUnmapInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public VkMemoryUnmapFlagsKHR flags;
+		public VkMemoryUnmapFlags flags;
 		public VkDeviceMemory memory;
 	}
 
@@ -11339,7 +11399,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkBindMemoryStatusKHR
+	public unsafe partial struct VkBindMemoryStatus
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11347,7 +11407,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkBindDescriptorSetsInfoKHR
+	public unsafe partial struct VkBindDescriptorSetsInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11361,7 +11421,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPushConstantsInfoKHR
+	public unsafe partial struct VkPushConstantsInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11373,7 +11433,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPushDescriptorSetInfoKHR
+	public unsafe partial struct VkPushDescriptorSetInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11385,7 +11445,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPushDescriptorSetWithTemplateInfoKHR
+	public unsafe partial struct VkPushDescriptorSetWithTemplateInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11735,7 +11795,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11744,7 +11804,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11752,7 +11812,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceShaderFloatControls2FeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11760,7 +11820,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR
+	public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11768,7 +11828,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkRenderingAttachmentLocationInfoKHR
+	public unsafe partial struct VkRenderingAttachmentLocationInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -11777,7 +11837,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkRenderingInputAttachmentIndexInfoKHR
+	public unsafe partial struct VkRenderingInputAttachmentIndexInfo
 	{
 		public VkStructureType sType;
 		public void* pNext;
