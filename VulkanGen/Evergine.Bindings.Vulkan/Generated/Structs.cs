@@ -2054,6 +2054,225 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructureFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 clusterAccelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxVerticesPerCluster;
+		public uint maxTrianglesPerCluster;
+		public uint clusterScratchByteAlignment;
+		public uint clusterByteAlignment;
+		public uint clusterTemplateByteAlignment;
+		public uint clusterBottomLevelByteAlignment;
+		public uint clusterTemplateBoundsByteAlignment;
+		public uint maxClusterGeometryIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkStridedDeviceAddressNV
+	{
+		public ulong startAddress;
+		public ulong strideInBytes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 allowClusterAccelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV
+	{
+		[FieldOffset(0)]
+		public uint geometryIndex;
+		[FieldOffset(3)]
+		public uint reserved;
+		[FieldOffset(3)]
+		public uint geometryFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureMoveObjectsInfoNV
+	{
+		public ulong srcAccelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
+	{
+		public uint clusterReferencesCount;
+		public uint clusterReferencesStride;
+		public ulong clusterReferences;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkClusterAccelerationStructureBuildTriangleClusterInfoNV
+	{
+		[FieldOffset(0)]
+		public uint clusterID;
+		[FieldOffset(4)]
+		public VkClusterAccelerationStructureClusterFlagsNV clusterFlags;
+		[FieldOffset(8)]
+		public uint triangleCount;
+		[FieldOffset(9)]
+		public uint vertexCount;
+		[FieldOffset(10)]
+		public uint positionTruncateBitCount;
+		[FieldOffset(10)]
+		public uint indexType;
+		[FieldOffset(10)]
+		public uint opacityMicromapIndexType;
+		[FieldOffset(10)]
+		public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags;
+		[FieldOffset(13)]
+		public ushort indexBufferStride;
+		[FieldOffset(15)]
+		public ushort vertexBufferStride;
+		[FieldOffset(17)]
+		public ushort geometryIndexAndFlagsBufferStride;
+		[FieldOffset(19)]
+		public ushort opacityMicromapIndexBufferStride;
+		[FieldOffset(21)]
+		public ulong indexBuffer;
+		[FieldOffset(25)]
+		public ulong vertexBuffer;
+		[FieldOffset(29)]
+		public ulong geometryIndexAndFlagsBuffer;
+		[FieldOffset(33)]
+		public ulong opacityMicromapArray;
+		[FieldOffset(37)]
+		public ulong opacityMicromapIndexBuffer;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV
+	{
+		[FieldOffset(0)]
+		public uint clusterID;
+		[FieldOffset(4)]
+		public VkClusterAccelerationStructureClusterFlagsNV clusterFlags;
+		[FieldOffset(8)]
+		public uint triangleCount;
+		[FieldOffset(9)]
+		public uint vertexCount;
+		[FieldOffset(10)]
+		public uint positionTruncateBitCount;
+		[FieldOffset(10)]
+		public uint indexType;
+		[FieldOffset(10)]
+		public uint opacityMicromapIndexType;
+		[FieldOffset(10)]
+		public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags;
+		[FieldOffset(13)]
+		public ushort indexBufferStride;
+		[FieldOffset(15)]
+		public ushort vertexBufferStride;
+		[FieldOffset(17)]
+		public ushort geometryIndexAndFlagsBufferStride;
+		[FieldOffset(19)]
+		public ushort opacityMicromapIndexBufferStride;
+		[FieldOffset(21)]
+		public ulong indexBuffer;
+		[FieldOffset(25)]
+		public ulong vertexBuffer;
+		[FieldOffset(29)]
+		public ulong geometryIndexAndFlagsBuffer;
+		[FieldOffset(33)]
+		public ulong opacityMicromapArray;
+		[FieldOffset(37)]
+		public ulong opacityMicromapIndexBuffer;
+		[FieldOffset(41)]
+		public ulong instantiationBoundingBoxLimit;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkClusterAccelerationStructureInstantiateClusterInfoNV
+	{
+		[FieldOffset(0)]
+		public uint clusterIdOffset;
+		[FieldOffset(4)]
+		public uint geometryIndexOffset;
+		[FieldOffset(7)]
+		public uint reserved;
+		[FieldOffset(8)]
+		public ulong clusterTemplateAddress;
+		[FieldOffset(12)]
+		public VkStridedDeviceAddressNV vertexBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureClustersBottomLevelInputNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxTotalClusterCount;
+		public uint maxClusterCountPerAccelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureTriangleClusterInputNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFormat vertexFormat;
+		public uint maxGeometryIndexValue;
+		public uint maxClusterUniqueGeometryCount;
+		public uint maxClusterTriangleCount;
+		public uint maxClusterVertexCount;
+		public uint maxTotalTriangleCount;
+		public uint maxTotalVertexCount;
+		public uint minPositionTruncateBitCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureMoveObjectsInputNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkClusterAccelerationStructureTypeNV type;
+		public VkBool32 noMoveOverlap;
+		public ulong maxMovedBytes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureInputInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxAccelerationStructureCount;
+		public VkBuildAccelerationStructureFlagsKHR flags;
+		public VkClusterAccelerationStructureOpTypeNV opType;
+		public VkClusterAccelerationStructureOpModeNV opMode;
+		public VkClusterAccelerationStructureOpInputNV opInput;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkClusterAccelerationStructureCommandsInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkClusterAccelerationStructureInputInfoNV input;
+		public ulong dstImplicitData;
+		public ulong scratchData;
+		public VkStridedDeviceAddressRegionKHR dstAddressesArray;
+		public VkStridedDeviceAddressRegionKHR dstSizesArray;
+		public VkStridedDeviceAddressRegionKHR srcInfosArray;
+		public ulong srcInfosCount;
+		public VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceMultiDrawPropertiesEXT
 	{
 		public VkStructureType sType;
@@ -2517,6 +2736,32 @@ namespace Evergine.Bindings.Vulkan
 		public uint releaseCount;
 		public VkDeviceMemory* pReleaseSyncs;
 		public ulong* pReleaseKeys;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkImportMemoryMetalHandleInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkExternalMemoryHandleTypeFlags handleType;
+		public void* handle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryMetalHandlePropertiesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint memoryTypeBits;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryGetMetalHandleInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDeviceMemory memory;
+		public VkExternalMemoryHandleTypeFlags handleType;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3983,6 +4228,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkPhysicalDeviceProperties2 properties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 maintenance8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6741,6 +6994,40 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAccelerationStructureGeometryLinearSweptSpheresDataNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFormat vertexFormat;
+		public VkDeviceOrHostAddressConstKHR vertexData;
+		public ulong vertexStride;
+		public VkFormat radiusFormat;
+		public VkDeviceOrHostAddressConstKHR radiusData;
+		public ulong radiusStride;
+		public VkIndexType indexType;
+		public VkDeviceOrHostAddressConstKHR indexData;
+		public ulong indexStride;
+		public VkRayTracingLssIndexingModeNV indexingMode;
+		public VkRayTracingLssPrimitiveEndCapsModeNV endCapsMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAccelerationStructureGeometrySpheresDataNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkFormat vertexFormat;
+		public VkDeviceOrHostAddressConstKHR vertexData;
+		public ulong vertexStride;
+		public VkFormat radiusFormat;
+		public VkDeviceOrHostAddressConstKHR radiusData;
+		public ulong radiusStride;
+		public VkIndexType indexType;
+		public VkDeviceOrHostAddressConstKHR indexData;
+		public ulong indexStride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkAccelerationStructureGeometryKHR
 	{
 		public VkStructureType sType;
@@ -7022,6 +7309,108 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
 		public VkRect2D renderArea;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 partitionedAccelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxPartitionCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBuildPartitionedAccelerationStructureIndirectCommandNV
+	{
+		public VkPartitionedAccelerationStructureOpTypeNV opType;
+		public uint argCount;
+		public VkStridedDeviceAddressNV argData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPartitionedAccelerationStructureFlagsNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 enablePartitionTranslation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPartitionedAccelerationStructureWriteInstanceDataNV
+	{
+		public VkTransformMatrixKHR transform;
+		public float explicitAABB_0;
+		public float explicitAABB_1;
+		public float explicitAABB_2;
+		public float explicitAABB_3;
+		public float explicitAABB_4;
+		public float explicitAABB_5;
+		public uint instanceID;
+		public uint instanceMask;
+		public uint instanceContributionToHitGroupIndex;
+		public VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags;
+		public uint instanceIndex;
+		public uint partitionIndex;
+		public ulong accelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPartitionedAccelerationStructureUpdateInstanceDataNV
+	{
+		public uint instanceIndex;
+		public uint instanceContributionToHitGroupIndex;
+		public ulong accelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV
+	{
+		public uint partitionIndex;
+		public float partitionTranslation_0;
+		public float partitionTranslation_1;
+		public float partitionTranslation_2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkWriteDescriptorSetPartitionedAccelerationStructureNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint accelerationStructureCount;
+		public ulong* pAccelerationStructures;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPartitionedAccelerationStructureInstancesInputNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBuildAccelerationStructureFlagsKHR flags;
+		public uint instanceCount;
+		public uint maxInstancePerPartitionCount;
+		public uint partitionCount;
+		public uint maxInstanceInGlobalPartitionCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBuildPartitionedAccelerationStructureInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkPartitionedAccelerationStructureInstancesInputNV input;
+		public ulong srcAccelerationStructureData;
+		public ulong dstAccelerationStructureData;
+		public ulong scratchData;
+		public ulong srcInfos;
+		public ulong srcInfosCount;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7830,6 +8219,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkMemoryBarrierAccessFlags3KHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong srcAccessMask3;
+		public ulong dstAccessMask3;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDependencyInfo
 	{
 		public VkStructureType sType;
@@ -8387,6 +8785,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 videoMaintenance2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoInlineQueryInfoKHR
 	{
 		public VkStructureType sType;
@@ -8433,6 +8839,15 @@ namespace Evergine.Bindings.Vulkan
 		public uint maxStdSPSCount;
 		public uint maxStdPPSCount;
 		public VkVideoDecodeH264SessionParametersAddInfoKHR* pParametersAddInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH264InlineSessionParametersInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdSPS;
+		public IntPtr pStdPPS;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8494,6 +8909,16 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeH265InlineSessionParametersInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdVPS;
+		public IntPtr pStdSPS;
+		public IntPtr pStdPPS;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoDecodeH265PictureInfoKHR
 	{
 		public VkStructureType sType;
@@ -8530,6 +8955,14 @@ namespace Evergine.Bindings.Vulkan
 
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public IntPtr pStdSequenceHeader;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoDecodeAV1InlineSessionParametersInfoKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -9609,6 +10042,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 spheres;
+		public VkBool32 linearSweptSpheres;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkAccelerationStructureGeometryMotionTrianglesDataNV
 	{
 		public VkStructureType sType;
@@ -10674,14 +11116,6 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 attachmentFeedbackLoopLayout;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesEXT
-	{
-		public VkStructureType sType;
-		public void* pNext;
-		public VkBool32 depthClampZeroOne;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -11787,6 +12221,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 pipelineOpacityMicromap;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR
 	{
 		public VkStructureType sType;
@@ -12007,6 +12449,66 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 vertexAttributeRobustness;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 depthClampZeroOne;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeVectorFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cooperativeVector;
+		public VkBool32 cooperativeVectorTraining;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCooperativeVectorPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkComponentTypeKHR inputType;
+		public VkComponentTypeKHR inputInterpretation;
+		public VkComponentTypeKHR matrixInterpretation;
+		public VkComponentTypeKHR biasInterpretation;
+		public VkComponentTypeKHR resultType;
+		public VkBool32 transpose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeVectorPropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkShaderStageFlags cooperativeVectorSupportedStages;
+		public VkBool32 cooperativeVectorTrainingFloat16Accumulation;
+		public VkBool32 cooperativeVectorTrainingFloat32Accumulation;
+		public uint maxCooperativeVectorComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkConvertCooperativeVectorMatrixInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr srcSize;
+		public VkDeviceOrHostAddressConstKHR srcData;
+		public UIntPtr* pDstSize;
+		public VkDeviceOrHostAddressKHR dstData;
+		public VkComponentTypeKHR srcComponentType;
+		public VkComponentTypeKHR dstComponentType;
+		public uint numRows;
+		public uint numColumns;
+		public VkCooperativeVectorMatrixLayoutNV srcLayout;
+		public UIntPtr srcStride;
+		public VkCooperativeVectorMatrixLayoutNV dstLayout;
+		public UIntPtr dstStride;
 	}
 
 }

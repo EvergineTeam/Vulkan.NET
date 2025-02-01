@@ -3474,6 +3474,24 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroySemaphoreSciSyncPoolNV_ptr(device, semaphorePool, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceCooperativeVectorPropertiesNVDelegate(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeVectorPropertiesNV* pProperties);
+		private static vkGetPhysicalDeviceCooperativeVectorPropertiesNVDelegate vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr;
+		public static VkResult vkGetPhysicalDeviceCooperativeVectorPropertiesNV(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeVectorPropertiesNV* pProperties)
+			=> vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr(physicalDevice, pPropertyCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkConvertCooperativeVectorMatrixNVDelegate(VkDevice device, VkConvertCooperativeVectorMatrixInfoNV* pInfo);
+		private static vkConvertCooperativeVectorMatrixNVDelegate vkConvertCooperativeVectorMatrixNV_ptr;
+		public static VkResult vkConvertCooperativeVectorMatrixNV(VkDevice device, VkConvertCooperativeVectorMatrixInfoNV* pInfo)
+			=> vkConvertCooperativeVectorMatrixNV_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdConvertCooperativeVectorMatrixNVDelegate(VkCommandBuffer commandBuffer, uint infoCount, VkConvertCooperativeVectorMatrixInfoNV* pInfos);
+		private static vkCmdConvertCooperativeVectorMatrixNVDelegate vkCmdConvertCooperativeVectorMatrixNV_ptr;
+		public static void vkCmdConvertCooperativeVectorMatrixNV(VkCommandBuffer commandBuffer, uint infoCount, VkConvertCooperativeVectorMatrixInfoNV* pInfos)
+			=> vkCmdConvertCooperativeVectorMatrixNV_ptr(commandBuffer, infoCount, pInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkSetLatencySleepModeNVDelegate(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* pSleepModeInfo);
 		private static vkSetLatencySleepModeNVDelegate vkSetLatencySleepModeNV_ptr;
 		public static VkResult vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* pSleepModeInfo)
@@ -3520,6 +3538,30 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetScreenBufferPropertiesQNXDelegate vkGetScreenBufferPropertiesQNX_ptr;
 		public static VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, IntPtr buffer, VkScreenBufferPropertiesQNX* pProperties)
 			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetClusterAccelerationStructureBuildSizesNVDelegate(VkDevice device, VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
+		private static vkGetClusterAccelerationStructureBuildSizesNVDelegate vkGetClusterAccelerationStructureBuildSizesNV_ptr;
+		public static void vkGetClusterAccelerationStructureBuildSizesNV(VkDevice device, VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo)
+			=> vkGetClusterAccelerationStructureBuildSizesNV_ptr(device, pInfo, pSizeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBuildClusterAccelerationStructureIndirectNVDelegate(VkCommandBuffer commandBuffer, VkClusterAccelerationStructureCommandsInfoNV* pCommandInfos);
+		private static vkCmdBuildClusterAccelerationStructureIndirectNVDelegate vkCmdBuildClusterAccelerationStructureIndirectNV_ptr;
+		public static void vkCmdBuildClusterAccelerationStructureIndirectNV(VkCommandBuffer commandBuffer, VkClusterAccelerationStructureCommandsInfoNV* pCommandInfos)
+			=> vkCmdBuildClusterAccelerationStructureIndirectNV_ptr(commandBuffer, pCommandInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPartitionedAccelerationStructuresBuildSizesNVDelegate(VkDevice device, VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
+		private static vkGetPartitionedAccelerationStructuresBuildSizesNVDelegate vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr;
+		public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(VkDevice device, VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo)
+			=> vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr(device, pInfo, pSizeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBuildPartitionedAccelerationStructuresNVDelegate(VkCommandBuffer commandBuffer, VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo);
+		private static vkCmdBuildPartitionedAccelerationStructuresNVDelegate vkCmdBuildPartitionedAccelerationStructuresNV_ptr;
+		public static void vkCmdBuildPartitionedAccelerationStructuresNV(VkCommandBuffer commandBuffer, VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo)
+			=> vkCmdBuildPartitionedAccelerationStructuresNV_ptr(commandBuffer, pBuildInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetGeneratedCommandsMemoryRequirementsEXTDelegate(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoEXT* pInfo, VkMemoryRequirements2* pMemoryRequirements);
@@ -3586,6 +3628,18 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNVDelegate vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr;
 		public static VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties)
 			=> vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr(physicalDevice, pPropertyCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemoryMetalHandleEXTDelegate(VkDevice device, VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle);
+		private static vkGetMemoryMetalHandleEXTDelegate vkGetMemoryMetalHandleEXT_ptr;
+		public static VkResult vkGetMemoryMetalHandleEXT(VkDevice device, VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle)
+			=> vkGetMemoryMetalHandleEXT_ptr(device, pGetMetalHandleInfo, pHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemoryMetalHandlePropertiesEXTDelegate(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties);
+		private static vkGetMemoryMetalHandlePropertiesEXTDelegate vkGetMemoryMetalHandlePropertiesEXT_ptr;
+		public static VkResult vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties)
+			=> vkGetMemoryMetalHandlePropertiesEXT_ptr(device, handleType, pHandle, pMemoryMetalHandleProperties);
 
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
@@ -4172,6 +4226,9 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDynamicRenderingTilePropertiesQCOM",  out vkGetDynamicRenderingTilePropertiesQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphoreSciSyncPoolNV",  out vkCreateSemaphoreSciSyncPoolNV_ptr);
 			NativeLib.LoadFunction("vkDestroySemaphoreSciSyncPoolNV",  out vkDestroySemaphoreSciSyncPoolNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeVectorPropertiesNV",  out vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr);
+			NativeLib.LoadFunction("vkConvertCooperativeVectorMatrixNV",  out vkConvertCooperativeVectorMatrixNV_ptr);
+			NativeLib.LoadFunction("vkCmdConvertCooperativeVectorMatrixNV",  out vkCmdConvertCooperativeVectorMatrixNV_ptr);
 			NativeLib.LoadFunction("vkSetLatencySleepModeNV",  out vkSetLatencySleepModeNV_ptr);
 			NativeLib.LoadFunction("vkLatencySleepNV",  out vkLatencySleepNV_ptr);
 			NativeLib.LoadFunction("vkSetLatencyMarkerNV",  out vkSetLatencyMarkerNV_ptr);
@@ -4180,6 +4237,10 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
+			NativeLib.LoadFunction("vkGetClusterAccelerationStructureBuildSizesNV",  out vkGetClusterAccelerationStructureBuildSizesNV_ptr);
+			NativeLib.LoadFunction("vkCmdBuildClusterAccelerationStructureIndirectNV",  out vkCmdBuildClusterAccelerationStructureIndirectNV_ptr);
+			NativeLib.LoadFunction("vkGetPartitionedAccelerationStructuresBuildSizesNV",  out vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr);
+			NativeLib.LoadFunction("vkCmdBuildPartitionedAccelerationStructuresNV",  out vkCmdBuildPartitionedAccelerationStructuresNV_ptr);
 			NativeLib.LoadFunction("vkGetGeneratedCommandsMemoryRequirementsEXT",  out vkGetGeneratedCommandsMemoryRequirementsEXT_ptr);
 			NativeLib.LoadFunction("vkCmdPreprocessGeneratedCommandsEXT",  out vkCmdPreprocessGeneratedCommandsEXT_ptr);
 			NativeLib.LoadFunction("vkCmdExecuteGeneratedCommandsEXT",  out vkCmdExecuteGeneratedCommandsEXT_ptr);
@@ -4191,6 +4252,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetShaderEXT",  out vkUpdateIndirectExecutionSetShaderEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampRangeEXT",  out vkCmdSetDepthClampRangeEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr);
+			NativeLib.LoadFunction("vkGetMemoryMetalHandleEXT",  out vkGetMemoryMetalHandleEXT_ptr);
+			NativeLib.LoadFunction("vkGetMemoryMetalHandlePropertiesEXT",  out vkGetMemoryMetalHandlePropertiesEXT_ptr);
 		}
 	}
 }
