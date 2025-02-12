@@ -9622,9 +9622,9 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public IntPtr pStdSequenceHeader;
-		public StdVideoEncodeAV1DecoderModelInfo* pStdDecoderModelInfo;
+		public IntPtr pStdDecoderModelInfo;
 		public uint stdOperatingPointCount;
-		public StdVideoEncodeAV1OperatingPointInfo* pStdOperatingPoints;
+		public IntPtr pStdOperatingPoints;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9632,7 +9632,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoEncodeAV1ReferenceInfo* pStdReferenceInfo;
+		public IntPtr pStdReferenceInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9643,7 +9643,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkVideoEncodeAV1PredictionModeKHR predictionMode;
 		public VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
 		public uint constantQIndex;
-		public StdVideoEncodeAV1PictureInfo* pStdPictureInfo;
+		public IntPtr pStdPictureInfo;
 		public fixed int referenceNameSlotIndices[(int)VulkanNative.VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR];
 		public VkBool32 primaryReferenceCdfOnly;
 		public VkBool32 generateObuExtensionHeader;
@@ -12509,6 +12509,23 @@ namespace Evergine.Bindings.Vulkan
 		public UIntPtr srcStride;
 		public VkCooperativeVectorMatrixLayoutNV dstLayout;
 		public UIntPtr dstStride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSetPresentConfigNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint numFramesPerBatch;
+		public uint presentConfigFeedback;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 presentMetering;
 	}
 
 }
