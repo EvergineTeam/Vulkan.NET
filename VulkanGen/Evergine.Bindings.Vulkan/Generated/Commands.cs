@@ -3641,6 +3641,12 @@ namespace Evergine.Bindings.Vulkan
 		public static VkResult vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties)
 			=> vkGetMemoryMetalHandlePropertiesEXT_ptr(device, handleType, pHandle, pMemoryMetalHandleProperties);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndRendering2EXTDelegate(VkCommandBuffer commandBuffer, VkRenderingEndInfoEXT* pRenderingEndInfo);
+		private static vkCmdEndRendering2EXTDelegate vkCmdEndRendering2EXT_ptr;
+		public static void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, VkRenderingEndInfoEXT* pRenderingEndInfo)
+			=> vkCmdEndRendering2EXT_ptr(commandBuffer, pRenderingEndInfo);
+
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
 			if (instance != default)
@@ -4254,6 +4260,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandleEXT",  out vkGetMemoryMetalHandleEXT_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandlePropertiesEXT",  out vkGetMemoryMetalHandlePropertiesEXT_ptr);
+			NativeLib.LoadFunction("vkCmdEndRendering2EXT",  out vkCmdEndRendering2EXT_ptr);
 		}
 	}
 }

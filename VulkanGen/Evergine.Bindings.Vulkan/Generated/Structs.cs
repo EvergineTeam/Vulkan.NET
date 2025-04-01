@@ -5759,7 +5759,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
+	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -5788,7 +5788,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM
+	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -5804,7 +5804,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM
+	public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -10365,6 +10365,13 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderingEndInfoEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkRenderingAttachmentInfo
 	{
 		public VkStructureType sType;
@@ -12329,6 +12336,16 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public void* pPlacedAddress;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderBfloat16FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderBFloat16Type;
+		public VkBool32 shaderBFloat16DotProduct;
+		public VkBool32 shaderBFloat16CooperativeMatrix;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

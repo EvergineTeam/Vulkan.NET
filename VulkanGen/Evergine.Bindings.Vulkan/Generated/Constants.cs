@@ -272,6 +272,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block";
 		public const uint VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export";
+		public const uint VK_KHR_SHADER_BFLOAT16_SPEC_VERSION = 1;
+		public const string VK_KHR_SHADER_BFLOAT16_EXTENSION_NAME = "VK_KHR_shader_bfloat16";
 		public const uint VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1;
 		public const string VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
 		public const uint VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION = 1;
@@ -683,7 +685,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
 		public const uint VK_ARM_RENDER_PASS_STRIPED_SPEC_VERSION = 1;
 		public const string VK_ARM_RENDER_PASS_STRIPED_EXTENSION_NAME = "VK_ARM_render_pass_striped";
-		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 2;
+		public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 3;
 		public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
 		public const uint VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
 		public const string VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
@@ -857,5 +859,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_vertex_attribute_robustness";
 		public const uint VK_NV_PRESENT_METERING_SPEC_VERSION = 1;
 		public const string VK_NV_PRESENT_METERING_EXTENSION_NAME = "VK_NV_present_metering";
+		public const uint VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
+		public const string VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_EXT_fragment_density_map_offset";
 	}
 }
