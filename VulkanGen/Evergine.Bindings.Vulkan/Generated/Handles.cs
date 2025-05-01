@@ -857,4 +857,19 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkExternalComputeQueueNV : IEquatable<VkExternalComputeQueueNV>
+{
+		public readonly IntPtr Handle;
+		public VkExternalComputeQueueNV(IntPtr existingHandle) { Handle = existingHandle; }
+		public static VkExternalComputeQueueNV Null => new VkExternalComputeQueueNV(IntPtr.Zero);
+		public static implicit operator VkExternalComputeQueueNV(IntPtr handle) => new VkExternalComputeQueueNV(handle);
+		public static bool operator ==(VkExternalComputeQueueNV left, VkExternalComputeQueueNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkExternalComputeQueueNV left, VkExternalComputeQueueNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkExternalComputeQueueNV left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(VkExternalComputeQueueNV left, IntPtr right) => left.Handle != right;
+		public bool Equals(VkExternalComputeQueueNV h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkExternalComputeQueueNV h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 }

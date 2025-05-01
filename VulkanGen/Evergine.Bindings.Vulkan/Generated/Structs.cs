@@ -11101,6 +11101,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkTileMemoryBindInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDeviceMemory memory;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceAmigoProfilingFeaturesSEC
 	{
 		public VkStructureType sType;
@@ -11848,6 +11856,40 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceTileMemoryHeapFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 tileMemoryHeap;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 queueSubmitBoundary;
+		public VkBool32 tileBufferTransfers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkTileMemorySizeInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkTileMemoryRequirementsQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public ulong size;
+		public ulong alignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkBindDescriptorSetsInfo
 	{
 		public VkStructureType sType;
@@ -12529,6 +12571,68 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceTileShadingFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 tileShading;
+		public VkBool32 tileShadingFragmentStage;
+		public VkBool32 tileShadingColorAttachments;
+		public VkBool32 tileShadingDepthAttachments;
+		public VkBool32 tileShadingStencilAttachments;
+		public VkBool32 tileShadingInputAttachments;
+		public VkBool32 tileShadingSampledAttachments;
+		public VkBool32 tileShadingPerTileDraw;
+		public VkBool32 tileShadingPerTileDispatch;
+		public VkBool32 tileShadingDispatchTile;
+		public VkBool32 tileShadingApron;
+		public VkBool32 tileShadingAnisotropicApron;
+		public VkBool32 tileShadingAtomicOps;
+		public VkBool32 tileShadingImageProcessing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceTileShadingPropertiesQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxApronSize;
+		public VkBool32 preferNonCoherent;
+		public VkExtent2D tileGranularity;
+		public VkExtent2D maxTileShadingRate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkRenderPassTileShadingCreateInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkTileShadingRenderPassFlagsQCOM flags;
+		public VkExtent2D tileApronSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPerTileBeginInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPerTileEndInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkDispatchTileInfoQCOM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkSetPresentConfigNV
 	{
 		public VkStructureType sType;
@@ -12543,6 +12647,39 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 presentMetering;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExternalComputeQueueDeviceCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint reservedExternalQueues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExternalComputeQueueCreateInfoNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkQueue preferredQueue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkExternalComputeQueueDataParamsNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint deviceIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceExternalComputeQueuePropertiesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint externalDataSize;
+		public uint maxExternalQueues;
 	}
 
 }

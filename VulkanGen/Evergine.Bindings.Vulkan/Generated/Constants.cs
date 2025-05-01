@@ -542,6 +542,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME = "VK_NV_cuda_kernel_launch";
 		public const uint VK_KHR_OBJECT_REFRESH_SPEC_VERSION = 1;
 		public const string VK_KHR_OBJECT_REFRESH_EXTENSION_NAME = "VK_KHR_object_refresh";
+		public const uint VK_QCOM_TILE_SHADING_SPEC_VERSION = 1;
+		public const string VK_QCOM_TILE_SHADING_EXTENSION_NAME = "VK_QCOM_tile_shading";
 		public const uint VK_NV_LOW_LATENCY_SPEC_VERSION = 1;
 		public const string VK_NV_LOW_LATENCY_EXTENSION_NAME = "VK_NV_low_latency";
 		public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 2;
@@ -813,12 +815,16 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_6_EXTENSION_NAME = "VK_KHR_maintenance6";
 		public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
 		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
+		public const uint VK_QCOM_TILE_MEMORY_HEAP_SPEC_VERSION = 1;
+		public const string VK_QCOM_TILE_MEMORY_HEAP_EXTENSION_NAME = "VK_QCOM_tile_memory_heap";
 		public const uint VK_NV_DISPLAY_STEREO_SPEC_VERSION = 1;
 		public const string VK_NV_DISPLAY_STEREO_EXTENSION_NAME = "VK_NV_display_stereo";
 		public const uint VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION = 2;
 		public const string VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_EXTENSION_NAME = "VK_KHR_video_encode_quantization_map";
 		public const uint VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
 		public const string VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
+		public const uint VK_NV_EXTERNAL_COMPUTE_QUEUE_SPEC_VERSION = 1;
+		public const string VK_NV_EXTERNAL_COMPUTE_QUEUE_EXTENSION_NAME = "VK_NV_external_compute_queue";
 		public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
 		public const string VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME = "VK_KHR_shader_relaxed_extended_instruction";
 		public const uint VK_NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION = 1;

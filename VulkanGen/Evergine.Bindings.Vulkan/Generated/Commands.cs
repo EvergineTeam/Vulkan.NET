@@ -2820,6 +2820,24 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr(physicalDevice, pRefreshableObjectTypeCount, pRefreshableObjectTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchTileQCOMDelegate(VkCommandBuffer commandBuffer);
+		private static vkCmdDispatchTileQCOMDelegate vkCmdDispatchTileQCOM_ptr;
+		public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer)
+			=> vkCmdDispatchTileQCOM_ptr(commandBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBeginPerTileExecutionQCOMDelegate(VkCommandBuffer commandBuffer, VkPerTileBeginInfoQCOM* pPerTileBeginInfo);
+		private static vkCmdBeginPerTileExecutionQCOMDelegate vkCmdBeginPerTileExecutionQCOM_ptr;
+		public static void vkCmdBeginPerTileExecutionQCOM(VkCommandBuffer commandBuffer, VkPerTileBeginInfoQCOM* pPerTileBeginInfo)
+			=> vkCmdBeginPerTileExecutionQCOM_ptr(commandBuffer, pPerTileBeginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndPerTileExecutionQCOMDelegate(VkCommandBuffer commandBuffer, VkPerTileEndInfoQCOM* pPerTileEndInfo);
+		private static vkCmdEndPerTileExecutionQCOMDelegate vkCmdEndPerTileExecutionQCOM_ptr;
+		public static void vkCmdEndPerTileExecutionQCOM(VkCommandBuffer commandBuffer, VkPerTileEndInfoQCOM* pPerTileEndInfo)
+			=> vkCmdEndPerTileExecutionQCOM_ptr(commandBuffer, pPerTileEndInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkExportMetalObjectsEXTDelegate(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
 		private static vkExportMetalObjectsEXTDelegate vkExportMetalObjectsEXT_ptr;
 		public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo)
@@ -3540,6 +3558,30 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetScreenBufferPropertiesQNX_ptr(device, buffer, pProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindTileMemoryQCOMDelegate(VkCommandBuffer commandBuffer, VkTileMemoryBindInfoQCOM* pTileMemoryBindInfo);
+		private static vkCmdBindTileMemoryQCOMDelegate vkCmdBindTileMemoryQCOM_ptr;
+		public static void vkCmdBindTileMemoryQCOM(VkCommandBuffer commandBuffer, VkTileMemoryBindInfoQCOM* pTileMemoryBindInfo)
+			=> vkCmdBindTileMemoryQCOM_ptr(commandBuffer, pTileMemoryBindInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateExternalComputeQueueNVDelegate(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue);
+		private static vkCreateExternalComputeQueueNVDelegate vkCreateExternalComputeQueueNV_ptr;
+		public static VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue)
+			=> vkCreateExternalComputeQueueNV_ptr(device, pCreateInfo, pAllocator, pExternalQueue);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyExternalComputeQueueNVDelegate(VkDevice device, VkExternalComputeQueueNV externalQueue, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyExternalComputeQueueNVDelegate vkDestroyExternalComputeQueueNV_ptr;
+		public static void vkDestroyExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueNV externalQueue, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyExternalComputeQueueNV_ptr(device, externalQueue, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetExternalComputeQueueDataNVDelegate(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData);
+		private static vkGetExternalComputeQueueDataNVDelegate vkGetExternalComputeQueueDataNV_ptr;
+		public static void vkGetExternalComputeQueueDataNV(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData)
+			=> vkGetExternalComputeQueueDataNV_ptr(externalQueue, params, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetClusterAccelerationStructureBuildSizesNVDelegate(VkDevice device, VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
 		private static vkGetClusterAccelerationStructureBuildSizesNVDelegate vkGetClusterAccelerationStructureBuildSizesNV_ptr;
 		public static void vkGetClusterAccelerationStructureBuildSizesNV(VkDevice device, VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo)
@@ -4123,6 +4165,9 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdCudaLaunchKernelNV",  out vkCmdCudaLaunchKernelNV_ptr);
 			NativeLib.LoadFunction("vkCmdRefreshObjectsKHR",  out vkCmdRefreshObjectsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceRefreshableObjectTypesKHR",  out vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchTileQCOM",  out vkCmdDispatchTileQCOM_ptr);
+			NativeLib.LoadFunction("vkCmdBeginPerTileExecutionQCOM",  out vkCmdBeginPerTileExecutionQCOM_ptr);
+			NativeLib.LoadFunction("vkCmdEndPerTileExecutionQCOM",  out vkCmdEndPerTileExecutionQCOM_ptr);
 			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutSizeEXT",  out vkGetDescriptorSetLayoutSizeEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutBindingOffsetEXT",  out vkGetDescriptorSetLayoutBindingOffsetEXT_ptr);
@@ -4243,6 +4288,10 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
+			NativeLib.LoadFunction("vkCmdBindTileMemoryQCOM",  out vkCmdBindTileMemoryQCOM_ptr);
+			NativeLib.LoadFunction("vkCreateExternalComputeQueueNV",  out vkCreateExternalComputeQueueNV_ptr);
+			NativeLib.LoadFunction("vkDestroyExternalComputeQueueNV",  out vkDestroyExternalComputeQueueNV_ptr);
+			NativeLib.LoadFunction("vkGetExternalComputeQueueDataNV",  out vkGetExternalComputeQueueDataNV_ptr);
 			NativeLib.LoadFunction("vkGetClusterAccelerationStructureBuildSizesNV",  out vkGetClusterAccelerationStructureBuildSizesNV_ptr);
 			NativeLib.LoadFunction("vkCmdBuildClusterAccelerationStructureIndirectNV",  out vkCmdBuildClusterAccelerationStructureIndirectNV_ptr);
 			NativeLib.LoadFunction("vkGetPartitionedAccelerationStructuresBuildSizesNV",  out vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr);
