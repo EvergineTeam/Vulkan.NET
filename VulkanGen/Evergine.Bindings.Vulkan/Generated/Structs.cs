@@ -7456,7 +7456,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesEXT
+	public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -7466,7 +7466,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesEXT
+	public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;

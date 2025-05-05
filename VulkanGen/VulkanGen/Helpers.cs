@@ -30,16 +30,17 @@ namespace VulkanGen
 
         public static string ValidatedName(string name)
         {
-            if (name == "object")
+            switch (name)
             {
-                return "vkObject";
+                case "object":
+                    return "vkObject";
+                case "event":
+                    return "vkEvent";
+                case "params":
+                    return "vkParams";
+                default:
+                    return name;
             }
-            else if (name == "event")
-            {
-                return "vkEvent";
-            }
-
-            return name;
         }
 
         public static string GetPrettyEnumName(string value)

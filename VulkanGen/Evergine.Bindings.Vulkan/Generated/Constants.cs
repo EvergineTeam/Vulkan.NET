@@ -863,6 +863,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_KHR_depth_clamp_zero_one";
 		public const uint VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_SPEC_VERSION = 1;
 		public const string VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_vertex_attribute_robustness";
+		public const uint VK_KHR_ROBUSTNESS_2_SPEC_VERSION = 1;
+		public const string VK_KHR_ROBUSTNESS_2_EXTENSION_NAME = "VK_KHR_robustness2";
 		public const uint VK_NV_PRESENT_METERING_SPEC_VERSION = 1;
 		public const string VK_NV_PRESENT_METERING_EXTENSION_NAME = "VK_NV_present_metering";
 		public const uint VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;

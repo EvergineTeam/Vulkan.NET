@@ -3576,10 +3576,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroyExternalComputeQueueNV_ptr(device, externalQueue, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetExternalComputeQueueDataNVDelegate(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData);
+		private delegate void vkGetExternalComputeQueueDataNVDelegate(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* vkParams, void* pData);
 		private static vkGetExternalComputeQueueDataNVDelegate vkGetExternalComputeQueueDataNV_ptr;
-		public static void vkGetExternalComputeQueueDataNV(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData)
-			=> vkGetExternalComputeQueueDataNV_ptr(externalQueue, params, pData);
+		public static void vkGetExternalComputeQueueDataNV(VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* vkParams, void* pData)
+			=> vkGetExternalComputeQueueDataNV_ptr(externalQueue, vkParams, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetClusterAccelerationStructureBuildSizesNVDelegate(VkDevice device, VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
