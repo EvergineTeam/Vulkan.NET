@@ -25,7 +25,3 @@ Test based on https://github.com/maierfelix/VK_KHR_ray_tracing
  - [Vulkan SDK >= 1.2.135.0](https://vulkan.lunarg.com/sdk/home)
 
 ![alt Draw Triangle Raytracing](https://github.com/EvergineTeam/Vulkan.NET/blob/master/RaytracingTest.png)
-
-## Related Work
-
-- [vk](https://github.com/mellinoe/vk)
