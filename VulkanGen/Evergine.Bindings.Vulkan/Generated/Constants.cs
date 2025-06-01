@@ -863,11 +863,15 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_KHR_depth_clamp_zero_one";
 		public const uint VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_SPEC_VERSION = 1;
 		public const string VK_EXT_VERTEX_ATTRIBUTE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_vertex_attribute_robustness";
+		public const uint VK_ARM_FORMAT_PACK_SPEC_VERSION = 1;
+		public const string VK_ARM_FORMAT_PACK_EXTENSION_NAME = "VK_ARM_format_pack";
 		public const uint VK_KHR_ROBUSTNESS_2_SPEC_VERSION = 1;
 		public const string VK_KHR_ROBUSTNESS_2_EXTENSION_NAME = "VK_KHR_robustness2";
 		public const uint VK_NV_PRESENT_METERING_SPEC_VERSION = 1;
 		public const string VK_NV_PRESENT_METERING_EXTENSION_NAME = "VK_NV_present_metering";
 		public const uint VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
 		public const string VK_EXT_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_EXT_fragment_density_map_offset";
+		public const uint VK_EXT_ZERO_INITIALIZE_DEVICE_MEMORY_SPEC_VERSION = 1;
+		public const string VK_EXT_ZERO_INITIALIZE_DEVICE_MEMORY_EXTENSION_NAME = "VK_EXT_zero_initialize_device_memory";
 	}
 }

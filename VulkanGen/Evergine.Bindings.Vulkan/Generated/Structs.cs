@@ -7884,6 +7884,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 zeroInitializeDeviceMemory;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -12680,6 +12688,14 @@ namespace Evergine.Bindings.Vulkan
 		public void* pNext;
 		public uint externalDataSize;
 		public uint maxExternalQueues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceFormatPackFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 formatPack;
 	}
 
 }

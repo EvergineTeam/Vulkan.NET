@@ -2820,10 +2820,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceRefreshableObjectTypesKHR_ptr(physicalDevice, pRefreshableObjectTypeCount, pRefreshableObjectTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchTileQCOMDelegate(VkCommandBuffer commandBuffer);
+		private delegate void vkCmdDispatchTileQCOMDelegate(VkCommandBuffer commandBuffer, VkDispatchTileInfoQCOM* pDispatchTileInfo);
 		private static vkCmdDispatchTileQCOMDelegate vkCmdDispatchTileQCOM_ptr;
-		public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer)
-			=> vkCmdDispatchTileQCOM_ptr(commandBuffer);
+		public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer, VkDispatchTileInfoQCOM* pDispatchTileInfo)
+			=> vkCmdDispatchTileQCOM_ptr(commandBuffer, pDispatchTileInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBeginPerTileExecutionQCOMDelegate(VkCommandBuffer commandBuffer, VkPerTileBeginInfoQCOM* pPerTileBeginInfo);
