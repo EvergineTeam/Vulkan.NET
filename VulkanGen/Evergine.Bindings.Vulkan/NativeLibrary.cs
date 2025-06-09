@@ -11,6 +11,7 @@ namespace Evergine.Bindings.Vulkan
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
         internal VkInstance instance;
+        internal VkDevice device;
 
         public IntPtr NativeHandle => libraryHandle;
 
@@ -51,6 +52,24 @@ namespace Evergine.Bindings.Vulkan
                 funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
             }
 
+            if (funcPtr != IntPtr.Zero)
+            {
+                field = Marshal.GetDelegateForFunctionPointer<T>(funcPtr);
+            }
+            else
+            {
+                field = default(T);
+                Debug.WriteLine($" ===> Error loading function {name}");
+            }
+        }
+
+        public unsafe void LoadDeviceFunction<T>(string name, out T field)
+        {
+            SysNativeLibrary.TryGetExport(libraryHandle, name, out IntPtr funcPtr);
+            if (funcPtr == IntPtr.Zero)
+            {
+                funcPtr = VulkanNative.vkGetDeviceProcAddr(device, (byte*)Marshal.StringToHGlobalAnsi(name));
+            }
             if (funcPtr != IntPtr.Zero)
             {
                 field = Marshal.GetDelegateForFunctionPointer<T>(funcPtr);

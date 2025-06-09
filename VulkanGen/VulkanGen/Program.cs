@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 
@@ -176,7 +175,7 @@ namespace VulkanGen
                     {
                         // Avoid duplicate members from Vulkan Safety Critical
                         if (Helpers.IsVKSC(member.Api))
-                        { 
+                        {
                             continue;
                         }
 
@@ -305,6 +304,22 @@ namespace VulkanGen
                 foreach (var command in vulkanVersion.Commands)
                 {
                     file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                }
+
+                file.WriteLine("\t\t}");
+
+                file.WriteLine();
+                file.WriteLine($"\t\tpublic static void LoadDeviceFunctionPointers(VkDevice device = default)");
+                file.WriteLine("\t\t{");
+                file.WriteLine("\t\t\tif (device != default)");
+                file.WriteLine("\t\t\t{");
+                file.WriteLine("\t\t\t\tNativeLib.device = device;");
+                file.WriteLine("\t\t\t}");
+                file.WriteLine();
+
+                foreach (var command in vulkanVersion.Commands.Where(x => x.IsDeviceLevel))
+                {
+                    file.WriteLine($"\t\t\tNativeLib.LoadDeviceFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }
 
                 file.WriteLine("\t\t}");

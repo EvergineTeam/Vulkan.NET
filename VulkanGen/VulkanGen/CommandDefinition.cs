@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace VulkanGen
@@ -19,6 +15,7 @@ namespace VulkanGen
         public string[] SuccessCodes;
         public string[] ErrorCodes;
         public string Comment;
+        public bool IsDeviceLevel;
 
         public  static CommandDefinition FromXML(XElement elem)
         {
