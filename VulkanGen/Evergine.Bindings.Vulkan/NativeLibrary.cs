@@ -51,7 +51,6 @@ namespace Evergine.Bindings.Vulkan
             {
                 funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
             }
-
             if (funcPtr != IntPtr.Zero)
             {
                 field = Marshal.GetDelegateForFunctionPointer<T>(funcPtr);
@@ -77,7 +76,7 @@ namespace Evergine.Bindings.Vulkan
             else
             {
                 field = default(T);
-                Debug.WriteLine($" ===> Error loading function {name}");
+                Debug.WriteLine($" ===> Error loading device function {name}");
             }
         }
 

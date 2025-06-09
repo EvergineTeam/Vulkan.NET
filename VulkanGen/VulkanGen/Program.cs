@@ -303,7 +303,14 @@ namespace VulkanGen
 
                 foreach (var command in vulkanVersion.Commands)
                 {
-                    file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                    if (command.IsDeviceLevel())
+                    {
+                        file.WriteLine($"\t\t\tNativeLib.LoadDeviceFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                    }
+                    else
+                    {
+                        file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                    }
                 }
 
                 file.WriteLine("\t\t}");
@@ -317,7 +324,7 @@ namespace VulkanGen
                 file.WriteLine("\t\t\t}");
                 file.WriteLine();
 
-                foreach (var command in vulkanVersion.Commands.Where(x => x.IsDeviceLevel))
+                foreach (var command in vulkanVersion.Commands.Where(x => x.IsDeviceLevel()))
                 {
                     file.WriteLine($"\t\t\tNativeLib.LoadDeviceFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
                 }

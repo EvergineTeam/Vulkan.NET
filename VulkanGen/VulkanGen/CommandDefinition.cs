@@ -15,7 +15,6 @@ namespace VulkanGen
         public string[] SuccessCodes;
         public string[] ErrorCodes;
         public string Comment;
-        public bool IsDeviceLevel;
 
         public  static CommandDefinition FromXML(XElement elem)
         {
@@ -72,6 +71,34 @@ namespace VulkanGen
             signature.Length -= 2;
 
             return signature.ToString();
+        }
+
+        public bool IsDeviceLevel()
+        {
+            /*
+             * A command’s dispatchability — and how it should be loaded — is determined by its first dispatchable parameter, such as VkInstance, VkDevice, or VkCommandBuffer.
+             * 
+             *  | First parameter    | Load with               | Example function                      |
+             *  | ------------------ | ----------------------- | ------------------------------------- |
+             *  | `VkInstance`       | `vkGetInstanceProcAddr` | `vkCreateDevice`, `vkDestroyInstance` |
+             *  | `VkPhysicalDevice` | `vkGetInstanceProcAddr` | `vkGetPhysicalDeviceProperties`       |
+             *  | `VkDevice`         | `vkGetDeviceProcAddr`   | `vkCreateBuffer`, `vkQueueSubmit`     |
+             *  | `VkCommandBuffer`  | `vkGetDeviceProcAddr`   | `vkCmdDraw`, `vkCmdBindPipeline`      |
+             *  | `VkQueue`          | `vkGetDeviceProcAddr`   | `vkQueuePresentKHR`                   |
+             */
+            if (Parameters.Count == 0)
+                return false;
+
+            var firstParameter = Parameters[0];
+            switch (firstParameter.Type)
+            {
+                case "VkDevice":
+                case "VkCommandBuffer":
+                case "VkQueue":
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 
