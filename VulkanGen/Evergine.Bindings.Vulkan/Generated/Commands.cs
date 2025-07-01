@@ -3360,6 +3360,60 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetColorWriteMaskEXT_ptr(commandBuffer, firstAttachment, attachmentCount, pColorWriteMasks);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateTensorARMDelegate(VkDevice device, VkTensorCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkTensorARM* pTensor);
+		private static vkCreateTensorARMDelegate vkCreateTensorARM_ptr;
+		public static VkResult vkCreateTensorARM(VkDevice device, VkTensorCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkTensorARM* pTensor)
+			=> vkCreateTensorARM_ptr(device, pCreateInfo, pAllocator, pTensor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyTensorARMDelegate(VkDevice device, VkTensorARM tensor, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyTensorARMDelegate vkDestroyTensorARM_ptr;
+		public static void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyTensorARM_ptr(device, tensor, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateTensorViewARMDelegate(VkDevice device, VkTensorViewCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkTensorViewARM* pView);
+		private static vkCreateTensorViewARMDelegate vkCreateTensorViewARM_ptr;
+		public static VkResult vkCreateTensorViewARM(VkDevice device, VkTensorViewCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkTensorViewARM* pView)
+			=> vkCreateTensorViewARM_ptr(device, pCreateInfo, pAllocator, pView);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyTensorViewARMDelegate(VkDevice device, VkTensorViewARM tensorView, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyTensorViewARMDelegate vkDestroyTensorViewARM_ptr;
+		public static void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyTensorViewARM_ptr(device, tensorView, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetTensorMemoryRequirementsARMDelegate(VkDevice device, VkTensorMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetTensorMemoryRequirementsARMDelegate vkGetTensorMemoryRequirementsARM_ptr;
+		public static void vkGetTensorMemoryRequirementsARM(VkDevice device, VkTensorMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetTensorMemoryRequirementsARM_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBindTensorMemoryARMDelegate(VkDevice device, uint bindInfoCount, VkBindTensorMemoryInfoARM* pBindInfos);
+		private static vkBindTensorMemoryARMDelegate vkBindTensorMemoryARM_ptr;
+		public static VkResult vkBindTensorMemoryARM(VkDevice device, uint bindInfoCount, VkBindTensorMemoryInfoARM* pBindInfos)
+			=> vkBindTensorMemoryARM_ptr(device, bindInfoCount, pBindInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDeviceTensorMemoryRequirementsARMDelegate(VkDevice device, VkDeviceTensorMemoryRequirementsARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetDeviceTensorMemoryRequirementsARMDelegate vkGetDeviceTensorMemoryRequirementsARM_ptr;
+		public static void vkGetDeviceTensorMemoryRequirementsARM(VkDevice device, VkDeviceTensorMemoryRequirementsARM* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetDeviceTensorMemoryRequirementsARM_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyTensorARMDelegate(VkCommandBuffer commandBuffer, VkCopyTensorInfoARM* pCopyTensorInfo);
+		private static vkCmdCopyTensorARMDelegate vkCmdCopyTensorARM_ptr;
+		public static void vkCmdCopyTensorARM(VkCommandBuffer commandBuffer, VkCopyTensorInfoARM* pCopyTensorInfo)
+			=> vkCmdCopyTensorARM_ptr(commandBuffer, pCopyTensorInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPhysicalDeviceExternalTensorPropertiesARMDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalTensorInfoARM* pExternalTensorInfo, VkExternalTensorPropertiesARM* pExternalTensorProperties);
+		private static vkGetPhysicalDeviceExternalTensorPropertiesARMDelegate vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr;
+		public static void vkGetPhysicalDeviceExternalTensorPropertiesARM(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalTensorInfoARM* pExternalTensorInfo, VkExternalTensorPropertiesARM* pExternalTensorProperties)
+			=> vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr(physicalDevice, pExternalTensorInfo, pExternalTensorProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetShaderModuleIdentifierEXTDelegate(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier);
 		private static vkGetShaderModuleIdentifierEXTDelegate vkGetShaderModuleIdentifierEXT_ptr;
 		public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier)
@@ -3406,6 +3460,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkAntiLagUpdateAMDDelegate vkAntiLagUpdateAMD_ptr;
 		public static void vkAntiLagUpdateAMD(VkDevice device, VkAntiLagDataAMD* pData)
 			=> vkAntiLagUpdateAMD_ptr(device, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkWaitForPresent2KHRDelegate(VkDevice device, VkSwapchainKHR swapchain, VkPresentWait2InfoKHR* pPresentWait2Info);
+		private static vkWaitForPresent2KHRDelegate vkWaitForPresent2KHR_ptr;
+		public static VkResult vkWaitForPresent2KHR(VkDevice device, VkSwapchainKHR swapchain, VkPresentWait2InfoKHR* pPresentWait2Info)
+			=> vkWaitForPresent2KHR_ptr(device, swapchain, pPresentWait2Info);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateShadersEXTDelegate(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* pCreateInfos, VkAllocationCallbacks* pAllocator, VkShaderEXT* pShaders);
@@ -3546,6 +3606,72 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, pPropertyCount, pProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateDataGraphPipelinesARMDelegate(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkDataGraphPipelineCreateInfoARM* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+		private static vkCreateDataGraphPipelinesARMDelegate vkCreateDataGraphPipelinesARM_ptr;
+		public static VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkDataGraphPipelineCreateInfoARM* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines)
+			=> vkCreateDataGraphPipelinesARM_ptr(device, deferredOperation, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateDataGraphPipelineSessionARMDelegate(VkDevice device, VkDataGraphPipelineSessionCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDataGraphPipelineSessionARM* pSession);
+		private static vkCreateDataGraphPipelineSessionARMDelegate vkCreateDataGraphPipelineSessionARM_ptr;
+		public static VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDataGraphPipelineSessionARM* pSession)
+			=> vkCreateDataGraphPipelineSessionARM_ptr(device, pCreateInfo, pAllocator, pSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARMDelegate(VkDevice device, VkDataGraphPipelineSessionBindPointRequirementsInfoARM* pInfo, uint* pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* pBindPointRequirements);
+		private static vkGetDataGraphPipelineSessionBindPointRequirementsARMDelegate vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr;
+		public static VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARM(VkDevice device, VkDataGraphPipelineSessionBindPointRequirementsInfoARM* pInfo, uint* pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* pBindPointRequirements)
+			=> vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr(device, pInfo, pBindPointRequirementCount, pBindPointRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDataGraphPipelineSessionMemoryRequirementsARMDelegate(VkDevice device, VkDataGraphPipelineSessionMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetDataGraphPipelineSessionMemoryRequirementsARMDelegate vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr;
+		public static void vkGetDataGraphPipelineSessionMemoryRequirementsARM(VkDevice device, VkDataGraphPipelineSessionMemoryRequirementsInfoARM* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBindDataGraphPipelineSessionMemoryARMDelegate(VkDevice device, uint bindInfoCount, VkBindDataGraphPipelineSessionMemoryInfoARM* pBindInfos);
+		private static vkBindDataGraphPipelineSessionMemoryARMDelegate vkBindDataGraphPipelineSessionMemoryARM_ptr;
+		public static VkResult vkBindDataGraphPipelineSessionMemoryARM(VkDevice device, uint bindInfoCount, VkBindDataGraphPipelineSessionMemoryInfoARM* pBindInfos)
+			=> vkBindDataGraphPipelineSessionMemoryARM_ptr(device, bindInfoCount, pBindInfos);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyDataGraphPipelineSessionARMDelegate(VkDevice device, VkDataGraphPipelineSessionARM session, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyDataGraphPipelineSessionARMDelegate vkDestroyDataGraphPipelineSessionARM_ptr;
+		public static void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyDataGraphPipelineSessionARM_ptr(device, session, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchDataGraphARMDelegate(VkCommandBuffer commandBuffer, VkDataGraphPipelineSessionARM session, VkDataGraphPipelineDispatchInfoARM* pInfo);
+		private static vkCmdDispatchDataGraphARMDelegate vkCmdDispatchDataGraphARM_ptr;
+		public static void vkCmdDispatchDataGraphARM(VkCommandBuffer commandBuffer, VkDataGraphPipelineSessionARM session, VkDataGraphPipelineDispatchInfoARM* pInfo)
+			=> vkCmdDispatchDataGraphARM_ptr(commandBuffer, session, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDataGraphPipelineAvailablePropertiesARMDelegate(VkDevice device, VkDataGraphPipelineInfoARM* pPipelineInfo, uint* pPropertiesCount, VkDataGraphPipelinePropertyARM* pProperties);
+		private static vkGetDataGraphPipelineAvailablePropertiesARMDelegate vkGetDataGraphPipelineAvailablePropertiesARM_ptr;
+		public static VkResult vkGetDataGraphPipelineAvailablePropertiesARM(VkDevice device, VkDataGraphPipelineInfoARM* pPipelineInfo, uint* pPropertiesCount, VkDataGraphPipelinePropertyARM* pProperties)
+			=> vkGetDataGraphPipelineAvailablePropertiesARM_ptr(device, pPipelineInfo, pPropertiesCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetDataGraphPipelinePropertiesARMDelegate(VkDevice device, VkDataGraphPipelineInfoARM* pPipelineInfo, uint propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* pProperties);
+		private static vkGetDataGraphPipelinePropertiesARMDelegate vkGetDataGraphPipelinePropertiesARM_ptr;
+		public static VkResult vkGetDataGraphPipelinePropertiesARM(VkDevice device, VkDataGraphPipelineInfoARM* pPipelineInfo, uint propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* pProperties)
+			=> vkGetDataGraphPipelinePropertiesARM_ptr(device, pPipelineInfo, propertiesCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARMDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* pQueueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties);
+		private static vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARMDelegate vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr;
+		public static VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* pQueueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties)
+			=> vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr(physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphPropertyCount, pQueueFamilyDataGraphProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARMDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* pQueueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* pQueueFamilyDataGraphProcessingEngineProperties);
+		private static vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARMDelegate vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr;
+		public static void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(VkPhysicalDevice physicalDevice, VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* pQueueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* pQueueFamilyDataGraphProcessingEngineProperties)
+			=> vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr(physicalDevice, pQueueFamilyDataGraphProcessingEngineInfo, pQueueFamilyDataGraphProcessingEngineProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
 		private static vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 		public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
@@ -3664,6 +3790,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdSetDepthClampRangeEXTDelegate vkCmdSetDepthClampRangeEXT_ptr;
 		public static void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, VkDepthClampRangeEXT* pDepthClampRange)
 			=> vkCmdSetDepthClampRangeEXT_ptr(commandBuffer, depthClampMode, pDepthClampRange);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateSurfaceOHOSDelegate(VkInstance instance, VkOHSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+		private static vkCreateSurfaceOHOSDelegate vkCreateSurfaceOHOS_ptr;
+		public static VkResult vkCreateSurfaceOHOS(VkInstance instance, VkOHSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
+			=> vkCreateSurfaceOHOS_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNVDelegate(VkPhysicalDevice physicalDevice, uint* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
@@ -4255,6 +4387,15 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetColorBlendEnableEXT",  out vkCmdSetColorBlendEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetColorBlendEquationEXT",  out vkCmdSetColorBlendEquationEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetColorWriteMaskEXT",  out vkCmdSetColorWriteMaskEXT_ptr);
+			NativeLib.LoadFunction("vkCreateTensorARM",  out vkCreateTensorARM_ptr);
+			NativeLib.LoadFunction("vkDestroyTensorARM",  out vkDestroyTensorARM_ptr);
+			NativeLib.LoadFunction("vkCreateTensorViewARM",  out vkCreateTensorViewARM_ptr);
+			NativeLib.LoadFunction("vkDestroyTensorViewARM",  out vkDestroyTensorViewARM_ptr);
+			NativeLib.LoadFunction("vkGetTensorMemoryRequirementsARM",  out vkGetTensorMemoryRequirementsARM_ptr);
+			NativeLib.LoadFunction("vkBindTensorMemoryARM",  out vkBindTensorMemoryARM_ptr);
+			NativeLib.LoadFunction("vkGetDeviceTensorMemoryRequirementsARM",  out vkGetDeviceTensorMemoryRequirementsARM_ptr);
+			NativeLib.LoadFunction("vkCmdCopyTensorARM",  out vkCmdCopyTensorARM_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalTensorPropertiesARM",  out vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleIdentifierEXT",  out vkGetShaderModuleIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderModuleCreateInfoIdentifierEXT",  out vkGetShaderModuleCreateInfoIdentifierEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceOpticalFlowImageFormatsNV",  out vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr);
@@ -4263,6 +4404,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkBindOpticalFlowSessionImageNV",  out vkBindOpticalFlowSessionImageNV_ptr);
 			NativeLib.LoadFunction("vkCmdOpticalFlowExecuteNV",  out vkCmdOpticalFlowExecuteNV_ptr);
 			NativeLib.LoadFunction("vkAntiLagUpdateAMD",  out vkAntiLagUpdateAMD_ptr);
+			NativeLib.LoadFunction("vkWaitForPresent2KHR",  out vkWaitForPresent2KHR_ptr);
 			NativeLib.LoadFunction("vkCreateShadersEXT",  out vkCreateShadersEXT_ptr);
 			NativeLib.LoadFunction("vkDestroyShaderEXT",  out vkDestroyShaderEXT_ptr);
 			NativeLib.LoadFunction("vkGetShaderBinaryDataEXT",  out vkGetShaderBinaryDataEXT_ptr);
@@ -4286,6 +4428,17 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetLatencyTimingsNV",  out vkGetLatencyTimingsNV_ptr);
 			NativeLib.LoadFunction("vkQueueNotifyOutOfBandNV",  out vkQueueNotifyOutOfBandNV_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR",  out vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr);
+			NativeLib.LoadFunction("vkCreateDataGraphPipelinesARM",  out vkCreateDataGraphPipelinesARM_ptr);
+			NativeLib.LoadFunction("vkCreateDataGraphPipelineSessionARM",  out vkCreateDataGraphPipelineSessionARM_ptr);
+			NativeLib.LoadFunction("vkGetDataGraphPipelineSessionBindPointRequirementsARM",  out vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr);
+			NativeLib.LoadFunction("vkGetDataGraphPipelineSessionMemoryRequirementsARM",  out vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr);
+			NativeLib.LoadFunction("vkBindDataGraphPipelineSessionMemoryARM",  out vkBindDataGraphPipelineSessionMemoryARM_ptr);
+			NativeLib.LoadFunction("vkDestroyDataGraphPipelineSessionARM",  out vkDestroyDataGraphPipelineSessionARM_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchDataGraphARM",  out vkCmdDispatchDataGraphARM_ptr);
+			NativeLib.LoadFunction("vkGetDataGraphPipelineAvailablePropertiesARM",  out vkGetDataGraphPipelineAvailablePropertiesARM_ptr);
+			NativeLib.LoadFunction("vkGetDataGraphPipelinePropertiesARM",  out vkGetDataGraphPipelinePropertiesARM_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
 			NativeLib.LoadFunction("vkCmdBindTileMemoryQCOM",  out vkCmdBindTileMemoryQCOM_ptr);
@@ -4306,6 +4459,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetPipelineEXT",  out vkUpdateIndirectExecutionSetPipelineEXT_ptr);
 			NativeLib.LoadFunction("vkUpdateIndirectExecutionSetShaderEXT",  out vkUpdateIndirectExecutionSetShaderEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampRangeEXT",  out vkCmdSetDepthClampRangeEXT_ptr);
+			NativeLib.LoadFunction("vkCreateSurfaceOHOS",  out vkCreateSurfaceOHOS_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandleEXT",  out vkGetMemoryMetalHandleEXT_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandlePropertiesEXT",  out vkGetMemoryMetalHandlePropertiesEXT_ptr);

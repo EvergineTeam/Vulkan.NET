@@ -692,6 +692,51 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkTensorARM : IEquatable<VkTensorARM>
+{
+		public readonly ulong Handle;
+		public VkTensorARM(ulong existingHandle) { Handle = existingHandle; }
+		public static VkTensorARM Null => new VkTensorARM(0);
+		public static implicit operator VkTensorARM(ulong handle) => new VkTensorARM(handle);
+		public static bool operator ==(VkTensorARM left, VkTensorARM right) => left.Handle == right.Handle;
+		public static bool operator !=(VkTensorARM left, VkTensorARM right) => left.Handle != right.Handle;
+		public static bool operator ==(VkTensorARM left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkTensorARM left, ulong right) => left.Handle != right;
+		public bool Equals(VkTensorARM h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkTensorARM h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkTensorViewARM : IEquatable<VkTensorViewARM>
+{
+		public readonly ulong Handle;
+		public VkTensorViewARM(ulong existingHandle) { Handle = existingHandle; }
+		public static VkTensorViewARM Null => new VkTensorViewARM(0);
+		public static implicit operator VkTensorViewARM(ulong handle) => new VkTensorViewARM(handle);
+		public static bool operator ==(VkTensorViewARM left, VkTensorViewARM right) => left.Handle == right.Handle;
+		public static bool operator !=(VkTensorViewARM left, VkTensorViewARM right) => left.Handle != right.Handle;
+		public static bool operator ==(VkTensorViewARM left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkTensorViewARM left, ulong right) => left.Handle != right;
+		public bool Equals(VkTensorViewARM h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkTensorViewARM h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct VkDataGraphPipelineSessionARM : IEquatable<VkDataGraphPipelineSessionARM>
+{
+		public readonly ulong Handle;
+		public VkDataGraphPipelineSessionARM(ulong existingHandle) { Handle = existingHandle; }
+		public static VkDataGraphPipelineSessionARM Null => new VkDataGraphPipelineSessionARM(0);
+		public static implicit operator VkDataGraphPipelineSessionARM(ulong handle) => new VkDataGraphPipelineSessionARM(handle);
+		public static bool operator ==(VkDataGraphPipelineSessionARM left, VkDataGraphPipelineSessionARM right) => left.Handle == right.Handle;
+		public static bool operator !=(VkDataGraphPipelineSessionARM left, VkDataGraphPipelineSessionARM right) => left.Handle != right.Handle;
+		public static bool operator ==(VkDataGraphPipelineSessionARM left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkDataGraphPipelineSessionARM left, ulong right) => left.Handle != right;
+		public bool Equals(VkDataGraphPipelineSessionARM h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkDataGraphPipelineSessionARM h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 {
 		public readonly ulong Handle;
