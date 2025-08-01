@@ -2694,10 +2694,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkReleaseSwapchainImagesEXTDelegate(VkDevice device, VkReleaseSwapchainImagesInfoEXT* pReleaseInfo);
-		private static vkReleaseSwapchainImagesEXTDelegate vkReleaseSwapchainImagesEXT_ptr;
-		public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* pReleaseInfo)
-			=> vkReleaseSwapchainImagesEXT_ptr(device, pReleaseInfo);
+		private delegate VkResult vkReleaseSwapchainImagesKHRDelegate(VkDevice device, VkReleaseSwapchainImagesInfoKHR* pReleaseInfo);
+		private static vkReleaseSwapchainImagesKHRDelegate vkReleaseSwapchainImagesKHR_ptr;
+		public static VkResult vkReleaseSwapchainImagesKHR(VkDevice device, VkReleaseSwapchainImagesInfoKHR* pReleaseInfo)
+			=> vkReleaseSwapchainImagesKHR_ptr(device, pReleaseInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetGeneratedCommandsMemoryRequirementsNVDelegate(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, VkMemoryRequirements2* pMemoryRequirements);
@@ -4276,7 +4276,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPipelineExecutablePropertiesKHR",  out vkGetPipelineExecutablePropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableStatisticsKHR",  out vkGetPipelineExecutableStatisticsKHR_ptr);
 			NativeLib.LoadFunction("vkGetPipelineExecutableInternalRepresentationsKHR",  out vkGetPipelineExecutableInternalRepresentationsKHR_ptr);
-			NativeLib.LoadFunction("vkReleaseSwapchainImagesEXT",  out vkReleaseSwapchainImagesEXT_ptr);
+			NativeLib.LoadFunction("vkReleaseSwapchainImagesKHR",  out vkReleaseSwapchainImagesKHR_ptr);
 			NativeLib.LoadFunction("vkGetGeneratedCommandsMemoryRequirementsNV",  out vkGetGeneratedCommandsMemoryRequirementsNV_ptr);
 			NativeLib.LoadFunction("vkCmdPreprocessGeneratedCommandsNV",  out vkCmdPreprocessGeneratedCommandsNV_ptr);
 			NativeLib.LoadFunction("vkCmdExecuteGeneratedCommandsNV",  out vkCmdExecuteGeneratedCommandsNV_ptr);
