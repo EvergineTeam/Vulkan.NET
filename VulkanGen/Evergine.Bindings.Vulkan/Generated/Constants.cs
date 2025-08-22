@@ -32,6 +32,8 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR = 3;
 		public const uint VK_SHADER_INDEX_UNUSED_AMDX = (~0U);
 		public const uint VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0U);
+		public const uint VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX = 128;
+		public const uint VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX = 128;
 		public const uint VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM = 128;
 		public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
 		public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
@@ -646,6 +648,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_PRIMITIVES_GENERATED_QUERY_EXTENSION_NAME = "VK_EXT_primitives_generated_query";
 		public const uint VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
 		public const string VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
+		public const uint VK_KHR_SHADER_UNTYPED_POINTERS_SPEC_VERSION = 1;
+		public const string VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME = "VK_KHR_shader_untyped_pointers";
 		public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 		public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE;
@@ -739,6 +743,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_5_EXTENSION_NAME = "VK_KHR_maintenance5";
 		public const uint VK_AMD_ANTI_LAG_SPEC_VERSION = 1;
 		public const string VK_AMD_ANTI_LAG_EXTENSION_NAME = "VK_AMD_anti_lag";
+		public const uint VK_AMDX_DENSE_GEOMETRY_FORMAT_SPEC_VERSION = 1;
+		public const string VK_AMDX_DENSE_GEOMETRY_FORMAT_EXTENSION_NAME = "VK_AMDX_dense_geometry_format";
 		public const uint VK_KHR_PRESENT_ID_2_SPEC_VERSION = 1;
 		public const string VK_KHR_PRESENT_ID_2_EXTENSION_NAME = "VK_KHR_present_id2";
 		public const uint VK_KHR_PRESENT_WAIT_2_SPEC_VERSION = 1;

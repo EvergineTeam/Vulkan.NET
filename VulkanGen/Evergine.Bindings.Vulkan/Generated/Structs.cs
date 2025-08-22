@@ -9047,7 +9047,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoVP9Profile stdProfile;
+		public IntPtr stdProfile;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9055,7 +9055,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoVP9Level maxLevel;
+		public IntPtr maxLevel;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9063,7 +9063,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public StdVideoDecodeVP9PictureInfo* pStdPictureInfo;
+		public IntPtr pStdPictureInfo;
 		public fixed int referenceNameSlotIndices[(int)VulkanNative.VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR];
 		public uint uncompressedHeaderOffset;
 		public uint compressedHeaderOffset;
@@ -12698,6 +12698,28 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 denseGeometryFormat;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkDeviceOrHostAddressConstKHR compressedData;
+		public ulong dataSize;
+		public uint numTriangles;
+		public uint numVertices;
+		public uint maxPrimitiveIndex;
+		public uint maxGeometryIndex;
+		public VkCompressedTriangleFormatAMDX format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR
 	{
 		public VkStructureType sType;
@@ -13158,7 +13180,7 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public uint flags;
-		public OHNativeWindow* window;
+		public IntPtr window;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -13375,6 +13397,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 pipelineCacheIncrementalMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderUntypedPointersFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderUntypedPointers;
 	}
 
 }

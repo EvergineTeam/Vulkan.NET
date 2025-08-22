@@ -285,6 +285,10 @@ namespace VulkanGen
                 case "NvSciBufAttrList":
                 case "NvSciBufObj":
                 case "_screen_buffer":
+                case "StdVideoVP9Profile":
+                case "StdVideoVP9Level":
+                case "StdVideoDecodeVP9PictureInfo":
+                case "OHNativeWindow":
                 //Metal Layer
                 case "MTLDevice_id":
                 case "MTLCommandQueue_id":
