@@ -13175,7 +13175,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkOHSurfaceCreateInfoOHOS
+	public unsafe partial struct VkSurfaceCreateInfoOHOS
 	{
 		public VkStructureType sType;
 		public void* pNext;

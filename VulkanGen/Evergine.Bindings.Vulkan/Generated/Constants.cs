@@ -546,7 +546,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME = "VK_NV_cuda_kernel_launch";
 		public const uint VK_KHR_OBJECT_REFRESH_SPEC_VERSION = 1;
 		public const string VK_KHR_OBJECT_REFRESH_EXTENSION_NAME = "VK_KHR_object_refresh";
-		public const uint VK_QCOM_TILE_SHADING_SPEC_VERSION = 1;
+		public const uint VK_QCOM_TILE_SHADING_SPEC_VERSION = 2;
 		public const string VK_QCOM_TILE_SHADING_EXTENSION_NAME = "VK_QCOM_tile_shading";
 		public const uint VK_NV_LOW_LATENCY_SPEC_VERSION = 1;
 		public const string VK_NV_LOW_LATENCY_EXTENSION_NAME = "VK_NV_low_latency";

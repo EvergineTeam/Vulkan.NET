@@ -3792,9 +3792,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetDepthClampRangeEXT_ptr(commandBuffer, depthClampMode, pDepthClampRange);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSurfaceOHOSDelegate(VkInstance instance, VkOHSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+		private delegate VkResult vkCreateSurfaceOHOSDelegate(VkInstance instance, VkSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
 		private static vkCreateSurfaceOHOSDelegate vkCreateSurfaceOHOS_ptr;
-		public static VkResult vkCreateSurfaceOHOS(VkInstance instance, VkOHSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
+		public static VkResult vkCreateSurfaceOHOS(VkInstance instance, VkSurfaceCreateInfoOHOS* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
 			=> vkCreateSurfaceOHOS_ptr(instance, pCreateInfo, pAllocator, pSurface);
 
 		[UnmanagedFunctionPointer(CallConv)]
