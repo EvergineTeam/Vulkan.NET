@@ -653,6 +653,8 @@ namespace Evergine.Bindings.Vulkan
 		public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 		public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
 		public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE;
+		public const uint VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_SPEC_VERSION = 1;
+		public const string VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_EXTENSION_NAME = "VK_VALVE_video_encode_rgb_conversion";
 		public const uint VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
 		public const string VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";
 		public const uint VK_EXT_MULTI_DRAW_SPEC_VERSION = 1;
@@ -841,6 +843,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
 		public const uint VK_QCOM_TILE_MEMORY_HEAP_SPEC_VERSION = 1;
 		public const string VK_QCOM_TILE_MEMORY_HEAP_EXTENSION_NAME = "VK_QCOM_tile_memory_heap";
+		public const uint VK_KHR_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
+		public const string VK_KHR_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_KHR_copy_memory_indirect";
 		public const uint VK_NV_DISPLAY_STEREO_SPEC_VERSION = 1;
 		public const string VK_NV_DISPLAY_STEREO_EXTENSION_NAME = "VK_NV_display_stereo";
 		public const uint VK_KHR_VIDEO_ENCODE_INTRA_REFRESH_SPEC_VERSION = 1;

@@ -604,7 +604,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCopyMemoryIndirectCommandNV
+	public unsafe partial struct VkStridedDeviceAddressRangeKHR
+	{
+		public ulong address;
+		public ulong size;
+		public ulong stride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCopyMemoryIndirectCommandKHR
 	{
 		public ulong srcAddress;
 		public ulong dstAddress;
@@ -612,7 +620,18 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkCopyMemoryToImageIndirectCommandNV
+	public unsafe partial struct VkCopyMemoryIndirectInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkAddressCopyFlagsKHR srcCopyFlags;
+		public VkAddressCopyFlagsKHR dstCopyFlags;
+		public uint copyCount;
+		public VkStridedDeviceAddressRangeKHR copyAddressRange;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCopyMemoryToImageIndirectCommandKHR
 	{
 		public ulong srcAddress;
 		public uint bufferRowLength;
@@ -620,6 +639,19 @@ namespace Evergine.Bindings.Vulkan
 		public VkImageSubresourceLayers imageSubresource;
 		public VkOffset3D imageOffset;
 		public VkExtent3D imageExtent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCopyMemoryToImageIndirectInfoKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkAddressCopyFlagsKHR srcCopyFlags;
+		public uint copyCount;
+		public VkStridedDeviceAddressRangeKHR copyAddressRange;
+		public VkImage dstImage;
+		public VkImageLayout dstImageLayout;
+		public VkImageSubresourceLayers* pImageSubresources;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5241,6 +5273,15 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 indirectMemoryCopy;
+		public VkBool32 indirectMemoryToImageCopy;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV
 	{
 		public VkStructureType sType;
@@ -5249,7 +5290,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV
+	public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -13405,6 +13446,44 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 shaderUntypedPointers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 videoEncodeRgbConversion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeRgbConversionCapabilitiesVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModels;
+		public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRanges;
+		public VkVideoEncodeRgbChromaOffsetFlagsVALVE xChromaOffsets;
+		public VkVideoEncodeRgbChromaOffsetFlagsVALVE yChromaOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeProfileRgbConversionInfoVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 performEncodeRgbConversion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkVideoEncodeSessionRgbConversionCreateInfoVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModel;
+		public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRange;
+		public VkVideoEncodeRgbChromaOffsetFlagsVALVE xChromaOffset;
+		public VkVideoEncodeRgbChromaOffsetFlagsVALVE yChromaOffset;
 	}
 
 }

@@ -3690,6 +3690,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdBindTileMemoryQCOM_ptr(commandBuffer, pTileMemoryBindInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyMemoryIndirectKHRDelegate(VkCommandBuffer commandBuffer, VkCopyMemoryIndirectInfoKHR* pCopyMemoryIndirectInfo);
+		private static vkCmdCopyMemoryIndirectKHRDelegate vkCmdCopyMemoryIndirectKHR_ptr;
+		public static void vkCmdCopyMemoryIndirectKHR(VkCommandBuffer commandBuffer, VkCopyMemoryIndirectInfoKHR* pCopyMemoryIndirectInfo)
+			=> vkCmdCopyMemoryIndirectKHR_ptr(commandBuffer, pCopyMemoryIndirectInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyMemoryToImageIndirectKHRDelegate(VkCommandBuffer commandBuffer, VkCopyMemoryToImageIndirectInfoKHR* pCopyMemoryToImageIndirectInfo);
+		private static vkCmdCopyMemoryToImageIndirectKHRDelegate vkCmdCopyMemoryToImageIndirectKHR_ptr;
+		public static void vkCmdCopyMemoryToImageIndirectKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToImageIndirectInfoKHR* pCopyMemoryToImageIndirectInfo)
+			=> vkCmdCopyMemoryToImageIndirectKHR_ptr(commandBuffer, pCopyMemoryToImageIndirectInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateExternalComputeQueueNVDelegate(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue);
 		private static vkCreateExternalComputeQueueNVDelegate vkCreateExternalComputeQueueNV_ptr;
 		public static VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue)
@@ -4442,6 +4454,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
 			NativeLib.LoadFunction("vkCmdBindTileMemoryQCOM",  out vkCmdBindTileMemoryQCOM_ptr);
+			NativeLib.LoadFunction("vkCmdCopyMemoryIndirectKHR",  out vkCmdCopyMemoryIndirectKHR_ptr);
+			NativeLib.LoadFunction("vkCmdCopyMemoryToImageIndirectKHR",  out vkCmdCopyMemoryToImageIndirectKHR_ptr);
 			NativeLib.LoadFunction("vkCreateExternalComputeQueueNV",  out vkCreateExternalComputeQueueNV_ptr);
 			NativeLib.LoadFunction("vkDestroyExternalComputeQueueNV",  out vkDestroyExternalComputeQueueNV_ptr);
 			NativeLib.LoadFunction("vkGetExternalComputeQueueDataNV",  out vkGetExternalComputeQueueDataNV_ptr);
