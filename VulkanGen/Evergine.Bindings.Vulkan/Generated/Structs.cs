@@ -10245,6 +10245,16 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceShaderFmaFeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 shaderFmaFloat16;
+		public VkBool32 shaderFmaFloat32;
+		public VkBool32 shaderFmaFloat64;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV
 	{
 		public VkStructureType sType;

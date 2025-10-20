@@ -879,6 +879,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_KHR_MAINTENANCE_8_EXTENSION_NAME = "VK_KHR_maintenance8";
 		public const uint VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
 		public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
+		public const uint VK_KHR_SHADER_FMA_SPEC_VERSION = 1;
+		public const string VK_KHR_SHADER_FMA_EXTENSION_NAME = "VK_KHR_shader_fma";
 		public const uint VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION = 1;
 		public const string VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clamp_control";
 		public const uint VK_KHR_MAINTENANCE_9_SPEC_VERSION = 1;
