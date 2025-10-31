@@ -1,47 +1,32 @@
+# Binding CI - Simple Template
+
+# This template is for .NET bindings.
+# Copy this file to your repository as `.github/workflows/CI.yml` and customize the inputs below.
+
 name: CI
+
 on:
+  workflow_dispatch:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
-env:
-  nugetOutputPath: ${{  'nupkgs'  }}
-
 jobs:
-   build_and_publish:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.x
-      - uses: nuget/setup-nuget@v2
-        with:
-          nuget-version: "6.x"
-      - name: Generate Bindings
-        id: build_bindings
-        shell: pwsh
-        run: |
-          ./Generate-Bindings.ps1
-      - name: Generate NuGet packages
-        id: build_nugets
-        shell: pwsh
-        run: |
-          ./Generate-NuGets.ps1 -Version ${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
-      - name: SendGrid Mail Action
-        if: ${{ failure() }}
-        uses: mmichailidis/sendgrid-mail-action@v1.1
-        with:
-          # The token for sendgrid
-          sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
-          # List of emails separated by comma that the email will go
-          mail: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
-          # The email that will be shown as sender
-          from: ${{ secrets.EVERGINE_EMAIL }}
-          # The subject of the email
-          subject: Vulkan Update NuGet has failed
-          # Defines if it should be one email with multiple address or multiple emails with a single address
-          individual: false
-          # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
-          text: something when wrong when updating new vk.xml file from KhronosRegistry
+  ci:
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@main
+    with:
+      generator-project: "VulkanGen/VulkanGen/VulkanGen.csproj"  # Path to your generator .csproj
+      generator-name: "Vulkan"                # Name of your generator executable
+      binding-project: "VulkanGen/Evergine.Bindings.Vulkan/Evergine.Bindings.Vulkan.csproj" # Path to your binding .csproj
+      target-framework: "net8.0"                   # Target framework for generator/binding
+      runtime-identifier: ""                       # Runtime identifier (win-x64, linux-x64, etc.)
+      build-configuration: "Release"               # Build configuration (Release, Debug, etc.)
+      nuget-artifacts: false                       # Upload NuGets as workflow artifacts
+      revision: ${{ github.run_number }}           # Revision for date-based version (bindings style). Use with bindings.
+
+# Tips:
+# - For direct version (add-ons style):
+#   version: "3.4.22.288-local"
+# - For date-based version (bindings style):
+#   revision: ""  # Uses github.run_number or custom logic

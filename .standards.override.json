@@ -1,0 +1,10 @@
+{
+    "schema": "2",
+    "groups": [
+        "core",
+        "binding"
+    ],
+    "remap": {
+        "assets/nuget-icon.png": "icon.png"
+    }
+}

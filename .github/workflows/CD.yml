@@ -1,0 +1,41 @@
+# Binding from XML CD - Template
+
+# This template is for pure .NET bindings with XML update to publish NuGets to Nuget.org.
+# Copy this file to your repository as `.github/workflows/CD.yml` and customize the inputs below.
+
+name: CD
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # Monthly update on day 1 at 00:00
+
+jobs:
+  cd:
+    if: github.event_name != 'schedule' || github.ref == 'refs/heads/master'
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-xml-cd.yml@main
+    with:
+      xml-url: "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml"
+      xml-path: "KhronosRegistry/vk.xml"
+      generator-project: "VulkanGen/VulkanGen/VulkanGen.csproj"  # Path to your generator .csproj
+      generator-name: "Vulkan"                # Name of your generator executable
+      binding-project: "VulkanGen/Evergine.Bindings.Vulkan/Evergine.Bindings.Vulkan.csproj" # Path to your binding .csproj
+      target-framework: "net8.0"                   # Target framework for generator/binding
+      dotnet-version: "8.x"                        # .NET SDK version
+      nuget-version: "6.x"                         # NuGet CLI version
+      runtime-identifier: ""                       # Runtime identifier (win-x64, linux-x64, etc.)
+      build-configuration: "Release"               # Build configuration (Release, Debug, etc.)
+      revision: ${{ github.run_number }}           # Revision for date-based version (bindings style). Use with bindings.
+      publish-enabled: true
+      enable-email-notifications: true
+    secrets:
+      NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}
+      WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}
+      EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
+      EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
+
+# Tips:
+# - For direct version (add-ons style):
+#   version: "3.4.22.288-local"
+# - For date-based version (bindings style):
+#   revision: ""  # Uses github.run_number or custom logic

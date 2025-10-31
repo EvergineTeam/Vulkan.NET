@@ -1,0 +1,58 @@
+name: Sync standards
+
+on:
+  workflow_dispatch:
+    inputs:
+      org:
+        description: "Standards org"
+        default: "EvergineTeam"
+        required: false
+      repo:
+        description: "Standards repo"
+        default: "evergine-standards"
+        required: false
+      ref:
+        description: "Branch/tag/commit of standards"
+        default: "main"
+        required: false
+      target_branch:
+        description: "Target branch to apply changes"
+        default: "master"
+        required: false
+      script_path:
+        description: "Path where to download the sync script"
+        default: "sync-standards.ps1"
+        required: false
+      commit_message:
+        description: "Commit message"
+        required: false
+      mode:
+        description: "auto (push then PR if needed) or pr (always PR)"
+        default: "auto"
+        required: false
+      dry_run:
+        description: "Dry run mode - show what would be done without making changes"
+        type: boolean
+        default: false
+        required: false
+
+  schedule:
+    - cron: "0 2 1 * *"  # 02:00 UTC on the 1st of every month
+  
+jobs:
+  sync:
+    if: github.event_name != 'schedule' || github.ref == 'refs/heads/master'
+    permissions:
+      contents: write  # allow push commits
+      pull-requests: write
+    uses: EvergineTeam/evergine-standards/.github/workflows/_sync-standards-reusable.yml@main
+    with:
+      org:  ${{ github.event.inputs.org  || 'EvergineTeam' }}
+      repo: ${{ github.event.inputs.repo || 'evergine-standards' }}
+      ref:  ${{ github.event.inputs.ref  || 'main' }}
+      target_branch: ${{ github.event.inputs.target_branch || 'master' }}
+      script_path: ${{ github.event.inputs.script_path || 'sync-standards.ps1' }}
+      commit_message: "${{ github.event.inputs.commit_message || vars.STANDARDS_COMMIT_MESSAGE || 'auto: sync standard files [skip ci]' }}"
+      mode: ${{ github.event.inputs.mode || 'auto' }}
+      dry_run: ${{ github.event.inputs.dry_run == 'true' }}
+    secrets: inherit
