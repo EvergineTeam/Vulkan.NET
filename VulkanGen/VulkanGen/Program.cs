@@ -9,8 +9,8 @@ namespace VulkanGen
     {
         static void Main(string[] args)
         {
-            string vkFile = "..\\..\\..\\..\\..\\KhronosRegistry\\vk.xml";
-            string outputPath = "..\\..\\..\\..\\Evergine.Bindings.Vulkan\\Generated";
+            string vkFile = Path.Combine("..", "..", "..", "..", "..", "KhronosRegistry", "vk.xml");
+            string outputPath = Path.Combine("..", "..", "..", "..", "Evergine.Bindings.Vulkan", "Generated");
 
             var vulkanSpec = VulkanSpecification.FromFile(vkFile);
 
@@ -176,7 +176,7 @@ namespace VulkanGen
                     {
                         // Avoid duplicate members from Vulkan Safety Critical
                         if (Helpers.IsVKSC(member.Api))
-                        { 
+                        {
                             continue;
                         }
 
