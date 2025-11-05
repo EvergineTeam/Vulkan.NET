@@ -9,8 +9,12 @@
 	Direct version string to use for packages (used by add-ons)
 .PARAMETER Revision
 	Revision number to append to date-based version (used by bindings)
+.PARAMETER VersionSuffix
+	Optional suffix to append to the final version (e.g., "nightly" for "2025.11.3.123-nightly")
 .PARAMETER Projects
 	Array of .csproj paths to pack. For single project, can be a string.
+.PARAMETER DependencyProjects
+	Array of .csproj paths that need to be built first (dependencies) but won't generate NuGet packages.
 .PARAMETER OutputFolderBase
 	Base folder for NuGet package output
 .PARAMETER BuildVerbosity
@@ -35,6 +39,15 @@
 .EXAMPLE
 	# Using legacy symbol format
 	.\Generate-NuGets-DotNet.ps1 -Version "1.0.0" -Projects "test.csproj" -SymbolsFormat "symbols.nupkg"
+.EXAMPLE
+	# Using version suffix for nightly builds
+	.\Generate-NuGets-DotNet.ps1 -Revision 123 -Projects "test.csproj" -VersionSuffix "nightly"
+.EXAMPLE
+	# Using version suffix with direct version
+	.\Generate-NuGets-DotNet.ps1 -Version "2025.1.0.0-alpha" -Projects "test.csproj" -VersionSuffix "nightly"
+.EXAMPLE
+	# Building dependency projects but only packing main projects
+	.\Generate-NuGets-DotNet.ps1 -Revision 123 -Projects "Main.csproj" -DependencyProjects "Dependency1.csproj","Dependency2.csproj"
 .LINK
 	https://evergine.com/
 #>
@@ -42,7 +55,9 @@
 param (
     [string]$Version,
     [string]$Revision,
+    [string]$VersionSuffix,
     [Parameter(Mandatory = $true)]$Projects,
+    $DependencyProjects = @(),
     [string]$OutputFolderBase = "nupkgs",
     [string]$BuildVerbosity = "normal",
     [string]$BuildConfiguration = "Release",
@@ -61,14 +76,6 @@ else {
 }
 
 # Parameter validation
-if ([string]::IsNullOrEmpty($Version) -and [string]::IsNullOrEmpty($Revision)) {
-    throw "Either -Version or -Revision parameter must be provided"
-}
-
-if (![string]::IsNullOrEmpty($Version) -and ![string]::IsNullOrEmpty($Revision)) {
-    throw "Cannot specify both -Version and -Revision parameters"
-}
-
 if ($Projects -eq $null -or $Projects.Count -eq 0 -or ($Projects -is [array] -and $Projects.Length -eq 0)) {
     throw "Projects parameter cannot be empty"
 }
@@ -78,21 +85,23 @@ if ($Projects -is [string]) {
     $Projects = @($Projects)
 }
 
-# Calculate version
-if (![string]::IsNullOrEmpty($Revision)) {
-    $Version = "$(Get-Date -Format "yyyy.M.d").$Revision"
+# Convert DependencyProjects to array if it's a single string or null
+if ($null -eq $DependencyProjects) {
+    $DependencyProjects = @()
+}
+elseif ($DependencyProjects -is [string]) {
+    $DependencyProjects = @($DependencyProjects)
 }
 
-# Validate version format (NuGet semantic versioning)
-# See: https://docs.microsoft.com/en-us/nuget/concepts/package-versioning
-if ($Version -notmatch '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-([a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?)(?:\.([a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?))*)?$') {
-    throw "Invalid version format: '$Version'. NuGet version must follow semantic versioning (e.g., '1.0.0', '1.0.0-alpha', '1.0.0.123')."
-}
+# Resolve version from parameters (including suffix)
+$Version = Resolve-Version -version $Version -revision $Revision -versionSuffix $VersionSuffix
 
 # Show variables
 $parameters = @{
     "Version"            = $Version
+    "VersionSuffix"      = if ([string]::IsNullOrWhiteSpace($VersionSuffix)) { "(none)" } else { $VersionSuffix }
     "Projects"           = ($Projects -join ", ")
+    "DependencyProjects" = if ($DependencyProjects.Count -eq 0) { "(none)" } else { ($DependencyProjects -join ", ") }
     "BuildConfiguration" = $BuildConfiguration
     "BuildVerbosity"     = $BuildVerbosity
     "OutputFolderBase"   = $OutputFolderBase
@@ -104,6 +113,24 @@ ShowVariables $parameters
 
 # Create output folder
 $absoluteOutputFolder = CreateOutputFolder $OutputFolderBase
+
+# Build all projects (dependencies + main projects) first to resolve dependencies automatically
+$allProjectsToBuild = $DependencyProjects + $Projects
+LogDebug "START building all projects to resolve dependencies"
+foreach ($projectPath in $allProjectsToBuild) {
+    LogDebug "Building project: $projectPath"
+    
+    if (!(Test-Path $projectPath)) {
+        throw "Project file not found: $projectPath"
+    }
+    
+    & dotnet build $projectPath --verbosity $BuildVerbosity --configuration $BuildConfiguration
+    
+    if ($LASTEXITCODE -ne 0) {
+        throw "dotnet build failed for $projectPath"
+    }
+}
+LogDebug "END building all projects"
 
 # Generate packages
 LogDebug "START packaging process"

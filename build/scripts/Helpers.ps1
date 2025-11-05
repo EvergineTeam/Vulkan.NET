@@ -48,3 +48,56 @@ function ShowVariablesLegacy($version, $buildConfiguration, $buildVerbosity, $ou
     LogDebug "Output folder.......: $outputFolderBase"
     LogDebug "#######################################"
 }
+
+# Calculate version from revision using date-based format
+function Get-VersionFromRevision($revision) {
+    if ([string]::IsNullOrWhiteSpace($revision)) {
+        throw "Revision parameter cannot be null or empty"
+    }
+    return "$(Get-Date -Format "yyyy.M.d").$revision"
+}
+
+# Validate version format using NuGet semantic versioning rules
+function Test-VersionFormat($version) {
+    if ([string]::IsNullOrWhiteSpace($version)) {
+        return $false
+    }
+    # NuGet semantic versioning pattern
+    # See: https://docs.microsoft.com/en-us/nuget/concepts/package-versioning
+    return $version -match '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-([a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?)(?:\.([a-zA-Z0-9](?:[a-zA-Z0-9\-]*[a-zA-Z0-9])?))*)?$'
+}
+
+# Resolve version from Version, Revision, and optional VersionSuffix parameters
+function Resolve-Version($version, $revision, $versionSuffix = "") {
+    # Validate parameters
+    if ([string]::IsNullOrEmpty($version) -and [string]::IsNullOrEmpty($revision)) {
+        throw "Either Version or Revision parameter must be provided"
+    }
+    
+    if (![string]::IsNullOrEmpty($version) -and ![string]::IsNullOrEmpty($revision)) {
+        throw "Cannot specify both Version and Revision parameters"
+    }
+    
+    # Calculate version if revision is provided
+    if (![string]::IsNullOrEmpty($revision)) {
+        $resolvedVersion = Get-VersionFromRevision $revision
+    }
+    else {
+        $resolvedVersion = $version
+    }
+    
+    # Validate version format (before applying suffix)
+    if (-not (Test-VersionFormat $resolvedVersion)) {
+        throw "Invalid version format: '$resolvedVersion'. Version must follow semantic versioning (e.g., '1.0.0', '1.0.0-alpha', '1.0.0.123')."
+    }
+    
+    # Apply version suffix if provided
+    if (-not [string]::IsNullOrWhiteSpace($versionSuffix)) {
+        # Remove leading dash from suffix if present to avoid double dashes
+        $cleanSuffix = $versionSuffix.TrimStart('-')
+        # Always append with dash separator for clean, consistent versioning
+        $resolvedVersion = "$resolvedVersion-$cleanSuffix"
+    }
+    
+    return $resolvedVersion
+}

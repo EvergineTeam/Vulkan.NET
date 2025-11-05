@@ -7,13 +7,19 @@ name: CD
 
 on:
   workflow_dispatch:
+    inputs:
+      skip-assets-publishing:
+        description: 'Skip assets publishing'
+        required: false
+        type: boolean
+        default: false
   schedule:
-    - cron: '0 0 1 * *' # Monthly update on day 1 at 00:00
+    - cron: '30 1 1 * *' # Monthly update on day 1 at 01:30
 
 jobs:
   cd:
     if: github.event_name != 'schedule' || github.ref == 'refs/heads/master'
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-xml-cd.yml@main
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-xml-cd.yml@v2
     with:
       xml-url: "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml"
       xml-path: "KhronosRegistry/vk.xml"
@@ -26,7 +32,7 @@ jobs:
       runtime-identifier: ""                       # Runtime identifier (win-x64, linux-x64, etc.)
       build-configuration: "Release"               # Build configuration (Release, Debug, etc.)
       revision: ${{ github.run_number }}           # Revision for date-based version (bindings style). Use with bindings.
-      publish-enabled: true
+      publish-enabled: ${{ !inputs.skip-assets-publishing }}
       enable-email-notifications: true
     secrets:
       NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}

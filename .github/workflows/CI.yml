@@ -7,6 +7,12 @@ name: CI
 
 on:
   workflow_dispatch:
+    inputs:
+      publish-artifacts:
+        description: 'Publish artifacts'
+        required: false
+        type: boolean
+        default: false
   push:
     branches: [ "master" ]
   pull_request:
@@ -14,7 +20,7 @@ on:
 
 jobs:
   ci:
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@main
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@v2
     with:
       generator-project: "VulkanGen/VulkanGen/VulkanGen.csproj"  # Path to your generator .csproj
       generator-name: "Vulkan"                # Name of your generator executable
@@ -22,7 +28,7 @@ jobs:
       target-framework: "net8.0"                   # Target framework for generator/binding
       runtime-identifier: ""                       # Runtime identifier (win-x64, linux-x64, etc.)
       build-configuration: "Release"               # Build configuration (Release, Debug, etc.)
-      nuget-artifacts: false                       # Upload NuGets as workflow artifacts
+      nuget-artifacts: ${{ inputs.publish-artifacts || false }} # Upload NuGets as workflow artifacts
       revision: ${{ github.run_number }}           # Revision for date-based version (bindings style). Use with bindings.
 
 # Tips:
