@@ -117,14 +117,7 @@ $buildPath = Get-BuildOutputPath $generatorDir $BuildConfiguration $TargetFramew
 
 Push-Location $buildPath
 try {
-    # Detect platform and set executable path
-    if ($IsWindows) {
-        $exePath = ".\publish\$projectName.exe"
-    }
-    else {
-        $exePath = "./publish/$projectName"
-    }
-    & $exePath
+    & ".\publish\$projectName.exe"
     if ($LASTEXITCODE -eq 0) {
         LogDebug "END $GeneratorName binding generator process"
     }
