@@ -258,36 +258,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroySemaphore_ptr(device, semaphore, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateEventDelegate(VkDevice device, VkEventCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkEvent* pEvent);
-		private static vkCreateEventDelegate vkCreateEvent_ptr;
-		public static VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkEvent* pEvent)
-			=> vkCreateEvent_ptr(device, pCreateInfo, pAllocator, pEvent);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkDestroyEventDelegate(VkDevice device, VkEvent vkEvent, VkAllocationCallbacks* pAllocator);
-		private static vkDestroyEventDelegate vkDestroyEvent_ptr;
-		public static void vkDestroyEvent(VkDevice device, VkEvent vkEvent, VkAllocationCallbacks* pAllocator)
-			=> vkDestroyEvent_ptr(device, vkEvent, pAllocator);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkGetEventStatusDelegate(VkDevice device, VkEvent vkEvent);
-		private static vkGetEventStatusDelegate vkGetEventStatus_ptr;
-		public static VkResult vkGetEventStatus(VkDevice device, VkEvent vkEvent)
-			=> vkGetEventStatus_ptr(device, vkEvent);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkSetEventDelegate(VkDevice device, VkEvent vkEvent);
-		private static vkSetEventDelegate vkSetEvent_ptr;
-		public static VkResult vkSetEvent(VkDevice device, VkEvent vkEvent)
-			=> vkSetEvent_ptr(device, vkEvent);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkResetEventDelegate(VkDevice device, VkEvent vkEvent);
-		private static vkResetEventDelegate vkResetEvent_ptr;
-		public static VkResult vkResetEvent(VkDevice device, VkEvent vkEvent)
-			=> vkResetEvent_ptr(device, vkEvent);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateQueryPoolDelegate(VkDevice device, VkQueryPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkQueryPool* pQueryPool);
 		private static vkCreateQueryPoolDelegate vkCreateQueryPool_ptr;
 		public static VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkQueryPool* pQueryPool)
@@ -318,18 +288,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkDestroyBuffer_ptr(device, buffer, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateBufferViewDelegate(VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView);
-		private static vkCreateBufferViewDelegate vkCreateBufferView_ptr;
-		public static VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView)
-			=> vkCreateBufferView_ptr(device, pCreateInfo, pAllocator, pView);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkDestroyBufferViewDelegate(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator);
-		private static vkDestroyBufferViewDelegate vkDestroyBufferView_ptr;
-		public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator)
-			=> vkDestroyBufferView_ptr(device, bufferView, pAllocator);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateImageDelegate(VkDevice device, VkImageCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkImage* pImage);
 		private static vkCreateImageDelegate vkCreateImage_ptr;
 		public static VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkImage* pImage)
@@ -358,6 +316,174 @@ namespace Evergine.Bindings.Vulkan
 		private static vkDestroyImageViewDelegate vkDestroyImageView_ptr;
 		public static void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* pAllocator)
 			=> vkDestroyImageView_ptr(device, imageView, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateCommandPoolDelegate(VkDevice device, VkCommandPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCommandPool* pCommandPool);
+		private static vkCreateCommandPoolDelegate vkCreateCommandPool_ptr;
+		public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCommandPool* pCommandPool)
+			=> vkCreateCommandPool_ptr(device, pCreateInfo, pAllocator, pCommandPool);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyCommandPoolDelegate(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyCommandPoolDelegate vkDestroyCommandPool_ptr;
+		public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyCommandPool_ptr(device, commandPool, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkResetCommandPoolDelegate(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags);
+		private static vkResetCommandPoolDelegate vkResetCommandPool_ptr;
+		public static VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
+			=> vkResetCommandPool_ptr(device, commandPool, flags);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkAllocateCommandBuffersDelegate(VkDevice device, VkCommandBufferAllocateInfo* pAllocateInfo, VkCommandBuffer* pCommandBuffers);
+		private static vkAllocateCommandBuffersDelegate vkAllocateCommandBuffers_ptr;
+		public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* pAllocateInfo, VkCommandBuffer* pCommandBuffers)
+			=> vkAllocateCommandBuffers_ptr(device, pAllocateInfo, pCommandBuffers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkFreeCommandBuffersDelegate(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* pCommandBuffers);
+		private static vkFreeCommandBuffersDelegate vkFreeCommandBuffers_ptr;
+		public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* pCommandBuffers)
+			=> vkFreeCommandBuffers_ptr(device, commandPool, commandBufferCount, pCommandBuffers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkBeginCommandBufferDelegate(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* pBeginInfo);
+		private static vkBeginCommandBufferDelegate vkBeginCommandBuffer_ptr;
+		public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* pBeginInfo)
+			=> vkBeginCommandBuffer_ptr(commandBuffer, pBeginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkEndCommandBufferDelegate(VkCommandBuffer commandBuffer);
+		private static vkEndCommandBufferDelegate vkEndCommandBuffer_ptr;
+		public static VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
+			=> vkEndCommandBuffer_ptr(commandBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkResetCommandBufferDelegate(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags);
+		private static vkResetCommandBufferDelegate vkResetCommandBuffer_ptr;
+		public static VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
+			=> vkResetCommandBuffer_ptr(commandBuffer, flags);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* pRegions);
+		private static vkCmdCopyBufferDelegate vkCmdCopyBuffer_ptr;
+		public static void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* pRegions)
+			=> vkCmdCopyBuffer_ptr(commandBuffer, srcBuffer, dstBuffer, regionCount, pRegions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyImageDelegate(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* pRegions);
+		private static vkCmdCopyImageDelegate vkCmdCopyImage_ptr;
+		public static void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* pRegions)
+			=> vkCmdCopyImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyBufferToImageDelegate(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* pRegions);
+		private static vkCmdCopyBufferToImageDelegate vkCmdCopyBufferToImage_ptr;
+		public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* pRegions)
+			=> vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, pRegions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyImageToBufferDelegate(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* pRegions);
+		private static vkCmdCopyImageToBufferDelegate vkCmdCopyImageToBuffer_ptr;
+		public static void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* pRegions)
+			=> vkCmdCopyImageToBuffer_ptr(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, pRegions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdUpdateBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* pData);
+		private static vkCmdUpdateBufferDelegate vkCmdUpdateBuffer_ptr;
+		public static void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* pData)
+			=> vkCmdUpdateBuffer_ptr(commandBuffer, dstBuffer, dstOffset, dataSize, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdFillBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data);
+		private static vkCmdFillBufferDelegate vkCmdFillBuffer_ptr;
+		public static void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
+			=> vkCmdFillBuffer_ptr(commandBuffer, dstBuffer, dstOffset, size, data);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPipelineBarrierDelegate(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers);
+		private static vkCmdPipelineBarrierDelegate vkCmdPipelineBarrier_ptr;
+		public static void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers)
+			=> vkCmdPipelineBarrier_ptr(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBeginQueryDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags);
+		private static vkCmdBeginQueryDelegate vkCmdBeginQuery_ptr;
+		public static void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
+			=> vkCmdBeginQuery_ptr(commandBuffer, queryPool, query, flags);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndQueryDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query);
+		private static vkCmdEndQueryDelegate vkCmdEndQuery_ptr;
+		public static void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
+			=> vkCmdEndQuery_ptr(commandBuffer, queryPool, query);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdResetQueryPoolDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount);
+		private static vkCmdResetQueryPoolDelegate vkCmdResetQueryPool_ptr;
+		public static void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
+			=> vkCmdResetQueryPool_ptr(commandBuffer, queryPool, firstQuery, queryCount);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWriteTimestampDelegate(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query);
+		private static vkCmdWriteTimestampDelegate vkCmdWriteTimestamp_ptr;
+		public static void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
+			=> vkCmdWriteTimestamp_ptr(commandBuffer, pipelineStage, queryPool, query);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyQueryPoolResultsDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags);
+		private static vkCmdCopyQueryPoolResultsDelegate vkCmdCopyQueryPoolResults_ptr;
+		public static void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
+			=> vkCmdCopyQueryPoolResults_ptr(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdExecuteCommandsDelegate(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* pCommandBuffers);
+		private static vkCmdExecuteCommandsDelegate vkCmdExecuteCommands_ptr;
+		public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* pCommandBuffers)
+			=> vkCmdExecuteCommands_ptr(commandBuffer, commandBufferCount, pCommandBuffers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateEventDelegate(VkDevice device, VkEventCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkEvent* pEvent);
+		private static vkCreateEventDelegate vkCreateEvent_ptr;
+		public static VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkEvent* pEvent)
+			=> vkCreateEvent_ptr(device, pCreateInfo, pAllocator, pEvent);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyEventDelegate(VkDevice device, VkEvent vkEvent, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyEventDelegate vkDestroyEvent_ptr;
+		public static void vkDestroyEvent(VkDevice device, VkEvent vkEvent, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyEvent_ptr(device, vkEvent, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetEventStatusDelegate(VkDevice device, VkEvent vkEvent);
+		private static vkGetEventStatusDelegate vkGetEventStatus_ptr;
+		public static VkResult vkGetEventStatus(VkDevice device, VkEvent vkEvent)
+			=> vkGetEventStatus_ptr(device, vkEvent);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkSetEventDelegate(VkDevice device, VkEvent vkEvent);
+		private static vkSetEventDelegate vkSetEvent_ptr;
+		public static VkResult vkSetEvent(VkDevice device, VkEvent vkEvent)
+			=> vkSetEvent_ptr(device, vkEvent);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkResetEventDelegate(VkDevice device, VkEvent vkEvent);
+		private static vkResetEventDelegate vkResetEvent_ptr;
+		public static VkResult vkResetEvent(VkDevice device, VkEvent vkEvent)
+			=> vkResetEvent_ptr(device, vkEvent);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateBufferViewDelegate(VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView);
+		private static vkCreateBufferViewDelegate vkCreateBufferView_ptr;
+		public static VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView)
+			=> vkCreateBufferView_ptr(device, pCreateInfo, pAllocator, pView);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyBufferViewDelegate(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyBufferViewDelegate vkDestroyBufferView_ptr;
+		public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyBufferView_ptr(device, bufferView, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateShaderModuleDelegate(VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkShaderModule* pShaderModule);
@@ -394,12 +520,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkMergePipelineCachesDelegate vkMergePipelineCaches_ptr;
 		public static VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* pSrcCaches)
 			=> vkMergePipelineCaches_ptr(device, dstCache, srcCacheCount, pSrcCaches);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateGraphicsPipelinesDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
-		private static vkCreateGraphicsPipelinesDelegate vkCreateGraphicsPipelines_ptr;
-		public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines)
-			=> vkCreateGraphicsPipelines_ptr(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateComputePipelinesDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
@@ -486,6 +606,66 @@ namespace Evergine.Bindings.Vulkan
 			=> vkUpdateDescriptorSets_ptr(device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindPipelineDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
+		private static vkCmdBindPipelineDelegate vkCmdBindPipeline_ptr;
+		public static void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
+			=> vkCmdBindPipeline_ptr(commandBuffer, pipelineBindPoint, pipeline);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindDescriptorSetsDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* pDescriptorSets, uint dynamicOffsetCount, uint* pDynamicOffsets);
+		private static vkCmdBindDescriptorSetsDelegate vkCmdBindDescriptorSets_ptr;
+		public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* pDescriptorSets, uint dynamicOffsetCount, uint* pDynamicOffsets)
+			=> vkCmdBindDescriptorSets_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, pDescriptorSets, dynamicOffsetCount, pDynamicOffsets);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdClearColorImageDelegate(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint rangeCount, VkImageSubresourceRange* pRanges);
+		private static vkCmdClearColorImageDelegate vkCmdClearColorImage_ptr;
+		public static void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint rangeCount, VkImageSubresourceRange* pRanges)
+			=> vkCmdClearColorImage_ptr(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchDelegate(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ);
+		private static vkCmdDispatchDelegate vkCmdDispatch_ptr;
+		public static void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
+			=> vkCmdDispatch_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchIndirectDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset);
+		private static vkCmdDispatchIndirectDelegate vkCmdDispatchIndirect_ptr;
+		public static void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
+			=> vkCmdDispatchIndirect_ptr(commandBuffer, buffer, offset);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetEventDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask);
+		private static vkCmdSetEventDelegate vkCmdSetEvent_ptr;
+		public static void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask)
+			=> vkCmdSetEvent_ptr(commandBuffer, vkEvent, stageMask);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdResetEventDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask);
+		private static vkCmdResetEventDelegate vkCmdResetEvent_ptr;
+		public static void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask)
+			=> vkCmdResetEvent_ptr(commandBuffer, vkEvent, stageMask);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWaitEventsDelegate(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers);
+		private static vkCmdWaitEventsDelegate vkCmdWaitEvents_ptr;
+		public static void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers)
+			=> vkCmdWaitEvents_ptr(commandBuffer, eventCount, pEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPushConstantsDelegate(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* pValues);
+		private static vkCmdPushConstantsDelegate vkCmdPushConstants_ptr;
+		public static void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* pValues)
+			=> vkCmdPushConstants_ptr(commandBuffer, layout, stageFlags, offset, size, pValues);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateGraphicsPipelinesDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+		private static vkCreateGraphicsPipelinesDelegate vkCreateGraphicsPipelines_ptr;
+		public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines)
+			=> vkCreateGraphicsPipelines_ptr(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateFramebufferDelegate(VkDevice device, VkFramebufferCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkFramebuffer* pFramebuffer);
 		private static vkCreateFramebufferDelegate vkCreateFramebuffer_ptr;
 		public static VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkFramebuffer* pFramebuffer)
@@ -514,60 +694,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetRenderAreaGranularityDelegate vkGetRenderAreaGranularity_ptr;
 		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, VkExtent2D* pGranularity)
 			=> vkGetRenderAreaGranularity_ptr(device, renderPass, pGranularity);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateCommandPoolDelegate(VkDevice device, VkCommandPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCommandPool* pCommandPool);
-		private static vkCreateCommandPoolDelegate vkCreateCommandPool_ptr;
-		public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCommandPool* pCommandPool)
-			=> vkCreateCommandPool_ptr(device, pCreateInfo, pAllocator, pCommandPool);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkDestroyCommandPoolDelegate(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* pAllocator);
-		private static vkDestroyCommandPoolDelegate vkDestroyCommandPool_ptr;
-		public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* pAllocator)
-			=> vkDestroyCommandPool_ptr(device, commandPool, pAllocator);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkResetCommandPoolDelegate(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags);
-		private static vkResetCommandPoolDelegate vkResetCommandPool_ptr;
-		public static VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
-			=> vkResetCommandPool_ptr(device, commandPool, flags);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkAllocateCommandBuffersDelegate(VkDevice device, VkCommandBufferAllocateInfo* pAllocateInfo, VkCommandBuffer* pCommandBuffers);
-		private static vkAllocateCommandBuffersDelegate vkAllocateCommandBuffers_ptr;
-		public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* pAllocateInfo, VkCommandBuffer* pCommandBuffers)
-			=> vkAllocateCommandBuffers_ptr(device, pAllocateInfo, pCommandBuffers);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkFreeCommandBuffersDelegate(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* pCommandBuffers);
-		private static vkFreeCommandBuffersDelegate vkFreeCommandBuffers_ptr;
-		public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* pCommandBuffers)
-			=> vkFreeCommandBuffers_ptr(device, commandPool, commandBufferCount, pCommandBuffers);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkBeginCommandBufferDelegate(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* pBeginInfo);
-		private static vkBeginCommandBufferDelegate vkBeginCommandBuffer_ptr;
-		public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* pBeginInfo)
-			=> vkBeginCommandBuffer_ptr(commandBuffer, pBeginInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkEndCommandBufferDelegate(VkCommandBuffer commandBuffer);
-		private static vkEndCommandBufferDelegate vkEndCommandBuffer_ptr;
-		public static VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
-			=> vkEndCommandBuffer_ptr(commandBuffer);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkResetCommandBufferDelegate(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags);
-		private static vkResetCommandBufferDelegate vkResetCommandBuffer_ptr;
-		public static VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
-			=> vkResetCommandBuffer_ptr(commandBuffer, flags);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdBindPipelineDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
-		private static vkCmdBindPipelineDelegate vkCmdBindPipeline_ptr;
-		public static void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
-			=> vkCmdBindPipeline_ptr(commandBuffer, pipelineBindPoint, pipeline);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetViewportDelegate(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* pViewports);
@@ -624,12 +750,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetStencilReference_ptr(commandBuffer, faceMask, reference);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdBindDescriptorSetsDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* pDescriptorSets, uint dynamicOffsetCount, uint* pDynamicOffsets);
-		private static vkCmdBindDescriptorSetsDelegate vkCmdBindDescriptorSets_ptr;
-		public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* pDescriptorSets, uint dynamicOffsetCount, uint* pDynamicOffsets)
-			=> vkCmdBindDescriptorSets_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, pDescriptorSets, dynamicOffsetCount, pDynamicOffsets);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBindIndexBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkIndexType indexType);
 		private static vkCmdBindIndexBufferDelegate vkCmdBindIndexBuffer_ptr;
 		public static void vkCmdBindIndexBuffer(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkIndexType indexType)
@@ -666,64 +786,10 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdDrawIndexedIndirect_ptr(commandBuffer, buffer, offset, drawCount, stride);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchDelegate(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ);
-		private static vkCmdDispatchDelegate vkCmdDispatch_ptr;
-		public static void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
-			=> vkCmdDispatch_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchIndirectDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset);
-		private static vkCmdDispatchIndirectDelegate vkCmdDispatchIndirect_ptr;
-		public static void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
-			=> vkCmdDispatchIndirect_ptr(commandBuffer, buffer, offset);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdCopyBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* pRegions);
-		private static vkCmdCopyBufferDelegate vkCmdCopyBuffer_ptr;
-		public static void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* pRegions)
-			=> vkCmdCopyBuffer_ptr(commandBuffer, srcBuffer, dstBuffer, regionCount, pRegions);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdCopyImageDelegate(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* pRegions);
-		private static vkCmdCopyImageDelegate vkCmdCopyImage_ptr;
-		public static void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* pRegions)
-			=> vkCmdCopyImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBlitImageDelegate(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageBlit* pRegions, VkFilter filter);
 		private static vkCmdBlitImageDelegate vkCmdBlitImage_ptr;
 		public static void vkCmdBlitImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageBlit* pRegions, VkFilter filter)
 			=> vkCmdBlitImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions, filter);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdCopyBufferToImageDelegate(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* pRegions);
-		private static vkCmdCopyBufferToImageDelegate vkCmdCopyBufferToImage_ptr;
-		public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* pRegions)
-			=> vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, pRegions);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdCopyImageToBufferDelegate(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* pRegions);
-		private static vkCmdCopyImageToBufferDelegate vkCmdCopyImageToBuffer_ptr;
-		public static void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* pRegions)
-			=> vkCmdCopyImageToBuffer_ptr(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, pRegions);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdUpdateBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* pData);
-		private static vkCmdUpdateBufferDelegate vkCmdUpdateBuffer_ptr;
-		public static void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* pData)
-			=> vkCmdUpdateBuffer_ptr(commandBuffer, dstBuffer, dstOffset, dataSize, pData);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdFillBufferDelegate(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data);
-		private static vkCmdFillBufferDelegate vkCmdFillBuffer_ptr;
-		public static void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
-			=> vkCmdFillBuffer_ptr(commandBuffer, dstBuffer, dstOffset, size, data);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdClearColorImageDelegate(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint rangeCount, VkImageSubresourceRange* pRanges);
-		private static vkCmdClearColorImageDelegate vkCmdClearColorImage_ptr;
-		public static void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint rangeCount, VkImageSubresourceRange* pRanges)
-			=> vkCmdClearColorImage_ptr(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdClearDepthStencilImageDelegate(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* pDepthStencil, uint rangeCount, VkImageSubresourceRange* pRanges);
@@ -744,66 +810,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdResolveImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetEventDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask);
-		private static vkCmdSetEventDelegate vkCmdSetEvent_ptr;
-		public static void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask)
-			=> vkCmdSetEvent_ptr(commandBuffer, vkEvent, stageMask);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdResetEventDelegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask);
-		private static vkCmdResetEventDelegate vkCmdResetEvent_ptr;
-		public static void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkPipelineStageFlags stageMask)
-			=> vkCmdResetEvent_ptr(commandBuffer, vkEvent, stageMask);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdWaitEventsDelegate(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers);
-		private static vkCmdWaitEventsDelegate vkCmdWaitEvents_ptr;
-		public static void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers)
-			=> vkCmdWaitEvents_ptr(commandBuffer, eventCount, pEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdPipelineBarrierDelegate(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers);
-		private static vkCmdPipelineBarrierDelegate vkCmdPipelineBarrier_ptr;
-		public static void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* pMemoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* pBufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* pImageMemoryBarriers)
-			=> vkCmdPipelineBarrier_ptr(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdBeginQueryDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags);
-		private static vkCmdBeginQueryDelegate vkCmdBeginQuery_ptr;
-		public static void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
-			=> vkCmdBeginQuery_ptr(commandBuffer, queryPool, query, flags);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdEndQueryDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query);
-		private static vkCmdEndQueryDelegate vkCmdEndQuery_ptr;
-		public static void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
-			=> vkCmdEndQuery_ptr(commandBuffer, queryPool, query);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdResetQueryPoolDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount);
-		private static vkCmdResetQueryPoolDelegate vkCmdResetQueryPool_ptr;
-		public static void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
-			=> vkCmdResetQueryPool_ptr(commandBuffer, queryPool, firstQuery, queryCount);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdWriteTimestampDelegate(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query);
-		private static vkCmdWriteTimestampDelegate vkCmdWriteTimestamp_ptr;
-		public static void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
-			=> vkCmdWriteTimestamp_ptr(commandBuffer, pipelineStage, queryPool, query);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdCopyQueryPoolResultsDelegate(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags);
-		private static vkCmdCopyQueryPoolResultsDelegate vkCmdCopyQueryPoolResults_ptr;
-		public static void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
-			=> vkCmdCopyQueryPoolResults_ptr(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdPushConstantsDelegate(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* pValues);
-		private static vkCmdPushConstantsDelegate vkCmdPushConstants_ptr;
-		public static void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* pValues)
-			=> vkCmdPushConstants_ptr(commandBuffer, layout, stageFlags, offset, size, pValues);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBeginRenderPassDelegate(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassContents contents);
 		private static vkCmdBeginRenderPassDelegate vkCmdBeginRenderPass_ptr;
 		public static void vkCmdBeginRenderPass(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassContents contents)
@@ -820,12 +826,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdEndRenderPassDelegate vkCmdEndRenderPass_ptr;
 		public static void vkCmdEndRenderPass(VkCommandBuffer commandBuffer)
 			=> vkCmdEndRenderPass_ptr(commandBuffer);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdExecuteCommandsDelegate(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* pCommandBuffers);
-		private static vkCmdExecuteCommandsDelegate vkCmdExecuteCommands_ptr;
-		public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* pCommandBuffers)
-			=> vkCmdExecuteCommands_ptr(commandBuffer, commandBufferCount, pCommandBuffers);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkEnumerateInstanceVersionDelegate(uint* pApiVersion);
@@ -856,12 +856,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdSetDeviceMaskDelegate vkCmdSetDeviceMask_ptr;
 		public static void vkCmdSetDeviceMask(VkCommandBuffer commandBuffer, uint deviceMask)
 			=> vkCmdSetDeviceMask_ptr(commandBuffer, deviceMask);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDispatchBaseDelegate(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
-		private static vkCmdDispatchBaseDelegate vkCmdDispatchBase_ptr;
-		public static void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
-			=> vkCmdDispatchBase_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkEnumeratePhysicalDeviceGroupsDelegate(VkInstance instance, uint* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
@@ -942,16 +936,28 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetDeviceQueue2_ptr(device, pQueueInfo, pQueue);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateSamplerYcbcrConversionDelegate(VkDevice device, VkSamplerYcbcrConversionCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
-		private static vkCreateSamplerYcbcrConversionDelegate vkCreateSamplerYcbcrConversion_ptr;
-		public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion)
-			=> vkCreateSamplerYcbcrConversion_ptr(device, pCreateInfo, pAllocator, pYcbcrConversion);
+		private delegate void vkGetPhysicalDeviceExternalBufferPropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
+		private static vkGetPhysicalDeviceExternalBufferPropertiesDelegate vkGetPhysicalDeviceExternalBufferProperties_ptr;
+		public static void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties)
+			=> vkGetPhysicalDeviceExternalBufferProperties_ptr(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkDestroySamplerYcbcrConversionDelegate(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator);
-		private static vkDestroySamplerYcbcrConversionDelegate vkDestroySamplerYcbcrConversion_ptr;
-		public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator)
-			=> vkDestroySamplerYcbcrConversion_ptr(device, ycbcrConversion, pAllocator);
+		private delegate void vkGetPhysicalDeviceExternalFencePropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties);
+		private static vkGetPhysicalDeviceExternalFencePropertiesDelegate vkGetPhysicalDeviceExternalFenceProperties_ptr;
+		public static void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties)
+			=> vkGetPhysicalDeviceExternalFenceProperties_ptr(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetPhysicalDeviceExternalSemaphorePropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties);
+		private static vkGetPhysicalDeviceExternalSemaphorePropertiesDelegate vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
+		public static void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties)
+			=> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDispatchBaseDelegate(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
+		private static vkCmdDispatchBaseDelegate vkCmdDispatchBase_ptr;
+		public static void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
+			=> vkCmdDispatchBase_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateDescriptorUpdateTemplateDelegate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate);
@@ -972,64 +978,22 @@ namespace Evergine.Bindings.Vulkan
 			=> vkUpdateDescriptorSetWithTemplate_ptr(device, descriptorSet, descriptorUpdateTemplate, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetPhysicalDeviceExternalBufferPropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
-		private static vkGetPhysicalDeviceExternalBufferPropertiesDelegate vkGetPhysicalDeviceExternalBufferProperties_ptr;
-		public static void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties)
-			=> vkGetPhysicalDeviceExternalBufferProperties_ptr(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetPhysicalDeviceExternalFencePropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties);
-		private static vkGetPhysicalDeviceExternalFencePropertiesDelegate vkGetPhysicalDeviceExternalFenceProperties_ptr;
-		public static void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties)
-			=> vkGetPhysicalDeviceExternalFenceProperties_ptr(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetPhysicalDeviceExternalSemaphorePropertiesDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties);
-		private static vkGetPhysicalDeviceExternalSemaphorePropertiesDelegate vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
-		public static void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties)
-			=> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetDescriptorSetLayoutSupportDelegate(VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
 		private static vkGetDescriptorSetLayoutSupportDelegate vkGetDescriptorSetLayoutSupport_ptr;
 		public static void vkGetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport)
 			=> vkGetDescriptorSetLayoutSupport_ptr(device, pCreateInfo, pSupport);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDrawIndirectCountDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride);
-		private static vkCmdDrawIndirectCountDelegate vkCmdDrawIndirectCount_ptr;
-		public static void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
-			=> vkCmdDrawIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+		private delegate VkResult vkCreateSamplerYcbcrConversionDelegate(VkDevice device, VkSamplerYcbcrConversionCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
+		private static vkCreateSamplerYcbcrConversionDelegate vkCreateSamplerYcbcrConversion_ptr;
+		public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion)
+			=> vkCreateSamplerYcbcrConversion_ptr(device, pCreateInfo, pAllocator, pYcbcrConversion);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdDrawIndexedIndirectCountDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride);
-		private static vkCmdDrawIndexedIndirectCountDelegate vkCmdDrawIndexedIndirectCount_ptr;
-		public static void vkCmdDrawIndexedIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
-			=> vkCmdDrawIndexedIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCreateRenderPass2Delegate(VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass);
-		private static vkCreateRenderPass2Delegate vkCreateRenderPass2_ptr;
-		public static VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass)
-			=> vkCreateRenderPass2_ptr(device, pCreateInfo, pAllocator, pRenderPass);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdBeginRenderPass2Delegate(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo);
-		private static vkCmdBeginRenderPass2Delegate vkCmdBeginRenderPass2_ptr;
-		public static void vkCmdBeginRenderPass2(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo)
-			=> vkCmdBeginRenderPass2_ptr(commandBuffer, pRenderPassBegin, pSubpassBeginInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdNextSubpass2Delegate(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* pSubpassBeginInfo, VkSubpassEndInfo* pSubpassEndInfo);
-		private static vkCmdNextSubpass2Delegate vkCmdNextSubpass2_ptr;
-		public static void vkCmdNextSubpass2(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* pSubpassBeginInfo, VkSubpassEndInfo* pSubpassEndInfo)
-			=> vkCmdNextSubpass2_ptr(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdEndRenderPass2Delegate(VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo);
-		private static vkCmdEndRenderPass2Delegate vkCmdEndRenderPass2_ptr;
-		public static void vkCmdEndRenderPass2(VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo)
-			=> vkCmdEndRenderPass2_ptr(commandBuffer, pSubpassEndInfo);
+		private delegate void vkDestroySamplerYcbcrConversionDelegate(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator);
+		private static vkDestroySamplerYcbcrConversionDelegate vkDestroySamplerYcbcrConversion_ptr;
+		public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator)
+			=> vkDestroySamplerYcbcrConversion_ptr(device, ycbcrConversion, pAllocator);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkResetQueryPoolDelegate(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount);
@@ -1074,6 +1038,42 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetDeviceMemoryOpaqueCaptureAddress_ptr(device, pInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDrawIndirectCountDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride);
+		private static vkCmdDrawIndirectCountDelegate vkCmdDrawIndirectCount_ptr;
+		public static void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
+			=> vkCmdDrawIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDrawIndexedIndirectCountDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride);
+		private static vkCmdDrawIndexedIndirectCountDelegate vkCmdDrawIndexedIndirectCount_ptr;
+		public static void vkCmdDrawIndexedIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
+			=> vkCmdDrawIndexedIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateRenderPass2Delegate(VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass);
+		private static vkCreateRenderPass2Delegate vkCreateRenderPass2_ptr;
+		public static VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass)
+			=> vkCreateRenderPass2_ptr(device, pCreateInfo, pAllocator, pRenderPass);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBeginRenderPass2Delegate(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo);
+		private static vkCmdBeginRenderPass2Delegate vkCmdBeginRenderPass2_ptr;
+		public static void vkCmdBeginRenderPass2(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo)
+			=> vkCmdBeginRenderPass2_ptr(commandBuffer, pRenderPassBegin, pSubpassBeginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdNextSubpass2Delegate(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* pSubpassBeginInfo, VkSubpassEndInfo* pSubpassEndInfo);
+		private static vkCmdNextSubpass2Delegate vkCmdNextSubpass2_ptr;
+		public static void vkCmdNextSubpass2(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* pSubpassBeginInfo, VkSubpassEndInfo* pSubpassEndInfo)
+			=> vkCmdNextSubpass2_ptr(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndRenderPass2Delegate(VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo);
+		private static vkCmdEndRenderPass2Delegate vkCmdEndRenderPass2_ptr;
+		public static void vkCmdEndRenderPass2(VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo)
+			=> vkCmdEndRenderPass2_ptr(commandBuffer, pSubpassEndInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetPhysicalDeviceToolPropertiesDelegate(VkPhysicalDevice physicalDevice, uint* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
 		private static vkGetPhysicalDeviceToolPropertiesDelegate vkGetPhysicalDeviceToolProperties_ptr;
 		public static VkResult vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, uint* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties)
@@ -1102,24 +1102,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetPrivateDataDelegate vkGetPrivateData_ptr;
 		public static void vkGetPrivateData(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong* pData)
 			=> vkGetPrivateData_ptr(device, objectType, objectHandle, privateDataSlot, pData);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetEvent2Delegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfo* pDependencyInfo);
-		private static vkCmdSetEvent2Delegate vkCmdSetEvent2_ptr;
-		public static void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfo* pDependencyInfo)
-			=> vkCmdSetEvent2_ptr(commandBuffer, vkEvent, pDependencyInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdResetEvent2Delegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask);
-		private static vkCmdResetEvent2Delegate vkCmdResetEvent2_ptr;
-		public static void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask)
-			=> vkCmdResetEvent2_ptr(commandBuffer, vkEvent, stageMask);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdWaitEvents2Delegate(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfo* pDependencyInfos);
-		private static vkCmdWaitEvents2Delegate vkCmdWaitEvents2_ptr;
-		public static void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfo* pDependencyInfos)
-			=> vkCmdWaitEvents2_ptr(commandBuffer, eventCount, pEvents, pDependencyInfos);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdPipelineBarrier2Delegate(VkCommandBuffer commandBuffer, VkDependencyInfo* pDependencyInfo);
@@ -1162,6 +1144,42 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdCopyImageToBuffer2Delegate vkCmdCopyImageToBuffer2_ptr;
 		public static void vkCmdCopyImageToBuffer2(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* pCopyImageToBufferInfo)
 			=> vkCmdCopyImageToBuffer2_ptr(commandBuffer, pCopyImageToBufferInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDeviceBufferMemoryRequirementsDelegate(VkDevice device, VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetDeviceBufferMemoryRequirementsDelegate vkGetDeviceBufferMemoryRequirements_ptr;
+		public static void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetDeviceBufferMemoryRequirements_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDeviceImageMemoryRequirementsDelegate(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+		private static vkGetDeviceImageMemoryRequirementsDelegate vkGetDeviceImageMemoryRequirements_ptr;
+		public static void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements)
+			=> vkGetDeviceImageMemoryRequirements_ptr(device, pInfo, pMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetDeviceImageSparseMemoryRequirementsDelegate(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, uint* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
+		private static vkGetDeviceImageSparseMemoryRequirementsDelegate vkGetDeviceImageSparseMemoryRequirements_ptr;
+		public static void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, uint* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements)
+			=> vkGetDeviceImageSparseMemoryRequirements_ptr(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetEvent2Delegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfo* pDependencyInfo);
+		private static vkCmdSetEvent2Delegate vkCmdSetEvent2_ptr;
+		public static void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent vkEvent, VkDependencyInfo* pDependencyInfo)
+			=> vkCmdSetEvent2_ptr(commandBuffer, vkEvent, pDependencyInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdResetEvent2Delegate(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask);
+		private static vkCmdResetEvent2Delegate vkCmdResetEvent2_ptr;
+		public static void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent vkEvent, ulong stageMask)
+			=> vkCmdResetEvent2_ptr(commandBuffer, vkEvent, stageMask);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdWaitEvents2Delegate(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfo* pDependencyInfos);
+		private static vkCmdWaitEvents2Delegate vkCmdWaitEvents2_ptr;
+		public static void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* pEvents, VkDependencyInfo* pDependencyInfos)
+			=> vkCmdWaitEvents2_ptr(commandBuffer, eventCount, pEvents, pDependencyInfos);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBlitImage2Delegate(VkCommandBuffer commandBuffer, VkBlitImageInfo2* pBlitImageInfo);
@@ -1278,30 +1296,6 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetPrimitiveRestartEnable_ptr(commandBuffer, primitiveRestartEnable);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetDeviceBufferMemoryRequirementsDelegate(VkDevice device, VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
-		private static vkGetDeviceBufferMemoryRequirementsDelegate vkGetDeviceBufferMemoryRequirements_ptr;
-		public static void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements)
-			=> vkGetDeviceBufferMemoryRequirements_ptr(device, pInfo, pMemoryRequirements);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetDeviceImageMemoryRequirementsDelegate(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
-		private static vkGetDeviceImageMemoryRequirementsDelegate vkGetDeviceImageMemoryRequirements_ptr;
-		public static void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements)
-			=> vkGetDeviceImageMemoryRequirements_ptr(device, pInfo, pMemoryRequirements);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetDeviceImageSparseMemoryRequirementsDelegate(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, uint* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
-		private static vkGetDeviceImageSparseMemoryRequirementsDelegate vkGetDeviceImageSparseMemoryRequirements_ptr;
-		public static void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* pInfo, uint* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements)
-			=> vkGetDeviceImageSparseMemoryRequirements_ptr(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetLineStippleDelegate(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
-		private static vkCmdSetLineStippleDelegate vkCmdSetLineStipple_ptr;
-		public static void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
-			=> vkCmdSetLineStipple_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
-
-		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkMapMemory2Delegate(VkDevice device, VkMemoryMapInfo* pMemoryMapInfo, void** ppData);
 		private static vkMapMemory2Delegate vkMapMemory2_ptr;
 		public static VkResult vkMapMemory2(VkDevice device, VkMemoryMapInfo* pMemoryMapInfo, void** ppData)
@@ -1312,18 +1306,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkUnmapMemory2Delegate vkUnmapMemory2_ptr;
 		public static VkResult vkUnmapMemory2(VkDevice device, VkMemoryUnmapInfo* pMemoryUnmapInfo)
 			=> vkUnmapMemory2_ptr(device, pMemoryUnmapInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdBindIndexBuffer2Delegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType);
-		private static vkCmdBindIndexBuffer2Delegate vkCmdBindIndexBuffer2_ptr;
-		public static void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
-			=> vkCmdBindIndexBuffer2_ptr(commandBuffer, buffer, offset, size, indexType);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkGetRenderingAreaGranularityDelegate(VkDevice device, VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity);
-		private static vkGetRenderingAreaGranularityDelegate vkGetRenderingAreaGranularity_ptr;
-		public static void vkGetRenderingAreaGranularity(VkDevice device, VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity)
-			=> vkGetRenderingAreaGranularity_ptr(device, pRenderingAreaInfo, pGranularity);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetDeviceImageSubresourceLayoutDelegate(VkDevice device, VkDeviceImageSubresourceInfo* pInfo, VkSubresourceLayout2* pLayout);
@@ -1338,6 +1320,30 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetImageSubresourceLayout2_ptr(device, image, pSubresource, pLayout);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyMemoryToImageDelegate(VkDevice device, VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
+		private static vkCopyMemoryToImageDelegate vkCopyMemoryToImage_ptr;
+		public static VkResult vkCopyMemoryToImage(VkDevice device, VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo)
+			=> vkCopyMemoryToImage_ptr(device, pCopyMemoryToImageInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyImageToMemoryDelegate(VkDevice device, VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
+		private static vkCopyImageToMemoryDelegate vkCopyImageToMemory_ptr;
+		public static VkResult vkCopyImageToMemory(VkDevice device, VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo)
+			=> vkCopyImageToMemory_ptr(device, pCopyImageToMemoryInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCopyImageToImageDelegate(VkDevice device, VkCopyImageToImageInfo* pCopyImageToImageInfo);
+		private static vkCopyImageToImageDelegate vkCopyImageToImage_ptr;
+		public static VkResult vkCopyImageToImage(VkDevice device, VkCopyImageToImageInfo* pCopyImageToImageInfo)
+			=> vkCopyImageToImage_ptr(device, pCopyImageToImageInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkTransitionImageLayoutDelegate(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* pTransitions);
+		private static vkTransitionImageLayoutDelegate vkTransitionImageLayout_ptr;
+		public static VkResult vkTransitionImageLayout(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* pTransitions)
+			=> vkTransitionImageLayout_ptr(device, transitionCount, pTransitions);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdPushDescriptorSetDelegate(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* pDescriptorWrites);
 		private static vkCmdPushDescriptorSetDelegate vkCmdPushDescriptorSet_ptr;
 		public static void vkCmdPushDescriptorSet(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* pDescriptorWrites)
@@ -1348,18 +1354,6 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdPushDescriptorSetWithTemplateDelegate vkCmdPushDescriptorSetWithTemplate_ptr;
 		public static void vkCmdPushDescriptorSetWithTemplate(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* pData)
 			=> vkCmdPushDescriptorSetWithTemplate_ptr(commandBuffer, descriptorUpdateTemplate, layout, set, pData);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetRenderingAttachmentLocationsDelegate(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* pLocationInfo);
-		private static vkCmdSetRenderingAttachmentLocationsDelegate vkCmdSetRenderingAttachmentLocations_ptr;
-		public static void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* pLocationInfo)
-			=> vkCmdSetRenderingAttachmentLocations_ptr(commandBuffer, pLocationInfo);
-
-		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetRenderingInputAttachmentIndicesDelegate(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
-		private static vkCmdSetRenderingInputAttachmentIndicesDelegate vkCmdSetRenderingInputAttachmentIndices_ptr;
-		public static void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo)
-			=> vkCmdSetRenderingInputAttachmentIndices_ptr(commandBuffer, pInputAttachmentIndexInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdBindDescriptorSets2Delegate(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfo* pBindDescriptorSetsInfo);
@@ -1386,28 +1380,34 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdPushDescriptorSetWithTemplate2_ptr(commandBuffer, pPushDescriptorSetWithTemplateInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCopyMemoryToImageDelegate(VkDevice device, VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
-		private static vkCopyMemoryToImageDelegate vkCopyMemoryToImage_ptr;
-		public static VkResult vkCopyMemoryToImage(VkDevice device, VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo)
-			=> vkCopyMemoryToImage_ptr(device, pCopyMemoryToImageInfo);
+		private delegate void vkCmdSetLineStippleDelegate(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
+		private static vkCmdSetLineStippleDelegate vkCmdSetLineStipple_ptr;
+		public static void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
+			=> vkCmdSetLineStipple_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCopyImageToMemoryDelegate(VkDevice device, VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
-		private static vkCopyImageToMemoryDelegate vkCopyImageToMemory_ptr;
-		public static VkResult vkCopyImageToMemory(VkDevice device, VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo)
-			=> vkCopyImageToMemory_ptr(device, pCopyImageToMemoryInfo);
+		private delegate void vkCmdBindIndexBuffer2Delegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType);
+		private static vkCmdBindIndexBuffer2Delegate vkCmdBindIndexBuffer2_ptr;
+		public static void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
+			=> vkCmdBindIndexBuffer2_ptr(commandBuffer, buffer, offset, size, indexType);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkCopyImageToImageDelegate(VkDevice device, VkCopyImageToImageInfo* pCopyImageToImageInfo);
-		private static vkCopyImageToImageDelegate vkCopyImageToImage_ptr;
-		public static VkResult vkCopyImageToImage(VkDevice device, VkCopyImageToImageInfo* pCopyImageToImageInfo)
-			=> vkCopyImageToImage_ptr(device, pCopyImageToImageInfo);
+		private delegate void vkGetRenderingAreaGranularityDelegate(VkDevice device, VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity);
+		private static vkGetRenderingAreaGranularityDelegate vkGetRenderingAreaGranularity_ptr;
+		public static void vkGetRenderingAreaGranularity(VkDevice device, VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity)
+			=> vkGetRenderingAreaGranularity_ptr(device, pRenderingAreaInfo, pGranularity);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate VkResult vkTransitionImageLayoutDelegate(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* pTransitions);
-		private static vkTransitionImageLayoutDelegate vkTransitionImageLayout_ptr;
-		public static VkResult vkTransitionImageLayout(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* pTransitions)
-			=> vkTransitionImageLayout_ptr(device, transitionCount, pTransitions);
+		private delegate void vkCmdSetRenderingAttachmentLocationsDelegate(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* pLocationInfo);
+		private static vkCmdSetRenderingAttachmentLocationsDelegate vkCmdSetRenderingAttachmentLocations_ptr;
+		public static void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* pLocationInfo)
+			=> vkCmdSetRenderingAttachmentLocations_ptr(commandBuffer, pLocationInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetRenderingInputAttachmentIndicesDelegate(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
+		private static vkCmdSetRenderingInputAttachmentIndicesDelegate vkCmdSetRenderingInputAttachmentIndices_ptr;
+		public static void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo)
+			=> vkCmdSetRenderingInputAttachmentIndices_ptr(commandBuffer, pInputAttachmentIndexInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetCommandPoolMemoryConsumptionDelegate(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer, VkCommandPoolMemoryConsumption* pConsumption);
@@ -1792,6 +1792,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetImageViewAddressNVXDelegate vkGetImageViewAddressNVX_ptr;
 		public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties)
 			=> vkGetImageViewAddressNVX_ptr(device, imageView, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate ulong vkGetDeviceCombinedImageSamplerIndexNVXDelegate(VkDevice device, ulong imageViewIndex, ulong samplerIndex);
+		private static vkGetDeviceCombinedImageSamplerIndexNVXDelegate vkGetDeviceCombinedImageSamplerIndexNVX_ptr;
+		public static ulong vkGetDeviceCombinedImageSamplerIndexNVX(VkDevice device, ulong imageViewIndex, ulong samplerIndex)
+			=> vkGetDeviceCombinedImageSamplerIndexNVX_ptr(device, imageViewIndex, samplerIndex);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkGetShaderInfoAMDDelegate(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, UIntPtr* pInfoSize, void* pInfo);
@@ -2196,6 +2202,48 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, scratchSize, countInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkWriteSamplerDescriptorsEXTDelegate(VkDevice device, uint samplerCount, VkSamplerCreateInfo* pSamplers, VkHostAddressRangeEXT* pDescriptors);
+		private static vkWriteSamplerDescriptorsEXTDelegate vkWriteSamplerDescriptorsEXT_ptr;
+		public static VkResult vkWriteSamplerDescriptorsEXT(VkDevice device, uint samplerCount, VkSamplerCreateInfo* pSamplers, VkHostAddressRangeEXT* pDescriptors)
+			=> vkWriteSamplerDescriptorsEXT_ptr(device, samplerCount, pSamplers, pDescriptors);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkWriteResourceDescriptorsEXTDelegate(VkDevice device, uint resourceCount, VkResourceDescriptorInfoEXT* pResources, VkHostAddressRangeEXT* pDescriptors);
+		private static vkWriteResourceDescriptorsEXTDelegate vkWriteResourceDescriptorsEXT_ptr;
+		public static VkResult vkWriteResourceDescriptorsEXT(VkDevice device, uint resourceCount, VkResourceDescriptorInfoEXT* pResources, VkHostAddressRangeEXT* pDescriptors)
+			=> vkWriteResourceDescriptorsEXT_ptr(device, resourceCount, pResources, pDescriptors);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindSamplerHeapEXTDelegate(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* pBindInfo);
+		private static vkCmdBindSamplerHeapEXTDelegate vkCmdBindSamplerHeapEXT_ptr;
+		public static void vkCmdBindSamplerHeapEXT(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* pBindInfo)
+			=> vkCmdBindSamplerHeapEXT_ptr(commandBuffer, pBindInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBindResourceHeapEXTDelegate(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* pBindInfo);
+		private static vkCmdBindResourceHeapEXTDelegate vkCmdBindResourceHeapEXT_ptr;
+		public static void vkCmdBindResourceHeapEXT(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* pBindInfo)
+			=> vkCmdBindResourceHeapEXT_ptr(commandBuffer, pBindInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdPushDataEXTDelegate(VkCommandBuffer commandBuffer, VkPushDataInfoEXT* pPushDataInfo);
+		private static vkCmdPushDataEXTDelegate vkCmdPushDataEXT_ptr;
+		public static void vkCmdPushDataEXT(VkCommandBuffer commandBuffer, VkPushDataInfoEXT* pPushDataInfo)
+			=> vkCmdPushDataEXT_ptr(commandBuffer, pPushDataInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetImageOpaqueCaptureDataEXTDelegate(VkDevice device, uint imageCount, VkImage* pImages, VkHostAddressRangeEXT* pDatas);
+		private static vkGetImageOpaqueCaptureDataEXTDelegate vkGetImageOpaqueCaptureDataEXT_ptr;
+		public static VkResult vkGetImageOpaqueCaptureDataEXT(VkDevice device, uint imageCount, VkImage* pImages, VkHostAddressRangeEXT* pDatas)
+			=> vkGetImageOpaqueCaptureDataEXT_ptr(device, imageCount, pImages, pDatas);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate ulong vkGetPhysicalDeviceDescriptorSizeEXTDelegate(VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType);
+		private static vkGetPhysicalDeviceDescriptorSizeEXTDelegate vkGetPhysicalDeviceDescriptorSizeEXT_ptr;
+		public static ulong vkGetPhysicalDeviceDescriptorSizeEXT(VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType)
+			=> vkGetPhysicalDeviceDescriptorSizeEXT_ptr(physicalDevice, descriptorType);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetSampleLocationsEXTDelegate(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* pSampleLocationsInfo);
 		private static vkCmdSetSampleLocationsEXTDelegate vkCmdSetSampleLocationsEXT_ptr;
 		public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* pSampleLocationsInfo)
@@ -2518,6 +2566,30 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetQueueCheckpointDataNVDelegate vkGetQueueCheckpointDataNV_ptr;
 		public static void vkGetQueueCheckpointDataNV(VkQueue queue, uint* pCheckpointDataCount, VkCheckpointDataNV* pCheckpointData)
 			=> vkGetQueueCheckpointDataNV_ptr(queue, pCheckpointDataCount, pCheckpointData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkSetSwapchainPresentTimingQueueSizeEXTDelegate(VkDevice device, VkSwapchainKHR swapchain, uint size);
+		private static vkSetSwapchainPresentTimingQueueSizeEXTDelegate vkSetSwapchainPresentTimingQueueSizeEXT_ptr;
+		public static VkResult vkSetSwapchainPresentTimingQueueSizeEXT(VkDevice device, VkSwapchainKHR swapchain, uint size)
+			=> vkSetSwapchainPresentTimingQueueSizeEXT_ptr(device, swapchain, size);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetSwapchainTimingPropertiesEXTDelegate(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimingPropertiesEXT* pSwapchainTimingProperties, ulong* pSwapchainTimingPropertiesCounter);
+		private static vkGetSwapchainTimingPropertiesEXTDelegate vkGetSwapchainTimingPropertiesEXT_ptr;
+		public static VkResult vkGetSwapchainTimingPropertiesEXT(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimingPropertiesEXT* pSwapchainTimingProperties, ulong* pSwapchainTimingPropertiesCounter)
+			=> vkGetSwapchainTimingPropertiesEXT_ptr(device, swapchain, pSwapchainTimingProperties, pSwapchainTimingPropertiesCounter);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetSwapchainTimeDomainPropertiesEXTDelegate(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimeDomainPropertiesEXT* pSwapchainTimeDomainProperties, ulong* pTimeDomainsCounter);
+		private static vkGetSwapchainTimeDomainPropertiesEXTDelegate vkGetSwapchainTimeDomainPropertiesEXT_ptr;
+		public static VkResult vkGetSwapchainTimeDomainPropertiesEXT(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimeDomainPropertiesEXT* pSwapchainTimeDomainProperties, ulong* pTimeDomainsCounter)
+			=> vkGetSwapchainTimeDomainPropertiesEXT_ptr(device, swapchain, pSwapchainTimeDomainProperties, pTimeDomainsCounter);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPastPresentationTimingEXTDelegate(VkDevice device, VkPastPresentationTimingInfoEXT* pPastPresentationTimingInfo, VkPastPresentationTimingPropertiesEXT* pPastPresentationTimingProperties);
+		private static vkGetPastPresentationTimingEXTDelegate vkGetPastPresentationTimingEXT_ptr;
+		public static VkResult vkGetPastPresentationTimingEXT(VkDevice device, VkPastPresentationTimingInfoEXT* pPastPresentationTimingInfo, VkPastPresentationTimingPropertiesEXT* pPastPresentationTimingProperties)
+			=> vkGetPastPresentationTimingEXT_ptr(device, pPastPresentationTimingInfo, pPastPresentationTimingProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkInitializePerformanceApiINTELDelegate(VkDevice device, VkInitializePerformanceApiInfoINTEL* pInitializeInfo);
@@ -3300,6 +3372,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPipelineIndirectDeviceAddressNV_ptr(device, pInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetNativeBufferPropertiesOHOSDelegate(VkDevice device, IntPtr buffer, VkNativeBufferPropertiesOHOS* pProperties);
+		private static vkGetNativeBufferPropertiesOHOSDelegate vkGetNativeBufferPropertiesOHOS_ptr;
+		public static VkResult vkGetNativeBufferPropertiesOHOS(VkDevice device, IntPtr buffer, VkNativeBufferPropertiesOHOS* pProperties)
+			=> vkGetNativeBufferPropertiesOHOS_ptr(device, buffer, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetMemoryNativeBufferOHOSDelegate(VkDevice device, VkMemoryGetNativeBufferInfoOHOS* pInfo, IntPtr pBuffer);
+		private static vkGetMemoryNativeBufferOHOSDelegate vkGetMemoryNativeBufferOHOS_ptr;
+		public static VkResult vkGetMemoryNativeBufferOHOS(VkDevice device, VkMemoryGetNativeBufferInfoOHOS* pInfo, IntPtr pBuffer)
+			=> vkGetMemoryNativeBufferOHOS_ptr(device, pInfo, pBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetDepthClampEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable);
 		private static vkCmdSetDepthClampEnableEXTDelegate vkCmdSetDepthClampEnableEXT_ptr;
 		public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable)
@@ -3702,6 +3786,18 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdCopyMemoryToImageIndirectKHR_ptr(commandBuffer, pCopyMemoryToImageIndirectInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDecompressMemoryEXTDelegate(VkCommandBuffer commandBuffer, VkDecompressMemoryInfoEXT* pDecompressMemoryInfoEXT);
+		private static vkCmdDecompressMemoryEXTDelegate vkCmdDecompressMemoryEXT_ptr;
+		public static void vkCmdDecompressMemoryEXT(VkCommandBuffer commandBuffer, VkDecompressMemoryInfoEXT* pDecompressMemoryInfoEXT)
+			=> vkCmdDecompressMemoryEXT_ptr(commandBuffer, pDecompressMemoryInfoEXT);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdDecompressMemoryIndirectCountEXTDelegate(VkCommandBuffer commandBuffer, ulong decompressionMethod, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint maxDecompressionCount, uint stride);
+		private static vkCmdDecompressMemoryIndirectCountEXTDelegate vkCmdDecompressMemoryIndirectCountEXT_ptr;
+		public static void vkCmdDecompressMemoryIndirectCountEXT(VkCommandBuffer commandBuffer, ulong decompressionMethod, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint maxDecompressionCount, uint stride)
+			=> vkCmdDecompressMemoryIndirectCountEXT_ptr(commandBuffer, decompressionMethod, indirectCommandsAddress, indirectCommandsCountAddress, maxDecompressionCount, stride);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateExternalComputeQueueNVDelegate(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue);
 		private static vkCreateExternalComputeQueueNVDelegate vkCreateExternalComputeQueueNV_ptr;
 		public static VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue)
@@ -3828,10 +3924,76 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetMemoryMetalHandlePropertiesEXT_ptr(device, handleType, pHandle, pMemoryMetalHandleProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdEndRendering2EXTDelegate(VkCommandBuffer commandBuffer, VkRenderingEndInfoEXT* pRenderingEndInfo);
-		private static vkCmdEndRendering2EXTDelegate vkCmdEndRendering2EXT_ptr;
-		public static void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, VkRenderingEndInfoEXT* pRenderingEndInfo)
-			=> vkCmdEndRendering2EXT_ptr(commandBuffer, pRenderingEndInfo);
+		private delegate VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARMDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* pCounterCount, VkPerformanceCounterARM* pCounters, VkPerformanceCounterDescriptionARM* pCounterDescriptions);
+		private static vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARMDelegate vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr;
+		public static VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* pCounterCount, VkPerformanceCounterARM* pCounters, VkPerformanceCounterDescriptionARM* pCounterDescriptions)
+			=> vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr(physicalDevice, queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARMDelegate(VkPhysicalDevice physicalDevice, uint* pDescriptionCount, VkShaderInstrumentationMetricDescriptionARM* pDescriptions);
+		private static vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARMDelegate vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM_ptr;
+		public static VkResult vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM(VkPhysicalDevice physicalDevice, uint* pDescriptionCount, VkShaderInstrumentationMetricDescriptionARM* pDescriptions)
+			=> vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM_ptr(physicalDevice, pDescriptionCount, pDescriptions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateShaderInstrumentationARMDelegate(VkDevice device, VkShaderInstrumentationCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkShaderInstrumentationARM* pInstrumentation);
+		private static vkCreateShaderInstrumentationARMDelegate vkCreateShaderInstrumentationARM_ptr;
+		public static VkResult vkCreateShaderInstrumentationARM(VkDevice device, VkShaderInstrumentationCreateInfoARM* pCreateInfo, VkAllocationCallbacks* pAllocator, VkShaderInstrumentationARM* pInstrumentation)
+			=> vkCreateShaderInstrumentationARM_ptr(device, pCreateInfo, pAllocator, pInstrumentation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyShaderInstrumentationARMDelegate(VkDevice device, VkShaderInstrumentationARM instrumentation, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyShaderInstrumentationARMDelegate vkDestroyShaderInstrumentationARM_ptr;
+		public static void vkDestroyShaderInstrumentationARM(VkDevice device, VkShaderInstrumentationARM instrumentation, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyShaderInstrumentationARM_ptr(device, instrumentation, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdBeginShaderInstrumentationARMDelegate(VkCommandBuffer commandBuffer, VkShaderInstrumentationARM instrumentation);
+		private static vkCmdBeginShaderInstrumentationARMDelegate vkCmdBeginShaderInstrumentationARM_ptr;
+		public static void vkCmdBeginShaderInstrumentationARM(VkCommandBuffer commandBuffer, VkShaderInstrumentationARM instrumentation)
+			=> vkCmdBeginShaderInstrumentationARM_ptr(commandBuffer, instrumentation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndShaderInstrumentationARMDelegate(VkCommandBuffer commandBuffer);
+		private static vkCmdEndShaderInstrumentationARMDelegate vkCmdEndShaderInstrumentationARM_ptr;
+		public static void vkCmdEndShaderInstrumentationARM(VkCommandBuffer commandBuffer)
+			=> vkCmdEndShaderInstrumentationARM_ptr(commandBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetShaderInstrumentationValuesARMDelegate(VkDevice device, VkShaderInstrumentationARM instrumentation, uint* pMetricBlockCount, void* pMetricValues, uint flags);
+		private static vkGetShaderInstrumentationValuesARMDelegate vkGetShaderInstrumentationValuesARM_ptr;
+		public static VkResult vkGetShaderInstrumentationValuesARM(VkDevice device, VkShaderInstrumentationARM instrumentation, uint* pMetricBlockCount, void* pMetricValues, uint flags)
+			=> vkGetShaderInstrumentationValuesARM_ptr(device, instrumentation, pMetricBlockCount, pMetricValues, flags);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkClearShaderInstrumentationMetricsARMDelegate(VkDevice device, VkShaderInstrumentationARM instrumentation);
+		private static vkClearShaderInstrumentationMetricsARMDelegate vkClearShaderInstrumentationMetricsARM_ptr;
+		public static void vkClearShaderInstrumentationMetricsARM(VkDevice device, VkShaderInstrumentationARM instrumentation)
+			=> vkClearShaderInstrumentationMetricsARM_ptr(device, instrumentation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndRendering2KHRDelegate(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* pRenderingEndInfo);
+		private static vkCmdEndRendering2KHRDelegate vkCmdEndRendering2KHR_ptr;
+		public static void vkCmdEndRendering2KHR(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* pRenderingEndInfo)
+			=> vkCmdEndRendering2KHR_ptr(commandBuffer, pRenderingEndInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetComputeOccupancyPriorityNVDelegate(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* pParameters);
+		private static vkCmdSetComputeOccupancyPriorityNVDelegate vkCmdSetComputeOccupancyPriorityNV_ptr;
+		public static void vkCmdSetComputeOccupancyPriorityNV(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* pParameters)
+			=> vkCmdSetComputeOccupancyPriorityNV_ptr(commandBuffer, pParameters);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateUbmSurfaceSECDelegate(VkInstance instance, VkUbmSurfaceCreateInfoSEC* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+		private static vkCreateUbmSurfaceSECDelegate vkCreateUbmSurfaceSEC_ptr;
+		public static VkResult vkCreateUbmSurfaceSEC(VkInstance instance, VkUbmSurfaceCreateInfoSEC* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
+			=> vkCreateUbmSurfaceSEC_ptr(instance, pCreateInfo, pAllocator, pSurface);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSECDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr device);
+		private static vkGetPhysicalDeviceUbmPresentationSupportSECDelegate vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr;
+		public static VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr device)
+			=> vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr(physicalDevice, queueFamilyIndex, device);
 
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
@@ -3882,30 +4044,50 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkWaitForFences",  out vkWaitForFences_ptr);
 			NativeLib.LoadFunction("vkCreateSemaphore",  out vkCreateSemaphore_ptr);
 			NativeLib.LoadFunction("vkDestroySemaphore",  out vkDestroySemaphore_ptr);
-			NativeLib.LoadFunction("vkCreateEvent",  out vkCreateEvent_ptr);
-			NativeLib.LoadFunction("vkDestroyEvent",  out vkDestroyEvent_ptr);
-			NativeLib.LoadFunction("vkGetEventStatus",  out vkGetEventStatus_ptr);
-			NativeLib.LoadFunction("vkSetEvent",  out vkSetEvent_ptr);
-			NativeLib.LoadFunction("vkResetEvent",  out vkResetEvent_ptr);
 			NativeLib.LoadFunction("vkCreateQueryPool",  out vkCreateQueryPool_ptr);
 			NativeLib.LoadFunction("vkDestroyQueryPool",  out vkDestroyQueryPool_ptr);
 			NativeLib.LoadFunction("vkGetQueryPoolResults",  out vkGetQueryPoolResults_ptr);
 			NativeLib.LoadFunction("vkCreateBuffer",  out vkCreateBuffer_ptr);
 			NativeLib.LoadFunction("vkDestroyBuffer",  out vkDestroyBuffer_ptr);
-			NativeLib.LoadFunction("vkCreateBufferView",  out vkCreateBufferView_ptr);
-			NativeLib.LoadFunction("vkDestroyBufferView",  out vkDestroyBufferView_ptr);
 			NativeLib.LoadFunction("vkCreateImage",  out vkCreateImage_ptr);
 			NativeLib.LoadFunction("vkDestroyImage",  out vkDestroyImage_ptr);
 			NativeLib.LoadFunction("vkGetImageSubresourceLayout",  out vkGetImageSubresourceLayout_ptr);
 			NativeLib.LoadFunction("vkCreateImageView",  out vkCreateImageView_ptr);
 			NativeLib.LoadFunction("vkDestroyImageView",  out vkDestroyImageView_ptr);
+			NativeLib.LoadFunction("vkCreateCommandPool",  out vkCreateCommandPool_ptr);
+			NativeLib.LoadFunction("vkDestroyCommandPool",  out vkDestroyCommandPool_ptr);
+			NativeLib.LoadFunction("vkResetCommandPool",  out vkResetCommandPool_ptr);
+			NativeLib.LoadFunction("vkAllocateCommandBuffers",  out vkAllocateCommandBuffers_ptr);
+			NativeLib.LoadFunction("vkFreeCommandBuffers",  out vkFreeCommandBuffers_ptr);
+			NativeLib.LoadFunction("vkBeginCommandBuffer",  out vkBeginCommandBuffer_ptr);
+			NativeLib.LoadFunction("vkEndCommandBuffer",  out vkEndCommandBuffer_ptr);
+			NativeLib.LoadFunction("vkResetCommandBuffer",  out vkResetCommandBuffer_ptr);
+			NativeLib.LoadFunction("vkCmdCopyBuffer",  out vkCmdCopyBuffer_ptr);
+			NativeLib.LoadFunction("vkCmdCopyImage",  out vkCmdCopyImage_ptr);
+			NativeLib.LoadFunction("vkCmdCopyBufferToImage",  out vkCmdCopyBufferToImage_ptr);
+			NativeLib.LoadFunction("vkCmdCopyImageToBuffer",  out vkCmdCopyImageToBuffer_ptr);
+			NativeLib.LoadFunction("vkCmdUpdateBuffer",  out vkCmdUpdateBuffer_ptr);
+			NativeLib.LoadFunction("vkCmdFillBuffer",  out vkCmdFillBuffer_ptr);
+			NativeLib.LoadFunction("vkCmdPipelineBarrier",  out vkCmdPipelineBarrier_ptr);
+			NativeLib.LoadFunction("vkCmdBeginQuery",  out vkCmdBeginQuery_ptr);
+			NativeLib.LoadFunction("vkCmdEndQuery",  out vkCmdEndQuery_ptr);
+			NativeLib.LoadFunction("vkCmdResetQueryPool",  out vkCmdResetQueryPool_ptr);
+			NativeLib.LoadFunction("vkCmdWriteTimestamp",  out vkCmdWriteTimestamp_ptr);
+			NativeLib.LoadFunction("vkCmdCopyQueryPoolResults",  out vkCmdCopyQueryPoolResults_ptr);
+			NativeLib.LoadFunction("vkCmdExecuteCommands",  out vkCmdExecuteCommands_ptr);
+			NativeLib.LoadFunction("vkCreateEvent",  out vkCreateEvent_ptr);
+			NativeLib.LoadFunction("vkDestroyEvent",  out vkDestroyEvent_ptr);
+			NativeLib.LoadFunction("vkGetEventStatus",  out vkGetEventStatus_ptr);
+			NativeLib.LoadFunction("vkSetEvent",  out vkSetEvent_ptr);
+			NativeLib.LoadFunction("vkResetEvent",  out vkResetEvent_ptr);
+			NativeLib.LoadFunction("vkCreateBufferView",  out vkCreateBufferView_ptr);
+			NativeLib.LoadFunction("vkDestroyBufferView",  out vkDestroyBufferView_ptr);
 			NativeLib.LoadFunction("vkCreateShaderModule",  out vkCreateShaderModule_ptr);
 			NativeLib.LoadFunction("vkDestroyShaderModule",  out vkDestroyShaderModule_ptr);
 			NativeLib.LoadFunction("vkCreatePipelineCache",  out vkCreatePipelineCache_ptr);
 			NativeLib.LoadFunction("vkDestroyPipelineCache",  out vkDestroyPipelineCache_ptr);
 			NativeLib.LoadFunction("vkGetPipelineCacheData",  out vkGetPipelineCacheData_ptr);
 			NativeLib.LoadFunction("vkMergePipelineCaches",  out vkMergePipelineCaches_ptr);
-			NativeLib.LoadFunction("vkCreateGraphicsPipelines",  out vkCreateGraphicsPipelines_ptr);
 			NativeLib.LoadFunction("vkCreateComputePipelines",  out vkCreateComputePipelines_ptr);
 			NativeLib.LoadFunction("vkDestroyPipeline",  out vkDestroyPipeline_ptr);
 			NativeLib.LoadFunction("vkCreatePipelineLayout",  out vkCreatePipelineLayout_ptr);
@@ -3920,20 +4102,21 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkAllocateDescriptorSets",  out vkAllocateDescriptorSets_ptr);
 			NativeLib.LoadFunction("vkFreeDescriptorSets",  out vkFreeDescriptorSets_ptr);
 			NativeLib.LoadFunction("vkUpdateDescriptorSets",  out vkUpdateDescriptorSets_ptr);
+			NativeLib.LoadFunction("vkCmdBindPipeline",  out vkCmdBindPipeline_ptr);
+			NativeLib.LoadFunction("vkCmdBindDescriptorSets",  out vkCmdBindDescriptorSets_ptr);
+			NativeLib.LoadFunction("vkCmdClearColorImage",  out vkCmdClearColorImage_ptr);
+			NativeLib.LoadFunction("vkCmdDispatch",  out vkCmdDispatch_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchIndirect",  out vkCmdDispatchIndirect_ptr);
+			NativeLib.LoadFunction("vkCmdSetEvent",  out vkCmdSetEvent_ptr);
+			NativeLib.LoadFunction("vkCmdResetEvent",  out vkCmdResetEvent_ptr);
+			NativeLib.LoadFunction("vkCmdWaitEvents",  out vkCmdWaitEvents_ptr);
+			NativeLib.LoadFunction("vkCmdPushConstants",  out vkCmdPushConstants_ptr);
+			NativeLib.LoadFunction("vkCreateGraphicsPipelines",  out vkCreateGraphicsPipelines_ptr);
 			NativeLib.LoadFunction("vkCreateFramebuffer",  out vkCreateFramebuffer_ptr);
 			NativeLib.LoadFunction("vkDestroyFramebuffer",  out vkDestroyFramebuffer_ptr);
 			NativeLib.LoadFunction("vkCreateRenderPass",  out vkCreateRenderPass_ptr);
 			NativeLib.LoadFunction("vkDestroyRenderPass",  out vkDestroyRenderPass_ptr);
 			NativeLib.LoadFunction("vkGetRenderAreaGranularity",  out vkGetRenderAreaGranularity_ptr);
-			NativeLib.LoadFunction("vkCreateCommandPool",  out vkCreateCommandPool_ptr);
-			NativeLib.LoadFunction("vkDestroyCommandPool",  out vkDestroyCommandPool_ptr);
-			NativeLib.LoadFunction("vkResetCommandPool",  out vkResetCommandPool_ptr);
-			NativeLib.LoadFunction("vkAllocateCommandBuffers",  out vkAllocateCommandBuffers_ptr);
-			NativeLib.LoadFunction("vkFreeCommandBuffers",  out vkFreeCommandBuffers_ptr);
-			NativeLib.LoadFunction("vkBeginCommandBuffer",  out vkBeginCommandBuffer_ptr);
-			NativeLib.LoadFunction("vkEndCommandBuffer",  out vkEndCommandBuffer_ptr);
-			NativeLib.LoadFunction("vkResetCommandBuffer",  out vkResetCommandBuffer_ptr);
-			NativeLib.LoadFunction("vkCmdBindPipeline",  out vkCmdBindPipeline_ptr);
 			NativeLib.LoadFunction("vkCmdSetViewport",  out vkCmdSetViewport_ptr);
 			NativeLib.LoadFunction("vkCmdSetScissor",  out vkCmdSetScissor_ptr);
 			NativeLib.LoadFunction("vkCmdSetLineWidth",  out vkCmdSetLineWidth_ptr);
@@ -3943,46 +4126,24 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetStencilCompareMask",  out vkCmdSetStencilCompareMask_ptr);
 			NativeLib.LoadFunction("vkCmdSetStencilWriteMask",  out vkCmdSetStencilWriteMask_ptr);
 			NativeLib.LoadFunction("vkCmdSetStencilReference",  out vkCmdSetStencilReference_ptr);
-			NativeLib.LoadFunction("vkCmdBindDescriptorSets",  out vkCmdBindDescriptorSets_ptr);
 			NativeLib.LoadFunction("vkCmdBindIndexBuffer",  out vkCmdBindIndexBuffer_ptr);
 			NativeLib.LoadFunction("vkCmdBindVertexBuffers",  out vkCmdBindVertexBuffers_ptr);
 			NativeLib.LoadFunction("vkCmdDraw",  out vkCmdDraw_ptr);
 			NativeLib.LoadFunction("vkCmdDrawIndexed",  out vkCmdDrawIndexed_ptr);
 			NativeLib.LoadFunction("vkCmdDrawIndirect",  out vkCmdDrawIndirect_ptr);
 			NativeLib.LoadFunction("vkCmdDrawIndexedIndirect",  out vkCmdDrawIndexedIndirect_ptr);
-			NativeLib.LoadFunction("vkCmdDispatch",  out vkCmdDispatch_ptr);
-			NativeLib.LoadFunction("vkCmdDispatchIndirect",  out vkCmdDispatchIndirect_ptr);
-			NativeLib.LoadFunction("vkCmdCopyBuffer",  out vkCmdCopyBuffer_ptr);
-			NativeLib.LoadFunction("vkCmdCopyImage",  out vkCmdCopyImage_ptr);
 			NativeLib.LoadFunction("vkCmdBlitImage",  out vkCmdBlitImage_ptr);
-			NativeLib.LoadFunction("vkCmdCopyBufferToImage",  out vkCmdCopyBufferToImage_ptr);
-			NativeLib.LoadFunction("vkCmdCopyImageToBuffer",  out vkCmdCopyImageToBuffer_ptr);
-			NativeLib.LoadFunction("vkCmdUpdateBuffer",  out vkCmdUpdateBuffer_ptr);
-			NativeLib.LoadFunction("vkCmdFillBuffer",  out vkCmdFillBuffer_ptr);
-			NativeLib.LoadFunction("vkCmdClearColorImage",  out vkCmdClearColorImage_ptr);
 			NativeLib.LoadFunction("vkCmdClearDepthStencilImage",  out vkCmdClearDepthStencilImage_ptr);
 			NativeLib.LoadFunction("vkCmdClearAttachments",  out vkCmdClearAttachments_ptr);
 			NativeLib.LoadFunction("vkCmdResolveImage",  out vkCmdResolveImage_ptr);
-			NativeLib.LoadFunction("vkCmdSetEvent",  out vkCmdSetEvent_ptr);
-			NativeLib.LoadFunction("vkCmdResetEvent",  out vkCmdResetEvent_ptr);
-			NativeLib.LoadFunction("vkCmdWaitEvents",  out vkCmdWaitEvents_ptr);
-			NativeLib.LoadFunction("vkCmdPipelineBarrier",  out vkCmdPipelineBarrier_ptr);
-			NativeLib.LoadFunction("vkCmdBeginQuery",  out vkCmdBeginQuery_ptr);
-			NativeLib.LoadFunction("vkCmdEndQuery",  out vkCmdEndQuery_ptr);
-			NativeLib.LoadFunction("vkCmdResetQueryPool",  out vkCmdResetQueryPool_ptr);
-			NativeLib.LoadFunction("vkCmdWriteTimestamp",  out vkCmdWriteTimestamp_ptr);
-			NativeLib.LoadFunction("vkCmdCopyQueryPoolResults",  out vkCmdCopyQueryPoolResults_ptr);
-			NativeLib.LoadFunction("vkCmdPushConstants",  out vkCmdPushConstants_ptr);
 			NativeLib.LoadFunction("vkCmdBeginRenderPass",  out vkCmdBeginRenderPass_ptr);
 			NativeLib.LoadFunction("vkCmdNextSubpass",  out vkCmdNextSubpass_ptr);
 			NativeLib.LoadFunction("vkCmdEndRenderPass",  out vkCmdEndRenderPass_ptr);
-			NativeLib.LoadFunction("vkCmdExecuteCommands",  out vkCmdExecuteCommands_ptr);
 			NativeLib.LoadFunction("vkEnumerateInstanceVersion",  out vkEnumerateInstanceVersion_ptr);
 			NativeLib.LoadFunction("vkBindBufferMemory2",  out vkBindBufferMemory2_ptr);
 			NativeLib.LoadFunction("vkBindImageMemory2",  out vkBindImageMemory2_ptr);
 			NativeLib.LoadFunction("vkGetDeviceGroupPeerMemoryFeatures",  out vkGetDeviceGroupPeerMemoryFeatures_ptr);
 			NativeLib.LoadFunction("vkCmdSetDeviceMask",  out vkCmdSetDeviceMask_ptr);
-			NativeLib.LoadFunction("vkCmdDispatchBase",  out vkCmdDispatchBase_ptr);
 			NativeLib.LoadFunction("vkEnumeratePhysicalDeviceGroups",  out vkEnumeratePhysicalDeviceGroups_ptr);
 			NativeLib.LoadFunction("vkGetImageMemoryRequirements2",  out vkGetImageMemoryRequirements2_ptr);
 			NativeLib.LoadFunction("vkGetBufferMemoryRequirements2",  out vkGetBufferMemoryRequirements2_ptr);
@@ -3996,21 +4157,16 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceSparseImageFormatProperties2",  out vkGetPhysicalDeviceSparseImageFormatProperties2_ptr);
 			NativeLib.LoadFunction("vkTrimCommandPool",  out vkTrimCommandPool_ptr);
 			NativeLib.LoadFunction("vkGetDeviceQueue2",  out vkGetDeviceQueue2_ptr);
-			NativeLib.LoadFunction("vkCreateSamplerYcbcrConversion",  out vkCreateSamplerYcbcrConversion_ptr);
-			NativeLib.LoadFunction("vkDestroySamplerYcbcrConversion",  out vkDestroySamplerYcbcrConversion_ptr);
-			NativeLib.LoadFunction("vkCreateDescriptorUpdateTemplate",  out vkCreateDescriptorUpdateTemplate_ptr);
-			NativeLib.LoadFunction("vkDestroyDescriptorUpdateTemplate",  out vkDestroyDescriptorUpdateTemplate_ptr);
-			NativeLib.LoadFunction("vkUpdateDescriptorSetWithTemplate",  out vkUpdateDescriptorSetWithTemplate_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalBufferProperties",  out vkGetPhysicalDeviceExternalBufferProperties_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalFenceProperties",  out vkGetPhysicalDeviceExternalFenceProperties_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalSemaphoreProperties",  out vkGetPhysicalDeviceExternalSemaphoreProperties_ptr);
+			NativeLib.LoadFunction("vkCmdDispatchBase",  out vkCmdDispatchBase_ptr);
+			NativeLib.LoadFunction("vkCreateDescriptorUpdateTemplate",  out vkCreateDescriptorUpdateTemplate_ptr);
+			NativeLib.LoadFunction("vkDestroyDescriptorUpdateTemplate",  out vkDestroyDescriptorUpdateTemplate_ptr);
+			NativeLib.LoadFunction("vkUpdateDescriptorSetWithTemplate",  out vkUpdateDescriptorSetWithTemplate_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutSupport",  out vkGetDescriptorSetLayoutSupport_ptr);
-			NativeLib.LoadFunction("vkCmdDrawIndirectCount",  out vkCmdDrawIndirectCount_ptr);
-			NativeLib.LoadFunction("vkCmdDrawIndexedIndirectCount",  out vkCmdDrawIndexedIndirectCount_ptr);
-			NativeLib.LoadFunction("vkCreateRenderPass2",  out vkCreateRenderPass2_ptr);
-			NativeLib.LoadFunction("vkCmdBeginRenderPass2",  out vkCmdBeginRenderPass2_ptr);
-			NativeLib.LoadFunction("vkCmdNextSubpass2",  out vkCmdNextSubpass2_ptr);
-			NativeLib.LoadFunction("vkCmdEndRenderPass2",  out vkCmdEndRenderPass2_ptr);
+			NativeLib.LoadFunction("vkCreateSamplerYcbcrConversion",  out vkCreateSamplerYcbcrConversion_ptr);
+			NativeLib.LoadFunction("vkDestroySamplerYcbcrConversion",  out vkDestroySamplerYcbcrConversion_ptr);
 			NativeLib.LoadFunction("vkResetQueryPool",  out vkResetQueryPool_ptr);
 			NativeLib.LoadFunction("vkGetSemaphoreCounterValue",  out vkGetSemaphoreCounterValue_ptr);
 			NativeLib.LoadFunction("vkWaitSemaphores",  out vkWaitSemaphores_ptr);
@@ -4018,14 +4174,17 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetBufferDeviceAddress",  out vkGetBufferDeviceAddress_ptr);
 			NativeLib.LoadFunction("vkGetBufferOpaqueCaptureAddress",  out vkGetBufferOpaqueCaptureAddress_ptr);
 			NativeLib.LoadFunction("vkGetDeviceMemoryOpaqueCaptureAddress",  out vkGetDeviceMemoryOpaqueCaptureAddress_ptr);
+			NativeLib.LoadFunction("vkCmdDrawIndirectCount",  out vkCmdDrawIndirectCount_ptr);
+			NativeLib.LoadFunction("vkCmdDrawIndexedIndirectCount",  out vkCmdDrawIndexedIndirectCount_ptr);
+			NativeLib.LoadFunction("vkCreateRenderPass2",  out vkCreateRenderPass2_ptr);
+			NativeLib.LoadFunction("vkCmdBeginRenderPass2",  out vkCmdBeginRenderPass2_ptr);
+			NativeLib.LoadFunction("vkCmdNextSubpass2",  out vkCmdNextSubpass2_ptr);
+			NativeLib.LoadFunction("vkCmdEndRenderPass2",  out vkCmdEndRenderPass2_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceToolProperties",  out vkGetPhysicalDeviceToolProperties_ptr);
 			NativeLib.LoadFunction("vkCreatePrivateDataSlot",  out vkCreatePrivateDataSlot_ptr);
 			NativeLib.LoadFunction("vkDestroyPrivateDataSlot",  out vkDestroyPrivateDataSlot_ptr);
 			NativeLib.LoadFunction("vkSetPrivateData",  out vkSetPrivateData_ptr);
 			NativeLib.LoadFunction("vkGetPrivateData",  out vkGetPrivateData_ptr);
-			NativeLib.LoadFunction("vkCmdSetEvent2",  out vkCmdSetEvent2_ptr);
-			NativeLib.LoadFunction("vkCmdResetEvent2",  out vkCmdResetEvent2_ptr);
-			NativeLib.LoadFunction("vkCmdWaitEvents2",  out vkCmdWaitEvents2_ptr);
 			NativeLib.LoadFunction("vkCmdPipelineBarrier2",  out vkCmdPipelineBarrier2_ptr);
 			NativeLib.LoadFunction("vkCmdWriteTimestamp2",  out vkCmdWriteTimestamp2_ptr);
 			NativeLib.LoadFunction("vkQueueSubmit2",  out vkQueueSubmit2_ptr);
@@ -4033,6 +4192,12 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdCopyImage2",  out vkCmdCopyImage2_ptr);
 			NativeLib.LoadFunction("vkCmdCopyBufferToImage2",  out vkCmdCopyBufferToImage2_ptr);
 			NativeLib.LoadFunction("vkCmdCopyImageToBuffer2",  out vkCmdCopyImageToBuffer2_ptr);
+			NativeLib.LoadFunction("vkGetDeviceBufferMemoryRequirements",  out vkGetDeviceBufferMemoryRequirements_ptr);
+			NativeLib.LoadFunction("vkGetDeviceImageMemoryRequirements",  out vkGetDeviceImageMemoryRequirements_ptr);
+			NativeLib.LoadFunction("vkGetDeviceImageSparseMemoryRequirements",  out vkGetDeviceImageSparseMemoryRequirements_ptr);
+			NativeLib.LoadFunction("vkCmdSetEvent2",  out vkCmdSetEvent2_ptr);
+			NativeLib.LoadFunction("vkCmdResetEvent2",  out vkCmdResetEvent2_ptr);
+			NativeLib.LoadFunction("vkCmdWaitEvents2",  out vkCmdWaitEvents2_ptr);
 			NativeLib.LoadFunction("vkCmdBlitImage2",  out vkCmdBlitImage2_ptr);
 			NativeLib.LoadFunction("vkCmdResolveImage2",  out vkCmdResolveImage2_ptr);
 			NativeLib.LoadFunction("vkCmdBeginRendering",  out vkCmdBeginRendering_ptr);
@@ -4052,28 +4217,25 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetRasterizerDiscardEnable",  out vkCmdSetRasterizerDiscardEnable_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthBiasEnable",  out vkCmdSetDepthBiasEnable_ptr);
 			NativeLib.LoadFunction("vkCmdSetPrimitiveRestartEnable",  out vkCmdSetPrimitiveRestartEnable_ptr);
-			NativeLib.LoadFunction("vkGetDeviceBufferMemoryRequirements",  out vkGetDeviceBufferMemoryRequirements_ptr);
-			NativeLib.LoadFunction("vkGetDeviceImageMemoryRequirements",  out vkGetDeviceImageMemoryRequirements_ptr);
-			NativeLib.LoadFunction("vkGetDeviceImageSparseMemoryRequirements",  out vkGetDeviceImageSparseMemoryRequirements_ptr);
-			NativeLib.LoadFunction("vkCmdSetLineStipple",  out vkCmdSetLineStipple_ptr);
 			NativeLib.LoadFunction("vkMapMemory2",  out vkMapMemory2_ptr);
 			NativeLib.LoadFunction("vkUnmapMemory2",  out vkUnmapMemory2_ptr);
-			NativeLib.LoadFunction("vkCmdBindIndexBuffer2",  out vkCmdBindIndexBuffer2_ptr);
-			NativeLib.LoadFunction("vkGetRenderingAreaGranularity",  out vkGetRenderingAreaGranularity_ptr);
 			NativeLib.LoadFunction("vkGetDeviceImageSubresourceLayout",  out vkGetDeviceImageSubresourceLayout_ptr);
 			NativeLib.LoadFunction("vkGetImageSubresourceLayout2",  out vkGetImageSubresourceLayout2_ptr);
-			NativeLib.LoadFunction("vkCmdPushDescriptorSet",  out vkCmdPushDescriptorSet_ptr);
-			NativeLib.LoadFunction("vkCmdPushDescriptorSetWithTemplate",  out vkCmdPushDescriptorSetWithTemplate_ptr);
-			NativeLib.LoadFunction("vkCmdSetRenderingAttachmentLocations",  out vkCmdSetRenderingAttachmentLocations_ptr);
-			NativeLib.LoadFunction("vkCmdSetRenderingInputAttachmentIndices",  out vkCmdSetRenderingInputAttachmentIndices_ptr);
-			NativeLib.LoadFunction("vkCmdBindDescriptorSets2",  out vkCmdBindDescriptorSets2_ptr);
-			NativeLib.LoadFunction("vkCmdPushConstants2",  out vkCmdPushConstants2_ptr);
-			NativeLib.LoadFunction("vkCmdPushDescriptorSet2",  out vkCmdPushDescriptorSet2_ptr);
-			NativeLib.LoadFunction("vkCmdPushDescriptorSetWithTemplate2",  out vkCmdPushDescriptorSetWithTemplate2_ptr);
 			NativeLib.LoadFunction("vkCopyMemoryToImage",  out vkCopyMemoryToImage_ptr);
 			NativeLib.LoadFunction("vkCopyImageToMemory",  out vkCopyImageToMemory_ptr);
 			NativeLib.LoadFunction("vkCopyImageToImage",  out vkCopyImageToImage_ptr);
 			NativeLib.LoadFunction("vkTransitionImageLayout",  out vkTransitionImageLayout_ptr);
+			NativeLib.LoadFunction("vkCmdPushDescriptorSet",  out vkCmdPushDescriptorSet_ptr);
+			NativeLib.LoadFunction("vkCmdPushDescriptorSetWithTemplate",  out vkCmdPushDescriptorSetWithTemplate_ptr);
+			NativeLib.LoadFunction("vkCmdBindDescriptorSets2",  out vkCmdBindDescriptorSets2_ptr);
+			NativeLib.LoadFunction("vkCmdPushConstants2",  out vkCmdPushConstants2_ptr);
+			NativeLib.LoadFunction("vkCmdPushDescriptorSet2",  out vkCmdPushDescriptorSet2_ptr);
+			NativeLib.LoadFunction("vkCmdPushDescriptorSetWithTemplate2",  out vkCmdPushDescriptorSetWithTemplate2_ptr);
+			NativeLib.LoadFunction("vkCmdSetLineStipple",  out vkCmdSetLineStipple_ptr);
+			NativeLib.LoadFunction("vkCmdBindIndexBuffer2",  out vkCmdBindIndexBuffer2_ptr);
+			NativeLib.LoadFunction("vkGetRenderingAreaGranularity",  out vkGetRenderingAreaGranularity_ptr);
+			NativeLib.LoadFunction("vkCmdSetRenderingAttachmentLocations",  out vkCmdSetRenderingAttachmentLocations_ptr);
+			NativeLib.LoadFunction("vkCmdSetRenderingInputAttachmentIndices",  out vkCmdSetRenderingInputAttachmentIndices_ptr);
 			NativeLib.LoadFunction("vkGetCommandPoolMemoryConsumption",  out vkGetCommandPoolMemoryConsumption_ptr);
 			NativeLib.LoadFunction("vkGetFaultData",  out vkGetFaultData_ptr);
 			NativeLib.LoadFunction("vkDestroySurfaceKHR",  out vkDestroySurfaceKHR_ptr);
@@ -4138,6 +4300,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetImageViewHandleNVX",  out vkGetImageViewHandleNVX_ptr);
 			NativeLib.LoadFunction("vkGetImageViewHandle64NVX",  out vkGetImageViewHandle64NVX_ptr);
 			NativeLib.LoadFunction("vkGetImageViewAddressNVX",  out vkGetImageViewAddressNVX_ptr);
+			NativeLib.LoadFunction("vkGetDeviceCombinedImageSamplerIndexNVX",  out vkGetDeviceCombinedImageSamplerIndexNVX_ptr);
 			NativeLib.LoadFunction("vkGetShaderInfoAMD",  out vkGetShaderInfoAMD_ptr);
 			NativeLib.LoadFunction("vkCreateStreamDescriptorSurfaceGGP",  out vkCreateStreamDescriptorSurfaceGGP_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceExternalImageFormatPropertiesNV",  out vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr);
@@ -4205,6 +4368,13 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDispatchGraphAMDX",  out vkCmdDispatchGraphAMDX_ptr);
 			NativeLib.LoadFunction("vkCmdDispatchGraphIndirectAMDX",  out vkCmdDispatchGraphIndirectAMDX_ptr);
 			NativeLib.LoadFunction("vkCmdDispatchGraphIndirectCountAMDX",  out vkCmdDispatchGraphIndirectCountAMDX_ptr);
+			NativeLib.LoadFunction("vkWriteSamplerDescriptorsEXT",  out vkWriteSamplerDescriptorsEXT_ptr);
+			NativeLib.LoadFunction("vkWriteResourceDescriptorsEXT",  out vkWriteResourceDescriptorsEXT_ptr);
+			NativeLib.LoadFunction("vkCmdBindSamplerHeapEXT",  out vkCmdBindSamplerHeapEXT_ptr);
+			NativeLib.LoadFunction("vkCmdBindResourceHeapEXT",  out vkCmdBindResourceHeapEXT_ptr);
+			NativeLib.LoadFunction("vkCmdPushDataEXT",  out vkCmdPushDataEXT_ptr);
+			NativeLib.LoadFunction("vkGetImageOpaqueCaptureDataEXT",  out vkGetImageOpaqueCaptureDataEXT_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceDescriptorSizeEXT",  out vkGetPhysicalDeviceDescriptorSizeEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetSampleLocationsEXT",  out vkCmdSetSampleLocationsEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceMultisamplePropertiesEXT",  out vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr);
 			NativeLib.LoadFunction("vkCreateAccelerationStructureKHR",  out vkCreateAccelerationStructureKHR_ptr);
@@ -4259,6 +4429,10 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdSetExclusiveScissorNV",  out vkCmdSetExclusiveScissorNV_ptr);
 			NativeLib.LoadFunction("vkCmdSetCheckpointNV",  out vkCmdSetCheckpointNV_ptr);
 			NativeLib.LoadFunction("vkGetQueueCheckpointDataNV",  out vkGetQueueCheckpointDataNV_ptr);
+			NativeLib.LoadFunction("vkSetSwapchainPresentTimingQueueSizeEXT",  out vkSetSwapchainPresentTimingQueueSizeEXT_ptr);
+			NativeLib.LoadFunction("vkGetSwapchainTimingPropertiesEXT",  out vkGetSwapchainTimingPropertiesEXT_ptr);
+			NativeLib.LoadFunction("vkGetSwapchainTimeDomainPropertiesEXT",  out vkGetSwapchainTimeDomainPropertiesEXT_ptr);
+			NativeLib.LoadFunction("vkGetPastPresentationTimingEXT",  out vkGetPastPresentationTimingEXT_ptr);
 			NativeLib.LoadFunction("vkInitializePerformanceApiINTEL",  out vkInitializePerformanceApiINTEL_ptr);
 			NativeLib.LoadFunction("vkUninitializePerformanceApiINTEL",  out vkUninitializePerformanceApiINTEL_ptr);
 			NativeLib.LoadFunction("vkCmdSetPerformanceMarkerINTEL",  out vkCmdSetPerformanceMarkerINTEL_ptr);
@@ -4389,6 +4563,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPipelineIndirectMemoryRequirementsNV",  out vkGetPipelineIndirectMemoryRequirementsNV_ptr);
 			NativeLib.LoadFunction("vkCmdUpdatePipelineIndirectBufferNV",  out vkCmdUpdatePipelineIndirectBufferNV_ptr);
 			NativeLib.LoadFunction("vkGetPipelineIndirectDeviceAddressNV",  out vkGetPipelineIndirectDeviceAddressNV_ptr);
+			NativeLib.LoadFunction("vkGetNativeBufferPropertiesOHOS",  out vkGetNativeBufferPropertiesOHOS_ptr);
+			NativeLib.LoadFunction("vkGetMemoryNativeBufferOHOS",  out vkGetMemoryNativeBufferOHOS_ptr);
 			NativeLib.LoadFunction("vkCmdSetDepthClampEnableEXT",  out vkCmdSetDepthClampEnableEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetPolygonModeEXT",  out vkCmdSetPolygonModeEXT_ptr);
 			NativeLib.LoadFunction("vkCmdSetRasterizationSamplesEXT",  out vkCmdSetRasterizationSamplesEXT_ptr);
@@ -4456,6 +4632,8 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdBindTileMemoryQCOM",  out vkCmdBindTileMemoryQCOM_ptr);
 			NativeLib.LoadFunction("vkCmdCopyMemoryIndirectKHR",  out vkCmdCopyMemoryIndirectKHR_ptr);
 			NativeLib.LoadFunction("vkCmdCopyMemoryToImageIndirectKHR",  out vkCmdCopyMemoryToImageIndirectKHR_ptr);
+			NativeLib.LoadFunction("vkCmdDecompressMemoryEXT",  out vkCmdDecompressMemoryEXT_ptr);
+			NativeLib.LoadFunction("vkCmdDecompressMemoryIndirectCountEXT",  out vkCmdDecompressMemoryIndirectCountEXT_ptr);
 			NativeLib.LoadFunction("vkCreateExternalComputeQueueNV",  out vkCreateExternalComputeQueueNV_ptr);
 			NativeLib.LoadFunction("vkDestroyExternalComputeQueueNV",  out vkDestroyExternalComputeQueueNV_ptr);
 			NativeLib.LoadFunction("vkGetExternalComputeQueueDataNV",  out vkGetExternalComputeQueueDataNV_ptr);
@@ -4477,7 +4655,18 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV",  out vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandleEXT",  out vkGetMemoryMetalHandleEXT_ptr);
 			NativeLib.LoadFunction("vkGetMemoryMetalHandlePropertiesEXT",  out vkGetMemoryMetalHandlePropertiesEXT_ptr);
-			NativeLib.LoadFunction("vkCmdEndRendering2EXT",  out vkCmdEndRendering2EXT_ptr);
+			NativeLib.LoadFunction("vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM",  out vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr);
+			NativeLib.LoadFunction("vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM",  out vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM_ptr);
+			NativeLib.LoadFunction("vkCreateShaderInstrumentationARM",  out vkCreateShaderInstrumentationARM_ptr);
+			NativeLib.LoadFunction("vkDestroyShaderInstrumentationARM",  out vkDestroyShaderInstrumentationARM_ptr);
+			NativeLib.LoadFunction("vkCmdBeginShaderInstrumentationARM",  out vkCmdBeginShaderInstrumentationARM_ptr);
+			NativeLib.LoadFunction("vkCmdEndShaderInstrumentationARM",  out vkCmdEndShaderInstrumentationARM_ptr);
+			NativeLib.LoadFunction("vkGetShaderInstrumentationValuesARM",  out vkGetShaderInstrumentationValuesARM_ptr);
+			NativeLib.LoadFunction("vkClearShaderInstrumentationMetricsARM",  out vkClearShaderInstrumentationMetricsARM_ptr);
+			NativeLib.LoadFunction("vkCmdEndRendering2KHR",  out vkCmdEndRendering2KHR_ptr);
+			NativeLib.LoadFunction("vkCmdSetComputeOccupancyPriorityNV",  out vkCmdSetComputeOccupancyPriorityNV_ptr);
+			NativeLib.LoadFunction("vkCreateUbmSurfaceSEC",  out vkCreateUbmSurfaceSEC_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceUbmPresentationSupportSEC",  out vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr);
 		}
 	}
 }

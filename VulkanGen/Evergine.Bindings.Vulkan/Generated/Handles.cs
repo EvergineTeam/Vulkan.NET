@@ -737,6 +737,21 @@ namespace Evergine.Bindings.Vulkan
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct VkShaderInstrumentationARM : IEquatable<VkShaderInstrumentationARM>
+{
+		public readonly ulong Handle;
+		public VkShaderInstrumentationARM(ulong existingHandle) { Handle = existingHandle; }
+		public static VkShaderInstrumentationARM Null => new VkShaderInstrumentationARM(0);
+		public static implicit operator VkShaderInstrumentationARM(ulong handle) => new VkShaderInstrumentationARM(handle);
+		public static bool operator ==(VkShaderInstrumentationARM left, VkShaderInstrumentationARM right) => left.Handle == right.Handle;
+		public static bool operator !=(VkShaderInstrumentationARM left, VkShaderInstrumentationARM right) => left.Handle != right.Handle;
+		public static bool operator ==(VkShaderInstrumentationARM left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkShaderInstrumentationARM left, ulong right) => left.Handle != right;
+		public bool Equals(VkShaderInstrumentationARM h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is VkShaderInstrumentationARM h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 {
 		public readonly ulong Handle;

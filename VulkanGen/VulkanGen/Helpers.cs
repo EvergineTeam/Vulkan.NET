@@ -46,7 +46,7 @@ namespace VulkanGen
         public static string GetPrettyEnumName(string value)
         {
             int start;
-            if((start = value.IndexOf("bit", StringComparison.OrdinalIgnoreCase)) != -1)
+            if ((start = value.IndexOf("bit", StringComparison.OrdinalIgnoreCase)) != -1)
             {
                 return value.Remove(start, 3);
             }
@@ -242,6 +242,8 @@ namespace VulkanGen
                 case "CAMetalLayer":
                 case "AHardwareBuffer":
                 case "ANativeWindow":
+                case "ubm_surface":
+                case "ubm_device":
                 // NV extension
                 case "_screen_context":
                 case "_screen_window":
@@ -296,6 +298,8 @@ namespace VulkanGen
                 case "MTLTexture_id":
                 case "MTLSharedEvent_id":
                 case "IOSurfaceRef":
+                case "OH_NativeBuffer":
+                case "OHBufferHandle":
                     return true;
                 default:
                     return false;

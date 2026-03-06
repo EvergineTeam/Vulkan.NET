@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace VulkanGen
@@ -17,25 +12,29 @@ namespace VulkanGen
         public static FuncpointerDefinition FromXML(XElement elem)
         {
             FuncpointerDefinition funcpointer = new FuncpointerDefinition();
-            funcpointer.Name = elem.Element("name").Value;
-            Match pointerType = Regex.Match(elem.Value, @"typedef\s+(\w+[*]?)");
-            funcpointer.Type = pointerType.Groups[1].Value;
 
-            foreach (Match match in Regex.Matches(elem.Value, @"((\w+[*]?)\s+(\w+),|(\w+[*]?)\s+(\w+)\);)"))
+            var proto = elem.Element("proto");
+            funcpointer.Name = proto.Element("name").Value;
+
+            var protoTypeElem = proto.Element("type");
+            funcpointer.Type = protoTypeElem.Value;
+            if (protoTypeElem.NextNode is XText protoNextText && protoNextText.Value.Contains("*"))
+            {
+                funcpointer.Type += "*";
+            }
+
+            foreach (var paramElem in elem.Elements("param"))
             {
                 Parameter p = new Parameter();
 
-                if (match.Groups[2].Value != string.Empty)
+                var typeElem = paramElem.Element("type");
+                p.Type = typeElem.Value;
+                if (typeElem.NextNode is XText nextText && nextText.Value.Contains("*"))
                 {
-                    p.Type = match.Groups[2].Value;
-                    p.Name = match.Groups[3].Value;
-                }
-                else
-                {
-                    p.Type = match.Groups[4].Value;
-                    p.Name = match.Groups[5].Value;
+                    p.Type += "*";
                 }
 
+                p.Name = paramElem.Element("name").Value;
                 funcpointer.Parameters.Add(p);
             }
 

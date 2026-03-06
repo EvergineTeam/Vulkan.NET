@@ -174,5 +174,45 @@ namespace Evergine.Bindings.Vulkan
 		public VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
 	}
 
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkResourceDescriptorDataEXT
+	{
+		[FieldOffset(0)]
+		public VkImageDescriptorInfoEXT* pImage;
+		[FieldOffset(0)]
+		public VkTexelBufferDescriptorInfoEXT* pTexelBuffer;
+		[FieldOffset(0)]
+		public VkDeviceAddressRangeEXT* pAddressRange;
+		[FieldOffset(0)]
+		public VkTensorViewCreateInfoARM* pTensorARM;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe partial struct VkDescriptorMappingSourceDataEXT
+	{
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceConstantOffsetEXT constantOffset;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourcePushIndexEXT pushIndex;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceIndirectIndexEXT indirectIndex;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceIndirectIndexArrayEXT indirectIndexArray;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceHeapDataEXT heapData;
+		[FieldOffset(0)]
+		public uint pushDataOffset;
+		[FieldOffset(0)]
+		public uint pushAddressOffset;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceIndirectAddressEXT indirectAddress;
+		[FieldOffset(0)]
+		public VkDescriptorMappingSourceShaderRecordIndexEXT shaderRecordIndex;
+		[FieldOffset(0)]
+		public uint shaderRecordDataOffset;
+		[FieldOffset(0)]
+		public uint shaderRecordAddressOffset;
+	}
+
 }
 
