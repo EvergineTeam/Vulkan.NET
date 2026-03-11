@@ -45,7 +45,7 @@ namespace VulkanGen
                 extension.SortOrder = int.Parse(sortString);
             }
 
-            var requires = elem.Element("require");
+            var requires = elem.Elements("require");
             if (requires != null)
             {
                 var enums = requires.Elements("enum");
