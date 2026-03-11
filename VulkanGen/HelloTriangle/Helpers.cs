@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Evergine.Bindings.Vulkan;
 
 namespace KHRRTXHelloTriangle
@@ -32,13 +31,14 @@ namespace KHRRTXHelloTriangle
             return System.Text.Encoding.UTF8.GetString(stringStart, characters);
         }
 
-        [Conditional("DEBUG")]
         public static void CheckErrors(VkResult result)
         {
+#if DEBUG
             if (result != VkResult.VK_SUCCESS)
             {
                 throw new InvalidOperationException(result.ToString());
             }
+#endif
         }
     }
 }
