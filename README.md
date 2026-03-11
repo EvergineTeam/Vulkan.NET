@@ -4,7 +4,7 @@ This binding is generated from vk.xml file included in the KhronosRegistry:
 https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml.
 
 [![CI](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CI.yml)
-[![Monthly update check](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/monthly_update.yml)
+[![CD](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CD.yml/badge.svg)](https://github.com/EvergineTeam/Vulkan.NET/actions/workflows/CD.yml)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.Vulkan?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.Vulkan)
 
 ## Features
