@@ -69,7 +69,7 @@ namespace VulkanGen
         {
             string memberType = type;
 
-            if (type.StartsWith("PFN") || IsIntPtr(memberType))
+            if (type.StartsWith("PFN") || IsIntPtr(memberType, spec))
             {
                 return "IntPtr";
             }
@@ -214,96 +214,9 @@ namespace VulkanGen
             }
         }
 
-        public static bool IsIntPtr(string type)
+        public static bool IsIntPtr(string type, VulkanSpecification spec)
         {
-            switch (type)
-            {
-                case "Display":
-                case "VisualID":
-                case "Window":
-                case "RROutput":
-                case "wl_display":
-                case "wl_surface":
-                case "HINSTANCE":
-                case "HWND":
-                case "HMONITOR":
-                case "HANDLE":
-                case "SECURITY_ATTRIBUTES":
-                case "DWORD":
-                case "LPCWSTR":
-                case "xcb_connection_t":
-                case "xcb_visualid_t":
-                case "xcb_window_t":
-                case "IDirectFB":
-                case "IDirectFBSurface":
-                case "zx_handle_t":
-                case "GgpStreamDescriptor":
-                case "GgpFrameToken":
-                case "CAMetalLayer":
-                case "AHardwareBuffer":
-                case "ANativeWindow":
-                case "ubm_surface":
-                case "ubm_device":
-                // NV extension
-                case "_screen_context":
-                case "_screen_window":
-                case "StdVideoH264ProfileIdc":
-                case "StdVideoH264PictureParameterSet":
-                case "StdVideoH264SequenceParameterSet":
-                case "StdVideoDecodeH264PictureInfo":
-                case "StdVideoDecodeH264ReferenceInfo":
-                case "StdVideoDecodeH264Mvc":
-                case "StdVideoH265SequenceParameterSet":
-                case "StdVideoH265PictureParameterSet":
-                case "StdVideoEncodeAV1DecoderModelInfo":
-                case "StdVideoEncodeAV1OperatingPointInfo":
-                case "StdVideoEncodeAV1ReferenceInfo":
-                case "StdVideoEncodeAV1PictureInfo":
-                case "StdVideoDecodeH265PictureInfo":
-                case "StdVideoDecodeH265ReferenceInfo":
-                case "StdVideoEncodeH264PictureInfo":
-                case "StdVideoEncodeH264SliceHeader":
-                case "StdVideoH265ProfileIdc":
-                case "StdVideoH265VideoParameterSet":
-                case "StdVideoEncodeH265PictureInfo":
-                case "StdVideoEncodeH265SliceHeader":
-                case "StdVideoEncodeH265ReferenceInfo":
-                case "StdVideoEncodeH265ReferenceModifications":
-                case "StdVideoEncodeH265SliceSegmentHeader":
-                case "StdVideoEncodeH264RefMemMgmtCtrlOperations":
-                case "StdVideoEncodeH264ReferenceInfo":
-                case "StdVideoH264LevelIdc":
-                case "StdVideoH265LevelIdc":
-                case "StdVideoAV1Profile":
-                case "StdVideoAV1Level":
-                case "StdVideoAV1SequenceHeader":
-                case "StdVideoDecodeAV1PictureInfo":
-                case "StdVideoDecodeAV1ReferenceInfo":
-                case "NvSciSyncFence":
-                case "NvSciSyncObj":
-                case "StdVideoEncodeH264ReferenceListsInfo":
-                case "StdVideoEncodeH265ReferenceListsInfo":
-                case "NvSciSyncAttrList":
-                case "NvSciBufAttrList":
-                case "NvSciBufObj":
-                case "_screen_buffer":
-                case "StdVideoVP9Profile":
-                case "StdVideoVP9Level":
-                case "StdVideoDecodeVP9PictureInfo":
-                case "OHNativeWindow":
-                //Metal Layer
-                case "MTLDevice_id":
-                case "MTLCommandQueue_id":
-                case "MTLBuffer_id":
-                case "MTLTexture_id":
-                case "MTLSharedEvent_id":
-                case "IOSurfaceRef":
-                case "OH_NativeBuffer":
-                case "OHBufferHandle":
-                    return true;
-                default:
-                    return false;
-            }
+            return spec.ExternalTypes.Contains(type);
         }
 
         public static bool IsVKSC(string api)

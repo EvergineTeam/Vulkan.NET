@@ -23,6 +23,7 @@ namespace VulkanGen
         public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
         public Dictionary<string, string> Alias = new Dictionary<string, string>();
         public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
+        public HashSet<string> ExternalTypes = new HashSet<string>();
 
         public static VulkanSpecification FromFile(string xmlFile)
         {
@@ -60,6 +61,33 @@ namespace VulkanGen
             }
 
             var types = registry.Elements("types");
+
+            // External Types (platform types, video codec types, etc. mapped to IntPtr)
+            // 1) Types in <types> that require an external header (not vk_platform)
+            var externalTypes = types.Elements("type")
+                .Where(t =>
+                {
+                    var requires = t.Attribute("requires")?.Value;
+                    var category = t.Attribute("category")?.Value;
+                    var name = t.Attribute("name")?.Value;
+
+                    return requires != null && requires != "vk_platform" && category == null && name != null && !t.HasElements;
+                });
+
+            foreach (var externalType in externalTypes)
+            {
+                spec.ExternalTypes.Add(externalType.Attribute("name").Value);
+            }
+
+            // 2) Basetypes with no inner <type> element are opaque platform types
+            //    (e.g., ANativeWindow, CAMetalLayer, MTLDevice_id, IOSurfaceRef)
+            var opaqueBaseTypes = types.Elements("type")
+                .Where(t => t.Attribute("category")?.Value == "basetype" && t.Element("type") == null && t.Element("name") != null);
+
+            foreach (var opaqueType in opaqueBaseTypes)
+            {
+                spec.ExternalTypes.Add(opaqueType.Element("name").Value);
+            }
 
             // FuncPointers
             var funcPointers = types.Elements("type").Where(f => f.Attribute("category")?.Value == "funcpointer");
