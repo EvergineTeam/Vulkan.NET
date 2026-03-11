@@ -24,6 +24,21 @@ namespace Evergine.Bindings.Vulkan
             }
         }
 
+        protected NativeLibrary(string[] libraryNames)
+        {
+            foreach (var name in libraryNames)
+            {
+                libraryHandle = LoadLibrary(name);
+                if (libraryHandle != IntPtr.Zero)
+                {
+                    libraryName = name;
+                    return;
+                }
+            }
+
+            throw new InvalidOperationException("Could not load any of the following libraries: " + string.Join(", ", libraryNames));
+        }
+
         protected IntPtr LoadLibrary(string libraryName)
         {
             if (SysNativeLibrary.TryLoad(libraryName, typeof(NativeLibrary).Assembly, null, out var lib))
@@ -48,7 +63,16 @@ namespace Evergine.Bindings.Vulkan
             SysNativeLibrary.TryGetExport(libraryHandle, name, out IntPtr funcPtr);
             if (funcPtr == IntPtr.Zero)
             {
-                funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name));
+                IntPtr namePtr = Marshal.StringToHGlobalAnsi(name);
+
+                try
+                {
+                    funcPtr = VulkanNative.vkGetInstanceProcAddr(instance, (byte*)namePtr);
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(namePtr);
+                }
             }
 
             if (funcPtr != IntPtr.Zero)
@@ -70,6 +94,11 @@ namespace Evergine.Bindings.Vulkan
         public static NativeLibrary Load(string libraryName)
         {
             return new NativeLibrary(libraryName);
+        }
+
+        public static NativeLibrary Load(string[] libraryNames)
+        {
+            return new NativeLibrary(libraryNames);
         }
     }
 }

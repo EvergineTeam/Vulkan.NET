@@ -17,26 +17,26 @@ namespace Evergine.Bindings.Vulkan
 
         private static NativeLibrary LoadNativeLibrary()
         {
-            return NativeLibrary.Load(GetVulkanName());
+            return NativeLibrary.Load(GetVulkanNames());
         }
 
-        private static string GetVulkanName()
+        private static string[] GetVulkanNames()
         {
             if (OperatingSystem.IsWindows())
             {
-                return "vulkan-1.dll";
+                return new[] { "vulkan-1.dll" };
             }
             else if (OperatingSystem.IsAndroid())
             {
-                return "libvulkan.so";
+                return new[] { "libvulkan.so" };
             }
             else if (OperatingSystem.IsLinux())
             {
-                return "libvulkan.so.1";
+                return new[] { "libvulkan.so.1", "libvulkan.so" };
             }
             else if (OperatingSystem.IsMacOS())
             {
-                return "libvulkan.dylib";
+                return new[] { "libvulkan.dylib", "libMoltenVK.dylib" };
             }
             else
             {
