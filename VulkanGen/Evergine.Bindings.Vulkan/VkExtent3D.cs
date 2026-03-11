@@ -5,19 +5,15 @@ using System.Text;
 namespace Evergine.Bindings.Vulkan
 {
 
-/// <summary>
-/// Structure specifying a three-dimensional extent.
-/// </summary>
-/// 
-
-public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
-{
+    /// <summary>
+    /// Structure specifying a three-dimensional extent.
+    /// </summary>
+    public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
+    {
         /// <summary>
         /// An <see cref="VkExtent3D"/> with all of its components set to zero.
         /// </summary>
-        /// 
-        
-        public static readonly VkExtent3D Zero = new VkExtend3D(0,0);
+        public static readonly VkExtent3D Zero = new VkExtent3D(0, 0, 0);
 
         /// <summary>
         /// Initializes a new instance of <see cref="VkExtent3D"/> structure.
@@ -25,8 +21,6 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
         /// <param name="width">The width component of the extent.</param>
         /// <param name="height">The height component of the extent.</param>
         /// <param name="depth">The depth component of the extent.</param>
-        
-
         public VkExtent3D(uint width, uint height, uint depth)
         {
             this.width = width;
@@ -34,14 +28,13 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
             this.depth = depth;
 
         }
+
         /// <summary>
         /// Initializes a new instance of <see cref="VkExtent3D"/> structure.
         /// </summary>
         /// <param name="width">The width component of the extent.</param>
         /// <param name="height">The height component of the extent.</param>
         /// <param name="depth">The depth component of the extent.</param>
-        /// 
-
         public VkExtent3D(int width, int height, int depth)
         {
             this.width = (uint)width;
@@ -59,7 +52,7 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
         /// </returns>
         public bool Equals(ref VkExtent3D other)
         {
-            return other.width == width && other.height == height && other.depth;
+            return other.width == width && other.height == height && other.depth == depth;
         }
 
         /// <summary>
@@ -85,8 +78,8 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
         {
             return obj is VkExtent3D && Equals((VkExtent3D)obj);
         }
-        
-         /// <summary>
+
+        /// <summary>
         /// Returns the hash code for this instance.
         /// </summary>
         /// <returns>The hash code.</returns>
@@ -96,6 +89,7 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
             {
                 int hashCode = width.GetHashCode();
                 hashCode = (hashCode * 397) ^ height.GetHashCode();
+                hashCode = (hashCode * 397) ^ depth.GetHashCode();
                 return hashCode;
             }
         }
@@ -118,11 +112,4 @@ public unsafe partial struct VkExtent3D : IEquatable<VkExtent3D>
         /// </returns>
         public static bool operator !=(VkExtent3D left, VkExtent3D right) => !left.Equals(ref right);
     }
-
-
-
-
-
-
-
 }
