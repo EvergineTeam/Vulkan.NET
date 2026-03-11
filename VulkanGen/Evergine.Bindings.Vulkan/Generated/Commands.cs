@@ -720,9 +720,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetDepthBias_ptr(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetBlendConstantsDelegate(VkCommandBuffer commandBuffer, float blendConstants);
+		private delegate void vkCmdSetBlendConstantsDelegate(VkCommandBuffer commandBuffer, float* blendConstants);
 		private static vkCmdSetBlendConstantsDelegate vkCmdSetBlendConstants_ptr;
-		public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float blendConstants)
+		public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float* blendConstants)
 			=> vkCmdSetBlendConstants_ptr(commandBuffer, blendConstants);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2730,9 +2730,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr(physicalDevice, pFragmentShadingRateCount, pFragmentShadingRates);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetFragmentShadingRateKHRDelegate(VkCommandBuffer commandBuffer, VkExtent2D* pFragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps);
+		private delegate void vkCmdSetFragmentShadingRateKHRDelegate(VkCommandBuffer commandBuffer, VkExtent2D* pFragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps);
 		private static vkCmdSetFragmentShadingRateKHRDelegate vkCmdSetFragmentShadingRateKHR_ptr;
-		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* pFragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* pFragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 			=> vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, pFragmentSize, combinerOps);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -3048,9 +3048,9 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr(device, pInfo, pData);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate void vkCmdSetFragmentShadingRateEnumNVDelegate(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps);
+		private delegate void vkCmdSetFragmentShadingRateEnumNVDelegate(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps);
 		private static vkCmdSetFragmentShadingRateEnumNVDelegate vkCmdSetFragmentShadingRateEnumNV_ptr;
-		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 			=> vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
 
 		[UnmanagedFunctionPointer(CallConv)]

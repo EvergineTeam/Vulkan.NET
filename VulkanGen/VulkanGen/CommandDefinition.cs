@@ -115,6 +115,13 @@ namespace VulkanGen
                 p.PointerLevel = 1;
             }
 
+            // Check for fixed-size array parameters (e.g. combinerOps[2], blendConstants[4])
+            var nameElem = elem.Element("name");
+            if (nameElem.NextNode is XText trailingText && trailingText.Value.Contains("["))
+            {
+                p.PointerLevel = Math.Max(p.PointerLevel, 1);
+            }
+
             return p;
         }
     }
