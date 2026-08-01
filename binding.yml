@@ -1,0 +1,25 @@
+# Binding manifest — see https://github.com/EvergineTeam/Evergine.Bindings
+# Schema: https://github.com/EvergineTeam/Evergine.Bindings/blob/main/binding.schema.json
+toolbox: 1.0.0
+
+package:
+  id: Evergine.Bindings.Vulkan
+  project: VulkanGen/Evergine.Bindings.Vulkan/Evergine.Bindings.Vulkan.csproj
+  target-framework: net10.0
+  runtime-identifier: ""
+
+upstream:
+  kind: http-file
+  language: c
+  project: https://github.com/KhronosGroup/Vulkan-Docs
+  version-from: spec-attribute      # VK_HEADER_VERSION inside vk.xml
+  sources:
+    - url: https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml
+      path: KhronosRegistry/vk.xml
+      format: khronos-xml
+
+generator:
+  project: VulkanGen/VulkanGen/VulkanGen.csproj
+  name: Vulkan
+  output:
+    - VulkanGen/Evergine.Bindings.Vulkan/Generated

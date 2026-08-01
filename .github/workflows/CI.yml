@@ -20,7 +20,7 @@ on:
 
 jobs:
   ci:
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@v2
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-common-ci.yml@v1
     with:
       generator-project: "VulkanGen/VulkanGen/VulkanGen.csproj"  # Path to your generator .csproj
       generator-name: "Vulkan"                # Name of your generator executable
