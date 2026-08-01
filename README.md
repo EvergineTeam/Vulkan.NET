@@ -16,7 +16,7 @@ https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml.
 ## Draw Triangle Rasterization
 Test based on https://vulkan-tutorial.com/
 
-![alt Draw Triangle Rasterization](https://github.com/EvergineTeam/Vulkan.NET/blob/master/RasterizationTest.png)
+![alt Draw Triangle Rasterization](https://github.com/EvergineTeam/Vulkan.NET/blob/main/RasterizationTest.png)
 
 ## Draw Triangle Raytracing (KHR)
 Test based on https://github.com/maierfelix/VK_KHR_ray_tracing
@@ -25,4 +25,4 @@ Test based on https://github.com/maierfelix/VK_KHR_ray_tracing
  - [NVIDIA Vulkan Beta Driver](https://developer.nvidia.com/vulkan-driver) (Tested with [442.98](https://developer.nvidia.com/vulkan-beta-44298-windows-10))
  - [Vulkan SDK >= 1.2.135.0](https://vulkan.lunarg.com/sdk/home)
 
-![alt Draw Triangle Raytracing](https://github.com/EvergineTeam/Vulkan.NET/blob/master/RaytracingTest.png)
+![alt Draw Triangle Raytracing](https://github.com/EvergineTeam/Vulkan.NET/blob/main/RaytracingTest.png)
