@@ -19,7 +19,7 @@ on:
 jobs:
   cd:
     if: github.event_name != 'schedule' || github.ref_name == github.event.repository.default_branch
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-xml-cd.yml@v2
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-xml-cd.yml@v1
     with:
       xml-url: "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml"
       xml-path: "KhronosRegistry/vk.xml"
