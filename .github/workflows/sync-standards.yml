@@ -16,8 +16,8 @@ on:
         default: "v2"
         required: false
       target_branch:
-        description: "Target branch to apply changes"
-        default: "master"
+        description: "Target branch to apply changes (defaults to the repository default branch)"
+        default: ""
         required: false
       script_path:
         description: "Path where to download the sync script"
@@ -41,7 +41,7 @@ on:
   
 jobs:
   sync:
-    if: github.event_name != 'schedule' || github.ref == 'refs/heads/master'
+    if: github.event_name != 'schedule' || github.ref_name == github.event.repository.default_branch
     permissions:
       contents: write  # allow push commits
       pull-requests: write
@@ -50,7 +50,7 @@ jobs:
       org:  ${{ github.event.inputs.org  || 'EvergineTeam' }}
       repo: ${{ github.event.inputs.repo || 'evergine-standards' }}
       ref:  ${{ github.event.inputs.ref  || 'main' }}
-      target_branch: ${{ github.event.inputs.target_branch || 'master' }}
+      target_branch: ${{ github.event.inputs.target_branch || github.event.repository.default_branch }}
       script_path: ${{ github.event.inputs.script_path || 'sync-standards.ps1' }}
       commit_message: "${{ github.event.inputs.commit_message || vars.STANDARDS_COMMIT_MESSAGE || 'auto: sync standard files [skip ci]' }}"
       mode: ${{ github.event.inputs.mode || 'auto' }}
