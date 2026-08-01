@@ -22,6 +22,17 @@ network:
   allowed:
     - defaults
     - github
+steps:
+  # The agent has to run the generator and build the binding, so the SDK must be
+  # present before it starts. Without this the agent reaches step 3, finds no
+  # `dotnet`, and reports a broken generator that is not broken.
+  # Every binding in the fleet currently targets net10.0; a repository on a
+  # different framework overrides this by editing its installed copy, which
+  # `gh aw update` preserves through its three-way merge.
+  - name: Set up .NET
+    uses: actions/setup-dotnet@v5
+    with:
+      dotnet-version: "10.x"
 tools:
   github:
     mode: gh-proxy
@@ -41,7 +52,7 @@ safe-outputs:
     allowed-labels: [agent:needs-human, agent:upstream-break]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@430cd323749ccad7716b6f2cd21bce492294a43b
+source: EvergineTeam/Evergine.Bindings@b0fc3aa02335a99b944ef89891758e21246e1c11
 ---
 
 # Binding Updater
