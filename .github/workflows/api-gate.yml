@@ -1,0 +1,22 @@
+# Measures what a pull request does to the public API surface, and merges the
+# binding updater's work when nothing anyone depends on has moved.
+#
+# The measurement runs on every pull request, including human ones -- knowing
+# which symbols a change adds or removes is useful whoever wrote it. Only the
+# merge is restricted to the agent.
+
+name: API Gate
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  api:
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-api-gate.yml@v1
+    with:
+      binding-project: "VulkanGen/Evergine.Bindings.Vulkan/Evergine.Bindings.Vulkan.csproj"
+      auto-merge: true
+      app-client-id: ${{ vars.APP_CLIENT_ID }}
+    secrets:
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
