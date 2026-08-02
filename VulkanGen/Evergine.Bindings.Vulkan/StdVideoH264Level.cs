@@ -6,7 +6,7 @@ namespace Evergine.Bindings.Vulkan
 {
     public enum StdVideoH264Level
     {
-        STD_VIDEO_H264_LEVEL_1_0 = 0,
+        STD_VIDEO_H264_LEVEL_1_0_RENAMED = 0,
         STD_VIDEO_H264_LEVEL_1_1 = 1,
         STD_VIDEO_H264_LEVEL_1_2 = 2,
         STD_VIDEO_H264_LEVEL_1_3 = 3,
