@@ -15,16 +15,23 @@ permissions:
   pull-requests: read
   copilot-requests: write
 strict: true
-model: claude-opus-4.6
+model: claude-sonnet-5
 max-turns: 60
+timeout-minutes: 40
 max-ai-credits: 600
 network:
   allowed:
     - defaults
     - github
+env:
+  # The dotnet CLI phones home to dc.services.visualstudio.com, which the firewall
+  # blocks and then reports as a failed request the agent has to reason about.
+  # Opting out is cleaner than widening the allow-list for telemetry.
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "1"
 steps:
   # The agent has to run the generator and build the binding, so the SDK must be
-  # present before it starts. Without this the agent reaches step 3, finds no
+  # present before it starts. Without this the agent reaches the build, finds no
   # `dotnet`, and reports a broken generator that is not broken.
   # Every binding in the fleet currently targets net10.0; a repository on a
   # different framework overrides this by editing its installed copy, which
@@ -33,6 +40,13 @@ steps:
     uses: actions/setup-dotnet@v5
     with:
       dotnet-version: "10.x"
+  # Fetching the specification and deciding whether it moved is a byte comparison,
+  # not a judgement call. The first pilot run spent 29 bash turns doing it by hand
+  # and the audit flagged 93% of its turns as data-gathering. Doing it here costs
+  # nothing and leaves the agent to start where the thinking actually begins.
+  - name: Fetch upstream sources
+    id: upstream
+    uses: EvergineTeam/Evergine.Bindings/.github/actions/binding-fetch-upstream@v1
 tools:
   github:
     mode: gh-proxy
@@ -52,7 +66,7 @@ safe-outputs:
     allowed-labels: [agent:needs-human, agent:upstream-break]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@b0fc3aa02335a99b944ef89891758e21246e1c11
+source: EvergineTeam/Evergine.Bindings@28c0a36319043716a7fa79ab4ad3fa542abc2674
 ---
 
 # Binding Updater
@@ -74,17 +88,21 @@ Do not infer paths from the directory layout. Do not hardcode a URL you saw in a
 
 Manifests carry a `NOTE` comment where the repository has a hazard: a pinned ref that must not move, native binaries that must be rebuilt alongside a header, an upstream we maintain ourselves. **Read those notes and obey them.** They exist because someone already thought about this repository and reached a conclusion you are not being asked to revisit.
 
-## Step 2 — check whether anything changed, cheaply
+## Step 2 — read the upstream report
 
-Fetch each source using the adapter named by `upstream.kind` and compare with the vendored copy.
+**The fetching is already done.** A deterministic step ran before you, pulled every source declared in the manifest using the right adapter, wrote the new content into the working tree, and left a report at `/tmp/gh-aw/agent/upstream-report.md`.
 
-**Do this with a file comparison, not with reasoning.** Never read a multi-megabyte registry into your context to decide whether it changed — `vk.xml` alone is several megabytes and there is no judgement involved in a byte comparison.
+Read that file. It is one screen long and it tells you which sources moved.
 
-If nothing changed: **call `noop` and stop.** This is the expected outcome most months, and it is what makes running an expensive model here affordable. Do not look for something to do.
+**If it says nothing changed: call `noop` and stop immediately.** Do not re-download anything to check. Do not open the registry to look for yourself. The comparison was a byte-for-byte hash and it is not improved by a second opinion. This is the expected outcome most months and it is what keeps this workflow nearly free to run.
+
+If the report is missing, the step failed — say so and stop, rather than fetching by hand.
+
+**For `git-submodule` repositories the report only tells you the pointer is behind; nothing has been checked out.** That is deliberate. Bumping a submodule in KTX.NET means rebuilding native binaries, and in ImGui.Net it means moving four interdependent modules as a compatible set. Report the gap and stop unless the manifest explicitly says otherwise.
 
 ## Step 3 — regenerate and build
 
-Write the new sources to the paths given in the manifest, run the generator, build the binding.
+The new sources are already on disk. Run the generator, build the binding.
 
 **If it builds**, open a pull request. Describe the API delta in terms a reader can act on — extensions, enums, structures and commands added, removed or changed, and the upstream version if the manifest says how to determine it. Not a diff dump: the point is to let a reviewer see whether anything alarming happened.
 
