@@ -17,7 +17,7 @@ permissions:
   pull-requests: read
   copilot-requests: write
 strict: true
-model: claude-sonnet-4.6
+model: claude-sonnet-5
 max-turns: 25
 max-ai-credits: 150
 network:
@@ -40,7 +40,7 @@ safe-outputs:
     allowed-labels: [agent:needs-regen, agent:upstream-break, agent:needs-human]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@b0fc3aa02335a99b944ef89891758e21246e1c11
+source: EvergineTeam/Evergine.Bindings@28c0a36319043716a7fa79ab4ad3fa542abc2674
 ---
 
 # CI Doctor
