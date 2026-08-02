@@ -37,6 +37,20 @@ safe-outputs:
     title-prefix: "fix(ci): "
     labels: [agent:ci-fix]
     allow-workflows: true
+    # Two independent gates guard the patch, and both must pass. `allowed-files`
+    # is an exclusive allowlist: nothing outside these globs can ever be written,
+    # not even ordinary source. `protected-files` is a separate policy covering
+    # manifests, instruction files and everything under a top-level dot folder --
+    # which is all of `.github/`, so it applies to every fix this agent exists to
+    # make. Its default (`request_review`) cannot be honoured on this path: with a
+    # GitHub App the push goes through the signed-commit API, which has no way to
+    # open a pull request and then ask for changes, so it refuses outright and the
+    # run degrades to an issue carrying a patch bundle.
+    #
+    # `allowed` lifts the second gate only. The first still confines the agent to
+    # workflow files, and the pull request is reviewed by a human before merge --
+    # which is where that judgement belongs, rather than blocking the proposal.
+    protected-files: allowed
     allowed-files:
       - ".github/workflows/**"
     draft: false
@@ -47,7 +61,7 @@ safe-outputs:
     allowed-labels: [agent:needs-regen, agent:upstream-break, agent:needs-human]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@19dd071f1863ac632c22c023bbcc45008c49dc1e
+source: EvergineTeam/Evergine.Bindings@34c1fd0511086f987615f62836ef84040c193321
 ---
 
 # CI Doctor
