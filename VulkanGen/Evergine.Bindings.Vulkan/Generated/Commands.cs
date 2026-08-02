@@ -2184,6 +2184,78 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, pInfo, pBuffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCreateGpaSessionAMDDelegate(VkDevice device, VkGpaSessionCreateInfoAMD* pCreateInfo, VkAllocationCallbacks* pAllocator, VkGpaSessionAMD* pGpaSession);
+		private static vkCreateGpaSessionAMDDelegate vkCreateGpaSessionAMD_ptr;
+		public static VkResult vkCreateGpaSessionAMD(VkDevice device, VkGpaSessionCreateInfoAMD* pCreateInfo, VkAllocationCallbacks* pAllocator, VkGpaSessionAMD* pGpaSession)
+			=> vkCreateGpaSessionAMD_ptr(device, pCreateInfo, pAllocator, pGpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkDestroyGpaSessionAMDDelegate(VkDevice device, VkGpaSessionAMD gpaSession, VkAllocationCallbacks* pAllocator);
+		private static vkDestroyGpaSessionAMDDelegate vkDestroyGpaSessionAMD_ptr;
+		public static void vkDestroyGpaSessionAMD(VkDevice device, VkGpaSessionAMD gpaSession, VkAllocationCallbacks* pAllocator)
+			=> vkDestroyGpaSessionAMD_ptr(device, gpaSession, pAllocator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkSetGpaDeviceClockModeAMDDelegate(VkDevice device, VkGpaDeviceClockModeInfoAMD* pInfo);
+		private static vkSetGpaDeviceClockModeAMDDelegate vkSetGpaDeviceClockModeAMD_ptr;
+		public static VkResult vkSetGpaDeviceClockModeAMD(VkDevice device, VkGpaDeviceClockModeInfoAMD* pInfo)
+			=> vkSetGpaDeviceClockModeAMD_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetGpaDeviceClockInfoAMDDelegate(VkDevice device, VkGpaDeviceGetClockInfoAMD* pInfo);
+		private static vkGetGpaDeviceClockInfoAMDDelegate vkGetGpaDeviceClockInfoAMD_ptr;
+		public static VkResult vkGetGpaDeviceClockInfoAMD(VkDevice device, VkGpaDeviceGetClockInfoAMD* pInfo)
+			=> vkGetGpaDeviceClockInfoAMD_ptr(device, pInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCmdBeginGpaSessionAMDDelegate(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession);
+		private static vkCmdBeginGpaSessionAMDDelegate vkCmdBeginGpaSessionAMD_ptr;
+		public static VkResult vkCmdBeginGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+			=> vkCmdBeginGpaSessionAMD_ptr(commandBuffer, gpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCmdEndGpaSessionAMDDelegate(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession);
+		private static vkCmdEndGpaSessionAMDDelegate vkCmdEndGpaSessionAMD_ptr;
+		public static VkResult vkCmdEndGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+			=> vkCmdEndGpaSessionAMD_ptr(commandBuffer, gpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkCmdBeginGpaSampleAMDDelegate(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, VkGpaSampleBeginInfoAMD* pGpaSampleBeginInfo, uint* pSampleID);
+		private static vkCmdBeginGpaSampleAMDDelegate vkCmdBeginGpaSampleAMD_ptr;
+		public static VkResult vkCmdBeginGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, VkGpaSampleBeginInfoAMD* pGpaSampleBeginInfo, uint* pSampleID)
+			=> vkCmdBeginGpaSampleAMD_ptr(commandBuffer, gpaSession, pGpaSampleBeginInfo, pSampleID);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdEndGpaSampleAMDDelegate(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, uint sampleID);
+		private static vkCmdEndGpaSampleAMDDelegate vkCmdEndGpaSampleAMD_ptr;
+		public static void vkCmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, uint sampleID)
+			=> vkCmdEndGpaSampleAMD_ptr(commandBuffer, gpaSession, sampleID);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetGpaSessionStatusAMDDelegate(VkDevice device, VkGpaSessionAMD gpaSession);
+		private static vkGetGpaSessionStatusAMDDelegate vkGetGpaSessionStatusAMD_ptr;
+		public static VkResult vkGetGpaSessionStatusAMD(VkDevice device, VkGpaSessionAMD gpaSession)
+			=> vkGetGpaSessionStatusAMD_ptr(device, gpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetGpaSessionResultsAMDDelegate(VkDevice device, VkGpaSessionAMD gpaSession, uint sampleID, UIntPtr* pSizeInBytes, void* pData);
+		private static vkGetGpaSessionResultsAMDDelegate vkGetGpaSessionResultsAMD_ptr;
+		public static VkResult vkGetGpaSessionResultsAMD(VkDevice device, VkGpaSessionAMD gpaSession, uint sampleID, UIntPtr* pSizeInBytes, void* pData)
+			=> vkGetGpaSessionResultsAMD_ptr(device, gpaSession, sampleID, pSizeInBytes, pData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkResetGpaSessionAMDDelegate(VkDevice device, VkGpaSessionAMD gpaSession);
+		private static vkResetGpaSessionAMDDelegate vkResetGpaSessionAMD_ptr;
+		public static VkResult vkResetGpaSessionAMD(VkDevice device, VkGpaSessionAMD gpaSession)
+			=> vkResetGpaSessionAMD_ptr(device, gpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdCopyGpaSessionResultsAMDDelegate(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession);
+		private static vkCmdCopyGpaSessionResultsAMDDelegate vkCmdCopyGpaSessionResultsAMD_ptr;
+		public static void vkCmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+			=> vkCmdCopyGpaSessionResultsAMD_ptr(commandBuffer, gpaSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateExecutionGraphPipelinesAMDXDelegate(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
 		private static vkCreateExecutionGraphPipelinesAMDXDelegate vkCreateExecutionGraphPipelinesAMDX_ptr;
 		public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines)
@@ -2910,6 +2982,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdEncodeVideoKHR_ptr(commandBuffer, pEncodeInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkQueueSetPerfHintQCOMDelegate(VkQueue queue, VkPerfHintInfoQCOM* pPerfHintInfo);
+		private static vkQueueSetPerfHintQCOMDelegate vkQueueSetPerfHintQCOM_ptr;
+		public static VkResult vkQueueSetPerfHintQCOM(VkQueue queue, VkPerfHintInfoQCOM* pPerfHintInfo)
+			=> vkQueueSetPerfHintQCOM_ptr(queue, pPerfHintInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateCudaModuleNVDelegate(VkDevice device, VkCudaModuleCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule);
 		private static vkCreateCudaModuleNVDelegate vkCreateCudaModuleNV_ptr;
 		public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule)
@@ -2974,6 +3052,48 @@ namespace Evergine.Bindings.Vulkan
 		private static vkCmdEndPerTileExecutionQCOMDelegate vkCmdEndPerTileExecutionQCOM_ptr;
 		public static void vkCmdEndPerTileExecutionQCOM(VkCommandBuffer commandBuffer, VkPerTileEndInfoQCOM* pPerTileEndInfo)
 			=> vkCmdEndPerTileExecutionQCOM_ptr(commandBuffer, pPerTileEndInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkSetLatencySleepModeLegacyNVDelegate(VkDevice device, VkBool32 lowLatencyMode, VkBool32 lowLatencyBoost, uint minimumIntervalUs);
+		private static vkSetLatencySleepModeLegacyNVDelegate vkSetLatencySleepModeLegacyNV_ptr;
+		public static void vkSetLatencySleepModeLegacyNV(VkDevice device, VkBool32 lowLatencyMode, VkBool32 lowLatencyBoost, uint minimumIntervalUs)
+			=> vkSetLatencySleepModeLegacyNV_ptr(device, lowLatencyMode, lowLatencyBoost, minimumIntervalUs);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkLatencySleepLegacyNVDelegate(VkDevice device, VkSemaphore signalSemaphore, ulong value);
+		private static vkLatencySleepLegacyNVDelegate vkLatencySleepLegacyNV_ptr;
+		public static void vkLatencySleepLegacyNV(VkDevice device, VkSemaphore signalSemaphore, ulong value)
+			=> vkLatencySleepLegacyNV_ptr(device, signalSemaphore, value);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkSetLatencyMarkerLegacyNVDelegate(VkDevice device, ulong frameID, uint marker);
+		private static vkSetLatencyMarkerLegacyNVDelegate vkSetLatencyMarkerLegacyNV_ptr;
+		public static void vkSetLatencyMarkerLegacyNV(VkDevice device, ulong frameID, uint marker)
+			=> vkSetLatencyMarkerLegacyNV_ptr(device, frameID, marker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetLatencyTimingsLegacyNVDelegate(VkDevice device, void* pTimings);
+		private static vkGetLatencyTimingsLegacyNVDelegate vkGetLatencyTimingsLegacyNV_ptr;
+		public static void vkGetLatencyTimingsLegacyNV(VkDevice device, void* pTimings)
+			=> vkGetLatencyTimingsLegacyNV_ptr(device, pTimings);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkQueueNotifyOutOfBandLegacyNVDelegate(VkQueue queue, uint queueType);
+		private static vkQueueNotifyOutOfBandLegacyNVDelegate vkQueueNotifyOutOfBandLegacyNV_ptr;
+		public static void vkQueueNotifyOutOfBandLegacyNV(VkQueue queue, uint queueType)
+			=> vkQueueNotifyOutOfBandLegacyNV_ptr(queue, queueType);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkGetSleepStatusLegacyNVDelegate(VkDevice device, VkBool32* pLowLatencyMode);
+		private static vkGetSleepStatusLegacyNVDelegate vkGetSleepStatusLegacyNV_ptr;
+		public static void vkGetSleepStatusLegacyNV(VkDevice device, VkBool32* pLowLatencyMode)
+			=> vkGetSleepStatusLegacyNV_ptr(device, pLowLatencyMode);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkShutdownLatencyDeviceLegacyNVDelegate(VkDevice device);
+		private static vkShutdownLatencyDeviceLegacyNVDelegate vkShutdownLatencyDeviceLegacyNV_ptr;
+		public static void vkShutdownLatencyDeviceLegacyNV(VkDevice device)
+			=> vkShutdownLatencyDeviceLegacyNV_ptr(device);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkExportMetalObjectsEXTDelegate(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
@@ -3532,6 +3652,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkSetDeviceMemoryPriorityEXTDelegate vkSetDeviceMemoryPriorityEXT_ptr;
 		public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
 			=> vkSetDeviceMemoryPriorityEXT_ptr(device, memory, priority);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetDispatchParametersARMDelegate(VkCommandBuffer commandBuffer, VkDispatchParametersARM* pDispatchParameters);
+		private static vkCmdSetDispatchParametersARMDelegate vkCmdSetDispatchParametersARM_ptr;
+		public static void vkCmdSetDispatchParametersARM(VkCommandBuffer commandBuffer, VkDispatchParametersARM* pDispatchParameters)
+			=> vkCmdSetDispatchParametersARM_ptr(commandBuffer, pDispatchParameters);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkGetDescriptorSetLayoutHostMappingInfoVALVEDelegate(VkDevice device, VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
@@ -4110,6 +4236,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr(physicalDevice, pQueueFamilyDataGraphProcessingEngineInfo, pQueueFamilyDataGraphProcessingEngineProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARMDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties, VkBaseOutStructure* pProperties);
+		private static vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARMDelegate vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM_ptr;
+		public static VkResult vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties, VkBaseOutStructure* pProperties)
+			=> vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM_ptr(physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphProperties, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
 		private static vkCmdSetAttachmentFeedbackLoopEnableEXTDelegate vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 		public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
@@ -4356,6 +4488,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdBeginCustomResolveEXT_ptr(commandBuffer, pBeginCustomResolveInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARMDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties, VkDataGraphOpticalFlowImageFormatInfoARM* pOpticalFlowImageFormatInfo, uint* pFormatCount, VkDataGraphOpticalFlowImageFormatPropertiesARM* pImageFormatProperties);
+		private static vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARMDelegate vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr;
+		public static VkResult vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkQueueFamilyDataGraphPropertiesARM* pQueueFamilyDataGraphProperties, VkDataGraphOpticalFlowImageFormatInfoARM* pOpticalFlowImageFormatInfo, uint* pFormatCount, VkDataGraphOpticalFlowImageFormatPropertiesARM* pImageFormatProperties)
+			=> vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr(physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphProperties, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate void vkCmdSetComputeOccupancyPriorityNVDelegate(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* pParameters);
 		private static vkCmdSetComputeOccupancyPriorityNVDelegate vkCmdSetComputeOccupancyPriorityNV_ptr;
 		public static void vkCmdSetComputeOccupancyPriorityNV(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* pParameters)
@@ -4372,6 +4510,12 @@ namespace Evergine.Bindings.Vulkan
 		private static vkGetPhysicalDeviceUbmPresentationSupportSECDelegate vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr;
 		public static VkBool32 vkGetPhysicalDeviceUbmPresentationSupportSEC(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr device)
 			=> vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr(physicalDevice, queueFamilyIndex, device);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate void vkCmdSetPrimitiveRestartIndexEXTDelegate(VkCommandBuffer commandBuffer, uint primitiveRestartIndex);
+		private static vkCmdSetPrimitiveRestartIndexEXTDelegate vkCmdSetPrimitiveRestartIndexEXT_ptr;
+		public static void vkCmdSetPrimitiveRestartIndexEXT(VkCommandBuffer commandBuffer, uint primitiveRestartIndex)
+			=> vkCmdSetPrimitiveRestartIndexEXT_ptr(commandBuffer, primitiveRestartIndex);
 
 		public static void LoadFunctionPointers(VkInstance instance = default)
 		{
@@ -4743,6 +4887,18 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkSubmitDebugUtilsMessageEXT",  out vkSubmitDebugUtilsMessageEXT_ptr);
 			NativeLib.LoadFunction("vkGetAndroidHardwareBufferPropertiesANDROID",  out vkGetAndroidHardwareBufferPropertiesANDROID_ptr);
 			NativeLib.LoadFunction("vkGetMemoryAndroidHardwareBufferANDROID",  out vkGetMemoryAndroidHardwareBufferANDROID_ptr);
+			NativeLib.LoadFunction("vkCreateGpaSessionAMD",  out vkCreateGpaSessionAMD_ptr);
+			NativeLib.LoadFunction("vkDestroyGpaSessionAMD",  out vkDestroyGpaSessionAMD_ptr);
+			NativeLib.LoadFunction("vkSetGpaDeviceClockModeAMD",  out vkSetGpaDeviceClockModeAMD_ptr);
+			NativeLib.LoadFunction("vkGetGpaDeviceClockInfoAMD",  out vkGetGpaDeviceClockInfoAMD_ptr);
+			NativeLib.LoadFunction("vkCmdBeginGpaSessionAMD",  out vkCmdBeginGpaSessionAMD_ptr);
+			NativeLib.LoadFunction("vkCmdEndGpaSessionAMD",  out vkCmdEndGpaSessionAMD_ptr);
+			NativeLib.LoadFunction("vkCmdBeginGpaSampleAMD",  out vkCmdBeginGpaSampleAMD_ptr);
+			NativeLib.LoadFunction("vkCmdEndGpaSampleAMD",  out vkCmdEndGpaSampleAMD_ptr);
+			NativeLib.LoadFunction("vkGetGpaSessionStatusAMD",  out vkGetGpaSessionStatusAMD_ptr);
+			NativeLib.LoadFunction("vkGetGpaSessionResultsAMD",  out vkGetGpaSessionResultsAMD_ptr);
+			NativeLib.LoadFunction("vkResetGpaSessionAMD",  out vkResetGpaSessionAMD_ptr);
+			NativeLib.LoadFunction("vkCmdCopyGpaSessionResultsAMD",  out vkCmdCopyGpaSessionResultsAMD_ptr);
 			NativeLib.LoadFunction("vkCreateExecutionGraphPipelinesAMDX",  out vkCreateExecutionGraphPipelinesAMDX_ptr);
 			NativeLib.LoadFunction("vkGetExecutionGraphPipelineScratchSizeAMDX",  out vkGetExecutionGraphPipelineScratchSizeAMDX_ptr);
 			NativeLib.LoadFunction("vkGetExecutionGraphPipelineNodeIndexAMDX",  out vkGetExecutionGraphPipelineNodeIndexAMDX_ptr);
@@ -4864,6 +5020,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR",  out vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr);
 			NativeLib.LoadFunction("vkGetEncodedVideoSessionParametersKHR",  out vkGetEncodedVideoSessionParametersKHR_ptr);
 			NativeLib.LoadFunction("vkCmdEncodeVideoKHR",  out vkCmdEncodeVideoKHR_ptr);
+			NativeLib.LoadFunction("vkQueueSetPerfHintQCOM",  out vkQueueSetPerfHintQCOM_ptr);
 			NativeLib.LoadFunction("vkCreateCudaModuleNV",  out vkCreateCudaModuleNV_ptr);
 			NativeLib.LoadFunction("vkGetCudaModuleCacheNV",  out vkGetCudaModuleCacheNV_ptr);
 			NativeLib.LoadFunction("vkCreateCudaFunctionNV",  out vkCreateCudaFunctionNV_ptr);
@@ -4875,6 +5032,13 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDispatchTileQCOM",  out vkCmdDispatchTileQCOM_ptr);
 			NativeLib.LoadFunction("vkCmdBeginPerTileExecutionQCOM",  out vkCmdBeginPerTileExecutionQCOM_ptr);
 			NativeLib.LoadFunction("vkCmdEndPerTileExecutionQCOM",  out vkCmdEndPerTileExecutionQCOM_ptr);
+			NativeLib.LoadFunction("vkSetLatencySleepModeLegacyNV",  out vkSetLatencySleepModeLegacyNV_ptr);
+			NativeLib.LoadFunction("vkLatencySleepLegacyNV",  out vkLatencySleepLegacyNV_ptr);
+			NativeLib.LoadFunction("vkSetLatencyMarkerLegacyNV",  out vkSetLatencyMarkerLegacyNV_ptr);
+			NativeLib.LoadFunction("vkGetLatencyTimingsLegacyNV",  out vkGetLatencyTimingsLegacyNV_ptr);
+			NativeLib.LoadFunction("vkQueueNotifyOutOfBandLegacyNV",  out vkQueueNotifyOutOfBandLegacyNV_ptr);
+			NativeLib.LoadFunction("vkGetSleepStatusLegacyNV",  out vkGetSleepStatusLegacyNV_ptr);
+			NativeLib.LoadFunction("vkShutdownLatencyDeviceLegacyNV",  out vkShutdownLatencyDeviceLegacyNV_ptr);
 			NativeLib.LoadFunction("vkExportMetalObjectsEXT",  out vkExportMetalObjectsEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutSizeEXT",  out vkGetDescriptorSetLayoutSizeEXT_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutBindingOffsetEXT",  out vkGetDescriptorSetLayoutBindingOffsetEXT_ptr);
@@ -4968,6 +5132,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdDrawClusterHUAWEI",  out vkCmdDrawClusterHUAWEI_ptr);
 			NativeLib.LoadFunction("vkCmdDrawClusterIndirectHUAWEI",  out vkCmdDrawClusterIndirectHUAWEI_ptr);
 			NativeLib.LoadFunction("vkSetDeviceMemoryPriorityEXT",  out vkSetDeviceMemoryPriorityEXT_ptr);
+			NativeLib.LoadFunction("vkCmdSetDispatchParametersARM",  out vkCmdSetDispatchParametersARM_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetLayoutHostMappingInfoVALVE",  out vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr);
 			NativeLib.LoadFunction("vkGetDescriptorSetHostMappingVALVE",  out vkGetDescriptorSetHostMappingVALVE_ptr);
 			NativeLib.LoadFunction("vkCmdCopyMemoryIndirectNV",  out vkCmdCopyMemoryIndirectNV_ptr);
@@ -5064,6 +5229,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkGetDataGraphPipelinePropertiesARM",  out vkGetDataGraphPipelinePropertiesARM_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM_ptr);
 			NativeLib.LoadFunction("vkCmdSetAttachmentFeedbackLoopEnableEXT",  out vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr);
 			NativeLib.LoadFunction("vkGetScreenBufferPropertiesQNX",  out vkGetScreenBufferPropertiesQNX_ptr);
 			NativeLib.LoadFunction("vkCmdSetDescriptorBufferOffsets2EXT",  out vkCmdSetDescriptorBufferOffsets2EXT_ptr);
@@ -5105,9 +5271,11 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkClearShaderInstrumentationMetricsARM",  out vkClearShaderInstrumentationMetricsARM_ptr);
 			NativeLib.LoadFunction("vkCmdEndRendering2KHR",  out vkCmdEndRendering2KHR_ptr);
 			NativeLib.LoadFunction("vkCmdBeginCustomResolveEXT",  out vkCmdBeginCustomResolveEXT_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr);
 			NativeLib.LoadFunction("vkCmdSetComputeOccupancyPriorityNV",  out vkCmdSetComputeOccupancyPriorityNV_ptr);
 			NativeLib.LoadFunction("vkCreateUbmSurfaceSEC",  out vkCreateUbmSurfaceSEC_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceUbmPresentationSupportSEC",  out vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr);
+			NativeLib.LoadFunction("vkCmdSetPrimitiveRestartIndexEXT",  out vkCmdSetPrimitiveRestartIndexEXT_ptr);
 		}
 	}
 }
