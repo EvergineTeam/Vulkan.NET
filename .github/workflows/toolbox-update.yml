@@ -1,0 +1,29 @@
+# Keeps this repository's agentic workflows pinned to the current toolbox
+# release.
+#
+# Moving the `v1` tag does not update anything on its own: a repository keeps
+# the commit it was compiled against until something recompiles it, and nothing
+# fails in the meantime. That is what makes the drift silent, and why this runs
+# on a schedule rather than waiting to be noticed.
+#
+# Deliberately not an agentic workflow. Comparing two SHAs, reinstalling and
+# recompiling is entirely deterministic.
+
+name: Toolbox Updater
+
+on:
+  schedule:
+    # Weekly, so drift never exceeds seven days. Offset from the agent crons so
+    # an update never lands while an agent is mid-run.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update:
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/toolbox-updater.yml@v1
+    with:
+      app-client-id: ${{ vars.APP_CLIENT_ID }}
+    secrets:
+      # GITHUB_TOKEN may not write under .github/workflows/ -- that permission
+      # is App-only -- so without this the push is rejected.
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
