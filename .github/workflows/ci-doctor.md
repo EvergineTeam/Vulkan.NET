@@ -61,7 +61,7 @@ safe-outputs:
     allowed-labels: [agent:needs-regen, agent:upstream-break, agent:needs-human]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@c6cb3217e05c978d287831bef05895075c263dfa
+source: EvergineTeam/Evergine.Bindings@d70d06b5525a011b293f81d5de14fd329eb36832
 ---
 
 # CI Doctor
