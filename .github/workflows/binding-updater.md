@@ -66,7 +66,7 @@ safe-outputs:
     allowed-labels: [agent:needs-human, agent:upstream-break]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@d70d06b5525a011b293f81d5de14fd329eb36832
+source: EvergineTeam/Evergine.Bindings@0afb85d204706b58bb4b0aee8127be4a55ce460e
 ---
 
 # Binding Updater
@@ -86,6 +86,8 @@ If you were triggered by a label that is not `agent:needs-regen`, call `noop` im
 
 Do not infer paths from the directory layout. Do not hardcode a URL you saw in a workflow file. If `binding.yml` is missing or does not validate, stop and open an issue saying so — everything below depends on it.
 
+**If the manifest has no `generator` block, call `noop` and stop immediately.** Say nothing, open nothing. You regenerate a binding from a specification, and a repository with no generator has nothing for you to run — it is a hand-maintained C wrapper, and `cpp-wrapper-porter` looks after it. Agents install as a package, so you arrive everywhere the toolbox is consumed, and reporting on a repository you cannot act on produces one piece of noise per repository per month.
+
 Manifests carry a `NOTE` comment where the repository has a hazard: a pinned ref that must not move, native binaries that must be rebuilt alongside a header, an upstream we maintain ourselves. **Read those notes and obey them.** They exist because someone already thought about this repository and reached a conclusion you are not being asked to revisit.
 
 ## Step 2 — read the upstream report
@@ -99,6 +101,13 @@ Read that file. It is one screen long and it tells you which sources moved.
 If the report is missing, the step failed — say so and stop, rather than fetching by hand.
 
 **For `git-submodule` repositories the report only tells you the pointer is behind; nothing has been checked out.** That is deliberate. Bumping a submodule in KTX.NET means rebuilding native binaries, and in ImGui.Net it means moving four interdependent modules as a compatible set. Report the gap and stop unless the manifest explicitly says otherwise.
+
+**For `kind: vendored` the "nothing changed" rule above does not decide your answer, and what woke you does.** Nothing fetches these upstreams because nothing can: the sources are behind a sign-in and a licence acceptance, so they arrive by hand and are already in the tree before you start. The report will say so on every run.
+
+- **Woken on schedule or on demand**: `noop` and stop. You cannot chase a bump you cannot download, and a newer upstream is reported by a separate watcher that opens an issue for a human.
+- **Woken by `agent:needs-regen`**: this is your case. Somebody refreshed the sources, the regeneration that followed failed, and the CI doctor handed it to you. Everything you need is in the working tree. Read the failure, fix the **generator** so it produces correct output from the sources as they now stand, and open a pull request.
+
+Do not propose a URL, a script or an adapter that downloads the upstream. That download is gated on a person accepting a licence, and routing around it is not an improvement.
 
 ## Step 3 — regenerate and build
 
