@@ -8,6 +8,7 @@
 		<Description>Low-level bindings for Vulkan used in Evergine</Description>
 		<RepositoryUrl>https://github.com/EvergineTeam/Vulkan.NET</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
