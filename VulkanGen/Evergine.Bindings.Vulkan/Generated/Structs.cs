@@ -2121,7 +2121,7 @@ namespace Evergine.Bindings.Vulkan
 	{
 		public VkStructureType sType;
 		public void* pNext;
-		public uint flags;
+		public VkPrivateDataSlotCreateFlags flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2130,6 +2130,14 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 privateData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDevicePrivateDataBaseHandleFeaturesNV
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 privateDataBaseHandle;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -12620,6 +12628,31 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixInfo2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkScopeKHR scope;
+		public uint invocations;
+		public uint subgroupSize;
+		public VkCooperativeMatrixFlagsEXT flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkCooperativeMatrixProperties2EXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint MGranularity;
+		public uint NGranularity;
+		public uint KGranularity;
+		public VkComponentTypeKHR AType;
+		public VkComponentTypeKHR BType;
+		public VkComponentTypeKHR CType;
+		public VkComponentTypeKHR ResultType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR
 	{
 		public VkStructureType sType;
@@ -15114,6 +15147,18 @@ namespace Evergine.Bindings.Vulkan
 		public VkBool32 shaderFloat6;
 		public VkBool32 shaderFloat8UnsignedE8M0;
 		public VkBool32 shaderMXInt8;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cooperativeMatrixProperties2;
+		public VkBool32 cooperativeMatrixReductions;
+		public VkBool32 cooperativeMatrixConversions;
+		public VkBool32 cooperativeMatrixPerElementOperations;
+		public VkBool32 cooperativeMatrixGetCoordinate;
 	}
 
 }

@@ -4500,6 +4500,12 @@ namespace Evergine.Bindings.Vulkan
 			=> vkCmdSetComputeOccupancyPriorityNV_ptr(commandBuffer, pParameters);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate VkResult vkGetPhysicalDeviceCooperativeMatrixProperties2EXTDelegate(VkPhysicalDevice physicalDevice, VkPhysicalDeviceCooperativeMatrixInfo2EXT* pCooperativeMatrixInfo, uint* pPropertyCount, VkCooperativeMatrixProperties2EXT* pProperties);
+		private static vkGetPhysicalDeviceCooperativeMatrixProperties2EXTDelegate vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr;
+		public static VkResult vkGetPhysicalDeviceCooperativeMatrixProperties2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceCooperativeMatrixInfo2EXT* pCooperativeMatrixInfo, uint* pPropertyCount, VkCooperativeMatrixProperties2EXT* pProperties)
+			=> vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr(physicalDevice, pCooperativeMatrixInfo, pPropertyCount, pProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate VkResult vkCreateUbmSurfaceSECDelegate(VkInstance instance, VkUbmSurfaceCreateInfoSEC* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
 		private static vkCreateUbmSurfaceSECDelegate vkCreateUbmSurfaceSEC_ptr;
 		public static VkResult vkCreateUbmSurfaceSEC(VkInstance instance, VkUbmSurfaceCreateInfoSEC* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
@@ -5273,6 +5279,7 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdBeginCustomResolveEXT",  out vkCmdBeginCustomResolveEXT_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM",  out vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr);
 			NativeLib.LoadFunction("vkCmdSetComputeOccupancyPriorityNV",  out vkCmdSetComputeOccupancyPriorityNV_ptr);
+			NativeLib.LoadFunction("vkGetPhysicalDeviceCooperativeMatrixProperties2EXT",  out vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr);
 			NativeLib.LoadFunction("vkCreateUbmSurfaceSEC",  out vkCreateUbmSurfaceSEC_ptr);
 			NativeLib.LoadFunction("vkGetPhysicalDeviceUbmPresentationSupportSEC",  out vkGetPhysicalDeviceUbmPresentationSupportSEC_ptr);
 			NativeLib.LoadFunction("vkCmdSetPrimitiveRestartIndexEXT",  out vkCmdSetPrimitiveRestartIndexEXT_ptr);

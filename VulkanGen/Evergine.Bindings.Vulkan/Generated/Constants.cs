@@ -823,7 +823,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_EXTENSION_NAME = "VK_EXT_dynamic_rendering_unused_attachments";
 		public const uint VK_KHR_INTERNALLY_SYNCHRONIZED_QUEUES_SPEC_VERSION = 1;
 		public const string VK_KHR_INTERNALLY_SYNCHRONIZED_QUEUES_EXTENSION_NAME = "VK_KHR_internally_synchronized_queues";
-		public const uint VK_NV_LOW_LATENCY_2_SPEC_VERSION = 2;
+		public const uint VK_NV_LOW_LATENCY_2_SPEC_VERSION = 3;
 		public const string VK_NV_LOW_LATENCY_2_EXTENSION_NAME = "VK_NV_low_latency2";
 		public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
 		public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
@@ -995,6 +995,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_COMPUTE_OCCUPANCY_PRIORITY_EXTENSION_NAME = "VK_NV_compute_occupancy_priority";
 		public const uint VK_KHR_MAINTENANCE_11_SPEC_VERSION = 1;
 		public const string VK_KHR_MAINTENANCE_11_EXTENSION_NAME = "VK_KHR_maintenance11";
+		public const uint VK_EXT_COOPERATIVE_MATRIX_MAINTENANCE_1_SPEC_VERSION = 1;
+		public const string VK_EXT_COOPERATIVE_MATRIX_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_cooperative_matrix_maintenance1";
 		public const uint VK_EXT_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_EXT_shader_subgroup_partitioned";
 		public const uint VK_SEC_UBM_SURFACE_SPEC_VERSION = 1;
@@ -1015,5 +1017,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_IMAGE_TILING_CONTROL_EXTENSION_NAME = "VK_EXT_image_tiling_control";
 		public const uint VK_NV_COOPERATIVE_MATRIX_DECODE_VECTOR_SPEC_VERSION = 1;
 		public const string VK_NV_COOPERATIVE_MATRIX_DECODE_VECTOR_EXTENSION_NAME = "VK_NV_cooperative_matrix_decode_vector";
+		public const uint VK_NV_PRIVATE_DATA_BASE_HANDLE_SPEC_VERSION = 1;
+		public const string VK_NV_PRIVATE_DATA_BASE_HANDLE_EXTENSION_NAME = "VK_NV_private_data_base_handle";
 	}
 }
