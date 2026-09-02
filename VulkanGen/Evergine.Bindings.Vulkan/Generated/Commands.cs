@@ -6017,8 +6017,6 @@ namespace Evergine.Bindings.Vulkan
 			NativeLib.LoadFunction("vkCmdPushConstants2KHR",  out vkCmdPushConstants2KHR_ptr);
 			NativeLib.LoadFunction("vkCmdPushDescriptorSet2KHR",  out vkCmdPushDescriptorSet2KHR_ptr);
 			NativeLib.LoadFunction("vkCmdPushDescriptorSetWithTemplate2KHR",  out vkCmdPushDescriptorSetWithTemplate2KHR_ptr);
-			NativeLib.LoadFunction("vkCmdEndRendering2EXT",  out vkCmdEndRendering2EXT_ptr);
-
 		}
 	}
 }
