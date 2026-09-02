@@ -16,6 +16,10 @@ namespace VulkanGen
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
 
+        // A promoted extension command such as vkGetSemaphoreCounterValueKHR is a separate symbol from
+        // the core name it aliases, and the loader only exports the core one.
+        public List<(string Name, CommandDefinition Command)> CommandAliases = new List<(string Name, CommandDefinition Command)>();
+
         public static VulkanVersion FromSpec(VulkanSpecification spec, string versionName, IEnumerable<ExtensionDefinition> extensions)
         {
             VulkanVersion version = new VulkanVersion();
@@ -56,6 +60,7 @@ namespace VulkanGen
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
                     version.Commands.Add(commandDefinition);
+                    AddCommandAlias(version, command, name, commandDefinition);
                 }
 
                 if (feature.Name == versionName)
@@ -122,10 +127,25 @@ namespace VulkanGen
 
                     if(!version.Commands.Exists(c => c?.Prototype.Name == name))
                         version.Commands.Add(commandDefinition);
+
+                    AddCommandAlias(version, command, name, commandDefinition);
                 }
             }
 
             return version;
+        }
+
+        private static void AddCommandAlias(VulkanVersion version, string aliasName, string resolvedName, CommandDefinition command)
+        {
+            if (aliasName == resolvedName || command == null)
+            {
+                return;
+            }
+
+            if (!version.CommandAliases.Exists(a => a.Name == aliasName))
+            {
+                version.CommandAliases.Add((aliasName, command));
+            }
         }
     }
 }

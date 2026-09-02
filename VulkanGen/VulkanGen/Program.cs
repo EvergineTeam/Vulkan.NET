@@ -290,6 +290,23 @@ namespace VulkanGen
                     file.WriteLine($"\t\t\t=> {command.Prototype.Name}_ptr({command.GetParametersSignature(vulkanSpec, useTypes: false)});\n");
                 }
 
+                foreach (var (aliasName, command) in vulkanVersion.CommandAliases)
+                {
+                    string convertedType = Helpers.ConvertToCSharpType(command.Prototype.Type, 0, vulkanSpec);
+
+                    file.WriteLine("\t\t[UnmanagedFunctionPointer(CallConv)]");
+
+                    // Delegate
+                    file.WriteLine($"\t\tprivate delegate {convertedType} {aliasName}Delegate({command.GetParametersSignature(vulkanSpec)});");
+
+                    // internal function
+                    file.WriteLine($"\t\tprivate static {aliasName}Delegate {aliasName}_ptr;");
+
+                    // public function
+                    file.WriteLine($"\t\tpublic static {convertedType} {aliasName}({command.GetParametersSignature(vulkanSpec)})");
+                    file.WriteLine($"\t\t\t=> {aliasName}_ptr({command.GetParametersSignature(vulkanSpec, useTypes: false)});\n");
+                }
+
                 file.WriteLine($"\t\tpublic static void LoadFunctionPointers(VkInstance instance = default)");
                 file.WriteLine("\t\t{");
                 file.WriteLine("\t\t\tif (instance != default)");
@@ -301,6 +318,11 @@ namespace VulkanGen
                 foreach (var command in vulkanVersion.Commands)
                 {
                     file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{command.Prototype.Name}\",  out {command.Prototype.Name}_ptr);");
+                }
+
+                foreach (var (aliasName, _) in vulkanVersion.CommandAliases)
+                {
+                    file.WriteLine($"\t\t\tNativeLib.LoadFunction(\"{aliasName}\",  out {aliasName}_ptr);");
                 }
 
                 file.WriteLine("\t\t}");
