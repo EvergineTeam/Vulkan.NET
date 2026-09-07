@@ -47,6 +47,14 @@ steps:
   - name: Fetch upstream sources
     id: upstream
     uses: EvergineTeam/Evergine.Bindings/.github/actions/binding-fetch-upstream@v1
+    with:
+      # Report the gap, never close it. gh-aw checks the repository out with
+      # `submodules: false` and that is not configurable from here, so a manifest
+      # declaring `bump: together` -- ImGui.Net's does -- would send the adapter into
+      # empty submodule directories, where git resolves the parent repository instead
+      # and dies on "upload-pack: not our ref". Closing the gap is `binding-tracked-cd`'s
+      # job anyway: bumping these pointers means rebuilding native binaries.
+      bump: report-only
 tools:
   github:
     mode: gh-proxy
@@ -66,7 +74,12 @@ safe-outputs:
     allowed-labels: [agent:needs-human, agent:upstream-break]
     deduplicate-by-title: true
     max: 1
-source: EvergineTeam/Evergine.Bindings@ace4e8d477b877e973e5c748a81aff8f24c6fe42
+  # gh-aw otherwise files every `noop` in a standing "[aw] No-Op Runs" issue per
+  # repository. "Nothing changed" is the expected answer most months, and an issue
+  # that says so twelve times a year is noise a real one has to compete with.
+  noop:
+    report-as-issue: false
+source: EvergineTeam/Evergine.Bindings@4c15efde1d1789d14befc9e2b5ca711a0aba1c4c
 ---
 
 # Binding Updater
@@ -86,7 +99,7 @@ If you were triggered by a label that is not `agent:needs-regen`, call `noop` im
 
 Do not infer paths from the directory layout. Do not hardcode a URL you saw in a workflow file. If `binding.yml` is missing or does not validate, stop and open an issue saying so — everything below depends on it.
 
-**If the manifest has no `generator` block, call `noop` and stop immediately.** Say nothing, open nothing. You regenerate a binding from a specification, and a repository with no generator has nothing for you to run — it is a hand-maintained C wrapper, and `cpp-wrapper-porter` looks after it. Agents install as a package, so you arrive everywhere the toolbox is consumed, and reporting on a repository you cannot act on produces one piece of noise per repository per month.
+**If the manifest has no `generator` block, call `noop` and stop immediately.** Say nothing, open nothing. You regenerate a binding from a specification, and a repository with no generator has nothing for you to run — it is a hand-maintained C wrapper, and `cpp-wrapper-porter` looks after it. The toolbox installer only puts you where the manifest has a `generator` block, so this check is for the other ways of arriving — a `gh aw add` by hand, a manifest edited after you were installed. Reporting on a repository you cannot act on produces one piece of noise per repository per month.
 
 Manifests carry a `NOTE` comment where the repository has a hazard: a pinned ref that must not move, native binaries that must be rebuilt alongside a header, an upstream we maintain ourselves. **Read those notes and obey them.** They exist because someone already thought about this repository and reached a conclusion you are not being asked to revisit.
 
