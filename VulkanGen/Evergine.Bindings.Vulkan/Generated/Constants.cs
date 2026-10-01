@@ -993,6 +993,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_EXT_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_EXTENSION_NAME = "VK_EXT_shader_uniform_buffer_unsized_array";
 		public const uint VK_NV_COMPUTE_OCCUPANCY_PRIORITY_SPEC_VERSION = 1;
 		public const string VK_NV_COMPUTE_OCCUPANCY_PRIORITY_EXTENSION_NAME = "VK_NV_compute_occupancy_priority";
+		public const uint VK_KHR_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION = 1;
+		public const string VK_KHR_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_KHR_pipeline_library_group_handles";
 		public const uint VK_KHR_MAINTENANCE_11_SPEC_VERSION = 1;
 		public const string VK_KHR_MAINTENANCE_11_EXTENSION_NAME = "VK_KHR_maintenance11";
 		public const uint VK_EXT_COOPERATIVE_MATRIX_MAINTENANCE_1_SPEC_VERSION = 1;
@@ -1019,5 +1021,9 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_NV_COOPERATIVE_MATRIX_DECODE_VECTOR_EXTENSION_NAME = "VK_NV_cooperative_matrix_decode_vector";
 		public const uint VK_NV_PRIVATE_DATA_BASE_HANDLE_SPEC_VERSION = 1;
 		public const string VK_NV_PRIVATE_DATA_BASE_HANDLE_EXTENSION_NAME = "VK_NV_private_data_base_handle";
+		public const uint VK_INTEL_DEVICE_INFO_SPEC_VERSION = 1;
+		public const string VK_INTEL_DEVICE_INFO_EXTENSION_NAME = "VK_INTEL_device_info";
+		public const uint VK_VALVE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_SPEC_VERSION = 1;
+		public const string VK_VALVE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_EXTENSION_NAME = "VK_VALVE_buffer_device_address_allocation_alignment";
 	}
 }

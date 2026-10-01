@@ -12139,7 +12139,7 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT
+	public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR
 	{
 		public VkStructureType sType;
 		public void* pNext;
@@ -15159,6 +15159,40 @@ namespace Evergine.Bindings.Vulkan
 		public VkBool32 cooperativeMatrixConversions;
 		public VkBool32 cooperativeMatrixPerElementOperations;
 		public VkBool32 cooperativeMatrixGetCoordinate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 bufferDeviceAddressAllocationAlignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxBufferDeviceAddressAllocationAlignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkBufferDeviceAddressAlignmentAllocateInfoVALVE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint alignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceInfoPropertiesINTEL
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint deviceIpVersionArch;
+		public uint deviceIpVersionRelease;
+		public uint deviceIpVersionRevision;
 	}
 
 }
