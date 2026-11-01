@@ -1005,6 +1005,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_SEC_UBM_SURFACE_EXTENSION_NAME = "VK_SEC_ubm_surface";
 		public const uint VK_KHR_EXTENDED_FLAGS_SPEC_VERSION = 1;
 		public const string VK_KHR_EXTENDED_FLAGS_EXTENSION_NAME = "VK_KHR_extended_flags";
+		public const uint VK_ARM_COOPERATIVE_MATRIX_LAYOUTS_SPEC_VERSION = 1;
+		public const string VK_ARM_COOPERATIVE_MATRIX_LAYOUTS_EXTENSION_NAME = "VK_ARM_cooperative_matrix_layouts";
 		public const uint VK_EXT_SHADER_OCP_MICROSCALING_TYPES_SPEC_VERSION = 1;
 		public const string VK_EXT_SHADER_OCP_MICROSCALING_TYPES_EXTENSION_NAME = "VK_EXT_shader_ocp_microscaling_types";
 		public const uint VK_VALVE_SHADER_MIXED_FLOAT_DOT_PRODUCT_SPEC_VERSION = 1;
@@ -1015,6 +1017,8 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_ARM_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_EXTENSION_NAME = "VK_ARM_data_graph_neural_accelerator_statistics";
 		public const uint VK_EXT_PRIMITIVE_RESTART_INDEX_SPEC_VERSION = 1;
 		public const string VK_EXT_PRIMITIVE_RESTART_INDEX_EXTENSION_NAME = "VK_EXT_primitive_restart_index";
+		public const uint VK_KHR_MAINTENANCE_12_SPEC_VERSION = 1;
+		public const string VK_KHR_MAINTENANCE_12_EXTENSION_NAME = "VK_KHR_maintenance12";
 		public const uint VK_EXT_IMAGE_TILING_CONTROL_SPEC_VERSION = 1;
 		public const string VK_EXT_IMAGE_TILING_CONTROL_EXTENSION_NAME = "VK_EXT_image_tiling_control";
 		public const uint VK_NV_COOPERATIVE_MATRIX_DECODE_VECTOR_SPEC_VERSION = 1;
@@ -1025,5 +1029,7 @@ namespace Evergine.Bindings.Vulkan
 		public const string VK_INTEL_DEVICE_INFO_EXTENSION_NAME = "VK_INTEL_device_info";
 		public const uint VK_VALVE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_SPEC_VERSION = 1;
 		public const string VK_VALVE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_EXTENSION_NAME = "VK_VALVE_buffer_device_address_allocation_alignment";
+		public const uint VK_GOOGLE_HDR_SMPTE_ST_209450_METADATA_SPEC_VERSION = 1;
+		public const string VK_GOOGLE_HDR_SMPTE_ST_209450_METADATA_EXTENSION_NAME = "VK_GOOGLE_hdr_smpte_st_209450_metadata";
 	}
 }

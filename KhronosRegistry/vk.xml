@@ -83,6 +83,7 @@ branch of the member gitlab server.
         <tag name="MTK" author="Mediatek, Inc." contact="Samuel Huang @shengwenhuang" />
         <tag name="OPENXR" author="OpenXR Working Group" contact="Ron Bessems @rbessems" />
         <tag name="MWS" author="Mercurius Window System" contact="Christopher Ross, chris@tebibyte.org, mercurius@tebibyte.org" />
+        <tag name="APEX" author="Apex Compute" contact="Selim Sandal @selimsandal, selim@apexcompute.com" />
     </tags>
 
     <types comment="Vulkan type definitions">
@@ -188,7 +189,7 @@ branch of the member gitlab server.
 #define <name>VKSC_API_VERSION_1_0</name> <type>VK_MAKE_API_VERSION</type>(VKSC_API_VARIANT, 1, 0, 0)// Patch version should always be set to 0</type>
 
         <type api="vulkan,vulkanbase" category="define">// Version of this file
-#define <name>VK_HEADER_VERSION</name> 364</type>
+#define <name>VK_HEADER_VERSION</name> 367</type>
         <type api="vulkan,vulkanbase" category="define" requires="VK_HEADER_VERSION">// Complete version of this file
 #define <name>VK_HEADER_VERSION_COMPLETE</name> <type>VK_MAKE_API_VERSION</type>(0, 1, 4, VK_HEADER_VERSION)</type>
         <type api="vulkansc" category="define">// Version of this file
@@ -1050,6 +1051,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type name="VkPresentTimingInfoFlagBitsEXT" category="enum" />
         <type name="VkSwapchainImageUsageFlagBitsOHOS" category="enum" />
         <type name="VkPerformanceCounterDescriptionFlagBitsARM" category="enum" />
+        <type name="VkHdrSmpteSt209450PowerPreferenceGOOGLE" category="enum" />
 
             <comment>Enumerated types in the header, but not used by the API</comment>
         <type name="VkVendorId" category="enum" />
@@ -1290,7 +1292,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true"><type>VkDeviceQueueCreateFlags</type>    <name>flags</name></member>
             <member><type>uint32_t</type>        <name>queueFamilyIndex</name></member>
             <member><type>uint32_t</type>        <name>queueCount</name></member>
-            <member len="queueCount">const <type>float</type>*    <name>pQueuePriorities</name></member>
+            <member optional="true" len="queueCount">const <type>float</type>*    <name>pQueuePriorities</name></member>
         </type>
         <type category="struct" name="VkDeviceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO"><type>VkStructureType</type> <name>sType</name></member>
@@ -1501,7 +1503,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <type category="struct" name="VkImageCreateFlags2CreateInfoKHR" structextends="VkImageCreateInfo,VkPhysicalDeviceImageFormatInfo2,VkFramebufferAttachmentImageInfo,VkVideoFormatPropertiesKHR" requiredlimittype="true">
             <member values="VK_STRUCTURE_TYPE_IMAGE_CREATE_FLAGS_2_CREATE_INFO_KHR"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>*                      <name>pNext</name></member>
-            <member limittype="bitmask"><type>VkImageCreateFlags2KHR</type> <name>flags</name></member>
+            <member optional="true" limittype="bitmask"><type>VkImageCreateFlags2KHR</type> <name>flags</name></member>
         </type>
         <type category="struct" name="VkImageUsageFlags2CreateInfoKHR" structextends="VkFramebufferAttachmentImageInfo,VkImageCreateInfo,VkPhysicalDeviceImageFormatInfo2,VkPhysicalDeviceSparseImageFormatInfo2,VkPhysicalDeviceVideoFormatInfoKHR,VkSurfaceCapabilities2KHR,VkSwapchainCreateInfoKHR,VkVideoFormatPropertiesKHR" requiredlimittype="true">
             <member values="VK_STRUCTURE_TYPE_IMAGE_USAGE_FLAGS_2_CREATE_INFO_KHR"><type>VkStructureType</type> <name>sType</name></member>
@@ -3807,6 +3809,18 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>size_t</type>                                     <name>dynamicMetadataSize</name><comment>Specified in bytes</comment></member>
             <member len="dynamicMetadataSize">const <type>void</type>*   <name>pDynamicMetadata</name><comment>Binary code of size dynamicMetadataSize</comment></member>
         </type>
+        <type category="struct" name="VkHdrSmpteSt209450GOOGLE" structextends="VkHdrMetadataEXT">
+            <member values="VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true">const <type>void</type>*                                         <name>pNext</name></member>
+            <member><type>size_t</type>                                     <name>metadataSize</name></member>
+            <member len="metadataSize">const <type>void</type>*              <name>pMetadata</name></member>
+            <member><type>VkHdrSmpteSt209450PowerPreferenceGOOGLE</type> <name>powerPreference</name></member>
+        </type>
+        <type category="struct" name="VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE" returnedonly="true" structextends="VkSurfaceCapabilities2KHR">
+            <member values="VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*          <name>pNext</name></member>
+            <member><type>VkBool32</type>       <name>hdrSmpteSt209450Supported</name></member>
+        </type>
         <type category="struct" name="VkDisplayNativeHdrSurfaceCapabilitiesAMD" returnedonly="true" structextends="VkSurfaceCapabilities2KHR">
             <member values="VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>*          <name>pNext</name></member>
@@ -4389,7 +4403,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member limittype="noauto"><type>uint32_t</type>                      <name>vendorID</name></member>
             <member limittype="noauto"><type>uint32_t</type>                      <name>deviceID</name></member>
             <member limittype="noauto"><type>VkPhysicalDeviceLayeredApiKHR</type> <name>layeredAPI</name></member>
-            <member limittype="noauto"><type>char</type>                          <name>deviceName</name>[<enum>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</enum>]</member>
+            <member limittype="noauto" len="null-terminated"><type>char</type>    <name>deviceName</name>[<enum>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</enum>]</member>
         </type>
         <type category="struct" name="VkPhysicalDeviceLayeredApiVulkanPropertiesKHR" returnedonly="true" structextends="VkPhysicalDeviceLayeredApiPropertiesKHR" requiredlimittype="true">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
@@ -4428,6 +4442,16 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>*                            <name>pNext</name></member>
             <member><type>VkBool32</type>                                         <name>maintenance10</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceMaintenance12PropertiesKHR" returnedonly="true" structextends="VkPhysicalDeviceProperties2" requiredlimittype="true">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member limittype="max"><type>uint32_t</type>                         <name>maxInputAttachmentIndex</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceMaintenance12FeaturesKHR" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_FEATURES_KHR"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*                            <name>pNext</name></member>
+            <member><type>VkBool32</type>                                         <name>maintenance12</name></member>
         </type>
         <type category="struct" name="VkQueueFamilyOwnershipTransferPropertiesKHR" returnedonly="true" structextends="VkQueueFamilyProperties2" requiredlimittype="true">
             <member values="VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR"><type>VkStructureType</type> <name>sType</name></member>
@@ -6518,7 +6542,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member><type>float</type>                                              <name>memoryClockRatioToPeak</name></member>
             <member><type>float</type>                                              <name>engineClockRatioToPeak</name></member>
         </type>
-        <type category="struct" name="VkGpaDeviceGetClockInfoAMD">
+        <type category="struct" name="VkGpaDeviceGetClockInfoAMD" returnedonly="true">
             <member values="VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>*                              <name>pNext</name></member>
             <member><type>float</type>                                              <name>memoryClockRatioToPeak</name></member>
@@ -10974,6 +10998,11 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member optional="true" noautovalidity="true"><type>void</type>*    <name>pNext</name></member>
             <member><type>VkBool32</type>                                       <name>hdrVivid</name></member>
         </type>
+        <type category="struct" name="VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true" noautovalidity="true"><type>void</type>*    <name>pNext</name></member>
+            <member><type>VkBool32</type>                                       <name>hdrSmpteSt209450</name></member>
+        </type>
         <type category="struct" name="VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>*                           <name>pNext</name></member>
@@ -11470,7 +11499,7 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member len="null-terminated" noautovalidity="true"><type>char</type>                 <name>name</name>[<enum>VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM</enum>]</member>
             <member><type>uint32_t</type>                                                         <name>version</name></member>
         </type>
-        <type category="struct" name="VkQueueFamilyDataGraphPropertiesARM" returnedonly="true">
+        <type category="struct" name="VkQueueFamilyDataGraphPropertiesARM">
             <member values="VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM"><type>VkStructureType</type> <name>sType</name></member>
             <member optional="true"><type>void</type>* <name>pNext</name></member>
             <member><type>VkPhysicalDeviceDataGraphProcessingEngineARM</type> <name>engine</name></member>
@@ -12187,6 +12216,11 @@ typedef void* <name>MTLSharedEvent_id</name>;
             <member limittype="noauto"><type>uint32_t</type>               <name>deviceIpVersionRelease</name></member>
             <member limittype="noauto"><type>uint32_t</type>               <name>deviceIpVersionRevision</name></member>
         </type>
+        <type category="struct" name="VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_LAYOUTS_FEATURES_ARM"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>* <name>pNext</name></member>
+            <member><type>VkBool32</type>                    <name>cooperativeMatrixArmLayouts</name></member>
+        </type>
     </types>
 
 
@@ -12797,6 +12831,10 @@ typedef void* <name>MTLSharedEvent_id</name>;
     <enums name="VkAntiLagStageAMD" type="enum">
         <enum value="0" name="VK_ANTI_LAG_STAGE_INPUT_AMD" />
         <enum value="1" name="VK_ANTI_LAG_STAGE_PRESENT_AMD" />
+    </enums>
+    <enums name="VkHdrSmpteSt209450PowerPreferenceGOOGLE" type="enum">
+        <enum value="0" name="VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_COLOR_ACCURACY_GOOGLE" />
+        <enum value="1" name="VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_LOW_POWER_GOOGLE" />
     </enums>
 
         <comment>Flags</comment>
@@ -13471,7 +13509,8 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <enum value="0x10006" name="VK_VENDOR_ID_POCL" comment="PoCL vendor ID" />
         <enum value="0x10007" name="VK_VENDOR_ID_MOBILEYE" comment="Mobileye vendor ID" />
         <enum value="0x10008" name="VK_VENDOR_ID_APE" comment="Ape vendor ID" />
-            <unused start="0x10009" comment="This is the next unused available Khronos vendor ID" />
+        <enum value="0x10009" name="VK_VENDOR_ID_APEX" comment="Apex Compute vendor ID" />
+            <unused start="0x1000A" comment="This is the next unused available Khronos vendor ID" />
     </enums>
     <enums name="VkDriverId" type="enum">
         <comment>Driver IDs are now represented as enums instead of the old
@@ -13508,6 +13547,10 @@ typedef void* <name>MTLSharedEvent_id</name>;
         <enum value="29" name="VK_DRIVER_ID_MESA_GFXSTREAM" comment="Mesa open source project" />
         <enum value="30" name="VK_DRIVER_ID_APE_SOFT" comment="Ape open source project" />
         <enum value="31" name="VK_DRIVER_ID_RESERVED_31" comment="Reserved for undisclosed driver project" />
+        <enum value="32" name="VK_DRIVER_ID_APEX" comment="Apex Compute" />
+        <enum value="33" name="VK_DRIVER_ID_NIKKI" comment="nikki Vulkan-on-WebGPU implementation" />
+        <enum value="34" name="VK_DRIVER_ID_MOMOTEN" comment="momoten Vulkan-on-OpenCL implementation" />
+        <enum value="35" name="VK_DRIVER_ID_AURORA_BOREALIS" comment="Aurora Silicon" />
     </enums>
     <enums name="VkConditionalRenderingFlagBitsEXT" type="bitmask">
         <enum bitpos="0" name="VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT" />
@@ -18889,7 +18932,7 @@ endif::VK_KHR_internally_synchronized_queues[]
             <proto><type>VkResult</type> <name>vkGetDeviceFaultReportsKHR</name></proto>
             <param><type>VkDevice</type> <name>device</name></param>
             <param><type>uint64_t</type> <name>timeout</name></param>
-            <param><type>uint32_t</type>* <name>pFaultCounts</name></param>
+            <param optional="false,true"><type>uint32_t</type>* <name>pFaultCounts</name></param>
             <param optional="true" len="pFaultCounts"><type>VkDeviceFaultInfoKHR</type>* <name>pFaultInfo</name></param>
         </command>
         <command successcodes="VK_SUCCESS,VK_INCOMPLETE" errorcodes="VK_ERROR_OUT_OF_HOST_MEMORY,VK_ERROR_NOT_ENOUGH_SPACE_KHR,VK_ERROR_UNKNOWN,VK_ERROR_VALIDATION_FAILED">
@@ -23285,6 +23328,9 @@ endif::VK_KHR_internally_synchronized_queues[]
             </require>
             <require depends="VK_KHR_extended_flags">
                 <enum bitpos="21" extends="VkImageCreateFlagBits2KHR" name="VK_IMAGE_CREATE_2_RESERVED_21_BIT_IMG" />
+            </require>
+            <require depends="VK_KHR_device_address_commands">
+                <enum bitpos="6" extends="VkAddressCommandFlagBitsKHR" name="VK_ADDRESS_COMMAND_RESERVED_6_BIT_IMG" />
             </require>
         </extension>
         <extension name="VK_IMG_extension_108" number="108" author="IMG" contact="Michael Worcester @michaelworcester" supported="disabled">
@@ -28710,6 +28756,7 @@ endif::VK_KHR_internally_synchronized_queues[]
             <require>
                 <enum value="0" name="VK_COREAVI_EXTENSION_447_SPEC_VERSION" />
                 <enum value="&quot;VK_COREAVI_extension_447&quot;" name="VK_COREAVI_EXTENSION_447_EXTENSION_NAME" />
+                <enum bitpos="8" extends="VkBufferCreateFlagBits" name="VK_BUFFER_CREATE_RESERVED_8_BIT_LYNX" />
             </require>
         </extension>
         <extension name="VK_SEC_extension_448" number="448" author="SEC" contact="Ralph Potter gitlab:@r_potter" supported="disabled">
@@ -31778,7 +31825,6 @@ endif::VK_KHR_internally_synchronized_queues[]
                 <enum value="&quot;VK_EXT_extension_641&quot;" name="VK_EXT_EXTENSION_641_EXTENSION_NAME" />
                 <enum bitpos="45" extends="VkPipelineCreateFlagBits2" name="VK_PIPELINE_CREATE_2_RESERVED_45_BIT_EXT" />
                 <enum bitpos="18" extends="VkBufferUsageFlagBits2" name="VK_BUFFER_USAGE_2_RESERVED_18_BIT_EXT" />
-                <enum bitpos="30" extends="VkBufferUsageFlagBits2" name="VK_BUFFER_USAGE_2_RESERVED_30_BIT_EXT" />
                 <enum bitpos="15" extends="VkBuildAccelerationStructureFlagBitsKHR" name="VK_BUILD_ACCELERATION_STRUCTURE_RESERVED_15_BIT_EXT" />
             </require>
         </extension>
@@ -32260,10 +32306,13 @@ endif::VK_KHR_internally_synchronized_queues[]
                 <enum value="&quot;VK_NV_extension_670&quot;" name="VK_NV_EXTENSION_670_EXTENSION_NAME" />
             </require>
         </extension>
-        <extension name="VK_ARM_extension_671" number="671" author="ARM" contact="Kevin Petit @kpet" supported="disabled">
+        <extension name="VK_ARM_cooperative_matrix_layouts" number="671" author="ARM" contact="Kevin Petit @kevinpetit" type="device" supported="vulkan">
             <require>
-                <enum value="0" name="VK_ARM_EXTENSION_671_SPEC_VERSION" />
-                <enum value="&quot;VK_ARM_extension_671&quot;" name="VK_ARM_EXTENSION_671_EXTENSION_NAME" />
+                <enum value="1" name="VK_ARM_COOPERATIVE_MATRIX_LAYOUTS_SPEC_VERSION" />
+                <enum value="&quot;VK_ARM_cooperative_matrix_layouts&quot;" name="VK_ARM_COOPERATIVE_MATRIX_LAYOUTS_EXTENSION_NAME" />
+                <enum offset="0" extends="VkStructureType" name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_LAYOUTS_FEATURES_ARM" />
+                <type name="VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM" />
+                <feature name="cooperativeMatrixArmLayouts" struct="VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM" />
             </require>
         </extension>
         <extension name="VK_KHR_extension_672" number="672" author="KHR" contact="Graeme Leese @gnl21" supported="disabled">
@@ -32354,10 +32403,15 @@ endif::VK_KHR_internally_synchronized_queues[]
                 <enum value="&quot;VK_EXT_extension_680&quot;" name="VK_EXT_EXTENSION_680_EXTENSION_NAME" />
             </require>
         </extension>
-        <extension name="VK_KHR_extension_681" number="681" type="device" author="KHR" contact="Mike Blumenkrantz @zmike" supported="disabled">
+        <extension name="VK_KHR_maintenance12" number="681" type="device" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1" author="KHR" contact="Mike Blumenkrantz @zmike" supported="vulkan" ratified="vulkan">
             <require>
-                <enum value="0" name="VK_KHR_EXTENSION_681_SPEC_VERSION" />
-                <enum value="&quot;VK_KHR_extension_681&quot;" name="VK_KHR_EXTENSION_681_EXTENSION_NAME" />
+                <enum value="1" name="VK_KHR_MAINTENANCE_12_SPEC_VERSION" />
+                <enum value="&quot;VK_KHR_maintenance12&quot;" name="VK_KHR_MAINTENANCE_12_EXTENSION_NAME" />
+                <enum offset="0" extends="VkStructureType" name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_FEATURES_KHR" />
+                <enum offset="1" extends="VkStructureType" name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_PROPERTIES_KHR" />
+                <type name="VkPhysicalDeviceMaintenance12FeaturesKHR" />
+                <feature name="maintenance12" struct="VkPhysicalDeviceMaintenance12FeaturesKHR" />
+                <type name="VkPhysicalDeviceMaintenance12PropertiesKHR" />
             </require>
         </extension>
         <extension name="VK_VALVE_extension_682" number="682" type="device" author="VALVE" contact="Hans-Kristian Arntzen @HansKristian-Work" supported="disabled">
@@ -32393,7 +32447,7 @@ endif::VK_KHR_internally_synchronized_queues[]
                 <enum value="&quot;VK_AMD_extension_687&quot;" name="VK_AMD_EXTENSION_687_EXTENSION_NAME" />
             </require>
         </extension>
-        <extension name="VK_EXT_image_tiling_control" number="688" type="device" author="AMD" contact="Noah Fredriks @noahf" supported="vulkan" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1">
+        <extension name="VK_EXT_image_tiling_control" number="688" type="device" author="AMD" contact="Noah Fredriks @noahf" supported="vulkan" ratified="vulkan" depends="VK_KHR_get_physical_device_properties2,VK_VERSION_1_1">
             <require>
                 <enum value="1" name="VK_EXT_IMAGE_TILING_CONTROL_SPEC_VERSION" />
                 <enum value="&quot;VK_EXT_image_tiling_control&quot;" name="VK_EXT_IMAGE_TILING_CONTROL_EXTENSION_NAME" />
@@ -32595,6 +32649,74 @@ endif::VK_KHR_internally_synchronized_queues[]
             <require>
                 <enum value="0" name="VK_KHR_EXTENSION_716_SPEC_VERSION" />
                 <enum value="&quot;VK_KHR_extension_716&quot;" name="VK_KHR_EXTENSION_716_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_ARM_extension_717" number="717" author="ARM" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="disabled">
+            <require>
+                <enum value="0" name="VK_ARM_EXTENSION_717_SPEC_VERSION" />
+                <enum value="&quot;VK_ARM_extension_717&quot;" name="VK_ARM_EXTENSION_717_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_NV_extension_718" number="718" author="NV" contact="Tony Zlatinski @tzlatinski" supported="disabled">
+            <require>
+                <enum value="0" name="VK_NV_EXTENSION_718_SPEC_VERSION" />
+                <enum value="&quot;VK_NV_extension_718&quot;" name="VK_NV_EXTENSION_718_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_GOOGLE_hdr_smpte_st_209450_metadata" number="719" author="GOOGLE" contact="Christopher Cameron @ccameron" type="device" depends="(VK_KHR_get_physical_device_properties2,VK_VERSION_1_1)+VK_KHR_get_surface_capabilities2+VK_KHR_swapchain+VK_EXT_hdr_metadata" supported="vulkan">
+            <require>
+                <enum value="1" name="VK_GOOGLE_HDR_SMPTE_ST_209450_METADATA_SPEC_VERSION" />
+                <enum value="&quot;VK_GOOGLE_hdr_smpte_st_209450_metadata&quot;" name="VK_GOOGLE_HDR_SMPTE_ST_209450_METADATA_EXTENSION_NAME" />
+                <enum offset="0" extends="VkStructureType" name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE" />
+                <enum offset="1" extends="VkStructureType" name="VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE" />
+                <enum offset="2" extends="VkStructureType" name="VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE" />
+                <type name="VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE" />
+                <type name="VkHdrSmpteSt209450PowerPreferenceGOOGLE" />
+                <type name="VkHdrSmpteSt209450GOOGLE" />
+                <type name="VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE" />
+                <feature name="hdrSmpteSt209450" struct="VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE" />
+            </require>
+        </extension>
+        <extension name="VK_ARM_extension_720" number="720" author="ARM" contact="Kevin Petit @kpet" supported="disabled">
+            <require>
+                <enum value="0" name="VK_ARM_EXTENSION_720_SPEC_VERSION" />
+                <enum value="&quot;VK_ARM_extension_720&quot;" name="VK_ARM_EXTENSION_720_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_LYNX_extension_721" number="721" author="LYNX" contact="Aidan Fabius @afabius" supported="disabled">
+            <require>
+                <enum value="0" name="VK_LYNX_EXTENSION_721_SPEC_VERSION" />
+                <enum value="&quot;VK_LYNX_extension_721&quot;" name="VK_LYNX_EXTENSION_721_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_LYNX_extension_722" number="722" author="LYNX" contact="Aidan Fabius @afabius" supported="disabled">
+            <require>
+                <enum value="0" name="VK_LYNX_EXTENSION_722_SPEC_VERSION" />
+                <enum value="&quot;VK_LYNX_extension_722&quot;" name="VK_LYNX_EXTENSION_722_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_LYNX_extension_723" number="723" author="LYNX" contact="Aidan Fabius @afabius" supported="disabled">
+            <require>
+                <enum value="0" name="VK_LYNX_EXTENSION_723_SPEC_VERSION" />
+                <enum value="&quot;VK_LYNX_extension_723&quot;" name="VK_LYNX_EXTENSION_723_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_LYNX_extension_724" number="724" author="LYNX" contact="Aidan Fabius @afabius" supported="disabled">
+            <require>
+                <enum value="0" name="VK_LYNX_EXTENSION_724_SPEC_VERSION" />
+                <enum value="&quot;VK_LYNX_extension_724&quot;" name="VK_LYNX_EXTENSION_724_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_LYNX_extension_725" number="725" author="LYNX" contact="Aidan Fabius @afabius" supported="disabled">
+            <require>
+                <enum value="0" name="VK_LYNX_EXTENSION_725_SPEC_VERSION" />
+                <enum value="&quot;VK_LYNX_extension_725&quot;" name="VK_LYNX_EXTENSION_725_EXTENSION_NAME" />
+            </require>
+        </extension>
+        <extension name="VK_KHR_extension_726" number="726" author="KHR" contact="Mike Blumenkrantz @zmike" supported="disabled">
+            <require>
+                <enum value="0" name="VK_KHR_EXTENSION_726_SPEC_VERSION" />
+                <enum value="&quot;VK_KHR_extension_726&quot;" name="VK_KHR_EXTENSION_726_EXTENSION_NAME" />
             </require>
         </extension>
     </extensions>
@@ -34250,8 +34372,8 @@ endif::VK_KHR_internally_synchronized_queues[]
             <dynamicstatecmd name="vkCmdSetRasterizerDiscardEnable" pipeline="VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE" />
         </dynamicstate>
         <dynamicstate name="vertexInput" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Vertex Input">
-            <dynamicstatecmd name="vkCmdSetVertexInputEXT" pipeline="VK_DYNAMIC_STATE_VERTEX_INPUT_EXT" pipelineonly="true" />
-            <dynamicstatecmd name="vkCmdBindVertexBuffers2" pipeline="VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE" />
+            <dynamicstatecmd name="vkCmdSetVertexInputEXT" pipeline="VK_DYNAMIC_STATE_VERTEX_INPUT_EXT" />
+            <dynamicstatecmd name="vkCmdBindVertexBuffers2" pipeline="VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE" pipelineonly="true" />
         </dynamicstate>
         <dynamicstate name="primitiveTopology" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Vertex Input">
             <dynamicstatecmd name="vkCmdSetPrimitiveTopology" pipeline="VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY" />
@@ -34259,7 +34381,7 @@ endif::VK_KHR_internally_synchronized_queues[]
         <dynamicstate name="primitiveRestartEnable" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Vertex Input">
             <dynamicstatecmd name="vkCmdSetPrimitiveRestartEnable" pipeline="VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE" />
         </dynamicstate>
-        <dynamicstate name="provokingVertexMode" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
+        <dynamicstate name="provokingVertexMode" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetProvokingVertexModeEXT" pipeline="VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT" />
             <enable extension="VK_EXT_provoking_vertex" />
         </dynamicstate>
@@ -34400,7 +34522,7 @@ endif::VK_KHR_internally_synchronized_queues[]
             <dynamicstatecmd name="vkCmdSetLineWidth" pipeline="VK_DYNAMIC_STATE_LINE_WIDTH" />
             <statecondition special="lineTopology" />
         </dynamicstate>
-        <dynamicstate name="lineStippleEnable" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
+        <dynamicstate name="lineStippleEnable" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetLineStippleEnableEXT" pipeline="VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT" />
             <enable struct="VkPhysicalDeviceLineRasterizationFeaturesKHR" feature="stippledRectangularLines" requires="VK_KHR_line_rasterization" />
             <enable struct="VkPhysicalDeviceLineRasterizationFeaturesKHR" feature="stippledBresenhamLines" requires="VK_KHR_line_rasterization" />
@@ -34414,7 +34536,7 @@ endif::VK_KHR_internally_synchronized_queues[]
             <enable struct="VkPhysicalDeviceLineRasterizationFeaturesKHR" feature="stippledSmoothLines" requires="VK_KHR_line_rasterization" />
             <statecondition state="lineStippleEnable" special="stippledLineTopology" />
         </dynamicstate>
-        <dynamicstate name="lineRasterizationMode" shaderstage="VK_SHADER_STAGE_VERTEX_BIT" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
+        <dynamicstate name="lineRasterizationMode" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Pre-Rasterization Shader" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetLineRasterizationModeEXT" pipeline="VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT" />
             <enable struct="VkPhysicalDeviceLineRasterizationFeaturesKHR" feature="stippledRectangularLines" requires="VK_KHR_line_rasterization" />
             <enable struct="VkPhysicalDeviceLineRasterizationFeaturesKHR" feature="stippledBresenhamLines" requires="VK_KHR_line_rasterization" />
@@ -34441,10 +34563,10 @@ endif::VK_KHR_internally_synchronized_queues[]
         <dynamicstate name="sampleMask" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Fragment Shader,Fragment Output" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetSampleMaskEXT" pipeline="VK_DYNAMIC_STATE_SAMPLE_MASK_EXT" />
         </dynamicstate>
-        <dynamicstate name="alphaToCoverageEnable" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Fragment Shader,Fragment Output" requiresrasterization="true">
+        <dynamicstate name="alphaToCoverageEnable" shaderstage="VK_SHADER_STAGE_FRAGMENT_BIT" pipelinesubstate="Fragment Shader,Fragment Output" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetAlphaToCoverageEnableEXT" pipeline="VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT" />
         </dynamicstate>
-        <dynamicstate name="alphaToOneEnable" shaderstage="VK_SHADER_STAGE_ALL" pipelinesubstate="Fragment Shader,Fragment Output" requiresrasterization="true">
+        <dynamicstate name="alphaToOneEnable" shaderstage="VK_SHADER_STAGE_FRAGMENT_BIT" pipelinesubstate="Fragment Shader,Fragment Output" requiresrasterization="true">
             <dynamicstatecmd name="vkCmdSetAlphaToOneEnableEXT" pipeline="VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT" />
             <enable struct="VkPhysicalDeviceFeatures" feature="alphaToOne" requires="VK_VERSION_1_0" />
         </dynamicstate>
@@ -34891,6 +35013,9 @@ endif::VK_KHR_internally_synchronized_queues[]
         </spirvextension>
         <spirvextension name="SPV_EXT_cooperative_matrix_maintenance1">
             <enable extension="VK_EXT_cooperative_matrix_maintenance1" />
+        </spirvextension>
+        <spirvextension name="SPV_ARM_cooperative_matrix_layouts">
+            <enable extension="VK_ARM_cooperative_matrix_layouts" />
         </spirvextension>
     </spirvextensions>
     <spirvcapabilities comment="SPIR-V Capabilities allowed in Vulkan and what is required to use it">
@@ -35560,6 +35685,9 @@ endif::VK_KHR_internally_synchronized_queues[]
         </spirvcapability>
         <spirvcapability name="CooperativeMatrixGetCoordinateEXT">
             <enable struct="VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT" feature="cooperativeMatrixGetCoordinate" requires="VK_EXT_cooperative_matrix_maintenance1" />
+        </spirvcapability>
+        <spirvcapability name="CooperativeMatrixLayoutsARM">
+            <enable struct="VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM" feature="cooperativeMatrixArmLayouts" requires="VK_ARM_cooperative_matrix_layouts" />
         </spirvcapability>
     </spirvcapabilities>
     <sync comment="Machine readable representation of the synchronization objects and their mappings">

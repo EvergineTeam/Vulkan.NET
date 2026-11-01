@@ -3674,6 +3674,24 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkHdrSmpteSt209450GOOGLE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public UIntPtr metadataSize;
+		public void* pMetadata;
+		public VkHdrSmpteSt209450PowerPreferenceGOOGLE powerPreference;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 hdrSmpteSt209450Supported;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	{
 		public VkStructureType sType;
@@ -4558,6 +4576,22 @@ namespace Evergine.Bindings.Vulkan
 		public VkStructureType sType;
 		public void* pNext;
 		public VkBool32 maintenance10;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance12PropertiesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public uint maxInputAttachmentIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceMaintenance12FeaturesKHR
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 maintenance12;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -13464,6 +13498,14 @@ namespace Evergine.Bindings.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 hdrSmpteSt209450;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -15193,6 +15235,14 @@ namespace Evergine.Bindings.Vulkan
 		public uint deviceIpVersionArch;
 		public uint deviceIpVersionRelease;
 		public uint deviceIpVersionRevision;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM
+	{
+		public VkStructureType sType;
+		public void* pNext;
+		public VkBool32 cooperativeMatrixArmLayouts;
 	}
 
 }
