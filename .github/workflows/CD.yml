@@ -41,10 +41,30 @@ jobs:
       publish-enabled: ${{ !inputs.skip-assets-publishing }}
       enable-email-notifications: true
     secrets:
-      NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}
       WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}
       EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
       EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
+
+  # nuget.org trusted publishing validates the workflow file the pushing job is defined in,
+  # and it has to belong to this repository, so the push cannot happen inside the reusable workflow.
+  publish:
+    needs: cd
+    if: needs.cd.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: nupkgs
+      - uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ vars.EVERGINE_NUGETORG_USER }}
+      - uses: EvergineTeam/Evergine.Bindings/.github/actions/nuget-publish@v1
+        with:
+          auth-token: ${{ steps.login.outputs.NUGET_API_KEY }}
 
 # Tips:
 # - For direct version (add-ons style):
