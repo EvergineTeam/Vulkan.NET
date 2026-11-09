@@ -66,7 +66,7 @@ safe-outputs:
   # right outcome and not one worth an issue that a real failure has to compete with.
   noop:
     report-as-issue: false
-source: EvergineTeam/Evergine.Bindings@4c15efde1d1789d14befc9e2b5ca711a0aba1c4c
+source: EvergineTeam/Evergine.Bindings@f4fe7ec46bce2a552de860d3e07dfdfd2002aece
 ---
 
 # CI Doctor
